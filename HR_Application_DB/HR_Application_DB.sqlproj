@@ -13,7 +13,7 @@
     </RootPath>
     <RootNamespace>HR_Application_DB</RootNamespace>
     <AssemblyName>HR_Application_DB</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -22,6 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -56,5 +58,36 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="Stored Procedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Cities.sql" />
+    <Build Include="Tables\Comments.sql" />
+    <Build Include="Tables\Companies.sql" />
+    <Build Include="Tables\Companies_Depatments.sql" />
+    <Build Include="Tables\Companies_Locations.sql" />
+    <Build Include="Tables\Countries.sql" />
+    <Build Include="Tables\Departments.sql" />
+    <Build Include="Tables\Departments_Positions.sql" />
+    <Build Include="Tables\Departments_Projects.sql" />
+    <Build Include="Tables\Directions.sql" />
+    <Build Include="Tables\Employees.sql" />
+    <Build Include="Tables\Employees_Projects.sql" />
+    <Build Include="Tables\Employees_Skills.sql" />
+    <Build Include="Tables\FamilyStatuses.sql" />
+    <Build Include="Tables\GeneralInformation.sql" />
+    <Build Include="Tables\Histories.sql" />
+    <Build Include="Tables\LevelSkills.sql" />
+    <Build Include="Tables\LevelsPositions.sql" />
+    <Build Include="Tables\Locations.sql" />
+    <Build Include="Tables\Positions.sql" />
+    <Build Include="Tables\Positions_Employees.sql" />
+    <Build Include="Tables\Projects.sql" />
+    <Build Include="Tables\Projects_Requirements.sql" />
+    <Build Include="Tables\Requirements.sql" />
+    <Build Include="Tables\Skills.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Stored Procedures\GetGeneralInformationByEmployeeID.sql" />
   </ItemGroup>
 </Project>
