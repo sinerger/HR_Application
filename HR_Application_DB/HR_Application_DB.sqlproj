@@ -61,6 +61,10 @@
     <Folder Include="Tables" />
     <Folder Include="Stored Procedures" />
     <Folder Include="Stored Procedures\History" />
+    <Folder Include="Stored Procedures\Users" />
+    <Folder Include="Stored Procedures\Skills" />
+    <Folder Include="Stored Procedures\Requirements" />
+    <Folder Include="Stored Procedures\Projects" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -91,5 +95,16 @@
     <Build Include="Tables\Users.sql" />
     <Build Include="Stored Procedures\History\GetHistoryByID.sql" />
     <Build Include="Stored Procedures\History\GetHistoryByTable.sql" />
+    <Build Include="Stored Procedures\Users\GetUserByID.sql" />
+    <Build Include="Stored Procedures\Users\GetUserByName.sql" />
+    <Build Include="Stored Procedures\Users\GetAllUsers.sql" />
+    <Build Include="Stored Procedures\Skills\GetSkillByID.sql" />
+    <Build Include="Stored Procedures\Skills\GetAllSkills.sql" />
+    <Build Include="Stored Procedures\Skills\GetSkillByTitle.sql" />
+    <Build Include="Stored Procedures\Requirements\GetRequirementByID.sql" />
+    <Build Include="Stored Procedures\Requirements\GetAllRequirements.sql" />
+    <Build Include="Stored Procedures\Projects\GetAllProjects.sql" />
+    <Build Include="Stored Procedures\Projects\GetProjectByID.sql" />
+    <Build Include="Stored Procedures\Projects\GetProjectByTitle.sql" />
   </ItemGroup>
 </Project>

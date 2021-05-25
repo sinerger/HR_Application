@@ -1,0 +1,9 @@
+﻿CREATE TABLE [Statuses] (
+	ID int NOT NULL IDENTITY,
+	Name nvarchar(255)
+  CONSTRAINT [PK_STATUSES] PRIMARY KEY CLUSTERED
+  (
+  [ID] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
