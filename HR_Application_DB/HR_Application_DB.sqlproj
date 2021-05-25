@@ -60,7 +60,14 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Stored Procedures" />
-    <Folder Include="Stored Procedures\CitiesProcedures" />
+    <Folder Include="Stored Procedures\Cities" />
+    <Folder Include="Stored Procedures\Comments" />
+    <Folder Include="Stored Procedures\Companies" />
+    <Folder Include="Stored Procedures\Countries" />
+    <Folder Include="Stored Procedures\GeneralInformation" />
+    <Folder Include="Stored Procedures\Departments" />
+    <Folder Include="Stored Procedures\Directions" />
+    <Folder Include="Stored Procedures\FamilyStatuses" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -89,9 +96,22 @@
     <Build Include="Tables\Requirements.sql" />
     <Build Include="Tables\Skills.sql" />
     <Build Include="Tables\Users.sql" />
-    <Build Include="Stored Procedures\GetGeneralInformationByEmployeeID.sql" />
-    <Build Include="Stored Procedures\GetCityByID.sql" />
-    <Build Include="Stored Procedures\GetCityByName.sql" />
-    <Build Include="Stored Procedures\GetCities.sql" />
+    <Build Include="Stored Procedures\Cities\GetCities.sql" />
+    <Build Include="Stored Procedures\Cities\GetCityByID.sql" />
+    <Build Include="Stored Procedures\Cities\GetCityByName.sql" />
+    <Build Include="Stored Procedures\Comments\GetCommentByID.sql" />
+    <Build Include="Stored Procedures\Comments\GetCommentsByEmployeeID.sql" />
+    <Build Include="Stored Procedures\Companies\GetCompaniesByName.sql" />
+    <Build Include="Stored Procedures\Companies\GetCompanyByID.sql" />
+    <Build Include="Stored Procedures\Countries\GetCountryByID.sql" />
+    <Build Include="Stored Procedures\Countries\GetCountyByName.sql" />
+    <Build Include="Stored Procedures\GeneralInformation\GetGeneralInformationByEmployeeID.sql" />
+    <Build Include="Stored Procedures\Departments\GetDepartmentByID.sql" />
+    <Build Include="Stored Procedures\Directions\GetDirectionByID.sql" />
+    <Build Include="Stored Procedures\Departments\GetDepartments.sql" />
+    <Build Include="Stored Procedures\Directions\GetDirections.sql" />
+    <Build Include="Stored Procedures\FamilyStatuses\GetFamilyStatusByID.sql" />
+    <Build Include="Stored Procedures\FamilyStatuses\GetFamilyStatuses.sql" />
+    <Build Include="Stored Procedures\GeneralInformation\GetGeneralInformationByID.sql" />
   </ItemGroup>
 </Project>
