@@ -4,10 +4,9 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    public class CitiesDTO
+    public class FamilyStatusDTO
     {
         public int? ID { get; set; }
-        public string Name { get; set; }
-        public int? CountryID { get; set; }
+        public string Status { get; set; }
     }
 }

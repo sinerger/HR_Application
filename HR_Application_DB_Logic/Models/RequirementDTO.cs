@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    public class RequirementsDTO
+    public class RequirementDTO
     {
         public int? ID { get; set; }
         public int? SkillID { get; set; }

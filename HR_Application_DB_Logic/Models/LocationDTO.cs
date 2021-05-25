@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    public class LocationsDTO
+    public class LocationDTO
     {
         public int? ID { get; set; }
         public int? CityID { get; set; }

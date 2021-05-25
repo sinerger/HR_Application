@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    public class UsersDTO
+    public class UserDTO
     {
         public int? ID { get; set; }
         public string FirstName { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    public class HistoriesDTO
+    public class HistoryDTO
     {
         public int? ID { get; set; }
         public string Table { get; set; }

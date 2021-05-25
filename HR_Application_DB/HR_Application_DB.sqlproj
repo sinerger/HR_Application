@@ -60,6 +60,7 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Stored Procedures" />
+    <Folder Include="Stored Procedures\CitiesProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -89,5 +90,8 @@
     <Build Include="Tables\Skills.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="Stored Procedures\GetGeneralInformationByEmployeeID.sql" />
+    <Build Include="Stored Procedures\GetCityByID.sql" />
+    <Build Include="Stored Procedures\GetCityByName.sql" />
+    <Build Include="Stored Procedures\GetCities.sql" />
   </ItemGroup>
 </Project>
