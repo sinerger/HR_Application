@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetHistoryByID]
+﻿CREATE PROCEDURE [dbo].[GetHistoriesByID]
 @ID int 
 AS
     SELECT * FROM [dbo].[Histories]

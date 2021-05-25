@@ -60,7 +60,11 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Stored Procedures" />
-    <Folder Include="Stored Procedures\History" />
+    <Folder Include="Stored Procedures\Histories" />
+    <Folder Include="Stored Procedures\LevelSkills" />
+    <Folder Include="Stored Procedures\LevelPositions" />
+    <Folder Include="Stored Procedures\Locations" />
+    <Folder Include="Stored Procedures\Statuses" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -89,7 +93,21 @@
     <Build Include="Tables\Requirements.sql" />
     <Build Include="Tables\Skills.sql" />
     <Build Include="Tables\Users.sql" />
-    <Build Include="Stored Procedures\History\GetHistoryByID.sql" />
-    <Build Include="Stored Procedures\History\GetHistoryByTable.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistoriesByID.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistoriesByTable.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistoriesByUpdated.sql" />
+    <Build Include="Stored Procedures\LevelSkills\GetLevelSkillsByID.sql" />
+    <Build Include="Stored Procedures\LevelSkills\GetLevelSkillsByTitle.sql" />
+    <Build Include="Stored Procedures\LevelPositions\GetLevelPositionsByID.sql" />
+    <Build Include="Stored Procedures\LevelPositions\GetLevelPositionsByTitle.sql" />
+    <Build Include="Stored Procedures\LevelPositions\GetLevelPositions.sql" />
+    <Build Include="Stored Procedures\LevelSkills\GetLevelSkills.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistories.sql" />
+    <Build Include="Stored Procedures\Locations\GetLocations.sql" />
+    <Build Include="Stored Procedures\Locations\GetLocationsByID.sql" />
+    <Build Include="Stored Procedures\Locations\GetLocationsByStreet.sql" />
+    <Build Include="Stored Procedures\Statuses\GetStatuses.sql" />
+    <Build Include="Stored Procedures\Statuses\GetStatusesByID.sql" />
+    <Build Include="Stored Procedures\Statuses\GetStatusesByName.sql" />
   </ItemGroup>
 </Project>
