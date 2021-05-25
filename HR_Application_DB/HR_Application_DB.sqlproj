@@ -69,6 +69,7 @@
     <Folder Include="Stored Procedures\Skills" />
     <Folder Include="Stored Procedures\Requirements" />
     <Folder Include="Stored Procedures\Projects" />
+    <Folder Include="Stored Procedures\Positions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -124,5 +125,8 @@
     <Build Include="Stored Procedures\Statuses\GetStatuses.sql" />
     <Build Include="Stored Procedures\Statuses\GetStatusesByID.sql" />
     <Build Include="Stored Procedures\Statuses\GetStatusesByName.sql" />
+    <Build Include="Stored Procedures\Positions\GetAllPositions.sql" />
+    <Build Include="Stored Procedures\Positions\GetPositionByID.sql" />
+    <Build Include="Stored Procedures\Positions\GetPositionByTitle.sql" />
   </ItemGroup>
 </Project>
