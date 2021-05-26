@@ -76,5 +76,31 @@ namespace HR_Application_DB_Logic
 
             return result;
         }
+
+        public static FamilyStatusDTO GetFamilyStatusDTOByID(int ID)
+        {
+            string query = "exec GetFamilyStatusDTOByID @ID";
+            var result = new FamilyStatusDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.QuerySingle<FamilyStatusDTO>(query, new { ID });
+            }
+
+            return result;
+        }
+
+        public static List<FamilyStatusDTO> GetAllFamilyStatusesDTO()
+        {
+            string query = "exec GetAllFamilyStatusesDTO";
+            var result = new List<FamilyStatusDTO>();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.Query<FamilyStatusDTO>(query).AsList<FamilyStatusDTO>();
+            }
+
+            return result;
+        }
     }
 }
