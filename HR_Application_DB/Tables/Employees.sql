@@ -8,6 +8,7 @@
     [LocationID]      INT            NOT NULL,
     [IsActual]        BIT            NOT NULL,
     CONSTRAINT [PK_EMPLOYEES] PRIMARY KEY CLUSTERED ([ID] ASC),
-    CONSTRAINT [Employees_fk0] FOREIGN KEY ([LocationID]) REFERENCES [dbo].[Locations] ([ID])
+    CONSTRAINT [Employees_fk0] FOREIGN KEY ([LocationID]) REFERENCES [dbo].[Locations] ([ID]),
+    CONSTRAINT [Employees_fk1] FOREIGN KEY ([StatusID]) REFERENCES [dbo].[Statuses] ([ID])
 );
 

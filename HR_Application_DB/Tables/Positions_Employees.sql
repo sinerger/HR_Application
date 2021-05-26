@@ -9,6 +9,6 @@
     CONSTRAINT [PK_POSITIONS_EMPLOYEES] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [Positions_Employees_fk0] FOREIGN KEY ([EmployeeID]) REFERENCES [dbo].[Employees] ([ID]),
     CONSTRAINT [Positions_Employees_fk1] FOREIGN KEY ([PositionID]) REFERENCES [dbo].[Positions] ([ID]),
-    CONSTRAINT [Positions_Employees_fk2] FOREIGN KEY ([LevelPosition]) REFERENCES [dbo].[LevelsPositions] ([ID])
+    CONSTRAINT [Positions_Employees_fk2] FOREIGN KEY ([LevelPosition]) REFERENCES [dbo].[LevelPositions] ([ID])
 );
 
