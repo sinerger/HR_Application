@@ -68,6 +68,16 @@
     <Folder Include="Stored Procedures\Departments" />
     <Folder Include="Stored Procedures\Directions" />
     <Folder Include="Stored Procedures\FamilyStatuses" />
+    <Folder Include="Stored Procedures\Histories" />
+    <Folder Include="Stored Procedures\LevelSkills" />
+    <Folder Include="Stored Procedures\LevelPositions" />
+    <Folder Include="Stored Procedures\Locations" />
+    <Folder Include="Stored Procedures\Statuses" />
+    <Folder Include="Stored Procedures\Users" />
+    <Folder Include="Stored Procedures\Skills" />
+    <Folder Include="Stored Procedures\Requirements" />
+    <Folder Include="Stored Procedures\Projects" />
+    <Folder Include="Stored Procedures\Positions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -113,5 +123,35 @@
     <Build Include="Stored Procedures\FamilyStatuses\GetFamilyStatusByID.sql" />
     <Build Include="Stored Procedures\FamilyStatuses\GetFamilyStatuses.sql" />
     <Build Include="Stored Procedures\GeneralInformation\GetGeneralInformationByID.sql" />
+    <Build Include="Stored Procedures\Users\GetUserByID.sql" />
+    <Build Include="Stored Procedures\Users\GetUserByName.sql" />
+    <Build Include="Stored Procedures\Users\GetAllUsers.sql" />
+    <Build Include="Stored Procedures\Skills\GetSkillByID.sql" />
+    <Build Include="Stored Procedures\Skills\GetAllSkills.sql" />
+    <Build Include="Stored Procedures\Skills\GetSkillByTitle.sql" />
+    <Build Include="Stored Procedures\Requirements\GetRequirementByID.sql" />
+    <Build Include="Stored Procedures\Requirements\GetAllRequirements.sql" />
+    <Build Include="Stored Procedures\Projects\GetAllProjects.sql" />
+    <Build Include="Stored Procedures\Projects\GetProjectByID.sql" />
+    <Build Include="Stored Procedures\Projects\GetProjectByTitle.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistoriesByID.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistoriesByTable.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistoriesByUpdated.sql" />
+    <Build Include="Stored Procedures\LevelSkills\GetLevelSkillsByID.sql" />
+    <Build Include="Stored Procedures\LevelSkills\GetLevelSkillsByTitle.sql" />
+    <Build Include="Stored Procedures\LevelPositions\GetLevelPositionsByID.sql" />
+    <Build Include="Stored Procedures\LevelPositions\GetLevelPositionsByTitle.sql" />
+    <Build Include="Stored Procedures\LevelPositions\GetLevelPositions.sql" />
+    <Build Include="Stored Procedures\LevelSkills\GetLevelSkills.sql" />
+    <Build Include="Stored Procedures\Histories\GetHistories.sql" />
+    <Build Include="Stored Procedures\Locations\GetLocations.sql" />
+    <Build Include="Stored Procedures\Locations\GetLocationsByID.sql" />
+    <Build Include="Stored Procedures\Locations\GetLocationsByStreet.sql" />
+    <Build Include="Stored Procedures\Statuses\GetStatuses.sql" />
+    <Build Include="Stored Procedures\Statuses\GetStatusesByID.sql" />
+    <Build Include="Stored Procedures\Statuses\GetStatusesByName.sql" />
+    <Build Include="Stored Procedures\Positions\GetAllPositions.sql" />
+    <Build Include="Stored Procedures\Positions\GetPositionByID.sql" />
+    <Build Include="Stored Procedures\Positions\GetPositionByTitle.sql" />
   </ItemGroup>
 </Project>
