@@ -23,5 +23,44 @@ namespace HR_Application_DB_Logic
 
             return result;
         }
+
+        public static SkillDTO GetSkillDTOByID(int ID)
+        {
+            string query = "exec GetSkillDTOByID @ID";
+            var result = new SkillDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.QuerySingle<SkillDTO>(query, new { ID });
+            }
+
+            return result;
+        }
+
+        public static SkillDTO GetSkillDTOByTitle(string title)
+        {
+            string query = "exec GetSkillDTOByTitle @Title";
+            var result = new SkillDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.QuerySingle<SkillDTO>(query, new { title });
+            }
+
+            return result;
+        }
+
+        public static List<SkillDTO> GetAllSkillsDTO()
+        {
+            string query = "exec GetAllSkillsDTO";
+            var result = new List<SkillDTO>();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.Query<SkillDTO>(query).AsList<SkillDTO>();
+            }
+
+            return result;
+        }
     }
 }
