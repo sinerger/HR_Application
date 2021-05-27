@@ -9,4 +9,4 @@ AS
 		[dbo].[Requirements].[SkillID] = @SkillID,
 		[dbo].[Requirements].[LevelSkillID] = @LevelSkillID,
 		[dbo].[Requirements].[AmountOfEmployees] = @AmountOfEmployees
-	WHERE [dbo].[Users].[ID] = @ID
+	WHERE [dbo].[Requirements].[ID] = @ID
