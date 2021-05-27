@@ -10,8 +10,6 @@ namespace HR_Application_DB_Logic.Interfaces
         IEnumerable<CityDTO> GetCities();
         bool Insert(CityDTO city);
         bool Update(CityDTO city);
-        bool Delete(string cityId);
-
-
+        bool Delete(int cityId);
     }
 }
