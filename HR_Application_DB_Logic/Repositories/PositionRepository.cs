@@ -11,15 +11,6 @@ namespace HR_Application_DB_Logic.Repositories
 {
     public class PositionRepository : IPositionRepository
     {
-
-        public IEnumerable<PositionDTO> GetPositions()
-        {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<PositionDTO>("exec crudPositionsRead", commandType: CommandType.Text);
-        }
-
         public bool Insert(PositionDTO position)
         {
             throw new NotImplementedException();
@@ -32,6 +23,33 @@ namespace HR_Application_DB_Logic.Repositories
         public bool Delete(int positionId)
         {
             throw new NotImplementedException();
+        }
+
+        public List<PositionDTO> GetPositionByTitle(string positionTitle)
+        {
+            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "GetPositionByTitle";
+            if (db.State == ConnectionState.Closed)
+                db.Open();
+            return db.Query<PositionDTO>(query, new { Title = positionTitle }, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+        }
+
+        public List<PositionDTO> GetPositions()
+        {
+            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "crud_PositionsRead";
+            if (db.State == ConnectionState.Closed)
+                db.Open();
+            return db.Query<PositionDTO>(query, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+        }
+
+        public List<PositionDTO> GetPositionById(int positionId)
+        {
+            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "GetPositionByID";
+            if (db.State == ConnectionState.Closed)
+                db.Open();
+            return db.Query<PositionDTO>(query, new { ID = positionId }, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
         }
     }
 }
