@@ -108,7 +108,7 @@
     <Build Include="Tables\Skills.sql" />
     <Build Include="Tables\Statuses.sql" />
     <Build Include="Tables\Users.sql" />
-    <Build Include="Stored Procedures\Cities\crud_CitiesRead.sql" />
+    <Build Include="Stored Procedures\Cities\GetCities.sql" />
     <Build Include="Stored Procedures\Cities\GetCityByID.sql" />
     <Build Include="Stored Procedures\Cities\GetCityByName.sql" />
     <Build Include="Stored Procedures\Comments\GetCommentByID.sql" />
