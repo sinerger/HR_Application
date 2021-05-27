@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    public class EmployeeProjectsWithDirection
+    public class EmployeeProjectsWithDirectionDTO
     {
         public int? ID { get; set; }
         public string Photo { get; set; }
