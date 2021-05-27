@@ -7,7 +7,9 @@ namespace HR_Application_DB_Logic.Interfaces
 {
     public interface IPositionRepository
     {
-        IEnumerable<PositionDTO> GetPositions();
+        List<PositionDTO> GetPositions();
+        List<PositionDTO> GetPositionById(int positionId);
+        List<PositionDTO> GetPositionByTitle(string positionTitle);
         bool Insert(PositionDTO position);
         bool Update(PositionDTO position);
         bool Delete(int positionId);

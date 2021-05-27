@@ -76,5 +76,40 @@ namespace HR_Application_DB_Logic
 
             return result;
         }
+
+        public static List<PositionDTO> GetPositions()
+        {
+            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "crud_PositionsRead";
+            if (db.State == ConnectionState.Closed)
+            {
+                db.Open();
+            }
+            return db.Query<PositionDTO>(query, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+        }
+
+        public static List<PositionDTO> GetPositionById(int positionID)
+        {
+            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "GetPositionByID";
+            if (db.State == ConnectionState.Closed)
+            {
+                db.Open();
+            }
+            return db.Query<PositionDTO>(query,new { ID = positionID }, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+        }
+
+        public static List<PositionDTO> GetPositionByTitle(string positionTitle)
+        {
+            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "GetPositionByTitle";
+            if (db.State == ConnectionState.Closed)
+            {
+                db.Open();
+            }
+            return db.Query<PositionDTO>(query, new { Title = positionTitle }, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+        }
+
+
     }
 }
