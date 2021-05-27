@@ -1,30 +1,20 @@
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Tests.Sousces;
+using HR_Application_DB_Logic.DBController;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace HR_Application_DB_Logic.Tests
+namespace HR_Application_DB_Logic.DBController.Tests
 {
     public class DBControllerTests
     {
-        [TestCaseSource(typeof(GeneralInformationSousec))]
-        public void GetGeneralInformationDTOByEmployeeID_WhenValidTestPassed_ShouldReturnNewDTO(int actualEmployeeID, List<GeneralInformationDTO> expected)
+        [Test]
+        public void Test()
         {
-            List<GeneralInformationDTO> actual = new List<GeneralInformationDTO>();
-            actual = DBController.GetGeneralInformationDTOByEmployeeID(actualEmployeeID);
+            var contr = DBController.GetController();
 
-            Assert.AreEqual(expected, actual);
-        }
+            var actual = contr.EmployeeRepository.GetDTOByID(1);
 
-        [TestCase(1)]
-        [TestCase(2)]
-        [TestCase(4)]
-        [TestCase(5)]
-        public void GetEmployeeDTOByID_WhenValidTestPassed_ShouldReturnNotNUllDTO(int actualID)
-        {
-            EmployeeDTO actual = DBController.GetEmployeeDTOByID(actualID);
-
-            Assert.NotNull(actual);
         }
     }
 }
