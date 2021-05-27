@@ -15,5 +15,16 @@ namespace HR_Application_DB_Logic.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(4)]
+        [TestCase(5)]
+        public void GetEmployeeDTOByID_WhenValidTestPassed_ShouldReturnNotNUllDTO(int actualID)
+        {
+            EmployeeDTO actual = DBController.GetEmployeeDTOByID(actualID);
+
+            Assert.NotNull(actual);
+        }
     }
 }
