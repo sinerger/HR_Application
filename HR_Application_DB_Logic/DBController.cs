@@ -111,5 +111,31 @@ namespace HR_Application_DB_Logic
         }
 
 
+
+        public static DepartmentDTO GetDepartmentDTOByID(int ID)
+        {
+            string query = "exec GetDepartmentDTOByID @ID";
+            var result = new DepartmentDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.QuerySingle<DepartmentDTO>(query, new { ID });
+            }
+
+            return result;
+        }
+
+        public static List<DepartmentDTO> GetAllDepartmentsDTO()
+        {
+            string query = "exec GetAllDepartmentsDTO";
+            var result = new List<DepartmentDTO>();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.Query<DepartmentDTO>(query).AsList<DepartmentDTO>();
+            }
+
+            return result;
+        }
     }
 }
