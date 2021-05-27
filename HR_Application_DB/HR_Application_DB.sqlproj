@@ -78,6 +78,7 @@
     <Folder Include="Stored Procedures\Skills" />
     <Folder Include="Stored Procedures\Statuses" />
     <Folder Include="Stored Procedures\Users" />
+    <Folder Include="Stored Procedures\Employees" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -154,5 +155,6 @@
     <Build Include="Stored Procedures\Users\GetAllUsers.sql" />
     <Build Include="Stored Procedures\Users\GetUserByID.sql" />
     <Build Include="Stored Procedures\Users\GetUserByName.sql" />
+    <Build Include="Stored Procedures\Employees\GetEmployeeByID.sql" />
   </ItemGroup>
 </Project>
