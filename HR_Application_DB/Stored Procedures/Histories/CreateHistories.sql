@@ -16,10 +16,10 @@ INSERT INTO [dbo].[Histories](
 [dbo].[Histories].Updated
 )
 VALUES(
-[Table],
-CollumnName,
-OldValue,
-NewValue,
-UpdatedBy,
-Updated
+@Table,
+@CollumnName,
+@OldValue,
+@NewValue,
+@UpdatedBy,
+@Updated
 )
