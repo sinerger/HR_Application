@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_RequirementsDelete]
+﻿CREATE PROCEDURE [dbo].[DeleteRequirements]
 	@ID int
 AS
 	DELETE

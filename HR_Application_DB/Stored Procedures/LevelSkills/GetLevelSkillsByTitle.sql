@@ -2,4 +2,4 @@
 @Title nvarchar
 AS
 	SELECT * FROM [dbo].[LevelSkills]
-	WHERE [dbo].[LevelSkills].Tittle=@Title
+	WHERE [dbo].[LevelSkills].Title=@Title

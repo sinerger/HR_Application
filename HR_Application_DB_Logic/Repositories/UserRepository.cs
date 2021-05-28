@@ -5,28 +5,37 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class LevelSkillRepository
+    public class UserRepository
     {
         private string _connectionString;
 
-        public LevelSkillRepository(string connectionString)
+        public UserRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public bool Create(LevelSkillDTO levelSkill)
+        public bool Create(UserDTO user)
         {
-            string query = "CreateLevelSkills @Title";
+            string query = "CreateUsers @FirstName @LastName @CompanyID @Email @Password @IsActual";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { levelSkill.Title });
+                    dbConnection.Execute(query, new
+                    {
+                        user.FirstName,
+                        user.LastName,
+                        user.CompanyID,
+                        user.Email,
+                        user.Password,
+                        user.IsActual
+                    });
                 }
             }
             catch
@@ -37,16 +46,25 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(LevelSkillDTO levelSkill)
+        public bool Update(UserDTO user)
         {
-            string query = "UpdateLevelSkills @ID @Title";
+            string query = "UpdateUsers @ID @FirstName @LastName @CompanyID @Email @Password @IsActual";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { levelSkill.ID, levelSkill.Title });
+                    dbConnection.Execute(query, new
+                    {
+                        user.ID,
+                        user.FirstName,
+                        user.LastName,
+                        user.CompanyID,
+                        user.Email,
+                        user.Password,
+                        user.IsActual
+                    });
                 }
             }
             catch
@@ -59,7 +77,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteLevelSkills @ID";
+            string query = "DeleteUsers @ID";
             bool result = true;
 
             try
@@ -77,40 +95,40 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public List<LevelSkillDTO> GetAll()
+        public List<UserDTO> GetAll()
         {
-            string query = "GetLevelSkills";
-            List<LevelSkillDTO> result = new List<LevelSkillDTO>();
+            string query = "GetAllUsers";
+            List<UserDTO> result = new List<UserDTO>();
 
             using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
             {
-                result = dbConnection.Query<LevelSkillDTO>(query, commandType: CommandType.StoredProcedure).ToList<LevelSkillDTO>();
+                result = dbConnection.Query<UserDTO>(query, commandType: CommandType.StoredProcedure).ToList<UserDTO>();
             }
 
             return result;
         }
 
-        public LevelSkillDTO GetByID(int levelSkillID)
+        public UserDTO GetByID(int id)
         {
-            string query = "GetLevelSkillsByID";
-            LevelSkillDTO result = new LevelSkillDTO();
+            string query = "GetUserByID @ID";
+            UserDTO result = new UserDTO();
 
             using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
             {
-                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { ID = levelSkillID });
+                result = dbConnection.QuerySingle<UserDTO>(query, new { id });
             }
 
             return result;
         }
 
-        public LevelSkillDTO GetByTitle(string LevelSkillsTitle)
+        public UserDTO GetByName(string name)
         {
-            string query = "GetLevelSkillsByTitle";
-            LevelSkillDTO result = new LevelSkillDTO();
+            string query = "GetUserByName @Name";
+            UserDTO result = new UserDTO();
 
             using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
             {
-                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { ID = LevelSkillsTitle });
+                result = dbConnection.QuerySingle<UserDTO>(query, new { name });
             }
 
             return result;

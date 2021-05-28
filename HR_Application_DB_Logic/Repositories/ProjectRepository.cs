@@ -1,51 +1,31 @@
-﻿using Dapper;
-using HR_Application_DB_Logic.Models;
+﻿using HR_Application_DB_Logic.Models;
 using System.Collections.Generic;
+using Dapper;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class SkillRepository
+    public class ProjectRepository
     {
         private string _connectionString;
+        public string query;
 
-        public SkillRepository(string connectionString)
+        public ProjectRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public SkillDTO GetByID(int id)
+        public List<ProjectDTO> GetAll()
         {
-            string query = "GetSkillByID @ID";
-            SkillDTO result = new SkillDTO();
+            query = "GetProjects";
+            List<ProjectDTO> result = new List<ProjectDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<SkillDTO>(query, new { id });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-
-            return result;
-        }
-
-        public SkillDTO GetByTitle(string title)
-        {
-            string query = " GetSkillByTitle @Title";
-            SkillDTO result = new SkillDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<SkillDTO>(query, new { title });
+                    result = dbConnection.Query<ProjectDTO>(query).AsList<ProjectDTO>();
                 }
             }
             catch
@@ -56,16 +36,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public List<SkillDTO> GetAll()
+        public ProjectDTO GetByID(int id)
         {
-            string query = "GetSkills";
-            List<SkillDTO> result = new List<SkillDTO>();
+            query = "GetProjectByID";
+            ProjectDTO result = new ProjectDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<SkillDTO>(query).AsList<SkillDTO>();
+                    result = dbConnection.QuerySingle<ProjectDTO>(query, new { id });
                 }
             }
             catch
@@ -76,16 +56,41 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(SkillDTO skill)
+        public List<ProjectDTO> GetByTitle(ProjectDTO project)
         {
-            string query = "CreateSkill @Title @Description";
+            query = "GetProjectByTitle";
+            List<ProjectDTO> result = new List<ProjectDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<ProjectDTO>(query, new { project.Title }).AsList<ProjectDTO>();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public bool Create (ProjectDTO project)
+        {
+            query = "CreateProjects @Title, @Description, @DirectionID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { skill.Title, skill.Description });
+                    dbConnection.Execute(query, new 
+                    {
+                        project.Title,
+                        project.Description,
+                        project.DirectionID 
+                    });
                 }
             }
             catch
@@ -96,16 +101,22 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(SkillDTO skill)
+        public bool Update(ProjectDTO project)
         {
-            string query = "UpdateSkillByID @ID @Title @Description";
+            query = "CreateProjects @ID, @Title, @Description, @DirectionID";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { skill.ID, skill.Title, skill.Description });
+                    dbConnection.Execute(query, new
+                    {
+                        project.ID,
+                        project.Title,
+                        project.Description,
+                        project.DirectionID
+                    });
                 }
             }
             catch
@@ -118,7 +129,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteSkill @ID";
+            query = "DeleteProjects @ID";
             bool result = true;
 
             try
@@ -130,7 +141,7 @@ namespace HR_Application_DB_Logic.Repositories
             }
             catch
             {
-                result = false;
+                return false;
             }
 
             return result;
