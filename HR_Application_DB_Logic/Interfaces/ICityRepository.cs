@@ -7,7 +7,9 @@ namespace HR_Application_DB_Logic.Interfaces
 {
     public interface ICityRepository
     {
-        IEnumerable<CityDTO> GetCities();
+        List<CityDTO> GetCities();
+        List<CityDTO> GetCityByID(int id);
+        List<CityDTO> GetCityByName(string Name);
         bool Insert(CityDTO city);
         bool Update(CityDTO city);
         bool Delete(int cityId);
