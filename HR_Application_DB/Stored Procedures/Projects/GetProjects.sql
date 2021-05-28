@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_ProjectsRead]
+﻿CREATE PROCEDURE [dbo].[GetProjects]
 AS
 	SELECT [dbo].[Projects].[ID],
 	[dbo].[Projects].[Title],
