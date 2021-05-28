@@ -31,7 +31,7 @@ namespace HR_Application_DB_Logic.Tests
         [Test]
         public void Test()
         {
-            var actual = new EmployeeRepository(@"Server=(LocalDB)\MSSQLLocalDB; DataBase = NewEmployeesDB; Trusted_Connection = True; Integrated Security = True;");
+            var actual = new CityRepository(@"Server=(LocalDB)\MSSQLLocalDB; DataBase = NewEmployeesDB; Trusted_Connection = True; Integrated Security = True;");
 
             var a = actual.GetByID(1);
         }
