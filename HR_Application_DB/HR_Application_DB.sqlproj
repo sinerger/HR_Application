@@ -143,7 +143,7 @@
     <Build Include="Stored Procedures\Projects\GetProjects.sql" />
     <Build Include="Stored Procedures\Projects\GetProjectByID.sql" />
     <Build Include="Stored Procedures\Projects\GetProjectByTitle.sql" />
-    <Build Include="Stored Procedures\Requirements\crud_RequirementsRead.sql" />
+    <Build Include="Stored Procedures\Requirements\GetRequirements.sql" />
     <Build Include="Stored Procedures\Requirements\GetRequirementByID.sql" />
     <Build Include="Stored Procedures\Skills\GetSkills.sql" />
     <Build Include="Stored Procedures\Skills\GetSkillByID.sql" />
@@ -160,9 +160,9 @@
     <Build Include="Stored Procedures\Users\crud_UsersCreate.sql" />
     <Build Include="Stored Procedures\Users\crud_UsersDelete.sql" />
     <Build Include="Stored Procedures\Users\crud_UsersUpdate.sql" />
-    <Build Include="Stored Procedures\Requirements\crud_RequirementsUpdate.sql" />
-    <Build Include="Stored Procedures\Requirements\crud_RequirementsDelete.sql" />
-    <Build Include="Stored Procedures\Requirements\crud_RequirementsCreate.sql" />
+    <Build Include="Stored Procedures\Requirements\UpdateRequirements.sql" />
+    <Build Include="Stored Procedures\Requirements\DeleteRequirements.sql" />
+    <Build Include="Stored Procedures\Requirements\CreateRequirements.sql" />
     <Build Include="Stored Procedures\Positions\CreatePosition.sql" />
     <Build Include="Stored Procedures\Positions\DeletePosition.sql" />
     <Build Include="Stored Procedures\Positions\UpdatePosition.sql" />
