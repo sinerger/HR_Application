@@ -3,6 +3,7 @@ using HR_Application_DB_Logic.Models;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -107,9 +108,10 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.QuerySingle<CityDTO>(query, new { ID = id });
                 }
             }
-            catch
+            catch (Exception e)
             {
                 result = null;
+                var s = e.ToString();
             }
 
             return result;

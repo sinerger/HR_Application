@@ -185,5 +185,8 @@
     <Build Include="Stored Procedures\Comments\GetComments.sql" />
     <Build Include="Stored Procedures\Comments\CreateComment.sql" />
     <Build Include="Stored Procedures\Comments\UpdateComment.sql" />
+    <Build Include="Stored Procedures\Countries\DeleteCountry.sql" />
+    <Build Include="Stored Procedures\Countries\CreateCountry.sql" />
+    <Build Include="Stored Procedures\Countries\UpdateCountry.sql" />
   </ItemGroup>
 </Project>
