@@ -185,6 +185,10 @@
     <Build Include="Stored Procedures\Comments\GetComments.sql" />
     <Build Include="Stored Procedures\Comments\CreateComment.sql" />
     <Build Include="Stored Procedures\Comments\UpdateComment.sql" />
+    <Build Include="Stored Procedures\Companies\GetCompanies.sql" />
+    <Build Include="Stored Procedures\Companies\CreateCompany.sql" />
+    <Build Include="Stored Procedures\Companies\DeleteCompany.sql" />
+    <Build Include="Stored Procedures\Companies\UpdateCompany.sql" />
     <Build Include="Stored Procedures\LevelSkills\CreateLevelSkills.sql" />
     <Build Include="Stored Procedures\LevelSkills\UpdateLevelSkills.sql" />
     <Build Include="Stored Procedures\LevelSkills\DeleteLevelSkills.sql" />
