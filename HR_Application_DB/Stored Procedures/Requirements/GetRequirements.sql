@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_RequirementsRead]
+﻿CREATE PROCEDURE [dbo].[GetRequirements]
 AS
 	SELECT [dbo].[Requirements].[ID],
 	[dbo].[Requirements].[SkillID],
