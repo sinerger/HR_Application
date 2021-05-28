@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using HR_Application_DB_Logic.Models;
-using Dapper;
 using System.Data;
 using System.Data.SqlClient;
-using System;
+using HR_Application_DB_Logic.Models;
+using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    class StatusRepository
+    public class StatusRepository
     {
         private string _connectionString;
-
 
         public StatusRepository(string connectionString)
         {
