@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
@@ -8,9 +6,14 @@ using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    class RequirementRepository
+    public class RequirementRepository
     {
         private string _connectionString;
+
+        public RequirementRepository(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public List<RequirementDTO> GetAll()
         {
@@ -59,7 +62,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
                     dbConnection.Execute(query, new
                     {
