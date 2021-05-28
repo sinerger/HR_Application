@@ -77,6 +77,32 @@ namespace HR_Application_DB_Logic
             return result;
         }
 
+        public static DirectionDTO GetDirectionDTOByID(int ID)
+        {
+            string query = "exec GetDirectionDTOByID @ID";
+            var result = new DirectionDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.QuerySingle<DirectionDTO>(query, new { ID });
+            }
+
+            return result;
+        }
+
+        public static List<DirectionDTO> GetAllDirectionDTO()
+        {
+            string query = "exec GetAllDirectionDTO";
+            var result = new List<DirectionDTO>();
+
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            {
+                result = dbConnection.Query<DirectionDTO>(query).AsList<DirectionDTO>();
+            }
+
+            return result;
+        }
+
         public static List<PositionDTO> GetPositions()
         {
             using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
