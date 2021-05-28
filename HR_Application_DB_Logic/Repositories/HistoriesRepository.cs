@@ -26,7 +26,15 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { history.Table, history.CollumnName, history.OldValue, history.NewValue, history.UpdatedBy, history.Updated });
+                    dbConnection.Execute(query, new
+                    {
+                        history.Table,
+                        history.CollumnName,
+                        history.OldValue,
+                        history.NewValue,
+                        history.UpdatedBy,
+                        history.Updated
+                    });
                 }
             }
             catch
@@ -46,7 +54,16 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { history.ID, history.Table, history.CollumnName, history.OldValue, history.NewValue, history.UpdatedBy, history.Updated });
+                    dbConnection.Execute(query, new
+                    {
+                        history.ID,
+                        history.Table,
+                        history.CollumnName,
+                        history.OldValue,
+                        history.NewValue,
+                        history.UpdatedBy,
+                        history.Updated
+                    });
                 }
             }
             catch
