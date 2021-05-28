@@ -10,6 +10,7 @@ namespace HR_Application_DB_Logic.Repositories
     public class CityRepository
     {
         private string _connectionString;
+        private string query;
 
         public CityRepository(string connectionString)
         {
@@ -18,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<CityDTO> GetAll()
         {
-            string query = "GetCities";
+            query = "GetCities";
             List<CityDTO> result = new List<CityDTO>();
 
             try
@@ -38,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CityDTO city)
         {
-            string query = "CreateCity @Name @CountryID";
+            query = "CreateCity @Name @CountryID";
             bool result = true;
 
             try
@@ -58,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CityDTO city)
         {
-            string query = "UpdateCity @ID @Name @CountryID";
+            query = "UpdateCity @ID @Name @CountryID";
             bool result = true;
 
             try
@@ -78,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteCity @ID";
+            query = "DeleteCity @ID";
             bool result = true;
 
             try
@@ -108,16 +109,15 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.QuerySingle<CityDTO>(query, new { id });
                 }
             }
-            catch (Exception e)
+            catch
             {
                 result = null;
-                var s = e.ToString();
             }
 
             return result;
         }
 
-        public CityDTO GetByName(string Name)
+        public CityDTO GetByName(string name)
         {
             string query = "GetCityByName @Name";
             CityDTO result = new CityDTO();
@@ -126,7 +126,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { Name });
+                    result = dbConnection.QuerySingle<CityDTO>(query, new { name });
                 }
             }
             catch
