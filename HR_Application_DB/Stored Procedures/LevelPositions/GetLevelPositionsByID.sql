@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[GetLevelPositionsByID]
-@ID int
+	@ID int
 AS
 	SELECT * FROM [dbo].[LevelPositions]
-	WHERE [dbo].[LevelPositions].ID=@ID 
+	WHERE [dbo].[LevelPositions].ID = @ID 
