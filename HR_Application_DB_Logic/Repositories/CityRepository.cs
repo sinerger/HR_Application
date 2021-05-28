@@ -9,51 +9,133 @@ using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository : ICityRepository
+    public class CityRepository
     {
-        public List<CityDTO> GetCities()
+        private string _connectionString;
+
+        public CityRepository(string connectionString)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
-            string query = "crud_CitiesRead";
-            if (db.State == ConnectionState.Closed)
+            _connectionString = connectionString;
+        }
+
+        public List<CityDTO> GetAll()
+        {
+            string query = "GetCities";
+            List<CityDTO> result = new List<CityDTO>();
+
+            try
             {
-                db.Open();
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                }
             }
-            return db.Query<CityDTO>(query, commandType: CommandType.StoredProcedure).AsList<CityDTO>();
+            catch
+            {
+                result = null;
+            }
+
+            return result;
         }
-        public bool Insert(CityDTO city)
+
+        public bool Create(CityDTO city)
         {
-            throw new NotImplementedException();
+            string query = "CreateCity @Name @CountryID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
+
         public bool Update(CityDTO city)
         {
-            throw new NotImplementedException();
-        }
-        public bool Delete(int cityId)
-        {
-            throw new NotImplementedException();
+            string query = "UpdateCity @ID @Name @CountryID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
 
-        public List<CityDTO> GetCityByID(int id)
+        public bool Delete(int id)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
+            string query = "DeleteCity @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public CityDTO GetByID(int id)
+        {
             string query = "GetCityByID";
-            if (db.State == ConnectionState.Closed)
+            CityDTO result = new CityDTO();
+
+            try
             {
-                db.Open();
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<CityDTO>(query, new { ID = id });
+                }
             }
-            return db.Query<CityDTO>(query, new { ID = id }, commandType: CommandType.StoredProcedure).AsList<CityDTO>();
+            catch
+            {
+                result = null;
+            }
+
+            return result;
         }
 
-        public List<CityDTO> GetCityByName(string Name)
+        public CityDTO GetByName(string Name)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "GetCityByName";
-            if (db.State == ConnectionState.Closed)
+            CityDTO result = new CityDTO();
+
+            try
             {
-                db.Open();
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<CityDTO>(query, new { ID = Name });
+                }
             }
-            return db.Query<CityDTO>(query, new { Name = Name }, commandType: CommandType.StoredProcedure).AsList<CityDTO>();
+            catch
+            {
+                result = null;
+            }
+
+            return result;
         }
     }
 }

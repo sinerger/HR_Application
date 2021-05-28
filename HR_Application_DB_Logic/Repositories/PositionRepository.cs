@@ -9,7 +9,7 @@ using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class PositionRepository : IPositionRepository
+    public class PositionRepository
     {
         public bool Insert(PositionDTO position)
         {
@@ -25,31 +25,44 @@ namespace HR_Application_DB_Logic.Repositories
             throw new NotImplementedException();
         }
 
-        public List<PositionDTO> GetPositionByTitle(string positionTitle)
+        public PositionDTO GetByTitle(string positionTitle)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "GetPositionByTitle";
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<PositionDTO>(query, new { Title = positionTitle }, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+            PositionDTO result = new PositionDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            {
+                result = dbConnection.QuerySingle<PositionDTO>(query, new { Title = positionTitle });
+            }
+
+            return result;
         }
 
-        public List<PositionDTO> GetPositions()
+        public List<PositionDTO> GetAll()
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "crud_PositionsRead";
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<PositionDTO>(query, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+            List<PositionDTO> result = new List<PositionDTO>();
+
+            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            {
+                result = dbConnection.Query<PositionDTO>(query, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+            }
+
+            return result;
         }
 
-        public List<PositionDTO> GetPositionById(int positionId)
+        public PositionDTO GetPositionById(int positionId)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "GetPositionByID";
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<PositionDTO>(query, new { ID = positionId }, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+            PositionDTO result = new PositionDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            {
+                result = dbConnection.QuerySingle<PositionDTO>(query, new { ID = positionId });
+
+            }
+
+            return result;
         }
     }
 }
