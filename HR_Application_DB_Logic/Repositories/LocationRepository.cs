@@ -6,7 +6,7 @@ using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    class LocationRepository
+    public class LocationRepository
     {
         private string _connectionString;
 
