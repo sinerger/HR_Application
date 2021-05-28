@@ -9,7 +9,6 @@ namespace HR_Application_DB_Logic.Repositories
     public class PositionRepository
     {
         private string _connectionString;
-        public string query;
 
         public PositionRepository(string connectionString)
         {
@@ -18,7 +17,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public PositionDTO GetByTitle(PositionDTO position)
         {
-            query = "GetPositionByTitle";
+            string query = "GetPositionByTitle";
             PositionDTO result = new PositionDTO();
 
             try
@@ -38,7 +37,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<PositionDTO> GetAll()
         {
-            query = "GetPositions";
+            string query = "GetPositions";
             List<PositionDTO> result = new List<PositionDTO>();
 
             try
@@ -58,7 +57,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public PositionDTO GetById(int id)
         {
-            query = "GetPositionByID @ID";
+            string query = "GetPositionByID @ID";
             PositionDTO result = new PositionDTO();
 
             try
@@ -78,7 +77,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(PositionDTO position)
         {
-            query = "CreatePosition @Title @Description";
+            string query = "CreatePosition @Title @Description";
             bool result = true;
 
             try
@@ -102,7 +101,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(PositionDTO position)
         {
-            query = "CreatePosition @ID, @Title, @Description";
+            string query = "CreatePosition @ID, @Title, @Description";
             bool result = true;
 
             try
@@ -127,7 +126,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeletePosition";
+            string query = "DeletePosition";
             bool result = true;
 
             try
