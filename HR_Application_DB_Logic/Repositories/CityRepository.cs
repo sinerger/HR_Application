@@ -10,7 +10,7 @@ namespace HR_Application_DB_Logic.Repositories
     public class CityRepository
     {
         private string _connectionString;
-        private string query;
+
 
         public CityRepository(string connectionString)
         {
@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<CityDTO> GetAll()
         {
-            query = "GetCities";
+            string query = "GetCities";
             List<CityDTO> result = new List<CityDTO>();
 
             try
@@ -39,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CityDTO city)
         {
-            query = "CreateCity @Name @CountryID";
+            string query = "CreateCity @Name @CountryID";
             bool result = true;
 
             try
@@ -59,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CityDTO city)
         {
-            query = "UpdateCity @ID @Name @CountryID";
+            string query = "UpdateCity @ID @Name @CountryID";
             bool result = true;
 
             try
@@ -79,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteCity @ID";
+            string query = "DeleteCity @ID";
             bool result = true;
 
             try
