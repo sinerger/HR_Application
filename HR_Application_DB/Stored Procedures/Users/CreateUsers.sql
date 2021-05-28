@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_UsersCreate]
+﻿CREATE PROCEDURE [dbo].[CreateUsers]
 	@FisrtName nvarchar,
 	@LastName nvarchar,
 	@CompanyID int,
