@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_DB_Logic.Models
 {
-    class AdressDTO
+    public class AdressDTO
     {
 
     }

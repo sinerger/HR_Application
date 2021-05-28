@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_SkillsCreate]
+﻿CREATE PROCEDURE [dbo].[CreateSkill]
 	@Title nvarchar,
 	@Description nvarchar
 AS

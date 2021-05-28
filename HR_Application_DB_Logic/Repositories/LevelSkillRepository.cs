@@ -1,16 +1,14 @@
 ﻿using Dapper;
-using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class LevelSkillRepository : ILevelSkillRepository
+    public class LevelSkillRepository
     {
 
         public bool Insert(LevelSkillDTO levelSkill)
@@ -28,31 +26,43 @@ namespace HR_Application_DB_Logic.Repositories
             throw new NotImplementedException();
         }
 
-        public List<LevelSkillDTO> GetLevelSkills()
+        public List<LevelSkillDTO> GetAll()
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "GetLevelSkills";
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<LevelSkillDTO>(query, commandType: CommandType.StoredProcedure).ToList<LevelSkillDTO>();
+            List<LevelSkillDTO> result = new List<LevelSkillDTO>();
+
+            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            {
+                result = dbConnection.Query<LevelSkillDTO>(query, commandType: CommandType.StoredProcedure).ToList<LevelSkillDTO>();
+            }
+
+            return result;
         }
 
-        public List<LevelSkillDTO> GetLevelSkillsByID(int levelSkillID)
+        public LevelSkillDTO GetByID(int levelSkillID)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "GetLevelSkillsByID";
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<LevelSkillDTO>(query, new { ID = levelSkillID }, commandType: CommandType.StoredProcedure).AsList<LevelSkillDTO>();
+            LevelSkillDTO result = new LevelSkillDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            {
+                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { ID = levelSkillID });
+            }
+
+            return result;
         }
 
-        public List<LevelSkillDTO> GetLevelSkillsByTitle(string LevelSkillsTitle)
+        public LevelSkillDTO GetByTitle(string LevelSkillsTitle)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
             string query = "GetLevelSkillsByTitle";
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<LevelSkillDTO>(query, new { Title = LevelSkillsTitle }, commandType: CommandType.StoredProcedure).AsList<LevelSkillDTO>();
+            LevelSkillDTO result = new LevelSkillDTO();
+
+            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            {
+                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { ID = LevelSkillsTitle });
+            }
+
+            return result;
         }
     }
 }
