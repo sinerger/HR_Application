@@ -1,30 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using Dapper;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class CommentRepository
     {
         private string _connectionString;
 
-        public CityRepository(string connectionString)
+        public CommentRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public List<CityDTO> GetAll()
+        public CommentDTO GetByID(int id)
         {
-            string query = "GetCities";
-            List<CityDTO> result = new List<CityDTO>();
+            string query = "GetCommentByID";
+            CommentDTO result = new CommentDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                    result = dbConnection.QuerySingle<CommentDTO>(query, new { id });
                 }
             }
             catch
@@ -35,41 +37,41 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public CommentDTO GetByEmployeeID(int id)
         {
-            string query = "CreateCity @Name @CountryID";
-            bool result = true;
+            string query = "GetCommentByEmployeeID";
+            CommentDTO result = new CommentDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    result = dbConnection.QuerySingle<CommentDTO>(query, new { id });
                 }
             }
             catch
             {
-                result = false;
+                result = null;
             }
 
             return result;
         }
 
-        public bool Update(CityDTO city)
+        public List<CommentDTO> GetAll()
         {
-            string query = "UpdateCity @ID @Name @CountryID";
-            bool result = true;
+            string query = "GetComments";
+            List<CommentDTO> result = new List<CommentDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    result = dbConnection.Query<CommentDTO>(query).AsList<CommentDTO>();
                 }
             }
             catch
             {
-                result = false;
+                result = null;
             }
 
             return result;
@@ -77,12 +79,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteCity @ID";
+            string query = "DeleteComment @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
@@ -95,41 +97,52 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public CityDTO GetByID(int id)
+        public bool Create(CommentDTO comment)
         {
-            string query = "GetCityByID";
-            CityDTO result = new CityDTO();
+            string query = "CreateComment @EmployeeID @Information @Date";
+            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { ID = id });
+                    dbConnection.Execute(query, new
+                    {
+                        comment.EmployeeID,
+                        comment.Information,
+                        comment.Date
+                    });
                 }
             }
             catch
             {
-                result = null;
+                result = false;
             }
 
             return result;
         }
 
-        public CityDTO GetByName(string Name)
+        public bool Update(CommentDTO comment)
         {
-            string query = "GetCityByName";
-            CityDTO result = new CityDTO();
+            string query = "UpdateComment @ID @EmployeeID @Information @Date";
+            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { ID = Name });
+                    dbConnection.Execute(query, new
+                    {
+                        comment.ID,
+                        comment.EmployeeID,
+                        comment.Information,
+                        comment.Date
+                    });
                 }
             }
             catch
             {
-                result = null;
+                result = false;
             }
 
             return result;
