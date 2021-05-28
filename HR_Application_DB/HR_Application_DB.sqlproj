@@ -185,5 +185,8 @@
     <Build Include="Stored Procedures\Comments\GetComments.sql" />
     <Build Include="Stored Procedures\Comments\CreateComment.sql" />
     <Build Include="Stored Procedures\Comments\UpdateComment.sql" />
+    <Build Include="Stored Procedures\Directions\DeleteDirection.sql" />
+    <Build Include="Stored Procedures\Directions\CreateDirection.sql" />
+    <Build Include="Stored Procedures\Directions\UpdateDirection.sql" />
   </ItemGroup>
 </Project>
