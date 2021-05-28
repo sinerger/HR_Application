@@ -15,23 +15,23 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public  SkillDTO GetByID(int ID)
+        public SkillDTO GetByID(int id)
         {
             string query = "GetSkillByID @ID";
-            var result = new SkillDTO();
+            SkillDTO result = new SkillDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<SkillDTO>(query, new { ID });
+                    result = dbConnection.QuerySingle<SkillDTO>(query, new { id });
                 }
             }
             catch
             {
                 result = null;
             }
-            
+
 
             return result;
         }
@@ -39,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
         public SkillDTO GetByTitle(string title)
         {
             string query = " GetSkillByTitle @Title";
-            var result = new SkillDTO();
+            SkillDTO result = new SkillDTO();
 
             try
             {
@@ -58,8 +58,8 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<SkillDTO> GetAll()
         {
-            string query = "GetAllSkillsDTO";
-            var result = new List<SkillDTO>();
+            string query = "GetSkills";
+            List<SkillDTO> result = new List<SkillDTO>();
 
             try
             {
@@ -71,6 +71,66 @@ namespace HR_Application_DB_Logic.Repositories
             catch
             {
                 result = null;
+            }
+
+            return result;
+        }
+
+        public bool Create(SkillDTO skill)
+        {
+            string query = "CreateSkill @Title @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { skill.Title, skill.Description });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Update(SkillDTO skill)
+        {
+            string query = "UpdateSkillByID @ID @Title @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { skill.ID, skill.Title, skill.Description });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Delete(int id)
+        {
+            string query = "DeleteSkill @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                result = false;
             }
 
             return result;

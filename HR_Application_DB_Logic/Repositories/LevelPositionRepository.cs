@@ -1,32 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System.Data;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
 using Dapper;
-using System.Data;
-using System.Data.SqlClient;
-using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class LevelPositionRepository
     {
         private string _connectionString;
 
-
-        public CityRepository(string connectionString)
+        public LevelPositionRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public List<CityDTO> GetAll()
+        public List<LevelsPositionDTO> GetAll()
         {
-            string query = "GetCities";
-            List<CityDTO> result = new List<CityDTO>();
+            string query = "GetLevelPositions";
+            List<LevelsPositionDTO> result = new List<LevelsPositionDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                    result = dbConnection.Query<LevelsPositionDTO>(query).AsList<LevelsPositionDTO>();
                 }
             }
             catch
@@ -37,16 +35,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public bool Create(LevelsPositionDTO levelPosition)
         {
-            string query = "CreateCity @Name @CountryID";
+            string query = "CreateLevelPosition @Title @Description";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { levelPosition.Title, levelPosition.Description });
                 }
             }
             catch
@@ -57,16 +55,21 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(CityDTO city)
+        public bool Update(LevelsPositionDTO levelPosition)
         {
-            string query = "UpdateCity @ID @Name @CountryID";
+            string query = "UpdateLevelPosition @ID @Title @Description";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    dbConnection.Execute(query, new
+                    {
+                        levelPosition.ID,
+                        levelPosition.Title,
+                        levelPosition.Description
+                    });
                 }
             }
             catch
@@ -79,7 +82,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteCity @ID";
+            string query = "DeleteLevelPosition @ID";
             bool result = true;
 
             try
@@ -97,16 +100,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public CityDTO GetByID(int id)
+        public LevelsPositionDTO GetByID(int id)
         {
-            string query = "GetCityByID @ID";
-            CityDTO result = new CityDTO();
+            string query = "GetLevelPositionsByID @ID";
+            LevelsPositionDTO result = new LevelsPositionDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { id });
+                    result = dbConnection.QuerySingle<LevelsPositionDTO>(query, new { id });
                 }
             }
             catch
@@ -117,16 +120,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public CityDTO GetByName(string name)
+        public LevelsPositionDTO GetByTitle(string title)
         {
-            string query = "GetCityByName @Name";
-            CityDTO result = new CityDTO();
+            string query = "GetLevelPositionsByTitle @Title";
+            LevelsPositionDTO result = new LevelsPositionDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { name });
+                    result = dbConnection.QuerySingle<LevelsPositionDTO>(query, new { title });
                 }
             }
             catch

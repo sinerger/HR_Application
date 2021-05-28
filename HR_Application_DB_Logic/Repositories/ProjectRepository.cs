@@ -36,7 +36,7 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public ProjectDTO GetProjectByID(int id)
+        public ProjectDTO GetByID(int id)
         {
             query = "GetProjectByID";
             ProjectDTO result = new ProjectDTO();
@@ -56,7 +56,7 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public List<ProjectDTO> GetProjectByTitle(ProjectDTO project)
+        public List<ProjectDTO> GetByTitle(ProjectDTO project)
         {
             query = "GetProjectByTitle";
             List<ProjectDTO> result = new List<ProjectDTO>();
