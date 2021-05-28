@@ -198,5 +198,8 @@
     <Build Include="Stored Procedures\LevelSkills\CreateLevelSkills.sql" />
     <Build Include="Stored Procedures\LevelSkills\UpdateLevelSkills.sql" />
     <Build Include="Stored Procedures\LevelSkills\DeleteLevelSkills.sql" />
+    <Build Include="Stored Procedures\Departments\CreateDepartment.sql" />
+    <Build Include="Stored Procedures\Departments\UpdateDepartment.sql" />
+    <Build Include="Stored Procedures\Departments\DeleteDepartment.sql" />
   </ItemGroup>
 </Project>

@@ -55,5 +55,65 @@ namespace HR_Application_DB_Logic.Repositories
 
             return result;
         }
+
+        public bool Create(DepartmentDTO department)
+        {
+            string query = "CreateDepartment @Title @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { department.Title, department.Description });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Update(DepartmentDTO department)
+        {
+            string query = "UpdateDepartment @ID @Title @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { department.ID, department.Title, department.Description });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Delete(int id)
+        {
+           string query = "DeleteDepartmen @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
     }
 }
