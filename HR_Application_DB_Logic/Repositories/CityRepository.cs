@@ -97,14 +97,14 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CityDTO GetByID(int id)
         {
-            string query = "GetCityByID";
+            string query = "GetCityByID @ID";
             CityDTO result = new CityDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { ID = id });
+                    result = dbConnection.QuerySingle<CityDTO>(query, new { id });
                 }
             }
             catch
@@ -117,14 +117,14 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CityDTO GetByName(string Name)
         {
-            string query = "GetCityByName";
+            string query = "GetCityByName @ID";
             CityDTO result = new CityDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { ID = Name });
+                    result = dbConnection.QuerySingle<CityDTO>(query, new { Name });
                 }
             }
             catch
