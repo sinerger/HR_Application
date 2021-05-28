@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -90,27 +89,27 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public LevelSkillDTO GetByID(int levelSkillID)
+        public LevelSkillDTO GetByID(int id)
         {
-            string query = "GetLevelSkillsByID";
+            string query = "GetLevelSkillsByID @ID";
             LevelSkillDTO result = new LevelSkillDTO();
 
             using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
             {
-                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { ID = levelSkillID });
+                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { id });
             }
 
             return result;
         }
 
-        public LevelSkillDTO GetByTitle(string LevelSkillsTitle)
+        public LevelSkillDTO GetByTitle(string title)
         {
-            string query = "GetLevelSkillsByTitle";
+            string query = "GetLevelSkillsByTitle @Title";
             LevelSkillDTO result = new LevelSkillDTO();
 
             using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
             {
-                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { ID = LevelSkillsTitle });
+                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { title });
             }
 
             return result;

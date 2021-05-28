@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -64,6 +63,26 @@ namespace HR_Application_DB_Logic.Repositories
                         history.UpdatedBy,
                         history.Updated
                     });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Delete(int id)
+        {
+            string query = "DeleteHistories @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
                 }
             }
             catch
