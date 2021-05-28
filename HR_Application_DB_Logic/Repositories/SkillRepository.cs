@@ -1,30 +1,51 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
+using HR_Application_DB_Logic.Models;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using HR_Application_DB_Logic.Models;
-using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class PositionRepository
+    public class SkillRepository
     {
         private string _connectionString;
 
-        public PositionRepository(string connectionString)
+        public SkillRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public PositionDTO GetByTitle(string positionTitle)
+        public  SkillDTO GetByID(int ID)
         {
-            string query = "GetPositionByTitle";
-            PositionDTO result = new PositionDTO();
+            string query = "GetSkillByID @ID";
+            var result = new SkillDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { Title = positionTitle });
+                    result = dbConnection.QuerySingle<SkillDTO>(query, new { ID });
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+            
+
+            return result;
+        }
+
+        public SkillDTO GetByTitle(string title)
+        {
+            string query = " GetSkillByTitle @Title";
+            var result = new SkillDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<SkillDTO>(query, new { title });
                 }
             }
             catch
@@ -35,37 +56,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public List<PositionDTO> GetAll()
+        public List<SkillDTO> GetAll()
         {
-            string query = "GetPositions";
-            List<PositionDTO> result = new List<PositionDTO>();
+            string query = "GetAllSkillsDTO";
+            var result = new List<SkillDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<PositionDTO>(query, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public PositionDTO GetById(int positionId)
-        {
-            string query = "GetPositionByID @ID";
-            PositionDTO result = new PositionDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { ID = positionId });
-
+                    result = dbConnection.Query<SkillDTO>(query).AsList<SkillDTO>();
                 }
             }
             catch
