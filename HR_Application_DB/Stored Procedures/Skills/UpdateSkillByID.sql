@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_SkillsUpdate]
+﻿CREATE PROCEDURE [dbo].[UpdateSkillByID]
 	@ID int,
 	@Title nvarchar,
 	@Description nvarchar
