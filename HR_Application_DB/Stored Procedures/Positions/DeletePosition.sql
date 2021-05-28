@@ -1,4 +1,4 @@
-﻿CREATE PROC [dbo].[crud_PositionsDelete]
+﻿CREATE PROC [dbo].[DeletePosition]
     @ID int
 AS 
 DELETE
