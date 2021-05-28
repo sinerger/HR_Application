@@ -10,6 +10,7 @@ namespace HR_Application_DB_Logic.Repositories
     {
         private string _connectionString;
         public string query;
+
         public ProjectRepository(string connectionString)
         {
             _connectionString = connectionString;
