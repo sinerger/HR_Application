@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_RequirementsCreate]
+﻿CREATE PROCEDURE [dbo].[CreateRequirements]
 	@SkillID int,
 	@LevelSkillID int,
 	@AmountOfEmployees int
