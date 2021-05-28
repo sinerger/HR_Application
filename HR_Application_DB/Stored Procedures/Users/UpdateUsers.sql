@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_UsersUpdate]
+﻿CREATE PROCEDURE [dbo].[UpdateUsers]
 	@ID int,
 	@FisrtName nvarchar,
 	@LastName nvarchar,
