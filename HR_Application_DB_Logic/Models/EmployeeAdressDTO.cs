@@ -12,8 +12,7 @@ namespace HR_Application_DB_Logic.Models
         public string LastName { get; set; }
         public string RegistationDate { get; set; }
         public StatusDTO Status { get; set; }
-        public LocationDTO Location { get; set; }
+        public AdressDTO Adress { get; set; }
         public bool IsActual { get; set; }
-
     }
 }

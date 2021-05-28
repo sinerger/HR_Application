@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_CitiesDelete]
+﻿CREATE PROCEDURE [dbo].[DeleteCity]
 	@ID int
 AS
 	DELETE
