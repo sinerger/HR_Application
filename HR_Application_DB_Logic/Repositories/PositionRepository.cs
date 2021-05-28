@@ -9,22 +9,23 @@ namespace HR_Application_DB_Logic.Repositories
     public class PositionRepository
     {
         private string _connectionString;
+        public string query;
 
         public PositionRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public PositionDTO GetByTitle(string positionTitle)
+        public PositionDTO GetByTitle(PositionDTO position)
         {
-            string query = "GetPositionByTitle";
+            query = "GetPositionByTitle";
             PositionDTO result = new PositionDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { Title = positionTitle });
+                    result = dbConnection.QuerySingle<PositionDTO>(query, new { position.Title });
                 }
             }
             catch
@@ -37,14 +38,14 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<PositionDTO> GetAll()
         {
-            string query = "GetPositions";
+            query = "GetPositions";
             List<PositionDTO> result = new List<PositionDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<PositionDTO>(query, commandType: CommandType.StoredProcedure).AsList<PositionDTO>();
+                    result = dbConnection.Query<PositionDTO>(query).AsList<PositionDTO>();
                 }
             }
             catch
@@ -55,22 +56,90 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public PositionDTO GetById(int positionId)
+        public PositionDTO GetById(int id)
         {
-            string query = "GetPositionByID @ID";
+            query = "GetPositionByID @ID";
             PositionDTO result = new PositionDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { ID = positionId });
-
+                    result = dbConnection.QuerySingle<PositionDTO>(query, new { id });
                 }
             }
             catch
             {
                 result = null;
+            }
+
+            return result;
+        }
+
+        public bool Create(PositionDTO position)
+        {
+            query = "CreatePosition @Title @Description";
+            bool result = true;
+
+            try
+            {
+                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new
+                    {
+                        position.Title,
+                        position.Description
+                    });
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return result;
+        }
+
+        public bool Update(PositionDTO position)
+        {
+            query = "CreatePosition @ID, @Title, @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new
+                    {
+                        position.ID,
+                        position.Title,
+                        position.Description
+                    });
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return result;
+        }
+
+        public bool Delete(int id)
+        {
+            query = "DeletePosition";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                return false;
             }
 
             return result;
