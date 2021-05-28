@@ -210,5 +210,9 @@
     <Build Include="Stored Procedures\Locations\UpdateLocation.sql" />
     <Build Include="Stored Procedures\Locations\DeleteLocation.sql" />
     <Build Include="Stored Procedures\Locations\CreateLocation.sql" />
+    <Build Include="Stored Procedures\Employees\CreateEmployees.sql" />
+    <Build Include="Stored Procedures\Employees\DeleteEmployees.sql" />
+    <Build Include="Stored Procedures\Employees\GetEmployees.sql" />
+    <Build Include="Stored Procedures\Employees\UpdateEmployees.sql" />
   </ItemGroup>
 </Project>
