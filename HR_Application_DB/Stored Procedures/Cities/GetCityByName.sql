@@ -1,7 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetCityByName]
-	@name nvarchar
-
+	@Name nvarchar
 AS
-	
-	select * from [dbo].[Cities]
-	where [dbo].[Cities].[Name] = @name
+	SELECT [dbo].[Cities].[ID], [dbo].[Cities].[Name], [dbo].[Cities].[CountryID]
+	FROM [dbo].[Cities]
+	WHERE [dbo].[Cities].[Name] = @Name
