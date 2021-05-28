@@ -2,4 +2,4 @@
 	@ID int
 AS
 	SELECT * from [dbo].[FamilyStatuses]
-	where [dbo].[FamilyStatuses].ID=@ID
+	where [dbo].[FamilyStatuses].ID = @ID
