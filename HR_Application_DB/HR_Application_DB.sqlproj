@@ -140,7 +140,7 @@
     <Build Include="Stored Procedures\Locations\GetLocationsByStreet.sql" />
     <Build Include="Stored Procedures\Positions\GetPositionByID.sql" />
     <Build Include="Stored Procedures\Positions\GetPositionByTitle.sql" />
-    <Build Include="Stored Procedures\Projects\crud_ProjectsRead.sql" />
+    <Build Include="Stored Procedures\Projects\GetProjects.sql" />
     <Build Include="Stored Procedures\Projects\GetProjectByID.sql" />
     <Build Include="Stored Procedures\Projects\GetProjectByTitle.sql" />
     <Build Include="Stored Procedures\Requirements\crud_RequirementsRead.sql" />
@@ -166,9 +166,9 @@
     <Build Include="Stored Procedures\Positions\CreatePosition.sql" />
     <Build Include="Stored Procedures\Positions\DeletePosition.sql" />
     <Build Include="Stored Procedures\Positions\UpdatePosition.sql" />
-    <Build Include="Stored Procedures\Projects\crud_ProjectsCreate.sql" />
-    <Build Include="Stored Procedures\Projects\crud_ProjectsUpdate.sql" />
-    <Build Include="Stored Procedures\Projects\crud_ProjectsDelete.sql" />
+    <Build Include="Stored Procedures\Projects\CreateProjects.sql" />
+    <Build Include="Stored Procedures\Projects\UpdateProjects.sql" />
+    <Build Include="Stored Procedures\Projects\DeleteProjects.sql" />
     <Build Include="Stored Procedures\Skills\CreateSkill.sql" />
     <Build Include="Stored Procedures\Skills\UpdateSkillByID.sql" />
     <Build Include="Stored Procedures\Skills\DeleteSkill.sql" />
@@ -188,5 +188,12 @@
     <Build Include="Stored Procedures\Countries\DeleteCountry.sql" />
     <Build Include="Stored Procedures\Countries\CreateCountry.sql" />
     <Build Include="Stored Procedures\Countries\UpdateCountry.sql" />
+    <Build Include="Stored Procedures\Companies\GetCompanies.sql" />
+    <Build Include="Stored Procedures\Companies\CreateCompany.sql" />
+    <Build Include="Stored Procedures\Companies\DeleteCompany.sql" />
+    <Build Include="Stored Procedures\Companies\UpdateCompany.sql" />
+    <Build Include="Stored Procedures\LevelSkills\CreateLevelSkills.sql" />
+    <Build Include="Stored Procedures\LevelSkills\UpdateLevelSkills.sql" />
+    <Build Include="Stored Procedures\LevelSkills\DeleteLevelSkills.sql" />
   </ItemGroup>
 </Project>
