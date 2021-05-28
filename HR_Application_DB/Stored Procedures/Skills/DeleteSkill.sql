@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_SkillsDelete]
+﻿CREATE PROCEDURE [dbo].[DeleteSkill]
 	@ID int
 AS
 	DELETE

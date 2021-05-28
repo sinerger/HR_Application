@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_ProjectsUpdate]
+﻿CREATE PROCEDURE [dbo].[UpdateProjects]
 	@ID int,
 	@Title nvarchar(255),
 	@Description nvarchar(255),
