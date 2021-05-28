@@ -6,14 +6,7 @@
 	@ApartmentNumber int,
 	@PostIndex int
 AS
-INSERT INTO [dbo].[Locations] (
-		[dbo].[Locations].[CityID],
-		[dbo].[Locations].[Street],
-		[dbo].[Locations].[HouseNumber],
-		[dbo].[Locations].[Block],
-		[dbo].[Locations].[ApartmentNumber],
-		[dbo].[Locations].[PostIndex]
-		)
+INSERT INTO [dbo].[Locations]
 	VALUES (
 		@CityID,
 		@Street,
