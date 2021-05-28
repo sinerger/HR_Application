@@ -2,7 +2,7 @@
 AS
 	SELECT
 	Empl.[ID] as EmplID, Empl.[Photo], Empl.[FirstName], Empl.[LastName], Empl.[RegistationDate], Empl.[IsActual],
-	Sk.Title, Sk.Description, Ls.Tittle
+	Sk.Title, Sk.Description, Ls.Title
 FROM [dbo].[Employees] as Empl
 JOIN [dbo].[Employees_Skills] as Em_Sk
   ON Empl.id = Em_Sk.[EmployeeID]
