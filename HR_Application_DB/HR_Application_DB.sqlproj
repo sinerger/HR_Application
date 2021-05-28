@@ -185,5 +185,8 @@
     <Build Include="Stored Procedures\Comments\GetComments.sql" />
     <Build Include="Stored Procedures\Comments\CreateComment.sql" />
     <Build Include="Stored Procedures\Comments\UpdateComment.sql" />
+    <Build Include="Stored Procedures\FamilyStatuses\CreateFamilyStatus.sql" />
+    <Build Include="Stored Procedures\FamilyStatuses\UpdateFamilyStatus.sql" />
+    <Build Include="Stored Procedures\FamilyStatuses\DeleteFamilyStatus.sql" />
   </ItemGroup>
 </Project>
