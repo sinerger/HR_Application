@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[GetLevelPositionsByTitle]
-@Title nvarchar
+	@Title nvarchar
 AS
-	SELECT *FROM [dbo].[LevelPositions]
-	WHERE [dbo].[LevelPositions].Title=@Title
+	SELECT * FROM [dbo].[LevelPositions]
+	WHERE [dbo].[LevelPositions].Title = @Title
 
