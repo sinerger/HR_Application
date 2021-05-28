@@ -15,16 +15,16 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public PositionDTO GetByTitle(PositionDTO position)
+        public PositionDTO GetByTitle(string title)
         {
-            string query = "GetPositionByTitle";
+            string query = "GetPositionByTitle @Title";
             PositionDTO result = new PositionDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { position.Title });
+                    result = dbConnection.QuerySingle<PositionDTO>(query, new { title });
                 }
             }
             catch
@@ -126,7 +126,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeletePosition";
+            string query = "DeletePosition @ID";
             bool result = true;
 
             try

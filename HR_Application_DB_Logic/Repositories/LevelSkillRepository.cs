@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
