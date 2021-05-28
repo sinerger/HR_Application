@@ -1,51 +1,33 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using HR_Application_DB_Logic.Models;
+using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class DepartmentRepository
+    public class CountryRepository
     {
+
         private string _connectionString;
 
-        public DepartmentRepository(string connectionString)
+        public CountryRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public DepartmentDTO GetByID(int ID)
+        public CountryDTO GetByID(int id)
         {
-            string query = "GetDepartmentByID @ID";
-            var result = new DepartmentDTO();
+            string query = "GetCountryByID";
+            CountryDTO result = new CountryDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<DepartmentDTO>(query, new { ID });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-            
-
-            return result;
-        }
-
-        public List<DepartmentDTO> GetAll()
-        {
-            string query = "GetDepartments";
-            var result = new List<DepartmentDTO>();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.Query<DepartmentDTO>(query).AsList<DepartmentDTO>();
+                    result = dbConnection.QuerySingle<CountryDTO>(query, new { id });
                 }
             }
             catch
@@ -56,41 +38,21 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(DepartmentDTO department)
+        public CountryDTO GetByName(string Name)
         {
-            string query = "CreateDepartment @Title @Description";
-            bool result = true;
+            string query = "GetCountryByName";
+            CountryDTO result = new CountryDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { department.Title, department.Description });
+                    result = dbConnection.QuerySingle<CountryDTO>(query, new { Name });
                 }
             }
             catch
             {
-                result = false;
-            }
-
-            return result;
-        }
-
-        public bool Update(DepartmentDTO department)
-        {
-            string query = "UpdateDepartment @ID @Title @Description";
-            bool result = true;
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    dbConnection.Execute(query, new { department.ID, department.Title, department.Description });
-                }
-            }
-            catch
-            {
-                result = false;
+                result = null;
             }
 
             return result;
@@ -98,7 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-           string query = "DeleteDepartmen @ID";
+            string query = "DeleteCounty @ID";
             bool result = true;
 
             try
@@ -106,6 +68,50 @@ namespace HR_Application_DB_Logic.Repositories
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
                     dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Create(CountryDTO country)
+        {
+            string query = "CreateCounty @Name";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { country.Name });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Update(CountryDTO country)
+        {
+            string query = "UpdateCounty @ID @Name";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new 
+                    { 
+                        country.ID,
+                        country.Name 
+                    });
                 }
             }
             catch

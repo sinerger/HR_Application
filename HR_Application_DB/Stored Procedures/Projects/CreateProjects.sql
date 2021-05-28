@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_ProjectsCreate]
+﻿CREATE PROCEDURE [dbo].[CreateProjects]
 	@Title nvarchar(255),
 	@Description nvarchar(255),
 	@DirectionID int

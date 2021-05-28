@@ -10,20 +10,71 @@ namespace HR_Application_DB_Logic.Repositories
 {
     public class LevelSkillRepository
     {
+        private string _connectionString;
 
-        public bool Insert(LevelSkillDTO levelSkill)
+        public LevelSkillRepository(string connectionString)
         {
-            throw new NotImplementedException();
+            _connectionString = connectionString;
+        }
+
+        public bool Create(LevelSkillDTO levelSkill)
+        {
+            string query = "CreateLevelSkills @Title";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { levelSkill.Title });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
 
         public bool Update(LevelSkillDTO levelSkill)
         {
-            throw new NotImplementedException();
+            string query = "UpdateLevelSkills @ID @Title";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { levelSkill.ID, levelSkill.Title });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
 
-        public bool Delete(int levelSkillId)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = "DeleteLevelSkills @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
         }
 
         public List<LevelSkillDTO> GetAll()

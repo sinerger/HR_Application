@@ -1,51 +1,30 @@
-﻿using Dapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using HR_Application_DB_Logic.Models;
+using Dapper;
 using System.Data;
 using System.Data.SqlClient;
-using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class DepartmentRepository
+    public class FamilyStatusRepository
     {
         private string _connectionString;
 
-        public DepartmentRepository(string connectionString)
+        public FamilyStatusRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public DepartmentDTO GetByID(int ID)
+        public FamilyStatusDTO GetByID(int id)
         {
-            string query = "GetDepartmentByID @ID";
-            var result = new DepartmentDTO();
+            string query = "GetFamilyStatusByID @ID";
+            FamilyStatusDTO result = new FamilyStatusDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<DepartmentDTO>(query, new { ID });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-            
-
-            return result;
-        }
-
-        public List<DepartmentDTO> GetAll()
-        {
-            string query = "GetDepartments";
-            var result = new List<DepartmentDTO>();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.Query<DepartmentDTO>(query).AsList<DepartmentDTO>();
+                    result = dbConnection.QuerySingle<FamilyStatusDTO>(query, new { id });
                 }
             }
             catch
@@ -56,16 +35,36 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(DepartmentDTO department)
+        public List<FamilyStatusDTO> GetAll()
         {
-            string query = "CreateDepartment @Title @Description";
+            string query = "GetFamilyStatuses";
+            List<FamilyStatusDTO> result = new List<FamilyStatusDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<FamilyStatusDTO>(query).AsList<FamilyStatusDTO>();
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        public bool Create(FamilyStatusDTO familyStatus)
+        {
+            string query = "CreateFamilyStatus @Status";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { department.Title, department.Description });
+                    dbConnection.Execute(query, new { familyStatus.Status });
                 }
             }
             catch
@@ -76,16 +75,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(DepartmentDTO department)
+        public bool Update(FamilyStatusDTO familyStatus)
         {
-            string query = "UpdateDepartment @ID @Title @Description";
+            string query = "UpdateFamilyStatus @ID @Status";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { department.ID, department.Title, department.Description });
+                    dbConnection.Execute(query, new { familyStatus.ID, familyStatus.Status });
                 }
             }
             catch
@@ -98,7 +97,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-           string query = "DeleteDepartmen @ID";
+            string query = "DeleteFamilyStatus @ID";
             bool result = true;
 
             try
