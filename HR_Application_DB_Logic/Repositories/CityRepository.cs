@@ -117,7 +117,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CityDTO GetByName(string Name)
         {
-            string query = "GetCityByName @ID";
+            string query = "GetCityByName @Name";
             CityDTO result = new CityDTO();
 
             try
