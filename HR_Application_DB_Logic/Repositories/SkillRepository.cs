@@ -1,32 +1,51 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using Dapper;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class SkillRepository
     {
         private string _connectionString;
-        private string query;
 
-        public CityRepository(string connectionString)
+        public SkillRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public List<CityDTO> GetAll()
+        public SkillDTO GetByID(int id)
         {
-            query = "GetCities";
-            List<CityDTO> result = new List<CityDTO>();
+            string query = "GetSkillByID @ID";
+            SkillDTO result = new SkillDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                    result = dbConnection.QuerySingle<SkillDTO>(query, new { id });
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+
+            return result;
+        }
+
+        public SkillDTO GetByTitle(string title)
+        {
+            string query = " GetSkillByTitle @Title";
+            SkillDTO result = new SkillDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<SkillDTO>(query, new { title });
                 }
             }
             catch
@@ -37,16 +56,36 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public List<SkillDTO> GetAll()
         {
-            query = "CreateCity @Name @CountryID";
+            string query = "GetSkills";
+            List<SkillDTO> result = new List<SkillDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<SkillDTO>(query).AsList<SkillDTO>();
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        public bool Create(SkillDTO skill)
+        {
+            string query = "CreateSkill @Title @Description";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { skill.Title, skill.Description });
                 }
             }
             catch
@@ -57,16 +96,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(CityDTO city)
+        public bool Update(SkillDTO skill)
         {
-            query = "UpdateCity @ID @Name @CountryID";
+            string query = "UpdateSkillByID @ID @Title @Description";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { skill.ID, skill.Title, skill.Description });
                 }
             }
             catch
@@ -79,7 +118,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteCity @ID";
+            string query = "DeleteSkill @ID";
             bool result = true;
 
             try
@@ -92,46 +131,6 @@ namespace HR_Application_DB_Logic.Repositories
             catch
             {
                 result = false;
-            }
-
-            return result;
-        }
-
-        public CityDTO GetByID(int id)
-        {
-            string query = "GetCityByID @ID";
-            CityDTO result = new CityDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { id });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public CityDTO GetByName(string name)
-        {
-            string query = "GetCityByName @Name";
-            CityDTO result = new CityDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { name });
-                }
-            }
-            catch
-            {
-                result = null;
             }
 
             return result;

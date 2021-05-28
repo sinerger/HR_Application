@@ -1,32 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System.Data;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
 using Dapper;
-using System.Data;
-using System.Data.SqlClient;
-using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class LocationRepository
     {
         private string _connectionString;
-        private string query;
 
-        public CityRepository(string connectionString)
+        public LocationRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public List<CityDTO> GetAll()
+        public List<LocationDTO> GetAll()
         {
-            query = "GetCities";
-            List<CityDTO> result = new List<CityDTO>();
+            string query = "GetLocations";
+            List<LocationDTO> result = new List<LocationDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                    result = dbConnection.Query<LocationDTO>(query).AsList<LocationDTO>();
                 }
             }
             catch
@@ -37,16 +35,24 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public bool Create(LocationDTO Location)
         {
-            query = "CreateCity @Name @CountryID";
+            string query = "CreateLocation @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    dbConnection.Execute(query, new
+                    { 
+                        Location.CityID,
+                        Location.Street,
+                        Location.HourseNumber,
+                        Location.Block,
+                        Location.ApartmentNumber,
+                        Location.PostIndex
+                    });
                 }
             }
             catch
@@ -57,16 +63,25 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(CityDTO city)
+        public bool Update(LocationDTO Location)
         {
-            query = "UpdateCity @ID @Name @CountryID";
+            string query = "UpdateLocation @ID @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    dbConnection.Execute(query, new
+                    {
+                        Location.ID,
+                        Location.CityID,
+                        Location.Street,
+                        Location.HourseNumber,
+                        Location.Block,
+                        Location.ApartmentNumber,
+                        Location.PostIndex
+                    });
                 }
             }
             catch
@@ -79,7 +94,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteCity @ID";
+            string query = "DeleteLocation @ID";
             bool result = true;
 
             try
@@ -97,16 +112,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public CityDTO GetByID(int id)
+        public LocationDTO GetByID(int id)
         {
-            string query = "GetCityByID @ID";
-            CityDTO result = new CityDTO();
+            string query = "GetLocationsByID @ID";
+            LocationDTO result = new LocationDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { id });
+                    result = dbConnection.QuerySingle<LocationDTO>(query, new { id });
                 }
             }
             catch
@@ -117,16 +132,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public CityDTO GetByName(string name)
+        public LocationDTO GetByStreet(string Name)
         {
-            string query = "GetCityByName @Name";
-            CityDTO result = new CityDTO();
+            string query = "GetLocationsByStreet @Street";
+            LocationDTO result = new LocationDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { name });
+                    result = dbConnection.QuerySingle<LocationDTO>(query, new { Name });
                 }
             }
             catch

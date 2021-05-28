@@ -1,32 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using Dapper;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System;
+using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class CountryRepository
     {
-        private string _connectionString;
-        private string query;
 
-        public CityRepository(string connectionString)
+        private string _connectionString;
+
+        public CountryRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public List<CityDTO> GetAll()
+        public CountryDTO GetByID(int id)
         {
-            query = "GetCities";
-            List<CityDTO> result = new List<CityDTO>();
+            string query = "GetCountryByID";
+            CountryDTO result = new CountryDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                    result = dbConnection.QuerySingle<CountryDTO>(query, new { id });
                 }
             }
             catch
@@ -37,41 +38,21 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public CountryDTO GetByName(string Name)
         {
-            query = "CreateCity @Name @CountryID";
-            bool result = true;
+            string query = "GetCountryByName";
+            CountryDTO result = new CountryDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    result = dbConnection.QuerySingle<CountryDTO>(query, new { Name });
                 }
             }
             catch
             {
-                result = false;
-            }
-
-            return result;
-        }
-
-        public bool Update(CityDTO city)
-        {
-            query = "UpdateCity @ID @Name @CountryID";
-            bool result = true;
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
-                }
-            }
-            catch
-            {
-                result = false;
+                result = null;
             }
 
             return result;
@@ -79,7 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteCity @ID";
+            string query = "DeleteCounty @ID";
             bool result = true;
 
             try
@@ -97,41 +78,45 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public CityDTO GetByID(int id)
+        public bool Create(CountryDTO country)
         {
-            string query = "GetCityByID @ID";
-            CityDTO result = new CityDTO();
+            string query = "CreateCounty @Name";
+            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { id });
+                    dbConnection.Execute(query, new { country.Name });
                 }
             }
             catch
             {
-                result = null;
+                result = false;
             }
 
             return result;
         }
 
-        public CityDTO GetByName(string name)
+        public bool Update(CountryDTO country)
         {
-            string query = "GetCityByName @Name";
-            CityDTO result = new CityDTO();
+            string query = "UpdateCounty @ID @Name";
+            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { name });
+                    dbConnection.Execute(query, new 
+                    { 
+                        country.ID,
+                        country.Name 
+                    });
                 }
             }
             catch
             {
-                result = null;
+                result = false;
             }
 
             return result;

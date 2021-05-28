@@ -3,30 +3,28 @@ using HR_Application_DB_Logic.Models;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
-using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class FamilyStatusRepository
     {
         private string _connectionString;
-        private string query;
 
-        public CityRepository(string connectionString)
+        public FamilyStatusRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public List<CityDTO> GetAll()
+        public FamilyStatusDTO GetByID(int id)
         {
-            query = "GetCities";
-            List<CityDTO> result = new List<CityDTO>();
+            string query = "GetFamilyStatusByID @ID";
+            FamilyStatusDTO result = new FamilyStatusDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
+                    result = dbConnection.QuerySingle<FamilyStatusDTO>(query, new { id });
                 }
             }
             catch
@@ -37,16 +35,36 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public List<FamilyStatusDTO> GetAll()
         {
-            query = "CreateCity @Name @CountryID";
+            string query = "GetFamilyStatuses";
+            List<FamilyStatusDTO> result = new List<FamilyStatusDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<FamilyStatusDTO>(query).AsList<FamilyStatusDTO>();
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        public bool Create(FamilyStatusDTO familyStatus)
+        {
+            string query = "CreateFamilyStatus @Status";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { familyStatus.Status });
                 }
             }
             catch
@@ -57,16 +75,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(CityDTO city)
+        public bool Update(FamilyStatusDTO familyStatus)
         {
-            query = "UpdateCity @ID @Name @CountryID";
+            string query = "UpdateFamilyStatus @ID @Status";
             bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { familyStatus.ID, familyStatus.Status });
                 }
             }
             catch
@@ -79,7 +97,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteCity @ID";
+            string query = "DeleteFamilyStatus @ID";
             bool result = true;
 
             try
@@ -92,46 +110,6 @@ namespace HR_Application_DB_Logic.Repositories
             catch
             {
                 result = false;
-            }
-
-            return result;
-        }
-
-        public CityDTO GetByID(int id)
-        {
-            string query = "GetCityByID @ID";
-            CityDTO result = new CityDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { id });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public CityDTO GetByName(string name)
-        {
-            string query = "GetCityByName @Name";
-            CityDTO result = new CityDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<CityDTO>(query, new { name });
-                }
-            }
-            catch
-            {
-                result = null;
             }
 
             return result;

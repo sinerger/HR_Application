@@ -1,30 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using HR_Application_DB_Logic.Models;
+using System.Collections.Generic;
+using Dapper;
 using System.Data;
 using System.Data.SqlClient;
-using HR_Application_DB_Logic.Models;
-using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class PositionRepository
+    public class ProjectRepository
     {
         private string _connectionString;
+        public string query;
 
-        public PositionRepository(string connectionString)
+        public ProjectRepository(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public PositionDTO GetByTitle(PositionDTO position)
+        public List<ProjectDTO> GetAll()
         {
-            string query = "GetPositionByTitle";
-            PositionDTO result = new PositionDTO();
+            query = "GetProjects";
+            List<ProjectDTO> result = new List<ProjectDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { position.Title });
+                    result = dbConnection.Query<ProjectDTO>(query).AsList<ProjectDTO>();
                 }
             }
             catch
@@ -35,16 +36,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public List<PositionDTO> GetAll()
+        public ProjectDTO GetByID(int id)
         {
-            string query = "GetPositions";
-            List<PositionDTO> result = new List<PositionDTO>();
+            query = "GetProjectByID";
+            ProjectDTO result = new ProjectDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<PositionDTO>(query).AsList<PositionDTO>();
+                    result = dbConnection.QuerySingle<ProjectDTO>(query, new { id });
                 }
             }
             catch
@@ -55,53 +56,54 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public PositionDTO GetById(int id)
+        public List<ProjectDTO> GetByTitle(ProjectDTO project)
         {
-            string query = "GetPositionByID @ID";
-            PositionDTO result = new PositionDTO();
+            query = "GetProjectByTitle";
+            List<ProjectDTO> result = new List<ProjectDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { id });
+                    result = dbConnection.Query<ProjectDTO>(query, new { project.Title }).AsList<ProjectDTO>();
                 }
             }
             catch
             {
-                result = null;
+                return null;
             }
 
             return result;
         }
 
-        public bool Create(PositionDTO position)
+        public bool Create (ProjectDTO project)
         {
-            string query = "CreatePosition @Title @Description";
+            query = "CreateProjects @Title, @Description, @DirectionID";
             bool result = true;
 
             try
             {
                 using(IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.Execute(query, new 
                     {
-                        position.Title,
-                        position.Description
+                        project.Title,
+                        project.Description,
+                        project.DirectionID 
                     });
                 }
             }
             catch
             {
-                return false;
+                result = false;
             }
 
             return result;
         }
 
-        public bool Update(PositionDTO position)
+        public bool Update(ProjectDTO project)
         {
-            string query = "CreatePosition @ID, @Title, @Description";
+            query = "CreateProjects @ID, @Title, @Description, @DirectionID";
             bool result = true;
 
             try
@@ -110,15 +112,16 @@ namespace HR_Application_DB_Logic.Repositories
                 {
                     dbConnection.Execute(query, new
                     {
-                        position.ID,
-                        position.Title,
-                        position.Description
+                        project.ID,
+                        project.Title,
+                        project.Description,
+                        project.DirectionID
                     });
                 }
             }
             catch
             {
-                return false;
+                result = false;
             }
 
             return result;
@@ -126,7 +129,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeletePosition";
+            query = "DeleteProjects @ID";
             bool result = true;
 
             try
