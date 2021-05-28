@@ -1,4 +1,4 @@
-﻿CREATE PROC [dbo].[crud_PositionsUpdate]
+﻿CREATE PROC [dbo].[UpdatePosition]
     @ID int,
     @Title nvarchar(255),
     @Description nvarchar(255)

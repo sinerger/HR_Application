@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_CitiesCreate]
+﻿CREATE PROCEDURE [dbo].[CreateCity]
 	@Name nvarchar(255),
 	@CountryID int
 AS

@@ -6,8 +6,8 @@ namespace HR_Application_DB_Logic.Models
 {
     public class CityDTO
     {
-        public string Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
-        public CountryDTO Country { get; set; }
+        public int CountryID { get; set; }
     }
 }
