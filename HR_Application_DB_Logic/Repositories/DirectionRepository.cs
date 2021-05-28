@@ -64,7 +64,11 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { direction.Title, direction.Description });
+                    dbConnection.Execute(query, new 
+                    { 
+                        direction.Title, 
+                        direction.Description 
+                    });
                 }
             }
             catch
@@ -84,7 +88,12 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { direction.ID, direction.Title, direction.Description });
+                    dbConnection.Execute(query, new 
+                    { 
+                        direction.ID, 
+                        direction.Title, 
+                        direction.Description 
+                    });
                 }
             }
             catch
