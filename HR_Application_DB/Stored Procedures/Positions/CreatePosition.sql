@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[crud_PositionsCreate]
+﻿CREATE PROCEDURE [dbo].[CreatePosition]
 	   @Title nvarchar(255),
 	   @Description nvarchar(255)
 AS
