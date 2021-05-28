@@ -74,6 +74,26 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
+        public bool Delete(int id)
+        {
+            string query = "DeleteHistories @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
         public List<HistoryDTO> GetAll()
         {
             string query = "GetHistories";
