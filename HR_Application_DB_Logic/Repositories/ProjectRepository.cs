@@ -20,6 +20,7 @@ namespace HR_Application_DB_Logic.Repositories
         {
             query = "GetProjects";
             List<ProjectDTO> result = new List<ProjectDTO>();
+
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
@@ -31,6 +32,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = null;
             }
+
             return result;
         }
 
@@ -38,6 +40,7 @@ namespace HR_Application_DB_Logic.Repositories
         {
             query = "GetProjectByID";
             ProjectDTO result = new ProjectDTO();
+
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
@@ -49,6 +52,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = null;
             }
+
             return result;
         }
 
@@ -56,6 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
         {
             query = "GetProjectByTitle";
             List<ProjectDTO> result = new List<ProjectDTO>();
+
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
@@ -67,6 +72,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 return null;
             }
+
             return result;
         }
 
@@ -91,6 +97,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = false;
             }
+
             return result;
         }
 
@@ -116,6 +123,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = false;
             }
+
             return result;
         }
 
