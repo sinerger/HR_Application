@@ -13,7 +13,6 @@
 AS
 insert into [dbo].[GeneralInformation]
 values(
-	@ID,
 	@EmployeeID,
 	@Sex,
 	@Education,

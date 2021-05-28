@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HR_Application_DB_Logic.Interfaces;
+﻿using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
 using Dapper;
 using System.Data;
