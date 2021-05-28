@@ -11,12 +11,11 @@ namespace HR_Application_DB_Logic.Repositories
     class RequirementRepository
     {
         private string _connectionString;
-        private string query;
 
         public List<RequirementDTO> GetAll()
         {
             List<RequirementDTO> result = new List<RequirementDTO>();
-            query = "GetRequirements";
+            string query = "GetRequirements";
 
             try
             {
@@ -35,7 +34,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public RequirementDTO GetById(int id)
         {
-            query = "GetRequirementByID @ID";
+            string query = "GetRequirementByID @ID";
             RequirementDTO result = new RequirementDTO();
 
             try
@@ -55,7 +54,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(RequirementDTO requirement)
         {
-            query = "CreateRequirements @SkillID, @LevelSkillID, @AmountOfEmployees";
+            string query = "CreateRequirements @SkillID, @LevelSkillID, @AmountOfEmployees";
             bool result = true;
 
             try
@@ -80,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(RequirementDTO requirement)
         {
-            query = "UpdateRequirements @ID, @SkillID, @LevelSkillID, @AmountOfEmployees";
+            string query = "UpdateRequirements @ID, @SkillID, @LevelSkillID, @AmountOfEmployees";
             bool result = true;
 
             try
@@ -106,7 +105,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteRequirements @ID";
+            string query = "DeleteRequirements @ID";
             bool result = true;
 
             try
