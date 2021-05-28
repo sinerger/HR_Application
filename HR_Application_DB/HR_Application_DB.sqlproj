@@ -213,5 +213,9 @@
     <Build Include="Stored Procedures\Statuses\UpdateStatus.sql" />
     <Build Include="Stored Procedures\Statuses\CreateStatus.sql" />
     <Build Include="Stored Procedures\Statuses\DeleteStatus.sql" />
+    <Build Include="Stored Procedures\Employees\CreateEmployees.sql" />
+    <Build Include="Stored Procedures\Employees\DeleteEmployees.sql" />
+    <Build Include="Stored Procedures\Employees\GetEmployees.sql" />
+    <Build Include="Stored Procedures\Employees\UpdateEmployees.sql" />
   </ItemGroup>
 </Project>
