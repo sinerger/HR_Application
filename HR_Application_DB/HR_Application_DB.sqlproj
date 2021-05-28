@@ -182,5 +182,8 @@
     <Build Include="Stored Procedures\GeneralInformation\UpdateGeneralInformation.sql" />
     <Build Include="Stored Procedures\GeneralInformation\CreateGeneralInformation.sql" />
     <Build Include="Stored Procedures\Positions\GetPositions.sql" />
+    <Build Include="Stored Procedures\Comments\GetComments.sql" />
+    <Build Include="Stored Procedures\Comments\CreateComment.sql" />
+    <Build Include="Stored Procedures\Comments\UpdateComment.sql" />
   </ItemGroup>
 </Project>
