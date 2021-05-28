@@ -33,6 +33,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = false;
             }
+
             return result;
         }
 
@@ -52,6 +53,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = false;
             }
+
             return result;
         }
 
@@ -71,6 +73,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 result = false;
             }
+
             return result;
         }
 
