@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetSkillByTitle]
+﻿CREATE PROCEDURE [HRAppDB].[GetSkillByTitle]
 	@Title nvarchar
 AS
-	SELECT * FROM [dbo].[Skills]
-	WHERE [dbo].[Skills].[Title] = @Title
+	SELECT * FROM [HRAppDB].[Skills]
+	WHERE [HRAppDB].[Skills].[Title] = @Title

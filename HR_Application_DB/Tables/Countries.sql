@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Countries] (
+﻿CREATE TABLE [HRAppDB].[Countries] (
     [ID]   INT            IDENTITY (1, 1) NOT NULL,
     [Name] NVARCHAR (255) NOT NULL,
     CONSTRAINT [PK_COUNTRIES] PRIMARY KEY CLUSTERED ([ID] ASC)

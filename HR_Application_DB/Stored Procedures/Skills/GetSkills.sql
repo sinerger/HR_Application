@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [HRAppDB].[GetSkills]
+
+AS
+
+	SELECT * FROM [HRAppDB].[Skills]

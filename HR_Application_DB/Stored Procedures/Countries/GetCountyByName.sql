@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetCountyByName]
+﻿CREATE PROCEDURE [HRAppDB].[GetCountyByName]
 	@Name nvarchar
 AS
-	select * from [dbo].[Countries]
-	where [dbo].[Countries].[Name] = @Name
+	select * from [HRAppDB].[Countries]
+	where [HRAppDB].[Countries].[Name] = @Name

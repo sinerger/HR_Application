@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetCompaniesByName]
+﻿CREATE PROCEDURE [HRAppDB].[GetCompaniesByName]
 	@Name nvarchar
 AS
-	select * from  [dbo].[Companies]
-	where [dbo].[Companies].Title = @Name
+	select * from  [HRAppDB].[Companies]
+	where [HRAppDB].[Companies].Title = @Name

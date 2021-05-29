@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetCountryByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetCountryByID]
 	@ID int 
 AS
-	select * from [dbo].[Countries]
-	where [dbo].[Countries].ID = @ID
+	select * from [HRAppDB].[Countries]
+	where [HRAppDB].[Countries].ID = @ID

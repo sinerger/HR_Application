@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetPositionByTitle]
+﻿CREATE PROCEDURE [HRAppDB].[GetPositionByTitle]
 	@Title nvarchar
 AS
-	SELECT * FROM [dbo].[Positions]
-	WHERE [dbo].[Positions].[Title] = @Title
+	SELECT * FROM [HRAppDB].[Positions]
+	WHERE [HRAppDB].[Positions].[Title] = @Title

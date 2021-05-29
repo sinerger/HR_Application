@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[GetSkillByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetSkillByID]
 	@ID int
 	
 AS
-	SELECT * FROM [dbo].[Skills]
-	WHERE [dbo].[Skills].[ID] = @ID
+	SELECT * FROM [HRAppDB].[Skills]
+	WHERE [HRAppDB].[Skills].[ID] = @ID

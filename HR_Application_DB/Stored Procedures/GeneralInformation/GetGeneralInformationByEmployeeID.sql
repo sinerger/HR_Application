@@ -3,5 +3,5 @@
 
 as
 
-select * from [dbo].[GeneralInformation]
-where [dbo].[GeneralInformation].EmployeeID = @EmployeeID
+select * from [HRAppDB].[GeneralInformation]
+where [HRAppDB].[GeneralInformation].EmployeeID = @EmployeeID
