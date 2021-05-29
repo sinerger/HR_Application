@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetCompanyByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetCompanyByID]
 	@ID int
 AS
-	select * from [dbo].[Companies]
-	where [dbo].[Companies].ID = @ID
+	select * from [HRAppDB].[Companies]
+	where [HRAppDB].[Companies].ID = @ID

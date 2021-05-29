@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetComments]
+﻿CREATE PROCEDURE [HRAppDB].[GetComments]
 	
 AS
-	SELECT * FROM [dbo].[Comments]
+	SELECT * FROM [HRAppDB].[Comments]

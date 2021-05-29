@@ -1,12 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[CreateProjects]
+﻿CREATE PROCEDURE [HRAppDB].[CreateProjects]
 	@Title nvarchar(255),
 	@Description nvarchar(255),
 	@DirectionID int
 AS
-INSERT INTO [dbo].[Projects] (
-	   [dbo].[Projects].[Title],
-	   [dbo].[Projects].[Description],
-	   [dbo].[Projects].[DirectionID]
+INSERT INTO [HRAppDB].[Projects] (
+	   [HRAppDB].[Projects].[Title],
+	   [HRAppDB].[Projects].[Description],
+	   [HRAppDB].[Projects].[DirectionID]
 	   )
 	   VALUES (
        @Title,

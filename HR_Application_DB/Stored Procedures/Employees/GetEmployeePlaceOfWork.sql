@@ -1,12 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[GetEmployeePlaceOfWork]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployeePlaceOfWork]
 AS
 	SELECT
 	Empl.[ID] as EmplID, Empl.[Photo], Empl.[FirstName], Empl.[LastName], Empl.[RegistationDate], Empl.[IsActual],
 	Sk.Title, Sk.Description, Ls.Title
-FROM [dbo].[Employees] as Empl
-JOIN [dbo].[Employees_Skills] as Em_Sk
+FROM [HRAppDB].[Employees] as Empl
+JOIN [HRAppDB].[Employees_Skills] as Em_Sk
   ON Empl.id = Em_Sk.[EmployeeID]
 JOIN LevelSkills as Ls
   ON Ls.[ID] = Em_Sk.LevelSkillID
-JOIN [dbo].[Skills] as Sk
+JOIN [HRAppDB].[Skills] as Sk
   ON Sk.[ID] = Em_Sk.SkillID

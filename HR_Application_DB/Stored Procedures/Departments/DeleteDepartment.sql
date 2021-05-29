@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[DeleteDepartment]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteDepartment]
 	@ID int
 AS
-	delete from [dbo].[Departments]
-	where [dbo].[Departments].ID = @ID
+	delete from [HRAppDB].[Departments]
+	where [HRAppDB].[Departments].ID = @ID

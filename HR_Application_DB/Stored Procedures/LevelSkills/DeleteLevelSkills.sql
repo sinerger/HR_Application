@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[DeleteLevelSkills]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteLevelSkills]
 @ID int
 AS
 DELETE
-FROM [dbo].[LevelSkills]
-WHERE [dbo].[LevelSkills].ID=@ID
+FROM [HRAppDB].[LevelSkills]
+WHERE [HRAppDB].[LevelSkills].ID=@ID

@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[DeleteFamilyStatus]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteFamilyStatus]
 	@ID int
 AS
 	DELETE
-	FROM [dbo].[FamilyStatuses]
-	WHERE [dbo].[FamilyStatuses].[ID] = @ID
+	FROM [HRAppDB].[FamilyStatuses]
+	WHERE [HRAppDB].[FamilyStatuses].[ID] = @ID

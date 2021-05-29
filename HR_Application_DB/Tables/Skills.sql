@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Skills] (
+﻿CREATE TABLE [HRAppDB].[Skills] (
     [ID]          INT            IDENTITY (1, 1) NOT NULL,
     [Title]       NVARCHAR (255) NOT NULL,
     [Description] NVARCHAR (255) NOT NULL,

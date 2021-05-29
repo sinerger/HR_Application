@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetAllUsers]
+﻿CREATE PROCEDURE [HRAppDB].[GetAllUsers]
 	AS
-	SELECT [dbo].[Users].[ID], [dbo].[Users].[FisrtName], [dbo].[Users].[LastName], [dbo].[Users].[CompanyID], 
-	[dbo].[Users].[Email], [dbo].[Users].[Passvord], [dbo].[Users].[IsActual]
-	FROM [dbo].[Users]
+	SELECT [HRAppDB].[Users].[ID], [HRAppDB].[Users].[FisrtName], [HRAppDB].[Users].[LastName], [HRAppDB].[Users].[CompanyID], 
+	[HRAppDB].[Users].[Email], [HRAppDB].[Users].[Passvord], [HRAppDB].[Users].[IsActual]
+	FROM [HRAppDB].[Users]

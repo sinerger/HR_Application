@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetLocationsByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetLocationsByID]
 @ID int
 AS
-SELECT * FROM [dbo].[Locations]
-WHERE [dbo].[Locations].ID=@ID 
+SELECT * FROM [HRAppDB].[Locations]
+WHERE [HRAppDB].[Locations].ID=@ID 

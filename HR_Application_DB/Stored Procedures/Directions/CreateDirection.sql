@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[CreateDirection]
+﻿CREATE PROCEDURE [HRAppDB].[CreateDirection]
 	@Title nvarchar,
 	@Description nvarchar
 AS
-	insert into [dbo].[Directions]
+	insert into [HRAppDB].[Directions]
 	values(
 	@Title,
 	@Description)

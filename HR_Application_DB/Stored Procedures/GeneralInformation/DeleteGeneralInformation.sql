@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[DeleteGeneralInformation]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteGeneralInformation]
 	@ID int
 AS
-	Delete from [dbo].[GeneralInformation]
-	where [dbo].[GeneralInformation].ID = @ID
+	Delete from [HRAppDB].[GeneralInformation]
+	where [HRAppDB].[GeneralInformation].ID = @ID

@@ -1,9 +1,9 @@
-﻿CREATE PROC [dbo].[UpdatePosition]
+﻿CREATE PROC [HRAppDB].[UpdatePosition]
     @ID int,
     @Title nvarchar(255),
     @Description nvarchar(255)
 AS
-UPDATE [dbo].[Positions]
-SET  [dbo].[Positions].[Title] = @Title,
-     [dbo].[Positions].[Description] = @Description
-WHERE  [dbo].[Positions].[ID] = @ID
+UPDATE [HRAppDB].[Positions]
+SET  [HRAppDB].[Positions].[Title] = @Title,
+     [HRAppDB].[Positions].[Description] = @Description
+WHERE  [HRAppDB].[Positions].[ID] = @ID

@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[DeleteCountry]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteCountry]
 	@ID int
 AS
-	delete from [dbo].[Countries]
-	where [dbo].[Countries].ID = @ID
+	delete from [HRAppDB].[Countries]
+	where [HRAppDB].[Countries].ID = @ID

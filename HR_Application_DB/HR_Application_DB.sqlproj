@@ -79,6 +79,7 @@
     <Folder Include="Stored Procedures\Statuses" />
     <Folder Include="Stored Procedures\Users" />
     <Folder Include="Stored Procedures\Employees" />
+    <Folder Include="Schemas" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -217,5 +218,6 @@
     <Build Include="Stored Procedures\Employees\DeleteEmployees.sql" />
     <Build Include="Stored Procedures\Employees\GetEmployees.sql" />
     <Build Include="Stored Procedures\Employees\UpdateEmployees.sql" />
+    <Build Include="Schemas\HRAppDB.sql" />
   </ItemGroup>
 </Project>

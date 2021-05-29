@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetCompanies]
+﻿CREATE PROCEDURE [HRAppDB].[GetCompanies]
 	as
-	select * from [dbo].[Companies]
+	select * from [HRAppDB].[Companies]
 

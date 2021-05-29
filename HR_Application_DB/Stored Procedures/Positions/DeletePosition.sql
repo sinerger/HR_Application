@@ -1,6 +1,6 @@
-﻿CREATE PROC [dbo].[DeletePosition]
+﻿CREATE PROC [HRAppDB].[DeletePosition]
     @ID int
 AS 
 DELETE
-FROM   [dbo].[Positions]
-WHERE  [dbo].[Positions].[ID] = @ID
+FROM   [HRAppDB].[Positions]
+WHERE  [HRAppDB].[Positions].[ID] = @ID

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[UpdateUsers]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateUsers]
 	@ID int,
 	@FisrtName nvarchar,
 	@LastName nvarchar,
@@ -7,12 +7,12 @@
 	@Password nvarchar,
 	@IsActual bit
 AS
-	UPDATE [dbo].[Users]
-	SET [dbo].[Users].[FisrtName] = @FisrtName,
-		[dbo].[Users].[LastName] = @LastName,
-		[dbo].[Users].[CompanyID] = @CompanyID,
-		[dbo].[Users].[Email] = @Email,
-		[dbo].[Users].[Passvord] = @Password,
-		[dbo].[Users].[IsActual] = @IsActual
-	WHERE [dbo].[Users].[ID] = @ID
+	UPDATE [HRAppDB].[Users]
+	SET [HRAppDB].[Users].[FisrtName] = @FisrtName,
+		[HRAppDB].[Users].[LastName] = @LastName,
+		[HRAppDB].[Users].[CompanyID] = @CompanyID,
+		[HRAppDB].[Users].[Email] = @Email,
+		[HRAppDB].[Users].[Passvord] = @Password,
+		[HRAppDB].[Users].[IsActual] = @IsActual
+	WHERE [HRAppDB].[Users].[ID] = @ID
 

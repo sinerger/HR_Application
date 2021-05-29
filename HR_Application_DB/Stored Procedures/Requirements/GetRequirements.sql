@@ -1,7 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[GetRequirements]
+﻿CREATE PROCEDURE [HRAppDB].[GetRequirements]
 AS
-	SELECT [dbo].[Requirements].[ID],
-	[dbo].[Requirements].[SkillID],
-	[dbo].[Requirements].[LevelSkillID],
-	[dbo].[Requirements].[AmountOfEmployees]
-	FROM [dbo].[Requirements]
+	SELECT [HRAppDB].[Requirements].[ID],
+	[HRAppDB].[Requirements].[SkillID],
+	[HRAppDB].[Requirements].[LevelSkillID],
+	[HRAppDB].[Requirements].[AmountOfEmployees]
+	FROM [HRAppDB].[Requirements]

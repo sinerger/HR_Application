@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Directions] (
+﻿CREATE TABLE [HRAppDB].[Directions] (
     [ID]          INT            IDENTITY (1, 1) NOT NULL,
     [Title]       NVARCHAR (255) NOT NULL,
     [Description] NVARCHAR (255) NOT NULL,

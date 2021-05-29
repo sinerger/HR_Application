@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[CreateGeneralInformation]
+﻿CREATE PROCEDURE [HRAppDB].[CreateGeneralInformation]
 	@ID int ,
 	@EmployeeID int,
 	@Sex nvarchar,
@@ -11,7 +11,7 @@
 	@AmountChildren int
 
 AS
-insert into [dbo].[GeneralInformation]
+insert into [HRAppDB].[GeneralInformation]
 values(
 	@EmployeeID,
 	@Sex,

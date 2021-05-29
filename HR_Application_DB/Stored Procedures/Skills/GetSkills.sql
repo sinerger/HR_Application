@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetSkills]
+﻿CREATE PROCEDURE [HRAppDB].[GetSkills]
 
 AS
 
-	SELECT * FROM [dbo].[Skills]
+	SELECT * FROM [HRAppDB].[Skills]

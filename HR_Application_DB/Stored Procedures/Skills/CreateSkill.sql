@@ -1,10 +1,10 @@
-﻿CREATE PROCEDURE [dbo].[CreateSkill]
+﻿CREATE PROCEDURE [HRAppDB].[CreateSkill]
 	@Title nvarchar,
 	@Description nvarchar
 AS
-	INSERT INTO [dbo].[Skills](
-		[dbo].[Skills].[Title],
-		[dbo].[Skills].[Description]
+	INSERT INTO [HRAppDB].[Skills](
+		[HRAppDB].[Skills].[Title],
+		[HRAppDB].[Skills].[Description]
 		)
 	VALUES (
 		@Title,

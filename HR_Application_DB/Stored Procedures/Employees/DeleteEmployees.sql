@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[DeleteEmployees]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteEmployees]
 @ID int
 AS
 DELETE
-FROM [dbo].[Employees]
-WHERE [dbo].[Employees].[ID]=@ID
+FROM [HRAppDB].[Employees]
+WHERE [HRAppDB].[Employees].[ID]=@ID

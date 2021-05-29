@@ -1,12 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[UpdateRequirements]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateRequirements]
 	@ID int,
 	@SkillID int,
 	@LevelSkillID int,
 	@AmountOfEmployees int
 AS
-	UPDATE [dbo].[Requirements]
+	UPDATE [HRAppDB].[Requirements]
 	SET
-		[dbo].[Requirements].[SkillID] = @SkillID,
-		[dbo].[Requirements].[LevelSkillID] = @LevelSkillID,
-		[dbo].[Requirements].[AmountOfEmployees] = @AmountOfEmployees
-	WHERE [dbo].[Requirements].[ID] = @ID
+		[HRAppDB].[Requirements].[SkillID] = @SkillID,
+		[HRAppDB].[Requirements].[LevelSkillID] = @LevelSkillID,
+		[HRAppDB].[Requirements].[AmountOfEmployees] = @AmountOfEmployees
+	WHERE [HRAppDB].[Requirements].[ID] = @ID

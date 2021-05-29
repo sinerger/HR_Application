@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[CreateHistories]
+﻿CREATE PROCEDURE [HRAppDB].[CreateHistories]
 @Table nvarchar(255),
 @CollumnName nvarchar(255),
 @OldValue nvarchar(255),
@@ -7,13 +7,13 @@
 @Updated datetime
 
 AS
-INSERT INTO [dbo].[Histories](
-[dbo].[Histories].[Table],
-[dbo].[Histories].CollumnName,
-[dbo].[Histories].OldValue,
-[dbo].[Histories].NewValue,
-[dbo].[Histories].UpdatedBy,
-[dbo].[Histories].Updated
+INSERT INTO [HRAppDB].[Histories](
+[HRAppDB].[Histories].[Table],
+[HRAppDB].[Histories].CollumnName,
+[HRAppDB].[Histories].OldValue,
+[HRAppDB].[Histories].NewValue,
+[HRAppDB].[Histories].UpdatedBy,
+[HRAppDB].[Histories].Updated
 )
 VALUES(
 @Table,

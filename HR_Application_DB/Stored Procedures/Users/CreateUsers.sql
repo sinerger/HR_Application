@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[CreateUsers]
+﻿CREATE PROCEDURE [HRAppDB].[CreateUsers]
 	@FisrtName nvarchar,
 	@LastName nvarchar,
 	@CompanyID int,
@@ -6,13 +6,13 @@
 	@Password nvarchar,
 	@IsActual bit
 AS
-	INSERT INTO [dbo].[Users](
-		[dbo].[Users].[FisrtName],
-		[dbo].[Users].[LastName],
-		[dbo].[Users].[CompanyID],
-		[dbo].[Users].[Email],
-		[dbo].[Users].[Passvord],
-		[dbo].[Users].[IsActual]
+	INSERT INTO [HRAppDB].[Users](
+		[HRAppDB].[Users].[FisrtName],
+		[HRAppDB].[Users].[LastName],
+		[HRAppDB].[Users].[CompanyID],
+		[HRAppDB].[Users].[Email],
+		[HRAppDB].[Users].[Passvord],
+		[HRAppDB].[Users].[IsActual]
 		)
 	VALUES (
 		@FisrtName,

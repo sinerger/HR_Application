@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[CreateLocation]
+﻿CREATE PROCEDURE [HRAppDB].[CreateLocation]
 	@CityID int,
 	@Street nvarchar,
 	@HouseNumber int,
@@ -6,7 +6,7 @@
 	@ApartmentNumber int,
 	@PostIndex int
 AS
-INSERT INTO [dbo].[Locations]
+INSERT INTO [HRAppDB].[Locations]
 	VALUES (
 		@CityID,
 		@Street,

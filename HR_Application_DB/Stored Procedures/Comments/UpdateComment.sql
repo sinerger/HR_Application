@@ -1,10 +1,10 @@
-﻿CREATE PROCEDURE [dbo].[UpdateComment]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateComment]
 	@ID int,
 	@EmployeeID int,
 	@Information nvarchar,
 	@Date dateTime
 AS
-	Update [dbo].[Comments]
-	SET [dbo].[Comments].EmployeeID = @EmployeeID,
-		[dbo].[Comments].Information = @Information,
-		[dbo].[Comments].[Date] = @Date
+	Update [HRAppDB].[Comments]
+	SET [HRAppDB].[Comments].EmployeeID = @EmployeeID,
+		[HRAppDB].[Comments].Information = @Information,
+		[HRAppDB].[Comments].[Date] = @Date

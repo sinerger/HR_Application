@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[CreateFamilyStatus]
+﻿CREATE PROCEDURE [HRAppDB].[CreateFamilyStatus]
 	@Status nvarchar(30)
 AS
-INSERT INTO [dbo].[FamilyStatuses] (
-		[dbo].[FamilyStatuses].[Status]
+INSERT INTO [HRAppDB].[FamilyStatuses] (
+		[HRAppDB].[FamilyStatuses].[Status]
 		)
 		VALUES (
 		@Status

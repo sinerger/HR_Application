@@ -1,12 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[UpdateDirection]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateDirection]
 	@ID int,
 	@Title nvarchar,
 	@Description nvarchar
 AS
-	update [dbo].[Directions]
+	update [HRAppDB].[Directions]
 	set 
-	[dbo].[Directions].Title = @Title,
-	[dbo].[Directions].[Description] = @Description
+	[HRAppDB].[Directions].Title = @Title,
+	[HRAppDB].[Directions].[Description] = @Description
 	where 
-	[dbo].[Directions].ID = @ID
+	[HRAppDB].[Directions].ID = @ID
 

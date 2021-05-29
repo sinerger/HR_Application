@@ -1,7 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[GetProjects]
+﻿CREATE PROCEDURE [HRAppDB].[GetProjects]
 AS
-	SELECT [dbo].[Projects].[ID],
-	[dbo].[Projects].[Title],
-	[dbo].[Projects].[Description],
-	[dbo].[Projects].[DirectionID]
-	FROM [dbo].[Projects]
+	SELECT [HRAppDB].[Projects].[ID],
+	[HRAppDB].[Projects].[Title],
+	[HRAppDB].[Projects].[Description],
+	[HRAppDB].[Projects].[DirectionID]
+	FROM [HRAppDB].[Projects]

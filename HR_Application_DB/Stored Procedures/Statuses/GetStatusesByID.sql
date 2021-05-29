@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetStatusesByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetStatusesByID]
 @ID int
 AS
-SELECT * FROM [dbo].[Statuses]
-WHERE [dbo].[Statuses].ID=@ID
+SELECT * FROM [HRAppDB].[Statuses]
+WHERE [HRAppDB].[Statuses].ID=@ID

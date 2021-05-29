@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[DeleteCity]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteCity]
 	@ID int
 AS
 	DELETE
-	FROM [dbo].[Cities]
-	WHERE [dbo].[Cities].[ID] = @ID
+	FROM [HRAppDB].[Cities]
+	WHERE [HRAppDB].[Cities].[ID] = @ID

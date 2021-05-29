@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[UpdateLocation]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateLocation]
 	@ID int,
 	@CityID int,
 	@Street nvarchar,
@@ -7,11 +7,11 @@
 	@ApartmentNumber int,
 	@PostIndex int
 AS
-UPDATE [dbo].[Locations]
-SET [dbo].[Locations].[CityID] = @CityID,
-	[dbo].[Locations].[Street] = @Street,
-	[dbo].[Locations].[HouseNumber] = @HouseNumber,
-	[dbo].[Locations].[Block] = @Block,
-	[dbo].[Locations].[ApartmentNumber] = @ApartmentNumber,
-	[dbo].[Locations].[PostIndex] = @PostIndex
-WHERE [dbo].[Locations].[ID] = @ID
+UPDATE [HRAppDB].[Locations]
+SET [HRAppDB].[Locations].[CityID] = @CityID,
+	[HRAppDB].[Locations].[Street] = @Street,
+	[HRAppDB].[Locations].[HouseNumber] = @HouseNumber,
+	[HRAppDB].[Locations].[Block] = @Block,
+	[HRAppDB].[Locations].[ApartmentNumber] = @ApartmentNumber,
+	[HRAppDB].[Locations].[PostIndex] = @PostIndex
+WHERE [HRAppDB].[Locations].[ID] = @ID

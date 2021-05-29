@@ -1,9 +1,9 @@
-﻿CREATE PROCEDURE [dbo].[UpdateCity]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateCity]
 	@ID int,
 	@Name nvarchar(255),
 	@CountryID int
 AS
-UPDATE [dbo].[Cities]
-SET  [dbo].[Cities].[Name] = @Name,
-     [dbo].[Cities].[CountryID] = @CountryID
-WHERE  [dbo].[Cities].[ID] = @ID
+UPDATE [HRAppDB].[Cities]
+SET  [HRAppDB].[Cities].[Name] = @Name,
+     [HRAppDB].[Cities].[CountryID] = @CountryID
+WHERE  [HRAppDB].[Cities].[ID] = @ID

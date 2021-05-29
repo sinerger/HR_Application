@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE [dbo].[GetEmployees]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployees]
 AS
-SELECT * FROM [dbo].[Employees]
+SELECT * FROM [HRAppDB].[Employees]

@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[DeleteLocation]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteLocation]
 	@ID int
 AS
 	DELETE
-	FROM [dbo].[Locations]
-	WHERE [dbo].[Locations].[ID] = @ID
+	FROM [HRAppDB].[Locations]
+	WHERE [HRAppDB].[Locations].[ID] = @ID

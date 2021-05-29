@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[UpdateGeneralInformation]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateGeneralInformation]
 	@ID int ,
 	@EmployeeID int,
 	@Sex nvarchar,
@@ -12,15 +12,15 @@
 
 AS
 
-	UPDATE [dbo].[GeneralInformation]
-SET	[dbo].[GeneralInformation].EmployeeID = @EmployeeID,
-	[dbo].[GeneralInformation].Sex = @Sex,
-	[dbo].[GeneralInformation].Education = @Education,
-	[dbo].[GeneralInformation].FamilyStatusID = @FamilyStatusID,
-	[dbo].[GeneralInformation].Phone = @Phone,
-	[dbo].[GeneralInformation].Email = @Email,
-	[dbo].[GeneralInformation].BirthDate = @BirthDate,
-	[dbo].[GeneralInformation].Hobby = @Hobby,
-	[dbo].[GeneralInformation].AmountChildren = @AmountChildren
+	UPDATE [HRAppDB].[GeneralInformation]
+SET	[HRAppDB].[GeneralInformation].EmployeeID = @EmployeeID,
+	[HRAppDB].[GeneralInformation].Sex = @Sex,
+	[HRAppDB].[GeneralInformation].Education = @Education,
+	[HRAppDB].[GeneralInformation].FamilyStatusID = @FamilyStatusID,
+	[HRAppDB].[GeneralInformation].Phone = @Phone,
+	[HRAppDB].[GeneralInformation].Email = @Email,
+	[HRAppDB].[GeneralInformation].BirthDate = @BirthDate,
+	[HRAppDB].[GeneralInformation].Hobby = @Hobby,
+	[HRAppDB].[GeneralInformation].AmountChildren = @AmountChildren
 
-WHERE  [dbo].[GeneralInformation].ID = @ID
+WHERE  [HRAppDB].[GeneralInformation].ID = @ID

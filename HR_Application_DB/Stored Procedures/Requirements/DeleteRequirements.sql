@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[DeleteRequirements]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteRequirements]
 	@ID int
 AS
 	DELETE
-	FROM [dbo].[Requirements]
-	WHERE [dbo].[Requirements].[ID] = @ID
+	FROM [HRAppDB].[Requirements]
+	WHERE [HRAppDB].[Requirements].[ID] = @ID

@@ -1,7 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[UpdateFamilyStatus]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateFamilyStatus]
 	@ID int,
 	@Status nvarchar(30)
 AS
-UPDATE [dbo].[FamilyStatuses]
-SET [dbo].[FamilyStatuses].[Status] = @Status
-WHERE [dbo].[FamilyStatuses].[ID] = @ID
+UPDATE [HRAppDB].[FamilyStatuses]
+SET [HRAppDB].[FamilyStatuses].[Status] = @Status
+WHERE [HRAppDB].[FamilyStatuses].[ID] = @ID

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetPositions]
+﻿CREATE PROCEDURE [HRAppDB].[GetPositions]
 	
 AS
-	SELECT * FROM [dbo].[Positions]
+	SELECT * FROM [HRAppDB].[Positions]

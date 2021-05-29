@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetGeneralInformation]
+﻿CREATE PROCEDURE [HRAppDB].[GetGeneralInformation]
 	
 AS
-	SELECT * FROM [dbo].[GeneralInformation]
+	SELECT * FROM [HRAppDB].[GeneralInformation]

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[CreateEmployees]
+﻿CREATE PROCEDURE [HRAppDB].[CreateEmployees]
 	@Photo nvarchar(255),
 	@FirstName nvarchar(255),
 	@LastName nvarchar(255),
@@ -8,14 +8,14 @@
 	@IsActual bit
 
 AS
-INSERT INTO [dbo].[Employees] (
-	   [dbo].[Employees].[Photo],
-	   [dbo].[Employees].[FirstName],
-	   [dbo].[Employees].[LastName],
-	   [dbo].[Employees].[RegistationDate],
-	   [dbo].[Employees].[StatusID],
-	   [dbo].[Employees].[LocationID],
-	   [dbo].[Employees].[IsActual]
+INSERT INTO [HRAppDB].[Employees] (
+	   [HRAppDB].[Employees].[Photo],
+	   [HRAppDB].[Employees].[FirstName],
+	   [HRAppDB].[Employees].[LastName],
+	   [HRAppDB].[Employees].[RegistationDate],
+	   [HRAppDB].[Employees].[StatusID],
+	   [HRAppDB].[Employees].[LocationID],
+	   [HRAppDB].[Employees].[IsActual]
 	   )
 	   VALUES (
        @Photo,

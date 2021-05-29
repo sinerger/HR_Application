@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE [dbo].[GetLevelSkills]
+﻿CREATE PROCEDURE [HRAppDB].[GetLevelSkills]
 AS
-SELECT * FROM [dbo].[LevelSkills]
+SELECT * FROM [HRAppDB].[LevelSkills]

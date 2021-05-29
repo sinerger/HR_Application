@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[CreateDepartment]
+﻿CREATE PROCEDURE [HRAppDB].[CreateDepartment]
 	@Title nvarchar,
 	@Description nvarchar
 AS
-	insert into [dbo].[Departments]
+	insert into [HRAppDB].[Departments]
 	values (
 	@Title,
 	@Description)

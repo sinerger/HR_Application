@@ -1,9 +1,9 @@
-﻿CREATE PROCEDURE [dbo].[CreateCompany]
+﻿CREATE PROCEDURE [HRAppDB].[CreateCompany]
 	@Title nvarchar,
 	@LocationID int,
 	@Description nvarchar
 AS
-	insert into [dbo].[Companies]
+	insert into [HRAppDB].[Companies]
 	values (
 	@Title,
 	@LocationID,

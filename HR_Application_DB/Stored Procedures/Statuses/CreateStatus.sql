@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[CreateStatus]
+﻿CREATE PROCEDURE [HRAppDB].[CreateStatus]
 	@Name nvarchar
 AS
-INSERT INTO [dbo].Statuses
+INSERT INTO [HRAppDB].Statuses
 	VALUES (@Name)

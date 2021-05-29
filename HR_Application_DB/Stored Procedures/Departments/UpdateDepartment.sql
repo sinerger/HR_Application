@@ -1,11 +1,11 @@
-﻿CREATE PROCEDURE [dbo].[UpdateDepartment]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateDepartment]
 	@ID int,
 	@Title nvarchar,
 	@Description nvarchar
 AS
-	Update [dbo].[Departments]
+	Update [HRAppDB].[Departments]
 	set
-	[dbo].[Departments].Title = @Title,
-	[dbo].[Departments].[Description] = @Description
+	[HRAppDB].[Departments].Title = @Title,
+	[HRAppDB].[Departments].[Description] = @Description
 	where 
-	[dbo].[Departments].ID = @ID
+	[HRAppDB].[Departments].ID = @ID

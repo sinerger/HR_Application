@@ -1,10 +1,10 @@
-﻿CREATE PROCEDURE [dbo].[CreateCity]
+﻿CREATE PROCEDURE [HRAppDB].[CreateCity]
 	@Name nvarchar(255),
 	@CountryID int
 AS
-INSERT INTO [dbo].[Cities] (
-	   [dbo].[Cities].[Name],
-	   [dbo].[Cities].[CountryID]
+INSERT INTO [HRAppDB].[Cities] (
+	   [HRAppDB].[Cities].[Name],
+	   [HRAppDB].[Cities].[CountryID]
 	   )
     VALUES (
 	   @Name,

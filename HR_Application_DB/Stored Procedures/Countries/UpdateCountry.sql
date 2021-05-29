@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[UpdateCountry]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateCountry]
 	@ID int,
 	@Name nvarchar
 	
 AS
-	Update [dbo].[Countries]
-	set [dbo].[Countries].[Name] = @Name
-	where [dbo].[Countries].ID = @ID
+	Update [HRAppDB].[Countries]
+	set [HRAppDB].[Countries].[Name] = @Name
+	where [HRAppDB].[Countries].ID = @ID
