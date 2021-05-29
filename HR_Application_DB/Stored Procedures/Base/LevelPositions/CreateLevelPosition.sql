@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[CreateLevelPosition]
+﻿CREATE PROCEDURE [HRAppDB].[CreateLevelPosition]
 	@Title nvarchar,
 	@Description nvarchar
 AS
-INSERT INTO [dbo].[LevelPositions]
+INSERT INTO [HRAppDB].[LevelPositions]
 	VALUES (
 		@Title,
 		@Description

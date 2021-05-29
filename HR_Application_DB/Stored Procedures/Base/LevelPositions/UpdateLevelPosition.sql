@@ -1,10 +1,10 @@
-﻿CREATE PROCEDURE [dbo].[UpdateLevelPosition]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateLevelPosition]
 	@ID int,
 	@Title nvarchar,
 	@Description nvarchar
 AS
-UPDATE [dbo].[LevelPositions]
-SET [dbo].[LevelPositions].[Title] = @Title,
-	[dbo].[LevelPositions].[Description] = @Description
-WHERE [dbo].[LevelPositions].[ID] = @ID
+UPDATE [HRAppDB].[LevelPositions]
+SET [HRAppDB].[LevelPositions].[Title] = @Title,
+	[HRAppDB].[LevelPositions].[Description] = @Description
+WHERE [HRAppDB].[LevelPositions].[ID] = @ID
 
