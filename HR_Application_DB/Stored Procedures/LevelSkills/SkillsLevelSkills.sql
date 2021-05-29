@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE [HRAppDB].[SkillsLevelSkills]
 AS
 SELECT
-es.ID,
+es.ID as IDEmployees_Skills,
 es.[Date],
 es.IsActual,
 es.UserID,
 ls.ID as IDLevelSkills,
 ls.Title as TitleLevelSkills,
-s.ID,
+s.ID as IDSkills,
 s.Title as TitleSkills
 
 FROM [HRAppDB].[Employees_Skills] as es
