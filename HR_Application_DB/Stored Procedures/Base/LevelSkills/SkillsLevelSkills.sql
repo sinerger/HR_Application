@@ -2,6 +2,7 @@
 AS
 SELECT
 es.ID,
+es.[EmployeeID],
 es.[Date],
 es.IsActual,
 es.UserID,
