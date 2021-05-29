@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Departments] (
+﻿CREATE TABLE [HRAppDB].[Departments] (
     [ID]          INT            IDENTITY (1, 1) NOT NULL,
     [Title]       NVARCHAR (255) NOT NULL,
     [Description] NVARCHAR (255) NOT NULL,

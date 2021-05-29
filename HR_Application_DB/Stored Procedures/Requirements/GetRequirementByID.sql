@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetRequirementByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetRequirementByID]
 	@ID int
 AS
-	SELECT * FROM [dbo].[Requirements]
-	WHERE [dbo].[Requirements].[ID] = @ID
+	SELECT * FROM [HRAppDB].[Requirements]
+	WHERE [HRAppDB].[Requirements].[ID] = @ID

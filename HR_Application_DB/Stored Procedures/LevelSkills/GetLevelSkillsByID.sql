@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetLevelSkillsByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetLevelSkillsByID]
 @ID int
 AS
-	SELECT * FROM [dbo].[LevelSkills]
-	WHERE [dbo].[LevelSkills].ID=@ID 
+	SELECT * FROM [HRAppDB].[LevelSkills]
+	WHERE [HRAppDB].[LevelSkills].ID=@ID 

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[LevelPositions] (
+﻿CREATE TABLE [HRAppDB].[LevelPositions] (
     [ID]          INT            IDENTITY (1, 1) NOT NULL,
     [Title]       NVARCHAR (255) NOT NULL,
     [Description] NVARCHAR (255) NOT NULL,

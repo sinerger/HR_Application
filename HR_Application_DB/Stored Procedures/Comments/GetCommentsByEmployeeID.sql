@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetCommentsByEmployeeID]
+﻿CREATE PROCEDURE [HRAppDB].[GetCommentsByEmployeeID]
 	@EmployeeID int
 AS
-	select * from [dbo].[Comments]
-	where [dbo].[Comments].EmployeeID = @EmployeeID
+	select * from [HRAppDB].[Comments]
+	where [HRAppDB].[Comments].EmployeeID = @EmployeeID

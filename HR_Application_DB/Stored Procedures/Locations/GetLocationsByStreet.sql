@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetLocationsByStreet]
+﻿CREATE PROCEDURE [HRAppDB].[GetLocationsByStreet]
 @Street nvarchar
 AS
-SELECT * FROM [dbo].[Locations]
-WHERE [dbo].[Locations].Street=@Street
+SELECT * FROM [HRAppDB].[Locations]
+WHERE [HRAppDB].[Locations].Street=@Street

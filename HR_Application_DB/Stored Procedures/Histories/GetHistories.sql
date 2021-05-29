@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE [dbo].[GetHistories]
+﻿CREATE PROCEDURE [HRAppDB].[GetHistories]
 AS
-SELECT * FROM [dbo].[Histories]
+SELECT * FROM [HRAppDB].[Histories]
