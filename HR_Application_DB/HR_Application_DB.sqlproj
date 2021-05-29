@@ -219,5 +219,6 @@
     <Build Include="Stored Procedures\Employees\GetEmployees.sql" />
     <Build Include="Stored Procedures\Employees\UpdateEmployees.sql" />
     <Build Include="Schemas\HRAppDB.sql" />
+    <Build Include="Stored Procedures\Locations\LocationCitiesCountries.sql" />
   </ItemGroup>
 </Project>
