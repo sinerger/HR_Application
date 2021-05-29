@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetFamilyStatusByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetFamilyStatusByID]
 	@ID int
 AS
-	SELECT * from [dbo].[FamilyStatuses]
-	where [dbo].[FamilyStatuses].ID=@ID
+	SELECT * from [HRAppDB].[FamilyStatuses]
+	where [HRAppDB].[FamilyStatuses].ID = @ID

@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[GetCityByName]
+﻿CREATE PROCEDURE [HRAppDB].[GetCityByName]
 	@Name nvarchar
 AS
-	SELECT [dbo].[Cities].[ID], [dbo].[Cities].[Name], [dbo].[Cities].[CountryID]
-	FROM [dbo].[Cities]
-	WHERE [dbo].[Cities].[Name] = @Name
+	SELECT [HRAppDB].[Cities].[ID], [HRAppDB].[Cities].[Name], [HRAppDB].[Cities].[CountryID]
+	FROM [HRAppDB].[Cities]
+	WHERE [HRAppDB].[Cities].[Name] = @Name

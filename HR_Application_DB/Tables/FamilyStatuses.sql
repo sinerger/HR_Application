@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[FamilyStatuses] (
+﻿CREATE TABLE [HRAppDB].[FamilyStatuses] (
     [ID]     INT           IDENTITY (1, 1) NOT NULL,
     [Status] NVARCHAR (30) NOT NULL,
     CONSTRAINT [PK_FAMILYSTATUSES] PRIMARY KEY CLUSTERED ([ID] ASC)

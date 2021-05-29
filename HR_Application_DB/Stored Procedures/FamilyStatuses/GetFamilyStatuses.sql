@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetFamilyStatuses]
+﻿CREATE PROCEDURE [HRAppDB].[GetFamilyStatuses]
 
 AS
-	SELECT * from [dbo].[FamilyStatuses]
+	SELECT * from [HRAppDB].[FamilyStatuses]

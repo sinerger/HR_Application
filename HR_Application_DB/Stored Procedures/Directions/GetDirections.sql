@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetDirections]
+﻿CREATE PROCEDURE [HRAppDB].[GetDirections]
 
 AS
-	SELECT * from [dbo].[Directions]
+	SELECT * from [HRAppDB].[Directions]

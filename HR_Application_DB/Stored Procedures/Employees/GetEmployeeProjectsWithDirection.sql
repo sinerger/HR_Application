@@ -1,23 +1,23 @@
-﻿CREATE PROCEDURE [dbo].[GetEmployeeProjects]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployeeProjects]
 AS
 SELECT
-  [dbo].[Employees].[ID],
-  [dbo].[Employees].[Photo],
-  [dbo].[Employees].[FirstName],
-  [dbo].[Employees].[LastName],
-  [dbo].[Employees].[RegistationDate],
-  [dbo].[Employees].[IsActual],
-  [dbo].[Projects].[ID],
-  [dbo].[Projects].[Title],
-  [dbo].[Projects].[Description],
-  [dbo].[Projects].[DirectionID],
-  [dbo].[Directions].[ID],
-  [dbo].[Directions].[Title],
-  [dbo].[Directions].[Description]
-FROM [dbo].[Employees]
-JOIN [dbo].[Employees_Projects]
-  ON [dbo].[Employees].[ID] = [dbo].[Employees_Projects].[EmployeeID]
-JOIN [dbo].[Projects]
-  ON [dbo].[Projects].[ID] = [dbo].[Employees_Projects].[ProjectID]
-JOIN [dbo].[Directions]
-  ON [dbo].[Projects].[DirectionID] = [dbo].[Directions].[ID]
+  [HRAppDB].[Employees].[ID],
+  [HRAppDB].[Employees].[Photo],
+  [HRAppDB].[Employees].[FirstName],
+  [HRAppDB].[Employees].[LastName],
+  [HRAppDB].[Employees].[RegistationDate],
+  [HRAppDB].[Employees].[IsActual],
+  [HRAppDB].[Projects].[ID],
+  [HRAppDB].[Projects].[Title],
+  [HRAppDB].[Projects].[Description],
+  [HRAppDB].[Projects].[DirectionID],
+  [HRAppDB].[Directions].[ID],
+  [HRAppDB].[Directions].[Title],
+  [HRAppDB].[Directions].[Description]
+FROM [HRAppDB].[Employees]
+JOIN [HRAppDB].[Employees_Projects]
+  ON [HRAppDB].[Employees].[ID] = [HRAppDB].[Employees_Projects].[EmployeeID]
+JOIN [HRAppDB].[Projects]
+  ON [HRAppDB].[Projects].[ID] = [HRAppDB].[Employees_Projects].[ProjectID]
+JOIN [HRAppDB].[Directions]
+  ON [HRAppDB].[Projects].[DirectionID] = [HRAppDB].[Directions].[ID]

@@ -1,6 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[GetCityByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetCityByID]
 	@ID int
 AS
-	SELECT [dbo].[Cities].[ID], [dbo].[Cities].[Name], [dbo].[Cities].[CountryID]
-	FROM [dbo].[Cities]
-	WHERE [dbo].[Cities].[ID] = @ID
+	SELECT [HRAppDB].[Cities].[ID], [HRAppDB].[Cities].[Name], [HRAppDB].[Cities].[CountryID]
+	FROM [HRAppDB].[Cities]
+	WHERE [HRAppDB].[Cities].[ID] = @ID

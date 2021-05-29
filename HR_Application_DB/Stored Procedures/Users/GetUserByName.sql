@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetUserByName]
+﻿CREATE PROCEDURE [HRAppDB].[GetUserByName]
 	@LastName nvarchar
 	AS
-	SELECT * FROM [dbo].[Users]
-	WHERE [dbo].[Users].[LastName] = @LastName
+	SELECT * FROM [HRAppDB].[Users]
+	WHERE [HRAppDB].[Users].[LastName] = @LastName

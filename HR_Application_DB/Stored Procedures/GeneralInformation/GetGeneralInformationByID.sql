@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetGeneralInformationByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetGeneralInformationByID]
 	@ID int
 AS
-	SELECT * from [dbo].[GeneralInformation]
-	where [dbo].[GeneralInformation].ID=@ID
+	SELECT * from [HRAppDB].[GeneralInformation]
+	where [HRAppDB].[GeneralInformation].ID=@ID
