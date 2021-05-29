@@ -219,6 +219,7 @@
     <Build Include="Stored Procedures\Employees\UpdateEmployees.sql" />
     <Build Include="Schemas\HRAppDB.sql" />
     <Build Include="Stored Procedures\Positions\Positions_EmployeesPositionsLevelPositions.sql" />
+    <Build Include="Stored Procedures\Employees\EmployeesStatuses.sql" />
     <Build Include="Stored Procedures\Locations\GetAdress.sql" />
     <Build Include="Stored Procedures\LevelSkills\SkillsLevelSkills.sql" />
   </ItemGroup>
