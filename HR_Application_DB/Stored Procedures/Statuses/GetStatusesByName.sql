@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetStatusesByName]
+﻿CREATE PROCEDURE [HRAppDB].[GetStatusesByName]
 @Name nvarchar
 AS
-SELECT * FROM [dbo].[Statuses]
-WHERE [dbo].[Statuses].Name=@Name
+SELECT * FROM [HRAppDB].[Statuses]
+WHERE [HRAppDB].[Statuses].Name=@Name

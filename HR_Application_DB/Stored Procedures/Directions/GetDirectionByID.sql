@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetDirectionByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetDirectionByID]
 	@ID int
 AS
-	SELECT * from [dbo].[Directions]
-	WHERE [dbo].[Directions].ID=@ID
+	SELECT * from [HRAppDB].[Directions]
+	WHERE [HRAppDB].[Directions].ID=@ID

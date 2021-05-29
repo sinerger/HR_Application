@@ -1,3 +1,3 @@
-﻿CREATE PROCEDURE [dbo].[GetLocations]
+﻿CREATE PROCEDURE [HRAppDB].[GetLocations]
 AS
-SELECT * FROM [dbo].[Locations]
+SELECT * FROM [HRAppDB].[Locations]

@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetProjectByTitle]
+﻿CREATE PROCEDURE [HRAppDB].[GetProjectByTitle]
 	@Title nvarchar
 AS
-	SELECT * FROM [dbo].[Projects]
-	WHERE [dbo].[Projects].[Title] = @Title
+	SELECT * FROM [HRAppDB].[Projects]
+	WHERE [HRAppDB].[Projects].[Title] = @Title

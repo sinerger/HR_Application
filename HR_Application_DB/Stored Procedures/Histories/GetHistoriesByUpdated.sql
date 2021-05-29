@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetHistoriesByUpdated]
+﻿CREATE PROCEDURE [HRAppDB].[GetHistoriesByUpdated]
 @Updated datetime
 AS
-	SELECT * FROM [dbo].[Histories]
-	WHERE [dbo].[Histories].Updated=@Updated
+	SELECT * FROM [HRAppDB].[Histories]
+	WHERE [HRAppDB].[Histories].Updated=@Updated

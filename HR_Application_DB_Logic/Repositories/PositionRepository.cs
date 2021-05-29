@@ -1,37 +1,147 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
-using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class PositionRepository : IPositionRepository
+    public class PositionRepository
     {
+        private string _connectionString;
 
-        public IEnumerable<PositionDTO> GetPositions()
+        public PositionRepository(string connectionString)
         {
-            using IDbConnection db = new SqlConnection(AppConnection.ConnectionString);
-            if (db.State == ConnectionState.Closed)
-                db.Open();
-            return db.Query<PositionDTO>("exec crudPositionsRead", commandType: CommandType.Text);
+            _connectionString = connectionString;
         }
 
-        public bool Insert(PositionDTO position)
+        public PositionDTO GetByTitle(string title)
         {
-            throw new NotImplementedException();
+            string query = "GetPositionByTitle @Title";
+            PositionDTO result = new PositionDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<PositionDTO>(query, new { title });
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        public List<PositionDTO> GetAll()
+        {
+            string query = "GetPositions";
+            List<PositionDTO> result = new List<PositionDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<PositionDTO>(query).AsList<PositionDTO>();
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        public PositionDTO GetById(int id)
+        {
+            string query = "GetPositionByID @ID";
+            PositionDTO result = new PositionDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<PositionDTO>(query, new { id });
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        public bool Create(PositionDTO position)
+        {
+            string query = "CreatePosition @Title @Description";
+            bool result = true;
+
+            try
+            {
+                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new
+                    {
+                        position.Title,
+                        position.Description
+                    });
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return result;
         }
 
         public bool Update(PositionDTO position)
         {
-            throw new NotImplementedException();
+            string query = "CreatePosition @ID, @Title, @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new
+                    {
+                        position.ID,
+                        position.Title,
+                        position.Description
+                    });
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return result;
         }
-        public bool Delete(int positionId)
+
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = "DeletePosition @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return result;
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[GetHistoriesByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetHistoriesByID]
 @ID int 
 AS
-    SELECT * FROM [dbo].[Histories]
-    WHERE [dbo].[Histories].ID=@ID
+    SELECT * FROM [HRAppDB].[Histories]
+    WHERE [HRAppDB].[Histories].ID=@ID
 
 
    

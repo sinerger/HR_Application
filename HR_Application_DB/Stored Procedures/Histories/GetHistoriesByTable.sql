@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetHistoriesByTable]
+﻿CREATE PROCEDURE [HRAppDB].[GetHistoriesByTable]
 	@Table nvarchar
 AS
-	SELECT * FROM [dbo].[Histories]
-    WHERE [dbo].[Histories].[Table]=@Table
+	SELECT * FROM [HRAppDB].[Histories]
+    WHERE [HRAppDB].[Histories].[Table]=@Table
