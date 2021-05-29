@@ -173,7 +173,6 @@
     <Build Include="Stored Procedures\Skills\CreateSkill.sql" />
     <Build Include="Stored Procedures\Skills\UpdateSkillByID.sql" />
     <Build Include="Stored Procedures\Skills\DeleteSkill.sql" />
-    <Build Include="Stored Procedures\Locations\GetAdress.sql" />
     <Build Include="Stored Procedures\Employees\GetEmployeeAdress.sql" />
     <Build Include="Stored Procedures\Employees\GetEmployeePlaceOfWork.sql" />
     <Build Include="Stored Procedures\Employees\GetEmployeeProjectsWithDirection.sql" />
@@ -219,6 +218,6 @@
     <Build Include="Stored Procedures\Employees\GetEmployees.sql" />
     <Build Include="Stored Procedures\Employees\UpdateEmployees.sql" />
     <Build Include="Schemas\HRAppDB.sql" />
-    <Build Include="Stored Procedures\Locations\LocationCitiesCountries.sql" />
+    <Build Include="Stored Procedures\Locations\GetAdress.sql" />
   </ItemGroup>
 </Project>
