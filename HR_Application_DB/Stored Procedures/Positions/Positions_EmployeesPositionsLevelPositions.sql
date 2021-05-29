@@ -14,7 +14,7 @@ p.Title as TitlePositions,
 p.[Description]
 
 FROM [HRAppDB].[Positions_Employees] as pe
-INNER JOIN [HRAppDB].[LevelsPositions] as lp
+INNER JOIN [HRAppDB].[LevelPositions] as lp
 ON
 pe.LevelPosition=lp.ID
 
