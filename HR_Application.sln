@@ -9,8 +9,6 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HR_Application_DB", "HR_App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_DB_Logic.Tests", "HR_Application_DB_Logic.Tests\HR_Application_DB_Logic.Tests.csproj", "{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{2EF6AD12-879F-4418-B787-4319B374EBAA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +29,6 @@ Global
 		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EF6AD12-879F-4418-B787-4319B374EBAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EF6AD12-879F-4418-B787-4319B374EBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EF6AD12-879F-4418-B787-4319B374EBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EF6AD12-879F-4418-B787-4319B374EBAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
