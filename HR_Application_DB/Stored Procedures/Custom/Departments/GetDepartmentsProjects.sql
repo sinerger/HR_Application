@@ -1,10 +1,11 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetDepartmentsProjects]
 AS
-SELECT    dp.[ID] AS IDDepartments_Projects,
-d.[ID] AS IDDepartment,
-d.[Title] AS DepartmentTitle,
-d.[Description] AS DepartmentDescription,
-dp.[ProjectID]
+SELECT    
+dp.[ID] ,
+d.[ID] ,
+d.[Title] ,
+d.[Description] ,
+dp.[ProjectID] as ID
 
 FROM         HRAppDB.Departments AS d 
 INNER JOIN HRAppDB.Departments_Projects AS dp

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -16,7 +17,7 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public List<DepartmentProjectsDTO> GetDepartmentsProjects()
+        public List<DepartmentProjectsDTO> GetAll()
         {
             string query = "[HRAppDB].GetDepartmentsProjects";
             List<DepartmentProjectsDTO> result = new List<DepartmentProjectsDTO>();
@@ -34,12 +35,13 @@ namespace HR_Application_DB_Logic.Repositories
 
                             return departmentProject;
                         }
-                        , splitOn: "IDDepartments_Projects,IDDepartment,ProjectID")
+                        )
                         .AsList<DepartmentProjectsDTO>();
                 }
             }
-            catch
+            catch(Exception e)
             {
+                var s = e.ToString();
                 result = null;
             }
 
