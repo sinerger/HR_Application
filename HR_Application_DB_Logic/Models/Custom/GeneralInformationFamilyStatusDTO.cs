@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Models.Custom
 {
@@ -15,6 +13,6 @@ namespace HR_Application_DB_Logic.Models.Custom
         public DateTime? BirthDate { get; set; }
         public string Hobby { get; set; }
         public int? AmountChildren { get; set; }
-        public FamilyStatusDTO familyStatus { get; set; }
+        public FamilyStatusDTO FamilyStatus { get; set; }
     }
 }
