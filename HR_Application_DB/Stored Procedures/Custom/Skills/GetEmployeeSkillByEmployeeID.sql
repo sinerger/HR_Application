@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE [HRAppDB].[SkillsLevelSkills]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployeeSkillByEmployeeID]
+@EmployeeID int
 AS
 SELECT
 es.ID,
@@ -20,3 +21,4 @@ es.LevelSkillID=ls.ID
 INNER JOIN [HRAppDB].[Skills] as s
 ON
 es.SkillID=s.ID
+where es.[EmployeeID] = @EmployeeID
