@@ -10,7 +10,6 @@ namespace HR_Application_DB_Logic.Models.Custom
         public int? EmployeeID { get; set; }
         public string Sex { get; set; }
         public string Education { get; set; }
-        public int? FamilyStatusID { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public DateTime? BirthDate { get; set; }
