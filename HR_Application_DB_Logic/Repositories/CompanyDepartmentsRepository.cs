@@ -23,19 +23,43 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "[HRAppDB].GetCompaniesDepartments";
             List<CompanyDepartmentsDTO> result = new List<CompanyDepartmentsDTO>();
             
+
+
             using(IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
-                var companiesDepartments = new IDictionary<int, Company>();
+                var orderDictionary = new Dictionary<int, CompanyDTO>();
 
-                result = dbConnection.Query<CompanyDTO, DepartmentDTO, CompanyDepartmentsDTO>
-                    (query,
-                    (company, department) =>
+
+                var list = dbConnection.Query<CompanyDTO, DepartmentDTO, CompanyDepartmentsDTO>(
+                    query,
+                    (company, companyDepartments) =>
                     {
-                        CompanyDTO curCompany = null;
-                        DepartmentDTO curDepartment = null;
+                        CompanyDTO curCompany;
 
-                    }.AsList<CompaniesDepartmentsDTO>();
+                        if (!orderDictionary.TryGetValue(company.ID, out curCompany))
+                        {
+                            curCompany = company;
+                            curCompany.companyDepartments = new List<CompanyDepartmentsDTO>();
+                            orderDictionary.Add(curCompany.ID, curCompany);
+                        }
+
+                        curCompany..Add(curCompany);
+                        return curCompany;
+                    },
+                    splitOn: "OrderDetailID")
+                .Distinct()
+                .ToList();
             }
+
+
+
+            orderEntry.OrderDetails.Add(orderDetail);
+        return orderEntry;
+    },
+    splitOn: "OrderDetailID")
+.Distinct()
+.ToList();
+
 
             return result;
         }

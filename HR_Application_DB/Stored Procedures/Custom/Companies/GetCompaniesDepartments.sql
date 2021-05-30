@@ -5,7 +5,6 @@ c.[Title] AS CompanyTitle,
 c.[LocationID],
 c.[Description] AS CompanyDescription,
 c.[IsActual] AS CompanyIsActual,
-cd.[ID] AS IDCompanies_Depatments,
 d.[ID] AS IDDepartment,
 d.[Title] AS DepartmentTitle,
 d.[Description] AS DepartmentDescription
