@@ -18,7 +18,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<AdressDTO> GetAll()
         {
-            string query = "[HRAppDB].[GetAdress]";
+            string query = "[HRAppDB].GetAdress";
             List<AdressDTO> result = new List<AdressDTO>();
 
             try

@@ -14,7 +14,7 @@ namespace HR_Application_DB_Logic.Tests
     public class DBControllerTests
     {
         
-        private  string _connectionString = @"Server=Avakian; DataBase = EmployeeDB; Trusted_Connection = True; Integrated Security = True;";
+        private  string _connectionString = @"Server=(LocalDB)\MSSQLLocalDB; DataBase = Test 2; Trusted_Connection = True; Integrated Security = True;";
         [Test]
         public void Test()
         {
