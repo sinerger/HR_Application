@@ -18,27 +18,6 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public List<CompanyDepartmentsDTO> GetCompaniesDepartments()
-        {
-            string query = "[HRAppDB].GetCompaniesDepartments";
-            List<CompanyDepartmentsDTO> result = new List<CompanyDepartmentsDTO>();
-            
-            using(IDbConnection dbConnection = new SqlConnection(_connectionString))
-            {
-                var companiesDepartments = new IDictionary<int, Company>();
 
-                result = dbConnection.Query<CompanyDTO, DepartmentDTO, CompanyDepartmentsDTO>
-                    (query,
-                    (company, department) =>
-                    {
-                        CompanyDTO curCompany = null;
-                        DepartmentDTO curDepartment = null;
-
-                    }.AsList<CompaniesDepartmentsDTO>();
-            }
-
-            return result;
-        }
-        
     }
 }

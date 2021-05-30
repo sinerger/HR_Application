@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE [HRAppDB].[Employees_ProjectsDirections]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployeesProjectsByEmployeeID]
+@EmployeeID int 
 AS
 SELECT
 ep.ID as IDEmployeeProject,
@@ -20,4 +21,4 @@ pr.DirectionID=di.ID
 JOIN [HRAppDB].[Employees] as Employees
 on
 ep.EmployeeID = Employees.ID
-
+where ep.EmployeeID = @EmployeeID
