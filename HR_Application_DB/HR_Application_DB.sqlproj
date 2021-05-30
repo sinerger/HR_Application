@@ -238,6 +238,6 @@
     <Build Include="Stored Procedures\Custom\Positions\Positions_EmployeesPositionsLevelPositions.sql" />
     <Build Include="Stored Procedures\Custom\Companies\GetCompaniesDepartments.sql" />
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkillByEmployeeID.sql" />
-    <Build Include="Stored Procedures\Custom\Departments\DepartmentsProjects.sql" />
+    <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjects.sql" />
   </ItemGroup>
 </Project>

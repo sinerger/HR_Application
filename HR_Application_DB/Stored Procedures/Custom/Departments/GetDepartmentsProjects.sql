@@ -1,9 +1,9 @@
-﻿CREATE PROCEDURE [HRAppDB].[DepartmentsProjects]
+﻿CREATE PROCEDURE [HRAppDB].[GetDepartmentsProjects]
 AS
-SELECT    d.[ID] AS IDDepartment,
+SELECT    dp.[ID] AS IDDepartments_Projects,
+d.[ID] AS IDDepartment,
 d.[Title] AS DepartmentTitle,
 d.[Description] AS DepartmentDescription,
-dp.[ID] AS IDDepartments_Projects,
 dp.[ProjectID]
 
 FROM         HRAppDB.Departments AS d 
