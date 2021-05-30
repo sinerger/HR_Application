@@ -8,9 +8,9 @@ namespace HR_Application_DB_Logic.Models.Custom
         public string Photo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
         public int? LocationID { get; set; }
-        public bool IsActual { get; set; }
+        public bool? IsActual { get; set; }
         public StatusDTO Status { get; set; }
     }
 }
