@@ -18,51 +18,83 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public List<CompanyDepartmentsDTO> GetCompaniesDepartments()
+        public List<CompanyDepartmentsDTO> GetALL()
         {
             string query = "[HRAppDB].GetCompaniesDepartments";
             List<CompanyDepartmentsDTO> result = new List<CompanyDepartmentsDTO>();
-            
 
-
-            using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+            try
             {
-                var orderDictionary = new Dictionary<int, CompanyDTO>();
-
-
-                var list = dbConnection.Query<CompanyDTO, DepartmentDTO, CompanyDepartmentsDTO>(
-                    query,
-                    (company, companyDepartments) =>
-                    {
-                        CompanyDTO curCompany;
-
-                        if (!orderDictionary.TryGetValue(company.ID, out curCompany))
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.Query<CompanyDepartmentsDTO, CompanyDTO, int, CompanyDepartmentsDTO>(query,
+                        (companyDepartment, company, departmentID) =>
                         {
-                            curCompany = company;
-                            curCompany.companyDepartments = new List<CompanyDepartmentsDTO>();
-                            orderDictionary.Add(curCompany.ID, curCompany);
+                            companyDepartment.Company = company;
+                            companyDepartment.DepartmentsID = new List<int>();
+                            companyDepartment.DepartmentsID.Add(departmentID);
+
+                            return companyDepartment;
                         }
-
-                        curCompany..Add(curCompany);
-                        return curCompany;
-                    },
-                    splitOn: "OrderDetailID")
-                .Distinct()
-                .ToList();
+                        , splitOn: "IDD,ID,IDDepartment")
+                        .AsList<CompanyDepartmentsDTO>();
+                }
             }
-
-
-
-            orderEntry.OrderDetails.Add(orderDetail);
-        return orderEntry;
-    },
-    splitOn: "OrderDetailID")
-.Distinct()
-.ToList();
-
+            catch 
+            {
+                result = null;
+            }
 
             return result;
         }
-        
+
+        public List<CompanyDepartmentsDTO> GetALLByCompanyID(int companyID)
+        {
+            string query = "[HRAppDB].GetCompanyDepartmentsByCompanyID @CompanyID";
+            List<CompanyDepartmentsDTO> companyDepartments = new List<CompanyDepartmentsDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Query<CompanyDepartmentsDTO, CompanyDTO, int, CompanyDepartmentsDTO>(query,
+                        (companyDepartment, company, departmentID) =>
+                        {
+                            CompanyDepartmentsDTO currentCD = null;
+
+                            foreach (CompanyDepartmentsDTO cD in companyDepartments)
+                            {
+                                if(cD.Company.ID ==company.ID)
+                                {
+                                    currentCD = companyDepartment;
+                                    cD.DepartmentsID.Add(departmentID);
+                                    break;
+                                }
+                            }
+
+                            if (currentCD == null)
+                            {
+                                currentCD = companyDepartment;
+                                companyDepartments.Add(currentCD);
+                                currentCD.Company = company;
+                                currentCD.DepartmentsID = new List<int>();
+                                currentCD.DepartmentsID.Add(departmentID);
+                            }
+
+                            return companyDepartment;
+                        }
+                        ,new { companyID }
+                        , splitOn: "IDD,ID,IDDepartment")
+                        .AsList<CompanyDepartmentsDTO>();
+                }
+            }
+            catch
+            {
+                companyDepartments = null;
+            }
+
+            return companyDepartments;
+
+        }
     }
 }

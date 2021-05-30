@@ -35,5 +35,13 @@ namespace HR_Application_DB_Logic.Tests
 
             var a = actual.GetByID(1);
         }
+
+        [Test]
+        public void Test4()
+        {
+            var repository = new CompanyDepartmentsRepository(@"Server=(LocalDB)\MSSQLLocalDB; DataBase = Test 2; Trusted_Connection = True; Integrated Security = True;");
+
+            var actual = repository.GetALLByCompanyID(2);
+        }
     }
 }

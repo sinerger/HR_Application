@@ -235,5 +235,6 @@
     <Build Include="Stored Procedures\Custom\Locations\GetAdress.sql" />
     <Build Include="Stored Procedures\Custom\Positions\Positions_EmployeesPositionsLevelPositions.sql" />
     <Build Include="Stored Procedures\Custom\Companies\GetCompaniesDepartments.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\GetCompanyDepartmentsByCompanyID.sql" />
   </ItemGroup>
 </Project>
