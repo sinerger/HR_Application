@@ -32,8 +32,8 @@ namespace HR_Application_DB_Logic.Repositories
                             generalInformationFamilyStatus.FamilyStatus = familyStatus;
 
                             return generalInformationFamilyStatus;
-                        },
-                        splitOn: "ID, IDFamilyStatuses")
+                        }
+                        , splitOn: "ID, IDFamilyStatuses")
                         .AsList<GeneralInformationFamilyStatusDTO>();
                 }
             }
