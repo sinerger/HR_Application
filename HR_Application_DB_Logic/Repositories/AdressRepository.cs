@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -33,12 +34,13 @@ namespace HR_Application_DB_Logic.Repositories
 
                             return adress;
                         }
-                        , splitOn: "IDLocations, IDCities, IDCountries")
+                        )
                         .AsList<AdressDTO>();
                 }
             }
-            catch
+            catch(Exception e)
             {
+                var s = e.ToString();
                 result = null;
             }
 
