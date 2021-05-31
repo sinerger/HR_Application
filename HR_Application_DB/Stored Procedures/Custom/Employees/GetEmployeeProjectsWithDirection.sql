@@ -1,23 +1,22 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetEmployeeProjects]
 AS
 SELECT
-  [HRAppDB].[Employees].[ID],
-  [HRAppDB].[Employees].[Photo],
-  [HRAppDB].[Employees].[FirstName],
-  [HRAppDB].[Employees].[LastName],
-  [HRAppDB].[Employees].[RegistationDate],
-  [HRAppDB].[Employees].[IsActual],
-  [HRAppDB].[Projects].[ID],
-  [HRAppDB].[Projects].[Title],
-  [HRAppDB].[Projects].[Description],
-  [HRAppDB].[Projects].[DirectionID],
-  [HRAppDB].[Directions].[ID],
-  [HRAppDB].[Directions].[Title],
-  [HRAppDB].[Directions].[Description]
-FROM [HRAppDB].[Employees]
-JOIN [HRAppDB].[Employees_Projects]
-  ON [HRAppDB].[Employees].[ID] = [HRAppDB].[Employees_Projects].[EmployeeID]
-JOIN [HRAppDB].[Projects]
-  ON [HRAppDB].[Projects].[ID] = [HRAppDB].[Employees_Projects].[ProjectID]
-JOIN [HRAppDB].[Directions]
-  ON [HRAppDB].[Projects].[DirectionID] = [HRAppDB].[Directions].[ID]
+ep.ID as IDEmployeeProject,
+ep.StartDate,
+ep.EndDate,
+ep.EmployeeID,
+pr.ID as ProjectID
+
+
+FROM [HRAppDB].[Employees_Projects] as ep
+
+INNER JOIN [HRAppDB].[Projects] as pr
+ON
+ep.ProjectID=pr.ID
+
+INNER JOIN [HRAppDB].[Directions] as di
+ON
+pr.DirectionID=di.ID
+JOIN [HRAppDB].[Employees] as Employees
+on
+ep.EmployeeID = Employees.ID
