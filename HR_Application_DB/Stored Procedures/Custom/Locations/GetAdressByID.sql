@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE [HRAppDB].[GetAdress]
+﻿CREATE PROCEDURE [HRAppDB].[GetAdressByID]
+@ID int
 AS
 SELECT 
 lo.ID,
@@ -22,3 +23,5 @@ lo.CityID=ci.ID
 INNER JOIN [HRAppDB].[Countries] as co
 ON
 ci.CountryID=co.ID
+
+WHERE lo.ID = @ID

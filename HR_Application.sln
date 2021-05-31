@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_DB_Logic", "
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HR_Application_DB", "HR_Application_DB\HR_Application_DB.sqlproj", "{4C638BE2-DEAE-41CA-942D-6B8F9D5130E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR_Application_DB_Logic.Tests", "HR_Application_DB_Logic.Tests\HR_Application_DB_Logic.Tests.csproj", "{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_DB_Logic.Tests", "HR_Application_DB_Logic.Tests\HR_Application_DB_Logic.Tests.csproj", "{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
