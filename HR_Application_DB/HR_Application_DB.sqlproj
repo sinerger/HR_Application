@@ -242,5 +242,6 @@
     <Build Include="Stored Procedures\Custom\Locations\GetAdressByID.sql" />
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkill.sql" />
     <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPositionByEmployeeID.sql" />
+    <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjectsByDepartmentID.sql" />
   </ItemGroup>
 </Project>
