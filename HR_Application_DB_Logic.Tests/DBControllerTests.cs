@@ -14,20 +14,13 @@ namespace HR_Application_DB_Logic.Tests
     public class DBControllerTests
     {
         private string _connectionString = @"Server=(LocalDB)\MSSQLLocalDB; DataBase = Test 2; Trusted_Connection = True; Integrated Security = True;";
-        [Test]
-        public void Test()
-        {
-            var repository = new EmployeeProjectsWithDirectionRepository(_connectionString);
-
-            var actual = repository.GetALL();
-        }
 
         [Test]
-        public void Test4()
+       public void Test()
         {
-            var repository = new CompanyDepartmentsRepository(@"Server=(LocalDB)\MSSQLLocalDB; DataBase = Test 2; Trusted_Connection = True; Integrated Security = True;");
+            var repository = new DepartmentProjectsRepository(_connectionString);
 
-            var actual = repository.GetALLByCompanyID(2);
+            var actual = repository.GetAll();
         }
     }
 }
