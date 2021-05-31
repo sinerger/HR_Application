@@ -17,7 +17,5 @@ namespace HR_Application_DB_Logic.Repositories
         {
             _connectionString = connectionString;
         }
-
-
     }
 }
