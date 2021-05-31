@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Tests
         public void Test()
         {
             var repository = new AdressRepository(_connectionString);
-            var actual = repository.GetAll();
+            var actual = repository.GetByID(2);
         }
     }
 }

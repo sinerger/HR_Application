@@ -38,7 +38,43 @@ namespace HR_Application_DB_Logic.Repositories
                         .AsList<AdressDTO>();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
+            {
+                var s = e.ToString();
+                result = null;
+            }
+
+            return result;
+        }
+
+        public AdressDTO GetByID(int id)
+        {
+            string query = "[HRAppDB].GetAdressByID @ID";
+            AdressDTO result = new AdressDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    var temp = dbConnection.Query<AdressDTO, CityDTO, CountryDTO, AdressDTO>
+                        (query,
+                        (adress, city, country) =>
+                        {
+                            adress.City = city;
+                            adress.Country = country;
+
+                            return adress;
+                        }
+                        ,new { id })
+                        .AsList<AdressDTO>();
+
+                    if (temp.Count > 0)
+                    {
+                        result = temp[0];
+                    }
+                }
+            }
+            catch (Exception e)
             {
                 var s = e.ToString();
                 result = null;
