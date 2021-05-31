@@ -1,0 +1,22 @@
+﻿<Window x:Class="HR_Application_DB_WPF.Authorisation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Authorisation" Height="600" Width="800" Background="#FFE9E9E9">
+    <Grid RenderTransformOrigin="0.544,0.478">
+        <Grid.RowDefinitions >
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="___AuthorisationTitle_" Grid.Row="0" Text="AUTHORISATION" TextWrapping="Wrap" Width="440" Height="85" Background="#E9E9E9" FontSize="48" FontWeight="Bold" Foreground="#FFE64E6C" Grid.Column="1"/>
+        <TextBox x:Name="___EnterLogin_" Grid.Row="1" Text="Login" TextWrapping="Wrap" Foreground="#676e69" Width="440" Height="77" FontSize="36" Grid.Column="1" Padding="10,0,0,0" HorizontalAlignment="Center"/>
+        <TextBox x:Name="___EnterPassword_" Grid.Row="2" Text="Password" TextWrapping="Wrap" Foreground="#676e69" Width="440" Height="77" FontSize="36" Padding="10,0,0,0" Margin="180,20,180,19"/>
+        <Button x:Name="___SignInButton_" Grid.Row="3" Content="Sign In" Background="#E64E6C" Foreground="#fff" Width="440" Height="77" FontSize="36" Grid.Column="1"/>
+        <Button x:Name="___RegistrationButton_"  Grid.Row="4" Content="Registration" Background="#E64E6C" Foreground="#fff" Width="440" Height="77" FontSize="36" Grid.Column="1"/>
+    </Grid>
+</Window>
