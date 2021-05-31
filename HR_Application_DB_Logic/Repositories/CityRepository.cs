@@ -65,7 +65,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { city.ID, city.Name, city.CountryID });
                 }
             }
             catch
