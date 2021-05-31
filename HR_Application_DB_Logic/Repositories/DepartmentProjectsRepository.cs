@@ -44,5 +44,51 @@ namespace HR_Application_DB_Logic.Repositories
 
             return result;
         }
+
+        public List<DepartmentProjectsDTO> GetAllByDepartmentID(int departmentID)
+        {
+            string query = "[HRAppDB].GetDepartmentsProjectsByDepartmentID";
+            List<DepartmentProjectsDTO> departmentProjects = new List<DepartmentProjectsDTO>();
+
+            try
+            {
+                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    dbConnection.Query<DepartmentProjectsDTO, DepartmentDTO, int, DepartmentProjectsDTO>(query,
+                        (departmentProject, department, projectID) =>
+                        {
+                            DepartmentProjectsDTO currentDP = null;
+
+                            foreach (DepartmentProjectsDTO dP in departmentProjects)
+                            {
+                                if (dP.Department.ID == department.ID)
+                                {
+                                    currentDP = departmentProject;
+                                    dP.ProjectsID.Add(projectID);
+                                    break;
+                                }
+                            }
+
+                            if (currentDP == null)
+                            {
+                                currentDP = departmentProject;
+                                departmentProjects.Add(currentDP);
+                                currentDP.Department = department;
+                                currentDP.ProjectsID = new List<int>();
+                                currentDP.ProjectsID.Add(projectID);
+                            }
+
+                            return departmentProject;
+                        }, new { departmentID })
+                        .AsList<DepartmentProjectsDTO>();
+                }
+            }
+            catch
+            {
+                departmentProjects = null;
+            }
+
+            return departmentProjects;
+        }
     }
 }
