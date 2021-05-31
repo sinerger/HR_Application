@@ -184,7 +184,6 @@
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillsByID.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillsByTitle.sql" />
-    <Build Include="Stored Procedures\Base\LevelSkills\SkillsLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\UpdateLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\Locations\CreateLocation.sql" />
     <Build Include="Stored Procedures\Base\Locations\DeleteLocation.sql" />
@@ -240,5 +239,6 @@
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkillByEmployeeID.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeesProjectsByEmployeeID.sql" />
     <Build Include="Stored Procedures\Custom\Locations\GetAdressByID.sql" />
+    <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkill.sql" />
   </ItemGroup>
 </Project>
