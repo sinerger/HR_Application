@@ -98,7 +98,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(SkillDTO skill)
         {
-            string query = "UpdateSkillByID @ID @Title @Description";
+            string query = "UpdateSkill @ID @Title @Description";
             bool result = true;
 
             try

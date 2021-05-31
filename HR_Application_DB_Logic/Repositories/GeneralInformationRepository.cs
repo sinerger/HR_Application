@@ -95,7 +95,7 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Updete(GeneralInformationDTO generalInformation)
+        public bool Update(GeneralInformationDTO generalInformation)
         {
             string query = "DeleteGeneralInformation @ID @EmployeeID @Sex @Education @FamilyStatusID @Phone @Email @BirthDate @Hobby @AmountChildren";
             bool result = true;
