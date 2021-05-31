@@ -21,4 +21,5 @@ pr.DirectionID=di.ID
 JOIN [HRAppDB].[Employees] as Employees
 on
 ep.EmployeeID = Employees.ID
+
 where ep.EmployeeID = @EmployeeID

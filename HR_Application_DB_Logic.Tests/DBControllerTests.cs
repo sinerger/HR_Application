@@ -18,7 +18,7 @@ namespace HR_Application_DB_Logic.Tests
         [Test]
        public void Test()
         {
-            var repository = new DepartmentProjectsRepository(_connectionString);
+            var repository = new EmployeePositionRepository(_connectionString);
 
             var actual = repository.GetAll();
         }

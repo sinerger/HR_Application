@@ -1,9 +1,9 @@
-﻿using Dapper;
-using HR_Application_DB_Logic.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Dapper;
+using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -33,8 +33,7 @@ namespace HR_Application_DB_Logic.Repositories
                             adress.Country = country;
 
                             return adress;
-                        }
-                        )
+                        })
                         .AsList<AdressDTO>();
                 }
             }
@@ -64,8 +63,7 @@ namespace HR_Application_DB_Logic.Repositories
                             adress.Country = country;
 
                             return adress;
-                        }
-                        ,new { id })
+                        },new { id })
                         .AsList<AdressDTO>();
 
                     if (temp.Count > 0)
@@ -74,9 +72,8 @@ namespace HR_Application_DB_Logic.Repositories
                     }
                 }
             }
-            catch (Exception e)
+            catch
             {
-                var s = e.ToString();
                 result = null;
             }
 

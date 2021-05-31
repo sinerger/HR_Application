@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HR_Application_DB_Logic.Models
+﻿namespace HR_Application_DB_Logic.Models
 {
      public class EmployeeAdressDTO
     {
@@ -13,6 +9,6 @@ namespace HR_Application_DB_Logic.Models
         public string RegistationDate { get; set; }
         public StatusDTO Status { get; set; }
         public AdressDTO Adress { get; set; }
-        public bool IsActual { get; set; }
+        public bool? IsActual { get; set; }
     }
 }

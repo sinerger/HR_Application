@@ -1,9 +1,4 @@
-﻿using HR_Application_DB_Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HR_Application_DB_Logic.Repositories
+﻿namespace HR_Application_DB_Logic.Models.Custom
 {
     public class EmployeeSkillDTO
     {
