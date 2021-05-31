@@ -1,16 +1,17 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetAdress]
 AS
 SELECT 
-lo.ID as IDLocations,
+lo.ID,
 lo.Street,
 lo.HouseNumber,
 lo.[Block],
 lo.ApartmentNumber,
 lo.PostIndex,
-ci.ID as IDCities,
-ci.[Name] as NameCities,
-co.ID as IDCountries,
-co.[Name] as NameCountries
+ci.ID,
+ci.[Name],
+ci.CountryID,
+co.ID,
+co.[Name]
 
 FROM [HRAppDB].[Locations] as lo
 

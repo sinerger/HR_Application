@@ -1,10 +1,9 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using System;
+using HR_Application_DB_Logic.Models.Custom;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -19,7 +18,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeeSkillDTO> GetAll()
         {
-            string query = "[HRAppDB].SkillsLevelSkills";
+            string query = "[HRAppDB].GetEmployeeSkill";
             List<EmployeeSkillDTO> result = new List<EmployeeSkillDTO>();
 
             try
@@ -46,6 +45,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             return result;
         }
+
         public List<EmployeeSkillDTO> GetAllByEmployeeID(int employeeID)
         {
             string query = "[HRAppDB].GetEmployeeSkillByEmployeeID";

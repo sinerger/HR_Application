@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateEmployees]
-	@Photo nvarchar(255),
-	@FirstName nvarchar(255),
-	@LastName nvarchar(255),
-	@RegistationDate datetime,
+	@Photo nvarchar,
+	@FirstName nvarchar,
+	@LastName nvarchar,
+	@RegistationDate nvarchar,
 	@StatusID int,
 	@LocationID int,
 	@IsActual bit

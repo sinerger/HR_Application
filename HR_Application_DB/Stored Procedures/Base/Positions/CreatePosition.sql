@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreatePosition]
-	   @Title nvarchar(255),
-	   @Description nvarchar(255)
+	   @Title nvarchar,
+	   @Description nvarchar
 AS
 INSERT INTO [HRAppDB].[Positions]  (
 	   [HRAppDB].[Positions].[Title],

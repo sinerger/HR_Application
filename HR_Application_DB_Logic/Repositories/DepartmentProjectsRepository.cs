@@ -16,7 +16,7 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public List<DepartmentProjectsDTO> GetDepartmentsProjects()
+        public List<DepartmentProjectsDTO> GetAll()
         {
             string query = "[HRAppDB].GetDepartmentsProjects";
             List<DepartmentProjectsDTO> result = new List<DepartmentProjectsDTO>();
@@ -33,8 +33,7 @@ namespace HR_Application_DB_Logic.Repositories
                             departmentProject.ProjectsID.Add(projectID);
 
                             return departmentProject;
-                        }
-                        , splitOn: "IDDepartments_Projects,IDDepartment,ProjectID")
+                        })
                         .AsList<DepartmentProjectsDTO>();
                 }
             }
@@ -45,7 +44,5 @@ namespace HR_Application_DB_Logic.Repositories
 
             return result;
         }
-
-
     }
 }

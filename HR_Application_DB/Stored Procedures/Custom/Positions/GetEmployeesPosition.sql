@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[Positions_EmployeesPositionsLevelPositions]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployeesPosition]
 AS
 SELECT
 pe.ID,
@@ -6,11 +6,11 @@ pe.EmployeeID,
 pe.HiredDate,
 pe.FiredDate,
 pe.IsActual,
-lp.ID as IDLevelsPositions,
-lp.Title as TitleLevelsPositions,
+lp.ID,
+lp.Title,
 lp.[Description],
-p.ID as IDPositions,
-p.Title as TitlePositions,
+p.ID,
+p.Title,
 p.[Description]
 
 FROM [HRAppDB].[Positions_Employees] as pe

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace HR_Application_DB_Logic.Models
 {
     public class EmployeeProjectsWithDirectionDTO
     {
-        public int? ID { get; set; }
-        public string Photo { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string RegistationDate { get; set; }
-        public ProjectDTO Project { get; set; }
-        public DirectionDTO Direction { get; set; }
-        public bool IsActual { get; set; }
+        public int? IDEmployeeProject { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public int? EmployeeID { get; set; }
+        public List<int> ProjectsID { get; set; }
     }
 }

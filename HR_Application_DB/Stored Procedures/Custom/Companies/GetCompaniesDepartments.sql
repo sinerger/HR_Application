@@ -1,14 +1,13 @@
-﻿CREATE PROCEDURE [dbo].[GetCompaniesDepartments]
+﻿CREATE PROCEDURE [HRAppDB].[GetCompaniesDepartments]
 AS
-SELECT    c.[ID] AS IDCompany,
-c.[Title] AS CompanyTitle,
+SELECT   
+cd.ID as IDCompanyDepartments,
+c.[ID],
+c.[Title] ,
 c.[LocationID],
-c.[Description] AS CompanyDescription,
-c.[IsActual] AS CompanyIsActual,
-cd.[ID] AS IDCompanies_Depatments,
-d.[ID] AS IDDepartment,
-d.[Title] AS DepartmentTitle,
-d.[Description] AS DepartmentDescription
+c.[Description] ,
+c.[IsActual] ,
+d.[ID] AS IDDepartment
 FROM         HRAppDB.Companies AS c 
 LEFT JOIN   HRAppDB.Companies_Depatments AS cd
 	ON c.ID = cd.CompanyID
