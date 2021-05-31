@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HR_Application_DB_Logic.Models.Custom
+﻿namespace HR_Application_DB_Logic.Models.Custom
 {
     public class GeneralInformationFamilyStatusDTO
     {
@@ -10,7 +8,7 @@ namespace HR_Application_DB_Logic.Models.Custom
         public string Education { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public string BirthDate { get; set; }
         public string Hobby { get; set; }
         public int? AmountChildren { get; set; }
         public FamilyStatusDTO FamilyStatus { get; set; }

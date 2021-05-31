@@ -6,7 +6,7 @@
     [FamilyStatusID] INT            NOT NULL,
     [Phone]          NVARCHAR (15)  NOT NULL,
     [Email]          NVARCHAR (255) NOT NULL,
-    [BirthDate]      DATETIME       NOT NULL,
+    [BirthDate]      NVARCHAR(50)       NOT NULL,
     [Hobby]          NVARCHAR (255) NULL,
     [AmountChildren] INT            NULL,
     CONSTRAINT [PK_GENERALINFORMATION] PRIMARY KEY CLUSTERED ([ID] ASC),

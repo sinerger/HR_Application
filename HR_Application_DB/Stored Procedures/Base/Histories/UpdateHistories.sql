@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateHistories]
 @ID int,
-@Table nvarchar(255),
-@CollumnName nvarchar(255),
-@OldValue nvarchar(255),
-@NewValue nvarchar(255),
+@Table nvarchar,
+@CollumnName nvarchar,
+@OldValue nvarchar,
+@NewValue nvarchar,
 @UpdatedBy int,
-@Updated datetime
+@Updated nvarchar
 AS
 UPDATE [HRAppDB].[Histories]
 SET [HRAppDB].[Histories].[Table]=@Table,

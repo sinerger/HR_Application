@@ -1,5 +1,4 @@
-﻿
-namespace HR_Application_DB_Logic.Models.Custom
+﻿namespace HR_Application_DB_Logic.Models.Custom
 {
     public class EmployeePositionDTO
     {

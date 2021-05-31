@@ -3,7 +3,7 @@
     [EmployeeID]   INT      NOT NULL,
     [SkillID]      INT      NOT NULL,
     [LevelSkillID] INT      NOT NULL,
-    [Date]         DATETIME NOT NULL,
+    [Date]         NVARCHAR(50) NOT NULL,
     [IsActual]     BIT      NOT NULL,
     [UserID]       INT      NOT NULL,
     CONSTRAINT [PK_EMPLOYEES_SKILLS] PRIMARY KEY CLUSTERED ([ID] ASC),

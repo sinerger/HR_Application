@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateFamilyStatus]
 	@ID int,
-	@Status nvarchar(30)
+	@Status nvarchar
 AS
 UPDATE [HRAppDB].[FamilyStatuses]
 SET [HRAppDB].[FamilyStatuses].[Status] = @Status

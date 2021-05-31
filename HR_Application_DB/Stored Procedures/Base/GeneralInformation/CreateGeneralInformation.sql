@@ -6,7 +6,7 @@
 	@FamilyStatusID int,
 	@Phone nvarchar,
 	@Email nvarchar,
-	@BirthDate dateTime,
+	@BirthDate nvarchar,
 	@Hobby nvarchar,
 	@AmountChildren int
 

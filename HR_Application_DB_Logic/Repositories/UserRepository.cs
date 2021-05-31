@@ -1,11 +1,8 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -100,9 +97,9 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "GetAllUsers";
             List<UserDTO> result = new List<UserDTO>();
 
-            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
-                result = dbConnection.Query<UserDTO>(query, commandType: CommandType.StoredProcedure).ToList<UserDTO>();
+                result = dbConnection.Query<UserDTO>(query, commandType: CommandType.StoredProcedure).AsList<UserDTO>();
             }
 
             return result;
@@ -113,7 +110,7 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "GetUserByID @ID";
             UserDTO result = new UserDTO();
 
-            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
                 result = dbConnection.QuerySingle<UserDTO>(query, new { id });
             }
@@ -126,7 +123,7 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "GetUserByName @Name";
             UserDTO result = new UserDTO();
 
-            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
                 result = dbConnection.QuerySingle<UserDTO>(query, new { name });
             }

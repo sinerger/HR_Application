@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[EmployeesStatuses]
+﻿CREATE PROCEDURE [HRAppDB].[GetEmployeeStatuses]
 AS
 SELECT
 em.ID,

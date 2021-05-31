@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateProjects]
-	@Title nvarchar(255),
-	@Description nvarchar(255),
+	@Title nvarchar,
+	@Description nvarchar,
 	@DirectionID int
 AS
 INSERT INTO [HRAppDB].[Projects] (

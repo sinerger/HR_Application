@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HR_Application_DB_Logic.Models.Custom;
-using System.Data;
-using Dapper;
+﻿using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Custom;
+using Dapper;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -40,7 +38,7 @@ namespace HR_Application_DB_Logic.Repositories
                         .AsList<CompanyDepartmentsDTO>();
                 }
             }
-            catch 
+            catch
             {
                 result = null;
             }
@@ -64,7 +62,7 @@ namespace HR_Application_DB_Logic.Repositories
 
                             foreach (CompanyDepartmentsDTO cD in companyDepartments)
                             {
-                                if(cD.Company.ID ==company.ID)
+                                if (cD.Company.ID == company.ID)
                                 {
                                     currentCD = companyDepartment;
                                     cD.DepartmentsID.Add(departmentID);
@@ -82,9 +80,7 @@ namespace HR_Application_DB_Logic.Repositories
                             }
 
                             return companyDepartment;
-                        }
-                        ,new { companyID }
-                        , splitOn: "IDD,ID,IDDepartment")
+                        }, new { companyID }, splitOn: "IDD,ID,IDDepartment")
                         .AsList<CompanyDepartmentsDTO>();
                 }
             }
@@ -94,7 +90,6 @@ namespace HR_Application_DB_Logic.Repositories
             }
 
             return companyDepartments;
-
         }
     }
 }

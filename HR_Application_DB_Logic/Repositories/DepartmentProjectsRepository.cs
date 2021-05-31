@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -34,20 +33,16 @@ namespace HR_Application_DB_Logic.Repositories
                             departmentProject.ProjectsID.Add(projectID);
 
                             return departmentProject;
-                        }
-                        )
+                        })
                         .AsList<DepartmentProjectsDTO>();
                 }
             }
-            catch(Exception e)
+            catch
             {
-                var s = e.ToString();
                 result = null;
             }
 
             return result;
         }
-
-
     }
 }

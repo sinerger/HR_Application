@@ -185,7 +185,6 @@
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillsByID.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillsByTitle.sql" />
-    <Build Include="Stored Procedures\Base\LevelSkills\SkillsLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\UpdateLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\Locations\CreateLocation.sql" />
     <Build Include="Stored Procedures\Base\Locations\DeleteLocation.sql" />
@@ -228,19 +227,20 @@
     <Build Include="Stored Procedures\Base\Users\GetUserByID.sql" />
     <Build Include="Stored Procedures\Base\Users\GetUserByName.sql" />
     <Build Include="Stored Procedures\Base\Users\UpdateUsers.sql" />
-    <Build Include="Stored Procedures\Custom\Employees\Employees_ProjectsDirections.sql" />
-    <Build Include="Stored Procedures\Custom\Employees\EmployeesStatuses.sql" />
+    <Build Include="Stored Procedures\Custom\Employees\GetEmployeeStatuses.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeeAdress.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeePlaceOfWork.sql" />
-    <Build Include="Stored Procedures\Custom\Employees\GetEmployeeProjectsWithDirection.sql" />
+    <Build Include="Stored Procedures\Custom\Employees\GetEmployeeProjects.sql" />
     <Build Include="Stored Procedures\Custom\GeneralInformation\GeneralInformationFamilyStatuses.sql" />
     <Build Include="Stored Procedures\Custom\Locations\GetAdress.sql" />
-    <Build Include="Stored Procedures\Custom\Positions\Positions_EmployeesPositionsLevelPositions.sql" />
+    <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPosition.sql" />
     <Build Include="Stored Procedures\Custom\Companies\GetCompaniesDepartments.sql" />
     <Build Include="Stored Procedures\Custom\Companies\GetCompanyDepartmentsByCompanyID.sql" />
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkillByEmployeeID.sql" />
     <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjects.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeesProjectsByEmployeeID.sql" />
     <Build Include="Stored Procedures\Custom\Locations\GetAdressByID.sql" />
+    <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkill.sql" />
+    <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPositionByEmployeeID.sql" />
   </ItemGroup>
 </Project>

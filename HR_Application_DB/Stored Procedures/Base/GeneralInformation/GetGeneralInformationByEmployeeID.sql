@@ -1,4 +1,4 @@
-﻿Create Procedure GetGeneralInformationByEmployeeID
+﻿Create Procedure [HRAppDB].GetGeneralInformationByEmployeeID
 @EmployeeID int 
 
 as

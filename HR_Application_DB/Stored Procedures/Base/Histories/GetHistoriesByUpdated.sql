@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetHistoriesByUpdated]
-@Updated datetime
+@Updated nvarchar
 AS
 	SELECT * FROM [HRAppDB].[Histories]
 	WHERE [HRAppDB].[Histories].Updated=@Updated

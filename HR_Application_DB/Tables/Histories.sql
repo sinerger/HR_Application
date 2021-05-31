@@ -5,7 +5,7 @@
     [OldValue]    NVARCHAR (255) NULL,
     [NewValue]    NVARCHAR (255) NOT NULL,
     [UpdatedBy]   INT            NOT NULL,
-    [Updated]     DATETIME       NOT NULL,
+    [Updated]     NVARCHAR(50)       NOT NULL,
     CONSTRAINT [PK_HISTORIES] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [Histories_fk0] FOREIGN KEY ([UpdatedBy]) REFERENCES [HRAppDB].[Users] ([ID])
 );

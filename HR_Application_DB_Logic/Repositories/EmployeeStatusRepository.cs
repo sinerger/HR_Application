@@ -18,7 +18,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeeStatusDTO> GetAll()
         {
-            string query = "[HRAppDB].[EmployeesStatuses]";
+            string query = "[HRAppDB].GetEmployeeStatuses";
             List<EmployeeStatusDTO> result = new List<EmployeeStatusDTO>();
 
             try

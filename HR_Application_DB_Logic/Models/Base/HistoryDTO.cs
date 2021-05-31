@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HR_Application_DB_Logic.Models
+﻿namespace HR_Application_DB_Logic.Models
 {
     public class HistoryDTO
     {
@@ -12,6 +8,6 @@ namespace HR_Application_DB_Logic.Models
         public string OldValue { get; set; }
         public string NewValue { get; set; }
         public int? UpdatedBy { get; set; }
-        public DateTime Updated { get; set; }
+        public string Updated { get; set; }
     }
 }
