@@ -1,10 +1,8 @@
-﻿using Dapper;
-using HR_Application_DB_Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Text;
+using System.Collections.Generic;
+using Dapper;
+using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {

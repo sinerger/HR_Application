@@ -81,7 +81,7 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "GetLevelSkills";
             List<LevelSkillDTO> result = new List<LevelSkillDTO>();
 
-            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
                 result = dbConnection.Query<LevelSkillDTO>(query, commandType: CommandType.StoredProcedure).ToList<LevelSkillDTO>();
             }
@@ -94,7 +94,7 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "GetLevelSkillsByID @ID";
             LevelSkillDTO result = new LevelSkillDTO();
 
-            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
                 result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { id });
             }
@@ -107,7 +107,7 @@ namespace HR_Application_DB_Logic.Repositories
             string query = "GetLevelSkillsByTitle @Title";
             LevelSkillDTO result = new LevelSkillDTO();
 
-            using (IDbConnection dbConnection = new SqlConnection(AppConnection.ConnectionString))
+            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
             {
                 result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { title });
             }
