@@ -24,14 +24,14 @@ namespace HR_Application_DB_WPF
 
         private void TabItem_MouseEnter(object sender, MouseEventArgs e)
         {
-            var obj = (TabItem)sender;
-            obj.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#E3405F"));
+            var title = (TabItem)sender;
+            title.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#E3405F"));
         }
 
         private void TabItem_MouseLeave(object sender, MouseEventArgs e)
         {
-            var obj = (TabItem)sender;
-            obj.Foreground =(SolidColorBrush)(new BrushConverter().ConvertFrom("#878383"));
+            var title = (TabItem)sender;
+            title.Foreground =(SolidColorBrush)(new BrushConverter().ConvertFrom("#878383"));
         }
     }
 }
