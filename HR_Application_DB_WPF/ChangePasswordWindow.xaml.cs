@@ -21,5 +21,17 @@ namespace HR_Application_DB_WPF
         {
             InitializeComponent();
         }
+
+        private void ___CencelButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();
+            changePasswordWindow.Close();
+        }
+
+        private void ___SaveBatton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();// экземпляр класса, на который будет переходить 
+            changePasswordWindow.Show();
+        }
     }
 }
