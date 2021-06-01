@@ -21,5 +21,17 @@ namespace HR_Application_DB_WPF
         {
             InitializeComponent();
         }
+
+        private void SignInButton__Click(object sender, RoutedEventArgs e)
+        {
+            Authorisation authorisation = new Authorisation();
+            authorisation.Show();
+;
+        }
+
+        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
