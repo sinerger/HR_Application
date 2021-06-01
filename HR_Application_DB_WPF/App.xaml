@@ -4,12 +4,5 @@
              xmlns:local="clr-namespace:HR_Application_DB_WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/PresentationFramework.Aero;component/themes/Aero.NormalColor.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
-            </Style>-->
-        </ResourceDictionary>
     </Application.Resources>
 </Application>
