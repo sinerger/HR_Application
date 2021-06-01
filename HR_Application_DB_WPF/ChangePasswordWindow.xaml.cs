@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace HR_Application_DB_WPF
 {
-    /// <summary>
-    /// Interaction logic for ChangePasswordWindow.xaml
-    /// </summary>
     public partial class ChangePasswordWindow : Window
     {
         public ChangePasswordWindow()
@@ -22,15 +19,15 @@ namespace HR_Application_DB_WPF
             InitializeComponent();
         }
 
-        private void ___CencelButton_Click(object sender, RoutedEventArgs e)
+        private void CencelButton_Click(object sender, RoutedEventArgs e)
         {
             ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();
             changePasswordWindow.Close();
         }
 
-        private void ___SaveBatton_Click(object sender, RoutedEventArgs e)
+        private void SaveBatton_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();// экземпляр класса, на который будет переходить 
+            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();
             changePasswordWindow.Show();
         }
     }
