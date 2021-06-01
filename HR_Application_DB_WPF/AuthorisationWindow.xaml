@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Authorisation" Height="950" Width="800" Background="#FFE9E9E9">
+        ResizeMode="NoResize"
+        Title="Authorisation" Height="600" Width="500" Background="#FFE9E9E9">
     <Window.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FFF"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FFF"/>
         <Style x:Key="TextBoxStyleLogin" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
@@ -23,7 +24,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -67,7 +68,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -124,7 +125,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -213,10 +214,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox x:Name="AuthorisationTitle_" Grid.Row="0" Text="AUTHORISATION" TextWrapping="Wrap" Background="#E9E9E9" FontSize="48" FontWeight="Bold" Foreground="#FFE64E6C" Margin="180,51,180,51"/>
-        <TextBox Style="{DynamicResource TextBoxStyleLogin}" x:Name="EnterLogin_" Grid.Row="1" Text="Login" TextWrapping="Wrap" Foreground="#676e69" Width="440" FontSize="36" Padding="10,0,0,0" HorizontalAlignment="Center" Margin="0,55,0,55"/>
-        <TextBox Style="{DynamicResource TextBoxStylePassword}" x:Name="EnterPassword_" Grid.Row="2" Text="Password" TextWrapping="Wrap" Foreground="#676e69" FontSize="36" Padding="10,0,0,0" Margin="180,55,180,54" RenderTransformOrigin="0.511,-0.195"/>
-        <Button Style="{DynamicResource ButtonStyleSignIn}" x:Name="SignInButton_" Grid.Row="3" Content="Sign In" Background="#E64E6C" Foreground="#fff" FontSize="36" Margin="180,55,180,55" Click="SignInButton__Click"/>
-        <Button Style="{DynamicResource ButtonStyleRegistration}" x:Name="RegistrationButton"  Grid.Row="4" Content="Registration" Background="#E64E6C" Foreground="#fff" FontSize="36" Margin="180,55,180,55" Click="RegistrationButton_Click"/>
+        <Label x:Name="AuthorisationTitle" Grid.Row="0"  Content="AUTHORISATION" Background="#E9E9E9" FontSize="36" FontWeight="Bold" Foreground="#FFE64E6C" Margin="50,30,52,30" Width="Auto" HorizontalContentAlignment="Center"></Label>
+        <TextBox Style="{DynamicResource TextBoxStyleLogin}" x:Name="EnterLogin_" Grid.Row="1" Text="Login" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Height="Auto" Width="400" SelectionBrush="#FFCAD4DC" Margin="0,30,0,30"/>
+        <TextBox Style="{DynamicResource TextBoxStylePassword}" x:Name="EnterPassword_" Grid.Row="2" Text="Password" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Margin="27,30,27,30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="400"/>
+        <Button Style="{DynamicResource ButtonStyleSignIn}" x:Name="SignInButton_" Grid.Row="3" Content="Sign In" Background="#E64E6C" Foreground="#fff" FontSize="24" Margin="0,30,0,30" Click="SignInButton__Click" UseLayoutRounding="True" Width="400"/>
+        <Button Style="{DynamicResource ButtonStyleRegistration}" x:Name="RegistrationButton"  Grid.Row="4" Content="Registration" Background="#E64E6C" Foreground="#fff" FontSize="24" Margin="0,30,0,30" Click="RegistrationButton_Click" Width="400"/>
     </Grid>
 </Window>
