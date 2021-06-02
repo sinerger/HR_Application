@@ -265,8 +265,8 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TabControl>
-            <TabItem x:Name="EmployeeProfileTabItem" Header="Employee profile" Foreground="#878383" Margin="0,0,-100,0" FontSize="36" MouseEnter="TabItem_MouseEnter" MouseLeave="TabItem_MouseLeave" FontFamily="Global User Interface">
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
+            <TabItem x:Name="EmployeeProfileTabItem" Header="Employee profile" Foreground="#878383" Margin="365,0,-385,0" FontSize="24" MouseEnter="TabItem_MouseEnter" MouseLeave="TabItem_MouseLeave" FontFamily="Global User Interface">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="First name" HorizontalAlignment="Left" Margin="16,16,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.488,0.516" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
                     <TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="161,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource TextBoxStyleEmployeeHistory}" FontFamily="Global User Interface"/>
@@ -290,9 +290,10 @@
                     <TextBox x:Name="RegistrationDateTextBox" HorizontalAlignment="Left" Margin="161,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" IsReadOnly="True" Style="{DynamicResource TextBoxStyleEmployeeHistory}" FontFamily="Global User Interface"/>
                     <Button x:Name="AddCommentsButton" Style="{DynamicResource ButtonStyleRound}" Content="Add comments" HorizontalAlignment="Left" Margin="16,325,0,0" Padding="10,10,10,10" Foreground="#FFFFFF" Background="#E3405F" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface"/>
                     <TextBox x:Name="CommentsTextBox" HorizontalAlignment="Left" Margin="16,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474" FontSize="16" Height="111" Style="{DynamicResource TextBoxStyleEmployeeHistory}"/>
+                    <Rectangle HorizontalAlignment="Left" Height="110" Margin="602,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="95" Fill="White"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="EmployeeHistoryTabItem" Header="Employee history" Foreground="#878383" Margin="100,0,-200,0" FontSize="36" MouseEnter="TabItem_MouseEnter" MouseLeave="TabItem_MouseLeave" FontFamily="Global User Interface">
+            <TabItem x:Name="EmployeeHistoryTabItem" Header="Employee history" Foreground="#878383" Margin="385,0,-396,0" FontSize="24" MouseEnter="TabItem_MouseEnter" MouseLeave="TabItem_MouseLeave" FontFamily="Global User Interface">
                 <Grid Background="#FFE5E5E5">
                     <TextBox x:Name="HistoryTextBox" Style="{DynamicResource TextBoxStyleEmployeeHistory}" HorizontalAlignment="Left" Margin="21,22,0,0" Padding="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719" Height="168" FontSize="16"/>
                 </Grid>
