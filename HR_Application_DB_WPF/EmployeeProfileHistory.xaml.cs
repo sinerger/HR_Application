@@ -33,5 +33,10 @@ namespace HR_Application_DB_WPF
             var title = (TabItem)sender;
             title.Foreground =(SolidColorBrush)(new BrushConverter().ConvertFrom("#878383"));
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
