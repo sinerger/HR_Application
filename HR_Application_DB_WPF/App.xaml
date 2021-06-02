@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:HR_Application_DB_WPF"
              StartupUri="ChangePasswordWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary> 
     </Application.Resources>
 </Application>
