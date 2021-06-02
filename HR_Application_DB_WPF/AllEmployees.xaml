@@ -22,16 +22,16 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Name="ButtonAddEmployee" Grid.Column="1" Content="Add employee" IsEnabled="True"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Name="ButtonAddEmployee" Grid.Column="1" Content="Add employee" IsEnabled="True" Click="ButtonAddEmployee_Click"/>
                     </Grid>
-                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="20" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray" RowBackground="LightGray">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"  />
-                                <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*" />
-                                <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
-                                <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*" />
-                                <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*" />
-                            </DataGrid.Columns>
+                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" RowBackground="LightGray">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"/>
+                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*" />
+                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
+                            <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*" />
+                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections;
 
 namespace HR_Application_DB_WPF
 {
@@ -20,6 +21,16 @@ namespace HR_Application_DB_WPF
         public AllEmployees()
         {
             InitializeComponent();
+        }
+
+        private void ButtonAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            //добавление новго сотрудника
+        }
+
+        private void GetAllEmployees()
+        {
+            //я заебался тыкаться и гуглить
         }
     }
 }
