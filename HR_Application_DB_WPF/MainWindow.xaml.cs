@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR_Application_DB_WPF.ModalWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace HR_Application_DB_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FilterWindow fw = new FilterWindow();
+            fw.Show();
         }
     }
 }
