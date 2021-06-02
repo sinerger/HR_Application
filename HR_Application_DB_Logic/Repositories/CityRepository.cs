@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using HR_Application_DB_Logic.Models;
-using Dapper;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System;
+using System.Collections.Generic;
+using Dapper;
+using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -66,7 +65,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Execute(query, new { city.Id, city.Name, city.CountryID });
+                    dbConnection.Execute(query, new { city.ID, city.Name, city.CountryID });
                 }
             }
             catch

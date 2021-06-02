@@ -3,7 +3,7 @@
     [Photo]           NVARCHAR (255) NULL,
     [FirstName]       NVARCHAR (255) NOT NULL,
     [LastName]        NVARCHAR (255) NOT NULL,
-    [RegistationDate] DATETIME       NOT NULL,
+    [RegistationDate] NVARCHAR(50)       NOT NULL,
     [StatusID]        INT            NOT NULL,
     [LocationID]      INT            NOT NULL,
     [IsActual]        BIT            NOT NULL,
