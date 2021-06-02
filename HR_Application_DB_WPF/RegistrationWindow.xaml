@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="RegistrationWindow" Height="950" Width="500" Background="#FFE9E9E9">
+        Title="RegistrationWindow" Height="650" Width="500" Background="#FFE9E9E9" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch">
     <Window.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
@@ -327,9 +327,9 @@
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
@@ -427,9 +427,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox x:Name="RegistrationTitle"  Grid.Row="0"  Text="REGISTRATION" TextWrapping="Wrap" FontSize="36" HorizontalAlignment="Center" Foreground="#E64E6C" Background="#FFE9E9E9" FontWeight="Bold" Margin="0,30,0,30"/>
-        <TextBox Style="{DynamicResource TextBoxStyleLoginRegistration}" x:Name="LoginInput_" Grid.Row="1"  Text="Login" TextWrapping="Wrap" Height="77" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,5,20,5" UseLayoutRounding="True"/>
-        <TextBox Style="{DynamicResource TextBoxStylePasswordRegistration}" x:Name="PasswordInput" Grid.Row="2"  Text="Password" TextWrapping="Wrap" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,5,20,5" RenderTransformOrigin="0.5,0.5">
+        <Label Foreground="#E64E6C" Background="#FFE9E9E9" FontWeight="Bold" Margin="0,0,0,0" HorizontalContentAlignment="Center" FontSize="36" Padding="5,20,5,5" UseLayoutRounding="False">REGISTRATION</Label>
+        <!--//<Lable x:Name="RegistrationTitle"  Grid.Row="0" FontSize="36" HorizontalAlignment="Center" Foreground="#E64E6C" Background="#FFE9E9E9" FontWeight="Bold" Margin="0,0,0,0"></Lable>-->
+        <TextBox Style="{DynamicResource TextBoxStyleLoginRegistration}" x:Name="LoginInput_" Grid.Row="1"  Text="Login" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Margin="20,0,20,0" UseLayoutRounding="False" Padding="10,10,0,10" Height="Auto" VerticalAlignment="Center" ScrollViewer.CanContentScroll="True"/>
+        <TextBox Style="{DynamicResource TextBoxStylePasswordRegistration}" x:Name="PasswordInput" Grid.Row="2"  Text="Password" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -439,11 +440,11 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyleConfirmPassRegistration}" x:Name="ConfirmPasswordInput" Grid.Row="3"  Text="Confirm password" TextWrapping="Wrap" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,5,20,5"/>
-        <TextBox Style="{DynamicResource TextBoxStyleFirstNameRegistration}" x:Name="FirstNameInput" Grid.Row="4" Text="First Name" TextWrapping="Wrap" Height="77" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,5,20,5"/>
-        <TextBox Style="{DynamicResource TextBoxStyleLastNameRegistration}" x:Name="LastNameInput" Grid.Row="5" Text="Last Name" TextWrapping="Wrap" Height="77" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,5,20,5"/>
-        <TextBox Style="{DynamicResource TextBoxStyleCompanyRegistr}" x:Name="CompanyInput" Grid.Row="6" Text="Company" TextWrapping="Wrap" Height="77" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,5,20,5"/>
-        <TextBox Style="{DynamicResource TextBoxStyleCityRegistration}" x:Name="CityInput" Grid.Row="7" Text="City" TextWrapping="Wrap" Height="77" FontSize="24" Foreground="#676e69" Padding="10,10,0,0" Margin="20,16,20,16"/>
-        <Button Style="{DynamicResource ButtonStyleSignUpRegistration}" x:Name="SignUpButton"  Content="Sign Up" Grid.Row="8" Width="708" Height="83" FontSize="36" HorizontalAlignment="Center" Foreground="#fff" Background="#E64E6C" Margin="20,5,20,5"></Button>
+        <TextBox Style="{DynamicResource TextBoxStyleConfirmPassRegistration}" x:Name="ConfirmPasswordInput" Grid.Row="3"  Text="Confirm password" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBox Style="{DynamicResource TextBoxStyleFirstNameRegistration}" x:Name="FirstNameInput" Grid.Row="4" Text="First Name" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Style="{DynamicResource TextBoxStyleLastNameRegistration}" x:Name="LastNameInput" Grid.Row="5" Text="Last Name" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" UseLayoutRounding="True"/>
+        <TextBox Style="{DynamicResource TextBoxStyleCompanyRegistr}" x:Name="CompanyInput" Grid.Row="6" Text="Company" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center"/>
+        <TextBox Style="{DynamicResource TextBoxStyleCityRegistration}" x:Name="CityInput" Grid.Row="7" Text="City" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" UseLayoutRounding="True"/>
+        <Button Style="{DynamicResource ButtonStyleSignUpRegistration}" x:Name="SignUpButton" Content="Sign Up" Grid.Row="8"  FontSize="36" HorizontalAlignment="Stretch" Foreground="#fff" Background="#E64E6C" Margin="20,0,20,10" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Click="SignUpButton_Click"/>
     </Grid>
 </Window>
