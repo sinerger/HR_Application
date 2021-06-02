@@ -15,7 +15,7 @@ namespace HR_Application_DB_WPF.ModalWindows
     /// <summary>
     /// Interaction logic for Add_Competemce.xaml
     /// </summary>
-    public partial class AddCompetemce : Window
+    public partial class AddCompetence : Window
     {
         //=============>
         //=============>
@@ -57,7 +57,7 @@ namespace HR_Application_DB_WPF.ModalWindows
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
 
-        public AddCompetemce()
+        public AddCompetence()
         {
             InitializeComponent();
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
