@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:HR_Application_DB_WPF"
              StartupUri="RegistrationWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>
