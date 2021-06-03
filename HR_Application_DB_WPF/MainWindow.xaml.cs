@@ -1,4 +1,5 @@
 ﻿using HR_Application_DB_WPF.ModalWindows;
+using HR_Application_DB_WPF.Windows.GeneralWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace HR_Application_DB_WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MyAccount fw = new MyAccount();
+            HomePageWindow fw = new HomePageWindow();
             fw.Show();
         }
     }

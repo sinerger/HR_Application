@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,12 +10,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HR_Application_DB_WPF.ModalWindows
+namespace HR_Application_DB_WPF.Windows.ModalWindows
 {
     /// <summary>
-    /// Interaction logic for FilterWindow.xaml
+    /// Interaction logic for Add_Competemce.xaml
     /// </summary>
-    public partial class FilterWindow : Window
+    public partial class AddCompetenceWindow : Window
     {
         //=============>
         //=============>
@@ -58,27 +57,16 @@ namespace HR_Application_DB_WPF.ModalWindows
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
 
-
-        public FilterWindow()
+        public AddCompetenceWindow()
         {
             InitializeComponent();
-
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
-                new RoutedEventHandler(RemoveLineStackPanelEvent));
-
-            CreateLineAdressStackPanel(new RoutedEventHandler(AddLineAdressStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
         }
 
         private void AddLineSkillStackPanelEvent(object sender, RoutedEventArgs e)
         {
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
-                new RoutedEventHandler(RemoveLineStackPanelEvent));
-        }
-
-        private void AddLineAdressStackPanelEvent(object sender, RoutedEventArgs e)
-        {
-            CreateLineAdressStackPanel(new RoutedEventHandler(AddLineAdressStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
         }
 
@@ -107,22 +95,9 @@ namespace HR_Application_DB_WPF.ModalWindows
             stackPanel.Children.Add(GetComboBox(tempSkills));
             stackPanel.Children.Add(GetComboBox(tempLevelSkills));
 
-            this.AllSkillsStackPanel.Children.Add(stackPanel);
+            this.AllCompetenceStackPanel.Children.Add(stackPanel);
 
-            SwitchAddButtonToRemoveButton(AllSkillsStackPanel, addLineEvent, removeLineEvent);
-        }
-
-        private void CreateLineAdressStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
-        {
-            var stackPanel = GetStackPanel();
-
-            stackPanel.Children.Add(GetButton(addLineEvent));
-            stackPanel.Children.Add(GetComboBox(tempCountries));
-            stackPanel.Children.Add(GetComboBox(tempCities));
-
-            this.AllAdressStackPanel.Children.Add(stackPanel);
-
-            SwitchAddButtonToRemoveButton(AllAdressStackPanel, addLineEvent, removeLineEvent);
+            SwitchAddButtonToRemoveButton(AllCompetenceStackPanel, addLineEvent, removeLineEvent);
         }
 
         private void SwitchAddButtonToRemoveButton(StackPanel currentStackPanel, RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
@@ -150,7 +125,7 @@ namespace HR_Application_DB_WPF.ModalWindows
             {
                 Height = _height,
                 Width = _height,
-                Content = "+",
+                Content = _contenAddButton,
                 FontSize = _fontSize,
                 Background = (Brush)(new BrushConverter().ConvertFrom(_backColorButton)),
                 Foreground = Brushes.White
@@ -187,13 +162,14 @@ namespace HR_Application_DB_WPF.ModalWindows
             return stackPanel;
         }
 
-        private void ClickSaveButton_Event(object sender, RoutedEventArgs e)
+        private void Button_Accept_Click(object sender, RoutedEventArgs e)
         {
-            /// ТУт что то делаем с темы данными что ввел пользователь
+            // TODO: Сохраняем компетенции у сотрудника
+
             this.Close();
         }
 
-        private void ClickCancelButton_Event(object sender, RoutedEventArgs e)
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

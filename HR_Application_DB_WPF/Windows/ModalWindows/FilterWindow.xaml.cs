@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,9 +14,9 @@ using System.Windows.Shapes;
 namespace HR_Application_DB_WPF.ModalWindows
 {
     /// <summary>
-    /// Interaction logic for Add_Competemce.xaml
+    /// Interaction logic for FilterWindow.xaml
     /// </summary>
-    public partial class AddCompetence : Window
+    public partial class FilterWindow : Window
     {
         //=============>
         //=============>
@@ -57,17 +58,30 @@ namespace HR_Application_DB_WPF.ModalWindows
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
 
-        public AddCompetence()
+
+        public FilterWindow()
         {
             InitializeComponent();
+
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
+
+            CreateLineAdressStackPanel(new RoutedEventHandler(AddLineAdressStackPanelEvent),
+                new RoutedEventHandler(RemoveLineStackPanelEvent));
         }
+
         private void AddLineSkillStackPanelEvent(object sender, RoutedEventArgs e)
         {
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
         }
+
+        private void AddLineAdressStackPanelEvent(object sender, RoutedEventArgs e)
+        {
+            CreateLineAdressStackPanel(new RoutedEventHandler(AddLineAdressStackPanelEvent),
+                new RoutedEventHandler(RemoveLineStackPanelEvent));
+        }
+
         private void RemoveLineStackPanelEvent(object sender, RoutedEventArgs e)
         {
             if (sender is Button)
@@ -93,9 +107,22 @@ namespace HR_Application_DB_WPF.ModalWindows
             stackPanel.Children.Add(GetComboBox(tempSkills));
             stackPanel.Children.Add(GetComboBox(tempLevelSkills));
 
-            this.AllCompetenceStackPanel.Children.Add(stackPanel);
+            this.AllSkillsStackPanel.Children.Add(stackPanel);
 
-            SwitchAddButtonToRemoveButton(AllCompetenceStackPanel, addLineEvent, removeLineEvent);
+            SwitchAddButtonToRemoveButton(AllSkillsStackPanel, addLineEvent, removeLineEvent);
+        }
+
+        private void CreateLineAdressStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
+        {
+            var stackPanel = GetStackPanel();
+
+            stackPanel.Children.Add(GetButton(addLineEvent));
+            stackPanel.Children.Add(GetComboBox(tempCountries));
+            stackPanel.Children.Add(GetComboBox(tempCities));
+
+            this.AllAdressStackPanel.Children.Add(stackPanel);
+
+            SwitchAddButtonToRemoveButton(AllAdressStackPanel, addLineEvent, removeLineEvent);
         }
 
         private void SwitchAddButtonToRemoveButton(StackPanel currentStackPanel, RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
@@ -160,13 +187,19 @@ namespace HR_Application_DB_WPF.ModalWindows
             return stackPanel;
         }
 
-        private void ClickSaveButton_Event(object sender, RoutedEventArgs e)
+        private void ClickCancelButton_Event(object sender, RoutedEventArgs e)
         {
-            /// ТУт что то делаем с темы данными что ввел пользователь
             this.Close();
         }
 
-        private void ClickCancelButton_Event(object sender, RoutedEventArgs e)
+        private void Button_Accept_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Сохраняем данные для сотрудника 
+
+            this.Close();
+        }
+
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

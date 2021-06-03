@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HR_Application_DB_WPF.ModalWindows
+namespace HR_Application_DB_WPF.Windows.ModalWindows
 {
     /// <summary>
     /// Interaction logic for AddPositionWindow.xaml
@@ -54,13 +54,14 @@ namespace HR_Application_DB_WPF.ModalWindows
             LevelPositionComboBox.ItemsSource = levelsPosition;
         }
 
-        private void ClickSaveButton_Event(object sender, RoutedEventArgs e)
+        private void Button_Accept_Click(object sender, RoutedEventArgs e)
         {
-            /// ТУт что то делаем с темы данными что ввел пользователь
+            // TODO: Сохраняем данные что ввели для сотрудника
+
             this.Close();
         }
 
-        private void ClickCancelButton_Event(object sender, RoutedEventArgs e)
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

@@ -10,28 +10,34 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HR_Application_DB_WPF
+namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
     /// <summary>
     /// Interaction logic for Authorisation.xaml
     /// </summary>
-    public partial class Authorisation : Window
+    public partial class AuthorizationWindow : Window
     {
-        public Authorisation()
+        public AuthorizationWindow()
         {
             InitializeComponent();
         }
 
         private void SignInButton__Click(object sender, RoutedEventArgs e)
         {
-            Authorisation authorisation = new Authorisation();
-            authorisation.Show();
-;
+            // TODO: Проверяем можно ли залогиниться 
+
+            HomePageWindow homePageWindow = new HomePageWindow();
+            homePageWindow.Show();
+
+            this.Close();
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
 
+            this.Close();
         }
     }
 }
