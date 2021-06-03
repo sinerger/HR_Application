@@ -29,14 +29,13 @@
                     <Button Grid.Column="1" Grid.Row="1" Content="Clear filter" Margin="12,25,0,10" Foreground="#fff" Background="#FFE3405F" Width="200" HorizontalAlignment="Left" RenderTransformOrigin="0.312,0.551"/>
 
                     <DataGrid x:Name="EmployeeGrid" AutoGenerateColumns="True" HorizontalGridLinesBrush="DarkGray"
-    RowBackground="LightGray" AlternatingRowBackground="White" Margin="0,100,0,100" Grid.Row="2">
-
-                        <DataGridTextColumn Header="FullName" Binding="{Binding Path=FullName}" Width="90" />
-                        <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="80" />
-                        <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="50" />
+    RowBackground="LightGray" AlternatingRowBackground="White" Margin="0,100,163,-91" Grid.Row="2" Grid.ColumnSpan="3">
+                        <DataGridTextColumn Header="FullName" Binding="{Binding Path=FullName}" Width="5*" />
+                        <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="5*" />
+                        <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
 
                     </DataGrid>
-                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemStats" Header="Stats"></TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemMyAccount" Header="My Account">
