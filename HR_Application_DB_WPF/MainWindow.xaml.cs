@@ -28,7 +28,7 @@ namespace HR_Application_DB_WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddCompetence fw = new AddCompetence();
+            AddPositionWindow fw = new AddPositionWindow();
             fw.Show();
         }
     }
