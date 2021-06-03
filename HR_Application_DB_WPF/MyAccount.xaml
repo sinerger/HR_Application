@@ -11,6 +11,7 @@
     </Window.Resources>
     <DockPanel VerticalAlignment="Stretch">
         <TabControl Style="{DynamicResource TabControlStyle}">
+            
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemFindEmployee" Header="Find Employee">
                 <Grid x:Name="FindEmployee" Background="#FFE9E9E9">
                     <Grid.RowDefinitions>
@@ -27,17 +28,17 @@
                     <Button Grid.Column="2" Grid.Row="0" Content="Button" Margin="108,25,10,10" Foreground="#fff" Background="#FFE3405F" Width="200"/>
                     <Button Grid.Column="0" Grid.Row="1" Content="Filter" Margin="10,25,113,10" Foreground="#fff" Background="#FFE3405F" Width="200"/>
                     <Button Grid.Column="1" Grid.Row="1" Content="Clear filter" Margin="12,25,0,10" Foreground="#fff" Background="#FFE3405F" Width="200" HorizontalAlignment="Left" RenderTransformOrigin="0.312,0.551"/>
-
                     <DataGrid x:Name="EmployeeGrid" AutoGenerateColumns="True" HorizontalGridLinesBrush="DarkGray"
     RowBackground="LightGray" AlternatingRowBackground="White" Margin="0,100,163,-91" Grid.Row="2" Grid.ColumnSpan="3">
                         <DataGridTextColumn Header="FullName" Binding="{Binding Path=FullName}" Width="5*" />
                         <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="5*" />
                         <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
-
                     </DataGrid>
                 </Grid>
             </TabItem>
+            
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemStats" Header="Stats"></TabItem>
+
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemMyAccount" Header="My Account">
                 <Grid x:Name="Main" Background="#FFE9E9E9">
                     <Grid.ColumnDefinitions>
@@ -105,7 +106,9 @@
                     </Grid>
                 </Grid>
             </TabItem>
+            
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemAllEmployees" Header="All Employees"></TabItem>
+
         </TabControl>
     </DockPanel>
 </Window>
