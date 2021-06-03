@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HRAppWPF
+namespace HR_Application_DB_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,21 +23,8 @@ namespace HRAppWPF
         public MyAccount()
         {
             InitializeComponent();
+            
         }
-
-        public class Employee
-        {
-            public string FullName { get; set; }
-            public string Level { get; set; }
-            public int Direction { get; set; }
-        }
-        List<Employee> employeeList = new List<Employee>
-{
-    new Employee { FullName="Ivan", Level="middle", Direction=111 },
-    new Employee {FullName="Ivan", Level="middle", Direction=222 },
-    new Employee {FullName="Ivan", Level="middle", Direction=333 }
-};
-
 
         private void HyperlinkFindEmployee_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +63,7 @@ namespace HRAppWPF
 
         private void TxtFirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
     }
 }
