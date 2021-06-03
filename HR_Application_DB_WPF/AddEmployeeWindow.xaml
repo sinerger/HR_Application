@@ -27,7 +27,7 @@
 		<Button Content="Cancel" HorizontalAlignment="Left" Margin="40,57,0,0" Grid.Row="2" VerticalAlignment="Top" Height="50" Width="202" Style="{DynamicResource CoralRoundButtonStyle}" FontSize="24" FontWeight="Bold"/>
 		<Button Content="Button" HorizontalAlignment="Left" Height="0" Margin="173,171,0,0" Grid.Row="2" VerticalAlignment="Top" Width="40"/>
 		<Button Content="Save" HorizontalAlignment="Left" Margin="344,56,0,0" Grid.Row="2" VerticalAlignment="Top" Height="50" Width="202" Style="{DynamicResource CoralRoundButtonStyle}" FontSize="24" FontWeight="Normal"/>
-		<Button Content="Add photo" HorizontalAlignment="Left" Margin="385,203,0,0" Grid.Row="1" VerticalAlignment="Top" Height="44" Width="170" Style="{DynamicResource CoralRoundButtonStyle}" FontSize="24" FontWeight="Normal" Click="Button_Click" RenderTransformOrigin="0.388,0.364"/>
+		<Button Content="Add photo" HorizontalAlignment="Left" Margin="385,203,0,0" Grid.Row="1" VerticalAlignment="Top" Height="44" Width="170" Style="{DynamicResource CoralRoundButtonStyle}" FontSize="24" FontWeight="Normal" RenderTransformOrigin="0.388,0.364"/>
 		<Rectangle HorizontalAlignment="Left" Fill="White" Height="106" Margin="413,69,0,0" Grid.Row="1" Stroke="White" VerticalAlignment="Top" Width="117"/>
 		<TextBox Style="{DynamicResource RoundTextBoxStyle}" Margin="56,349,0,0" Grid.Row="1" Height="19" Width="264" HorizontalAlignment="Left" FontSize="12" Text="Position" VerticalAlignment="Top"/>
 		<Label x:Name="AuthorisationTitle" Grid.Row="0"  Content="ADD EMPLOYEES" Background="#E9E9E9" FontSize="36" FontWeight="Bold" Foreground="#FFE64E6C" Margin="101,1,101,4" Width="Auto" HorizontalContentAlignment="Center"/>
