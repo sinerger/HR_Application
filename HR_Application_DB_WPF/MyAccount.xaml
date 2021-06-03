@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HRAppWPF"
+        xmlns:local="clr-namespace:HRAppWPF" xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MyAccount" Height="720" Width="1280">
     <Window.Resources>
@@ -11,70 +11,102 @@
     </Window.Resources>
     <DockPanel VerticalAlignment="Stretch">
         <TabControl Style="{DynamicResource TabControlStyle}">
-            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemFindEmployee" Header="Find Employee"></TabItem>
+            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemFindEmployee" Header="Find Employee">
+                <Grid x:Name="FindEmployee" Background="#FFE9E9E9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="300"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="Enter name" Foreground="#676e69 " TextWrapping="Wrap" Width="850" HorizontalAlignment="Left" RenderTransformOrigin="0.55,0.198" HorizontalContentAlignment="Stretch" FontSize="20" Padding="10,20,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Margin="10,30,0,10" />
+                    <Button Grid.Column="2" Grid.Row="0" Content="Button" Margin="108,25,10,10" Foreground="#fff" Background="#FFE3405F" Width="200"/>
+                    <Button Grid.Column="0" Grid.Row="1" Content="Filter" Margin="10,25,113,10" Foreground="#fff" Background="#FFE3405F" Width="200"/>
+                    <Button Grid.Column="1" Grid.Row="1" Content="Clear filter" Margin="12,25,0,10" Foreground="#fff" Background="#FFE3405F" Width="200" HorizontalAlignment="Left" RenderTransformOrigin="0.312,0.551"/>
+
+                    <DataGrid x:Name="employeeGrid" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+    RowBackground="LightGray" AlternatingRowBackground="White">
+
+                        <DataGrid.Items>
+                            <local:Employee FullName="Ivan" Level="middle" Direction="54990" />
+                            <local:Employee FullName="Ivan" Level="middle" Direction="39990" />
+                            <local:Employee FullName="Ivan" Level="middle" Direction="29990" />
+                        </DataGrid.Items>
+
+                </DataGrid>
+                    </Grid>
+            </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemStats" Header="Stats"></TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemMyAccount" Header="My Account">
-            <Grid x:Name="Main" Background="#FFE9E9E9">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="94*"/>
-                    <RowDefinition Height="94"/>
-                    <RowDefinition Height="94*"/>
-                    <RowDefinition Height="94*"/>
-                    <RowDefinition Height="123*"/>
-                    <RowDefinition Height="123*"/>
-                </Grid.RowDefinitions>
-                <Grid x:Name ="GridFirstName" Grid.Row="0">
+                <Grid x:Name="Main" Background="#FFE9E9E9">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="227*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Text="First name" TextChanged="TxtFirstName_TextChanged"/>
-                    <Button Click="ButtonLogOut_Click" Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="BtnLogOut" Content="Log out" Grid.Column="2"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="94*"/>
+                        <RowDefinition Height="94"/>
+                        <RowDefinition Height="94*"/>
+                        <RowDefinition Height="94*"/>
+                        <RowDefinition Height="123*"/>
+                        <RowDefinition Height="123*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name ="GridFirstName" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Text="First name" TextChanged="TxtFirstName_TextChanged"/>
+                        <Button Click="ButtonLogOut_Click" Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="BtnLogOut" Content="Log out" Grid.Column="2"/>
+                    </Grid>
+                    <Grid x:Name ="GridSecondName" Grid.ColumnSpan="2" Margin="0,97,0,0" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name ="TxtSecondName" Grid.Column="1" Text="Second name"/>
+                    </Grid>
+                    <Grid x:Name ="GridCompany" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,94,0,97" Grid.RowSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Text="Company"/>
+                    </Grid>
+                    <Grid x:Name ="GridCity" Grid.Row="3" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Text="City"/>
+                    </Grid>
+                    <Grid x:Name ="GridChangePassword" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,97,0,0" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="0.35*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Click="ButtonChangePassword_Click" Style="{DynamicResource CoralRoundButtonStyle}" x:Name="BtnChangePassword" Grid.Column="1" Content="Change password"/>
+                    </Grid>
+                    <Grid x:Name ="GridSaveCancel" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,127,0,0" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.35*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="BtnSave" Grid.Column="1" Content="Save" IsEnabled="False"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="BtnCancel" Grid.Column="2" Content="Cancel" IsEnabled="False"/>
+                    </Grid>
                 </Grid>
-                <Grid x:Name ="GridSecondName" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="0.4*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name ="TxtSecondName" Grid.Column="1" Text="Second name"/>
-                </Grid>
-                <Grid x:Name ="GridCompany" Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="0.4*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Text="Company"/>
-                </Grid>
-                <Grid x:Name ="GridCity" Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0.4*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Text="City"/>
-                </Grid>
-                <Grid x:Name ="GridChangePassword" Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.35*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0.35*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Click="ButtonChangePassword_Click" Style="{DynamicResource CoralRoundButtonStyle}" x:Name="BtnChangePassword" Grid.Column="1" Content="Change password"/>
-                </Grid>
-                <Grid x:Name ="GridSaveCancel" Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.35*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="0.35*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="BtnSave" Grid.Column="1" Content="Save" IsEnabled="False"/>
-                    <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="BtnCancel" Grid.Column="2" Content="Cancel" IsEnabled="False"/>
-                </Grid>
-            </Grid>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemAllEmployees" Header="All Employees"></TabItem>
         </TabControl>

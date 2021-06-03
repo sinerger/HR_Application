@@ -25,6 +25,20 @@ namespace HRAppWPF
             InitializeComponent();
         }
 
+        public class Employee
+        {
+            public string FullName { get; set; }
+            public string Level { get; set; }
+            public int Direction { get; set; }
+        }
+        List<Employee> employeeList = new List<Employee>
+{
+    new Employee { FullName="Ivan", Level="middle", Direction=111 },
+    new Employee {FullName="Ivan", Level="middle", Direction=222 },
+    new Employee {FullName="Ivan", Level="middle", Direction=333 }
+};
+
+
         private void HyperlinkFindEmployee_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Hello from FindEmployee Window:)", "Hello USER!!!", MessageBoxButton.OK);
