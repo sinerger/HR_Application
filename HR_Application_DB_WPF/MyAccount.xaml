@@ -29,10 +29,10 @@
                     <Grid Grid.Row="1" Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.55*"/>
                         </Grid.ColumnDefinitions>
                         <Label Style="{DynamicResource LabelStyle}" Content="How many employees are in the " Grid.Column="0"/>
-                    <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1">
+                    <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0">
                         <ComboBoxItem Name="cbi1">Department1</ComboBoxItem>
                         <ComboBoxItem Name="cbi2">Department2</ComboBoxItem>
                         <ComboBoxItem Name="cbi3">Department3</ComboBoxItem>
@@ -41,13 +41,13 @@
                     <Grid Grid.Row="2" Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.55*"/>
                         </Grid.ColumnDefinitions>
                         <Label Style="{DynamicResource LabelStyle}" Content="How many are in the application:" Grid.Column="0"/>
-                    <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1">
-                        <ComboBoxItem Name="cbid1">Direction1</ComboBoxItem>
-                        <ComboBoxItem Name="cbid2">Direction2</ComboBoxItem>
-                        <ComboBoxItem Name="cbid3">Direction3</ComboBoxItem>
+                    <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0">
+                        <ComboBoxItem Name="cbid1">Employee1</ComboBoxItem>
+                        <ComboBoxItem Name="cbid2">Employee2</ComboBoxItem>
+                        <ComboBoxItem Name="cbid3">Employee3</ComboBoxItem>
                     </ComboBox>
                 </Grid>
                     <Label Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many hr's are in the application now:"/>
