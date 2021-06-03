@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Custom;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -25,12 +26,12 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<EmployeeSkillDTO, LevelSkillDTO, SkillDTO, EmployeeSkillDTO>
+                    result = dbConnection.Query<EmployeeSkillDTO, int, int, EmployeeSkillDTO>
                          (query,
                          (employeeSkill, levelSkill, skill) =>
                          {
-                             employeeSkill.Level = levelSkill;
-                             employeeSkill.Skill = skill;
+                             employeeSkill.LevelID = levelSkill;
+                             employeeSkill.SkillID = skill;
 
                              return employeeSkill;
                          },
@@ -48,19 +49,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeeSkillDTO> GetAllByEmployeeID(int employeeID)
         {
-            string query = "[HRAppDB].GetEmployeeSkillByEmployeeID";
+            string query = "[HRAppDB].GetEmployeeSkillByEmployeeID @EmployeeID";
             List<EmployeeSkillDTO> result = new List<EmployeeSkillDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<EmployeeSkillDTO, LevelSkillDTO, SkillDTO, EmployeeSkillDTO>
+                    result = dbConnection.Query<EmployeeSkillDTO, int, int, EmployeeSkillDTO>
                          (query,
                          (employeeSkill, levelSkill, skill) =>
                          {
-                             employeeSkill.Level = levelSkill;
-                             employeeSkill.Skill = skill;
+                             employeeSkill.LevelID = levelSkill;
+                             employeeSkill.SkillID = skill;
 
                              return employeeSkill;
                          },
@@ -69,8 +70,9 @@ namespace HR_Application_DB_Logic.Repositories
                          .AsList<EmployeeSkillDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
+                var s = e.ToString();
                 result = null;
             }
 

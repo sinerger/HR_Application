@@ -17,7 +17,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public SkillDTO GetByID(int id)
         {
-            string query = "GetSkillByID @ID";
+            string query = "[HRAppDB].GetSkillByID @ID";
             SkillDTO result = new SkillDTO();
 
             try
@@ -32,13 +32,12 @@ namespace HR_Application_DB_Logic.Repositories
                 result = null;
             }
 
-
             return result;
         }
 
         public SkillDTO GetByTitle(string title)
         {
-            string query = " GetSkillByTitle @Title";
+            string query = "[HRAppDB].GetSkillByTitle @Title";
             SkillDTO result = new SkillDTO();
 
             try
@@ -78,7 +77,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(SkillDTO skill)
         {
-            string query = "CreateSkill @Title @Description";
+            string query = "[HRAppDB].CreateSkill @Title @Description";
             bool result = true;
 
             try
@@ -98,7 +97,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(SkillDTO skill)
         {
-            string query = "UpdateSkill @ID @Title @Description";
+            string query = "[HRAppDB].UpdateSkill @ID @Title @Description";
             bool result = true;
 
             try
@@ -118,7 +117,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteSkill @ID";
+            string query = "[HRAppDB].DeleteSkill @ID";
             bool result = true;
 
             try
