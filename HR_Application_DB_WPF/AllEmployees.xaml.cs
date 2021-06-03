@@ -30,7 +30,7 @@ namespace HR_Application_DB_WPF
 
         private void GetAllEmployees()
         {
-            //я заебался тыкаться и гуглить
+            //получение данных
         }
     }
 }
