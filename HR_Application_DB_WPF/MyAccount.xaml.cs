@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace HRAppWPF
+namespace HR_Application_DB_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -11,6 +11,7 @@ namespace HRAppWPF
         public MyAccount()
         {
             InitializeComponent();
+            
         }
 
         private void HyperlinkFindEmployee_Click(object sender, RoutedEventArgs e)
