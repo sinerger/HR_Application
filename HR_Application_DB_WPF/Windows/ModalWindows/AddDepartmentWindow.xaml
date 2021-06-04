@@ -146,7 +146,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Style="{DynamicResource LabelStyle}" Content="ADD DEPARTMENT" Foreground="#E64E6C" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" Height="78" Width="386" FontFamily="Global User Interface" Grid.RowSpan="2"/>
+        <Label Style="{DynamicResource LabelStyle}" Content="ADD DEPARTMENT" Foreground="#E64E6C" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" Height="78" Width="410" FontFamily="Global User Interface" Grid.RowSpan="2"/>
         <Button x:Name="Button_Cancel" Style="{DynamicResource RoundedButtonStyle}"  HorizontalAlignment="Left" Margin="65,0,0,0" Grid.Row="2" VerticalAlignment="Center" Background="#FFE3405F" Foreground="White" Click="Button_Cancel_Click" Height="50" Width="180" >
             <TextBlock Text="CANCEL" FontSize="32" FontFamily="Global User Interface"/>
         </Button>

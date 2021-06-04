@@ -205,6 +205,31 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="White" BorderBrush="#FF7D8683" BorderThickness="1"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                            <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid RenderTransformOrigin="0.462,0.427">
         <Grid.RowDefinitions >
@@ -215,7 +240,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label x:Name="AuthorisationTitle" Grid.Row="0"  Content="AUTHORIZATION" Background="#E9E9E9" FontSize="36" FontWeight="Bold" Foreground="#FFE64E6C" Margin="50,30,52,30" Width="Auto" HorizontalContentAlignment="Center"></Label>
-        <TextBox Style="{DynamicResource TextBoxStyleLogin}" x:Name="TextBox_Login" Grid.Row="1" Text="Login" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Height="Auto" Width="400" SelectionBrush="#FFCAD4DC" Margin="0,30,0,30"/>
+
+        <TextBox Style="{DynamicResource MyWaterMarkStyle}" x:Name="TextBox_Login" Grid.Row="1" Tag ="Login"  TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Height="Auto" Width="400" SelectionBrush="#FFCAD4DC" Margin="0,30,0,30" PreviewTextInput="TextBox_Login_PreviewTextInput" PreviewMouseDown="TextBox_Login_PreviewMouseDown"/>
         <TextBox Style="{DynamicResource TextBoxStylePassword}" x:Name="TextBox_Password" Grid.Row="2" Text="Password" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Margin="27,30,27,30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="400"/>
         <Button Style="{DynamicResource ButtonStyleSignIn}" x:Name="SignInButton_" Grid.Row="3" Content="Sign In" Background="#E64E6C" Foreground="#fff" FontSize="24" Margin="0,30,0,30" Click="SignInButton__Click" UseLayoutRounding="True" Width="400"/>
         <Button Style="{DynamicResource ButtonStyleRegistration}" x:Name="RegistrationButton"  Grid.Row="4" Content="Registration" Background="#E64E6C" Foreground="#fff" FontSize="24" Margin="0,30,0,30" Click="RegistrationButton_Click" Width="400"/>
