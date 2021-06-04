@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -91,12 +92,18 @@ namespace HR_Application_DB_Logic.Repositories
 
         public LevelSkillDTO GetByID(int id)
         {
-            string query = "GetLevelSkillsByID @ID";
+            string query = "[HRAppDB].GetLevelSkillsByID @ID";
             LevelSkillDTO result = new LevelSkillDTO();
-
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            try
             {
-                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { id });
+                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                {
+                    result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { id });
+                }
+            }
+            catch(Exception e)
+            {
+                var s = e.ToString();
             }
 
             return result;

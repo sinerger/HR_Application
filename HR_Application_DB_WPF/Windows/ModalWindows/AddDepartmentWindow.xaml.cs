@@ -15,7 +15,7 @@ namespace HR_Application_DB_WPF.ModalWindows
     /// <summary>
     /// Interaction logic for AddDepartment.xaml
     /// </summary>
-    public partial class AddDepartment : Window
+    public partial class AddDepartmentWindow : Window
     {
         //=============>
         //=============>
@@ -45,7 +45,7 @@ namespace HR_Application_DB_WPF.ModalWindows
         //=============>
 
 
-        public AddDepartment()
+        public AddDepartmentWindow()
         {
             InitializeComponent();
             SetDataCity(_cities);
@@ -68,14 +68,15 @@ namespace HR_Application_DB_WPF.ModalWindows
             DepartmentsComboBox.ItemsSource = departments;
         }
 
-        private void ClickSaveButton_Event(object sender, RoutedEventArgs e)
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            /// ТУт что то делаем с темы данными что ввел пользователь
             this.Close();
         }
 
-        private void ClickCancelButton_Event(object sender, RoutedEventArgs e)
+        private void Butoon_Accept_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: Сохраняем данные что ввели для сотрудника
+
             this.Close();
         }
     }

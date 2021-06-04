@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HR_Application_DB_WPF
+namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
     public partial class ChangePasswordWindow : Window
     {
@@ -19,16 +19,15 @@ namespace HR_Application_DB_WPF
             InitializeComponent();
         }
 
-        private void CencelButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();
-            changePasswordWindow.Close();
+            // TODO: Поменять пароль у пользователя
+            this.Close();
         }
 
-        private void SaveBatton_Click(object sender, RoutedEventArgs e)
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow changePasswordWindow = new ChangePasswordWindow();
-            changePasswordWindow.Show();
+            this.Close();
         }
     }
 }

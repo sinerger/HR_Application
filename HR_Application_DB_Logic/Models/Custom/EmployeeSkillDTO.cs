@@ -7,7 +7,7 @@
         public string Date { get; set; }
         public bool? IsActual { get; set; }
         public int? UserID { get; set; }
-        public LevelSkillDTO Level { get; set; }
-        public SkillDTO Skill { get; set; }
+        public int LevelID { get; set; }
+        public int SkillID { get; set; }
     }
 }

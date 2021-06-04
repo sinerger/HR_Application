@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HR_Application_DB_WPF
+namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
     /// <summary>
     /// Interaction logic for RegistrationWindow.xaml
@@ -24,8 +24,13 @@ namespace HR_Application_DB_WPF
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationWindow registration = new RegistrationWindow();
-            registration.Show();
+            // TODO: Отправляем данные 
+            // TODO: Проверяем можно ли зарегестрироваться 
+
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
+
+            this.Close();
         }
     }
 }
