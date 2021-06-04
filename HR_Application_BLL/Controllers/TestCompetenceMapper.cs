@@ -8,14 +8,14 @@ using AutoMapper;
 
 namespace HR_Application_BLL.Controllers
 {
-    public class CompetenceMapper
+    public class TestCompetenceMapper
     {
         private DBController _dbController;
         private MapperConfiguration _mapperConfig;
         private Mapper _mapper;
 
 
-        public CompetenceMapper()
+        public TestCompetenceMapper()
         {
             _dbController = new DBController(DBConfigurator.ConnectionString);
 
