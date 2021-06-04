@@ -19,12 +19,12 @@ namespace HR_Application_BLL.Controllers
         {
             _dbController = new DBController(DBConfigurator.ConnectionString);
 
-            _mapperConfig = new MapperConfiguration(config => config.CreateMap<EmployeeSkillDTO, TestCompetence>()
-                .ForMember(dest => dest.Level, option => option
-                    .MapFrom(sourse => _dbController.LevelSkillRepository.GetByID(sourse.LevelID).Title))
-                .ForMember(dest => dest.Name, option => option
-                    .MapFrom(sourse => _dbController.SkillRepository.GetByID(sourse.SkillID).Title))
-                .ForMember(dest=> dest.Date, option =>option.MapFrom(source=>source.Date)));
+            //_mapperConfig = new MapperConfiguration(config => config.CreateMap<EmployeeSkillDTO, TestCompetence>()
+            //    .ForMember(dest => dest.Level, option => option
+            //        //.MapFrom(sourse => _dbController.LevelSkillRepository.GetByID(sourse.LevelID).Title))
+            //    .ForMember(dest => dest.Name, option => option
+            //        .MapFrom(sourse => _dbController.SkillRepository.GetByID(sourse.SkillID).Title))
+            //    .ForMember(dest=> dest.Date, option =>option.MapFrom(source=>source.Date)));
 
             _mapper = new Mapper(_mapperConfig);
         }
