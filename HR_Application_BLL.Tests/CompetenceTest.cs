@@ -8,7 +8,7 @@ namespace HR_Application_BLL.Tests
         [Test]
         public void GetCompetencesByEmployeeID_WhenValidTestPassed_ShouldReturnNewListCompetenceObjects()
         {
-            CompetenceController controller = new CompetenceController();
+            TestCompetenceMapper controller = new TestCompetenceMapper();
 
             var actual = controller.GetCompetencesByEmployeeID(1);
         }

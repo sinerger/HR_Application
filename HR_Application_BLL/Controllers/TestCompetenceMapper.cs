@@ -8,18 +8,18 @@ using AutoMapper;
 
 namespace HR_Application_BLL.Controllers
 {
-    public class CompetenceController
+    public class CompetenceMapper
     {
         private DBController _dbController;
         private MapperConfiguration _mapperConfig;
         private Mapper _mapper;
 
 
-        public CompetenceController()
+        public CompetenceMapper()
         {
             _dbController = new DBController(DBConfigurator.ConnectionString);
 
-            _mapperConfig = new MapperConfiguration(config => config.CreateMap<EmployeeSkillDTO, Competence>()
+            _mapperConfig = new MapperConfiguration(config => config.CreateMap<EmployeeSkillDTO, TestCompetence>()
                 .ForMember(dest => dest.Level, option => option
                     .MapFrom(sourse => _dbController.LevelSkillRepository.GetByID(sourse.LevelID).Title))
                 .ForMember(dest => dest.Name, option => option
@@ -29,14 +29,14 @@ namespace HR_Application_BLL.Controllers
             _mapper = new Mapper(_mapperConfig);
         }
 
-        public List<Competence> GetCompetencesByEmployeeID(int employeeID)
+        public List<TestCompetence> GetCompetencesByEmployeeID(int employeeID)
         {
             List<EmployeeSkillDTO> skills = _dbController.EmployeeSkillRepository.GetAllByEmployeeID(employeeID);
-            var result = new List<Competence>();
+            var result = new List<TestCompetence>();
 
             if (skills != null)
             {
-                result = _mapper.Map<List<Competence>>(skills);
+                result = _mapper.Map<List<TestCompetence>>(skills);
             }
 
             return result;
