@@ -215,8 +215,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label x:Name="AuthorisationTitle" Grid.Row="0"  Content="AUTHORIZATION" Background="#E9E9E9" FontSize="36" FontWeight="Bold" Foreground="#FFE64E6C" Margin="50,30,52,30" Width="Auto" HorizontalContentAlignment="Center"></Label>
-        <TextBox Style="{DynamicResource TextBoxStyleLogin}" x:Name="EnterLogin_" Grid.Row="1" Text="Login" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Height="Auto" Width="400" SelectionBrush="#FFCAD4DC" Margin="0,30,0,30"/>
-        <TextBox Style="{DynamicResource TextBoxStylePassword}" x:Name="EnterPassword_" Grid.Row="2" Text="Password" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Margin="27,30,27,30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="400"/>
+        <TextBox Style="{DynamicResource TextBoxStyleLogin}" x:Name="TextBox_Login" Grid.Row="1" Text="Login" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Height="Auto" Width="400" SelectionBrush="#FFCAD4DC" Margin="0,30,0,30"/>
+        <TextBox Style="{DynamicResource TextBoxStylePassword}" x:Name="TextBox_Password" Grid.Row="2" Text="Password" TextWrapping="Wrap" Foreground="#676e69" FontSize="24" Padding="10,10,0,0" Margin="27,30,27,30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="400"/>
         <Button Style="{DynamicResource ButtonStyleSignIn}" x:Name="SignInButton_" Grid.Row="3" Content="Sign In" Background="#E64E6C" Foreground="#fff" FontSize="24" Margin="0,30,0,30" Click="SignInButton__Click" UseLayoutRounding="True" Width="400"/>
         <Button Style="{DynamicResource ButtonStyleRegistration}" x:Name="RegistrationButton"  Grid.Row="4" Content="Registration" Background="#E64E6C" Foreground="#fff" FontSize="24" Margin="0,30,0,30" Click="RegistrationButton_Click" Width="400"/>
     </Grid>

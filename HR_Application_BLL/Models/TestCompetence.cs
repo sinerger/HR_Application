@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Models
 {
-    public class Competence
+    public class TestCompetence
     {
         public string Name { get; set; }
         public string Level { get; set; }

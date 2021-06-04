@@ -7,5 +7,10 @@
         public int? LocationID { get; set; }
         public string Description { get; set; }
         public bool? IsActual { get; set; }
+
+        public override string ToString()
+        {
+            return ID.ToString();
+        }
     }
 }

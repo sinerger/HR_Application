@@ -13,6 +13,11 @@ namespace HR_Application_DB_Logic
     {
         private string _connectionString;
 
+        public DBController(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
         public AdressRepository AdressRepository => new AdressRepository(_connectionString);
 
         public CityRepository CityRepository => new CityRepository(_connectionString);
@@ -48,7 +53,7 @@ namespace HR_Application_DB_Logic
         public HistoriesRepository HistoriesRepository => new HistoriesRepository(_connectionString);
 
         public LevelPositionRepository LevelPositionRepository => new LevelPositionRepository(_connectionString);
-
+        public LevelSkillRepository LevelSkillRepository => new LevelSkillRepository(_connectionString);
         public LocationRepository LocationRepository => new LocationRepository(_connectionString);
 
         public PositionRepository PositionRepository => new PositionRepository(_connectionString);
@@ -61,6 +66,6 @@ namespace HR_Application_DB_Logic
 
         public StatusRepository StatusRepository => new StatusRepository(_connectionString);
 
-        public UserRepository UserRepository => new UserRepository(_connectionString);
+        public IRepository<UserDTO> UserRepository => new UserRepository(_connectionString);
     }
 }

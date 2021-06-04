@@ -4,7 +4,7 @@
     [LastName]  NVARCHAR (255) NOT NULL,
     [CompanyID] INT            NOT NULL,
     [Email]     NVARCHAR (255) NOT NULL,
-    [Passvord]  NVARCHAR (255) NOT NULL,
+    [Password]  NVARCHAR (255) NOT NULL,
     [IsActual]  BIT            NOT NULL,
     CONSTRAINT [PK_USERS] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [Users_fk0] FOREIGN KEY ([CompanyID]) REFERENCES [HRAppDB].[Companies] ([ID]),

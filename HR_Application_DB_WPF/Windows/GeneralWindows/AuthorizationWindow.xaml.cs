@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR_Application_BLL;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -25,11 +26,18 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private void SignInButton__Click(object sender, RoutedEventArgs e)
         {
             // TODO: Проверяем можно ли залогиниться 
+            UserController userController = new UserController();
 
-            HomePageWindow homePageWindow = new HomePageWindow();
-            homePageWindow.Show();
-
-            this.Close();
+            if(userController.Autorization(TextBox_Login.Text, TextBox_Password.Text))
+            {
+                HomePageWindow homePageWindow = new HomePageWindow();
+                homePageWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid password");
+            }
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
