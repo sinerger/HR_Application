@@ -13,7 +13,7 @@ namespace HR_Application_BLL.Controllers
 
         private MapperConfiguration _mapperConfig;
         private Mapper _mapper;
-        public IDBController DBController { get; set; }
+        public IDBController DBController { get; private set; }
 
         public UserMapper(IDBController dbController)
         {
@@ -31,6 +31,7 @@ namespace HR_Application_BLL.Controllers
         public List<UserModel> GetAllFromUserDTOToUserModel()
         {
             List<UserDTO> users = new List<UserDTO>();
+
             try
             {
                 users = DBController.UserRepository.GetAll();
@@ -43,7 +44,6 @@ namespace HR_Application_BLL.Controllers
             List<UserModel> userModels = _mapper.Map<List<UserModel>>(users);
 
             return userModels;
-
         }
     }
 }

@@ -15,7 +15,7 @@ namespace HR_Application_BLL.Tests
     public class UserMapperTests
     {
         private Mock<IDBController> _mock;
-        UserMapper _userMapper;
+        private UserMapper _userMapper;
 
         [SetUp]
         public void Setup()
@@ -24,6 +24,7 @@ namespace HR_Application_BLL.Tests
             _userMapper = new UserMapper(_mock.Object); 
 
         }
+
         [TestCaseSource(typeof(GetAllFromUserDTOToUserModelSource))]
         public void GetAllFromUserDTOToUserModel_WhenValidTestPassed_ShouldReturnListUserModel(List<UserDTO> returnedUsersDTO,List<UserModel> expected)
         {
@@ -32,37 +33,5 @@ namespace HR_Application_BLL.Tests
 
             Assert.AreEqual(expected, actual);
         }
-
-        private object GetAllFromUserDTOToUserModelSouce()
-        {
-            throw new NotImplementedException();
-        }
-
-        //public void SqrSumm(int a, int b, int adderReturns, int expexted)
-        //{
-        //    mock.Setup(adder => (adder.Add(a, b))).Returns(adderReturns);
-
-        //    int actual = calc.SqrSumm(a, b);
-
-        //    Assert.AreEqual(expexted, actual);
-        //}
-        //public void SummSqr(int a, int b, int expextedA, int expextedB)
-        //{
-        //    mock.Setup(adder => (adder.Add(expextedA, expextedB))).Verifiable();
-
-        //    calc.SummSqr(a, b);
-
-        //    mock.Verify();
-        //}
-        //public void SqrSummSqr(int a, int b, int expextedA, int expextedB, int adderReturns, int expexted)
-        //{
-        //    mock.Setup(adder => (adder.Add(expextedA, expextedB))).Returns(adderReturns).Verifiable();
-
-        //    int actual = calc.SqrSummSqr(a, b);
-
-        //    Assert.AreEqual(expexted, actual);
-        //    mock.Verify();
-
-        //}
     }
 }

@@ -28,18 +28,23 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void SignInButton__Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Проверяем можно ли залогиниться 
-            UserController userController = new UserController();
-
-            if (userController.Autorization(TextBox_Login.Text, TextBox_Password.Text))
+            try
             {
-                HomePageWindow homePageWindow = new HomePageWindow();
-                homePageWindow.Show();
-                this.Close();
+                if (AuthorizationController.SignIn(TextBox_Login.Text, TextBox_Password.Text))
+                {
+                    HomePageWindow homePageWindow = new HomePageWindow();
+                    homePageWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid login or password");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Invalid password");
+
+                MessageBox.Show("The server is not responding. from try later");
             }
         }
 
@@ -49,32 +54,6 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             registrationWindow.Show();
 
             this.Close();
-        }
-
-        private void TextBox_Login_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (sender is TextBox)
-            {
-                var textBox = (TextBox)sender;
-
-                //if (textBox.Text == string.Empty)
-                //{
-                //    textBox.Text = _defaultTextLogin;
-                //}
-            }
-        }
-
-        private void TextBox_Login_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //if (sender is TextBox)
-            //{
-            //    var textBox = (TextBox)sender;
-
-            //    if (textBox.Text == _defaultTextLogin )
-            //    {
-            //        textBox.Text = string.Empty;
-            //    }
-            //}
         }
     }
 }
