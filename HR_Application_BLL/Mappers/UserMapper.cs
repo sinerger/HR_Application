@@ -10,8 +10,6 @@ namespace HR_Application_BLL.Controllers
 {
     public class UserMapper
     {
-
-        private MapperConfiguration _mapperConfig;
         private Mapper _mapper;
         public IDBController DBController { get; private set; }
 
@@ -20,7 +18,7 @@ namespace HR_Application_BLL.Controllers
             DBController = dbController;
         }
 
-        public List<UserModel> GetAllUserModelsFromUserDTO()
+        public List<User> GetAllUsersFromUserDTO()
         {
             List<UserDTO> users = new List<UserDTO>();
             _mapper = new Mapper(GetMapperConfigurationForMapUserDTOToUserModel());
@@ -34,12 +32,12 @@ namespace HR_Application_BLL.Controllers
                 throw e;
             }
 
-            List<UserModel> userModels = _mapper.Map<List<UserModel>>(users);
+            List<User> userModels = _mapper.Map<List<User>>(users);
 
             return userModels;
         }
 
-        public UserDTO GetUserDTOFromUserModel(UserModel userModel)
+        public UserDTO GetUserDTOFromUser(User userModel)
         {
             if (userModel != null)
             {
@@ -63,7 +61,7 @@ namespace HR_Application_BLL.Controllers
 
         private MapperConfiguration GetMapperConfigurationForMapUserModelToUserDTO()
         {
-            return new MapperConfiguration(config => config.CreateMap<UserModel, UserDTO>()
+            return new MapperConfiguration(config => config.CreateMap<User, UserDTO>()
             .ForMember(dest => dest.Company, option => option
              .MapFrom(sourse => new CompanyDTO() { Title = sourse.Company }))
             .ForMember(dest => dest.Adress, option => option
@@ -72,7 +70,7 @@ namespace HR_Application_BLL.Controllers
 
         private MapperConfiguration GetMapperConfigurationForMapUserDTOToUserModel()
         {
-            return new MapperConfiguration(config => config.CreateMap<UserDTO, UserModel>()
+            return new MapperConfiguration(config => config.CreateMap<UserDTO, User>()
             .ForMember(dest => dest.Company, option => option
               .MapFrom(sourse => sourse.Company.Title))
             .ForMember(dest => dest.City, option => option

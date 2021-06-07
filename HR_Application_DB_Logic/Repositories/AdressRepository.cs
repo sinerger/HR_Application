@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class AdressRepository
+    public class AdressRepository : IRepository<AdressDTO>
     {
-        private string _connectionString;
-
+        public string ConnectionString { get; }
         public AdressRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
+        }
+
+        public bool Create(AdressDTO obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<AdressDTO> GetAll()
@@ -23,7 +33,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<AdressDTO, CityDTO, CountryDTO, AdressDTO>
                         (query,
@@ -53,7 +63,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     var temp = dbConnection.Query<AdressDTO, CityDTO, CountryDTO, AdressDTO>
                         (query,
@@ -63,7 +73,7 @@ namespace HR_Application_DB_Logic.Repositories
                             adress.Country = country;
 
                             return adress;
-                        },new { id })
+                        }, new { id })
                         .AsList<AdressDTO>();
 
                     if (temp.Count > 0)
@@ -78,6 +88,11 @@ namespace HR_Application_DB_Logic.Repositories
             }
 
             return result;
+        }
+
+        public bool Update(AdressDTO obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

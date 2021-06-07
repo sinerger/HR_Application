@@ -66,9 +66,9 @@ namespace HR_Application_BLL.Tests.Souces
                     }
                 }
             };
-            var userModels = new List<UserModel>()
+            var userModels = new List<User>()
             {
-                new UserModel()
+                new User()
                 {
                     ID = 1,
                     FirstName = "FirstName",
@@ -78,7 +78,7 @@ namespace HR_Application_BLL.Tests.Souces
                     Company = "Wd",
                     City = "Dnipro"
                 },
-                new UserModel()
+                new User()
                 {
                     ID = 2,
                     FirstName = "1FirstName1",

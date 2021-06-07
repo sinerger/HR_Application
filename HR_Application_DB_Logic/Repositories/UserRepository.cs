@@ -153,25 +153,5 @@ namespace HR_Application_DB_Logic.Repositories
 
             return result;
         }
-
-        //public UserDTO GetByName(string name)
-        //{
-        //    string query = "[HRAppDB].GetUserByName @Name";
-        //    UserDTO result = new UserDTO();
-
-        //    try
-        //    {
-        //        using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-        //        {
-        //            result = dbConnection.QuerySingle<UserDTO>(query, new { name });
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-
-        //    return result;
-        //}
     }
 }

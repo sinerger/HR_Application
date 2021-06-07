@@ -22,21 +22,21 @@ namespace HR_Application_BLL.Tests
         {
             _mock = new Mock<IDBController>();
             _userMapper = new UserMapper(_mock.Object); 
-
         }
 
         [TestCaseSource(typeof(GetAllFromUserDTOToUserModelSource))]
-        public void GetAllFromUserDTOToUserModel_WhenValidTestPassed_ShouldReturnListUserModel(List<UserDTO> returnedUsersDTO,List<UserModel> expected)
+        public void GetAllFromUserDTOToUserModel_WhenValidTestPassed_ShouldReturnListUserModel(List<UserDTO> returnedUsersDTO,List<User> expected)
         {
             _mock.Setup(getAll => (getAll.UserRepository.GetAll())).Returns(returnedUsersDTO);
-            List<UserModel> actual = _userMapper.GetAllUserModelsFromUserDTO();
+            List<User> actual = _userMapper.GetAllUsersFromUserDTO();
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestCaseSource(typeof(GetUserDTOFromUserModelSource))]
-        public void GetUserDTOFromUserModel_WhenValidTestPassed_ShouldReturnUserDTO(UserModel userModel, UserDTO expected)
+        public void GetUserDTOFromUserModel_WhenValidTestPassed_ShouldReturnUserDTO(User userModel, UserDTO expected)
         {
-            UserDTO actual = _userMapper.GetUserDTOFromUserModel(userModel);
+            UserDTO actual = _userMapper.GetUserDTOFromUser(userModel);
 
             Assert.AreEqual(expected, actual);
         }

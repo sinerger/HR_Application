@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Models
 {
-    public class UserModel
+    public class User
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
@@ -26,9 +26,9 @@ namespace HR_Application_BLL.Models
         {
             bool result = false;
 
-            if (obj is UserModel)
+            if (obj is User)
             {
-                var user = (UserModel)obj;
+                var user = (User)obj;
 
                 if (user.ID == ID
                     && user.FirstName == FirstName

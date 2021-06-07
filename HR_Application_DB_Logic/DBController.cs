@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Repositories;
 using HR_Application_DB_Logic.Interfaces;
+using HR_Application_DB_Logic.Models.Custom;
 
 namespace HR_Application_DB_Logic
 {
@@ -18,7 +19,7 @@ namespace HR_Application_DB_Logic
             _connectionString = connectionString;
         }
 
-        public AdressRepository AdressRepository => new AdressRepository(_connectionString);
+        public IRepository<AdressDTO> AdressRepository => new AdressRepository(_connectionString);
         public CityRepository CityRepository => new CityRepository(_connectionString);
         public CommentRepository CommentRepository => new CommentRepository(_connectionString);
         public CompanyDepartmentsRepository CompanyDepartmentsRepository => new CompanyDepartmentsRepository(_connectionString);
@@ -44,5 +45,6 @@ namespace HR_Application_DB_Logic
         public SkillRepository SkillRepository => new SkillRepository(_connectionString);
         public StatusRepository StatusRepository => new StatusRepository(_connectionString);
         public IRepository<UserDTO> UserRepository => new UserRepository(_connectionString);
+        public IRepository<CompanyAdressDTO> CompanyAdressRepository => new CompanyAdressRepository(_connectionString);
     }
 }

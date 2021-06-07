@@ -13,7 +13,7 @@ namespace HR_Application_BLL.Tests.Souces
         {
             yield return new object[]
             {
-                new UserModel()
+                new User()
                 {
                     ID = 1,
                     FirstName = "FirstName",

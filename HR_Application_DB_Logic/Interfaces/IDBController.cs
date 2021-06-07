@@ -1,4 +1,5 @@
 ﻿using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Custom;
 using HR_Application_DB_Logic.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,9 @@ namespace HR_Application_DB_Logic.Interfaces
 {
     public interface IDBController
     {
-        AdressRepository AdressRepository { get; }
+        IRepository<AdressDTO> AdressRepository { get; }
         CityRepository CityRepository { get; }
+        IRepository<CompanyAdressDTO> CompanyAdressRepository { get; }
         CommentRepository CommentRepository { get; }
         CompanyDepartmentsRepository CompanyDepartmentsRepository { get; }
         CompanyRepository CompanyRepository { get; }
