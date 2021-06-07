@@ -11,6 +11,10 @@ namespace HR_Application_DB_Logic
 
     public class DBController : IDBController
     {
+        public DBController(string aaa)
+        {
+            
+        }
         private string _connectionString;
 
         public DBController(string connection)
