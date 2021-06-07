@@ -58,5 +58,16 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             // TODO: Окно? добавления комментария
         }
+
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO:Сохранение данных в моделе Employee profile
+            this.Close();
+        }
     }
 }
