@@ -414,6 +414,33 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
+
+                            </Border>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                            <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -429,8 +456,8 @@
         </Grid.RowDefinitions>
         <Label Foreground="#E64E6C" Background="#FFE9E9E9" FontWeight="Bold" Margin="0,0,0,0" HorizontalContentAlignment="Center" FontSize="36" Padding="5,20,5,5" UseLayoutRounding="False">REGISTRATION</Label>
         <!--//<Lable x:Name="RegistrationTitle"  Grid.Row="0" FontSize="36" HorizontalAlignment="Center" Foreground="#E64E6C" Background="#FFE9E9E9" FontWeight="Bold" Margin="0,0,0,0"></Lable>-->
-        <TextBox Style="{DynamicResource TextBoxStyleLoginRegistration}" x:Name="LoginInput_" Grid.Row="1"  Text="Login" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Margin="20,0,20,0" UseLayoutRounding="False" Padding="10,10,0,10" Height="Auto" VerticalAlignment="Center" ScrollViewer.CanContentScroll="True"/>
-        <TextBox Style="{DynamicResource TextBoxStylePasswordRegistration}" x:Name="PasswordInput" Grid.Row="2"  Text="Password" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+        <TextBox Style="{DynamicResource TextBoxStyleLoginRegistration}" x:Name="TextBox_Login" Grid.Row="1"  Text="Login" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Margin="20,0,20,0" UseLayoutRounding="False" Padding="10,10,0,10" Height="Auto" VerticalAlignment="Center" ScrollViewer.CanContentScroll="True"/>
+        <TextBox Style="{DynamicResource TextBoxStylePasswordRegistration}" x:Name="TextBox_Password" Grid.Row="2"  Text="Password" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -440,11 +467,11 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBox Style="{DynamicResource TextBoxStyleConfirmPassRegistration}" x:Name="ConfirmPasswordInput" Grid.Row="3"  Text="Confirm password" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
-        <TextBox Style="{DynamicResource TextBoxStyleFirstNameRegistration}" x:Name="FirstNameInput" Grid.Row="4" Text="First Name" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Style="{DynamicResource TextBoxStyleLastNameRegistration}" x:Name="LastNameInput" Grid.Row="5" Text="Last Name" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" UseLayoutRounding="True"/>
-        <TextBox Style="{DynamicResource TextBoxStyleCompanyRegistr}" x:Name="CompanyInput" Grid.Row="6" Text="Company" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center"/>
-        <TextBox Style="{DynamicResource TextBoxStyleCityRegistration}" x:Name="CityInput" Grid.Row="7" Text="City" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" UseLayoutRounding="True"/>
+        <TextBox Style="{DynamicResource MyWaterMarkStyle}" x:Name="TextBox_ConfirmPassword" Grid.Row="3"  Tag="Confirm password" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <TextBox Style="{DynamicResource MyWaterMarkStyle}" x:Name="TextBox_FirstName" Grid.Row="4" Tag="First Name" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Style="{DynamicResource MyWaterMarkStyle}" x:Name="TextBox_LastName" Grid.Row="5" Tag="Last Name" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" UseLayoutRounding="True"/>
+        <TextBox Style="{DynamicResource MyWaterMarkStyle}" x:Name="TextBox_Company" Grid.Row="6" Tag="Company" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center"/>
+        <TextBox Style="{DynamicResource MyWaterMarkStyle}" x:Name="TextBox_City" Grid.Row="7" Tag="City" TextWrapping="Wrap" FontSize="20" Foreground="#676e69" Padding="10,10,0,10" Margin="20,0,20,0" VerticalAlignment="Center" UseLayoutRounding="True"/>
         <Button Style="{DynamicResource ButtonStyleSignUpRegistration}" x:Name="SignUpButton" Content="Sign Up" Grid.Row="8"  FontSize="36" HorizontalAlignment="Stretch" Foreground="#fff" Background="#E64E6C" Margin="20,0,20,10" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Click="SignUpButton_Click"/>
     </Grid>
 </Window>

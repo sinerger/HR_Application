@@ -1,43 +1,45 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class UserRepository
+    public class UserRepository :IRepository<UserDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; }
 
         public UserRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public bool Create(UserDTO user)
         {
-            string query = "CreateUsers @FirstName @LastName @CompanyID @Email @Password @IsActual";
+            string query = "[HRAppDB].CreateUsers @FirstName @LastName @CompanyID @Email @Password @IsActual";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
                         user.FirstName,
                         user.LastName,
-                        user.CompanyID,
+                        user.Company.ID,
                         user.Email,
                         user.Password,
                         user.IsActual
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -45,28 +47,28 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(UserDTO user)
         {
-            string query = "UpdateUsers @ID @FirstName @LastName @CompanyID @Email @Password @IsActual";
+            string query = "[HRAppDB].UpdateUsers @ID @FirstName @LastName @CompanyID @Email @Password @IsActual";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
                         user.ID,
                         user.FirstName,
                         user.LastName,
-                        user.CompanyID,
+                        user.Company,
                         user.Email,
                         user.Password,
                         user.IsActual
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -74,19 +76,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteUsers @ID";
+            string query = "[HRAppDB].DeleteUsers @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -94,12 +96,29 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<UserDTO> GetAll()
         {
-            string query = "GetAllUsers";
+            string query = "[HRAppDB].GetAllUsers";
             List<UserDTO> result = new List<UserDTO>();
-
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            try
             {
-                result = dbConnection.Query<UserDTO>(query, commandType: CommandType.StoredProcedure).AsList<UserDTO>();
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.Query<UserDTO, CompanyDTO, AdressDTO, CityDTO, CountryDTO, UserDTO>
+                        (query,
+                        (user, conpany, adress, city, country) =>
+                        {
+                            user.Company = conpany;
+                            user.Adress = adress;
+                            user.Adress.City = city;
+                            user.Adress.Country = country;
+
+                            return user;
+                        })
+                        .AsList<UserDTO>();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;
@@ -107,28 +126,52 @@ namespace HR_Application_DB_Logic.Repositories
 
         public UserDTO GetByID(int id)
         {
-            string query = "GetUserByID @ID";
+            string query = "[HRAppDB].GetUserByID @ID";
             UserDTO result = new UserDTO();
-
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            try
             {
-                result = dbConnection.QuerySingle<UserDTO>(query, new { id });
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.Query<UserDTO, CompanyDTO, AdressDTO, CityDTO, CountryDTO, UserDTO>
+                        (query,
+                        (user, conpany, adress, city, country) =>
+                        {
+                            user.Company = conpany;
+                            user.Adress = adress;
+                            user.Adress.City = city;
+                            user.Adress.Country = country;
+
+                            return user;
+                        }, new { id })
+                        .AsList<UserDTO>()[0];
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;
         }
 
-        public UserDTO GetByName(string name)
-        {
-            string query = "GetUserByName @Name";
-            UserDTO result = new UserDTO();
+        //public UserDTO GetByName(string name)
+        //{
+        //    string query = "[HRAppDB].GetUserByName @Name";
+        //    UserDTO result = new UserDTO();
 
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-            {
-                result = dbConnection.QuerySingle<UserDTO>(query, new { name });
-            }
+        //    try
+        //    {
+        //        using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+        //        {
+        //            result = dbConnection.QuerySingle<UserDTO>(query, new { name });
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

@@ -11,7 +11,7 @@ AS
 		[HRAppDB].[Users].[LastName],
 		[HRAppDB].[Users].[CompanyID],
 		[HRAppDB].[Users].[Email],
-		[HRAppDB].[Users].[Passvord],
+		[HRAppDB].[Users].[Password],
 		[HRAppDB].[Users].[IsActual]
 		)
 	VALUES (

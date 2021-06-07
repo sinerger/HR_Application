@@ -1,4 +1,5 @@
-﻿using HR_Application_DB_Logic.Repositories;
+﻿using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,6 @@ namespace HR_Application_DB_Logic.Interfaces
         RequirementRepository RequirementRepository { get; }
         SkillRepository SkillRepository { get; }
         StatusRepository StatusRepository { get; }
-        UserRepository UserRepository { get; }
+        IRepository<UserDTO> UserRepository { get; }
     }
 }

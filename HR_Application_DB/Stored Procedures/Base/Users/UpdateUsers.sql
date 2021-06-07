@@ -12,7 +12,7 @@ AS
 		[HRAppDB].[Users].[LastName] = @LastName,
 		[HRAppDB].[Users].[CompanyID] = @CompanyID,
 		[HRAppDB].[Users].[Email] = @Email,
-		[HRAppDB].[Users].[Passvord] = @Password,
+		[HRAppDB].[Users].[Password] = @Password,
 		[HRAppDB].[Users].[IsActual] = @IsActual
 	WHERE [HRAppDB].[Users].[ID] = @ID
 

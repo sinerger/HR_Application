@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HR_Application_BLL\HR_Application_BLL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HR_Application_BLL;
+using HR_Application_BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -27,10 +29,42 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             // TODO: Отправляем данные 
             // TODO: Проверяем можно ли зарегестрироваться 
 
+            if (AuthorizationController.IsValidEmail(TextBox_Login.Text))
+            {
+                if (AuthorizationController.IsValidPassword(TextBox_Password.Text)
+                    && AuthorizationController.IsValidPassword(TextBox_Password.Text))
+                {
+                    UserModel user = CreateUser();
+
+                }
+                else
+                {
+                    MessageBox.Show("Invalid password");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid email");
+            }
             AuthorizationWindow authorizationWindow = new AuthorizationWindow();
             authorizationWindow.Show();
 
             this.Close();
+        }
+
+        private UserModel CreateUser()
+        {
+            UserModel user = new UserModel()
+            {
+                FirstName = TextBox_FirstName.Text,
+                LastName = TextBox_LastName.Text,
+                Company = TextBox_Company.Text,
+                City = TextBox_City.Text,
+                Email = TextBox_Login.Text,
+                Password = TextBox_Password.Text
+            };
+
+            return user;
         }
     }
 }

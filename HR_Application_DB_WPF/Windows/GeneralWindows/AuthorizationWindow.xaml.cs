@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR_Application_BLL;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,19 +18,35 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        private const string _defaultTextLogin = "Login";
+        private const string _defaultTextPassword = "Password";
+
         public AuthorizationWindow()
         {
             InitializeComponent();
+            // TODO: Нужно прикрутить визуальное отображение что неправильный логин или пароль
         }
 
         private void SignInButton__Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Проверяем можно ли залогиниться 
+            try
+            {
+                if (AuthorizationController.SignIn(TextBox_Login.Text, TextBox_Password.Text))
+                {
+                    HomePageWindow homePageWindow = new HomePageWindow();
+                    homePageWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid login or password");
+                }
+            }
+            catch (Exception)
+            {
 
-            HomePageWindow homePageWindow = new HomePageWindow();
-            homePageWindow.Show();
-
-            this.Close();
+                MessageBox.Show("The server is not responding. from try later");
+            }
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
