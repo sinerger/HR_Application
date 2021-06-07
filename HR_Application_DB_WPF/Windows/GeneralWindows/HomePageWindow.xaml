@@ -24,10 +24,10 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="Enter name" Foreground="#676e69 " TextWrapping="Wrap" Width="1029" HorizontalAlignment="Left" RenderTransformOrigin="0.55,0.198" HorizontalContentAlignment="Stretch" FontSize="20" Padding="10,20,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Margin="10,30,0,10" />
-                    <Button x:Name="Button_Search" Grid.Column="2" Grid.Row="0" Content="SEARCH" Margin="214,30,10,10" Foreground="#fff" Background="#FFE3405F" Click="Button_Search_Click"/>
-                    <Button x:Name="Button_OpenFilterWindow" Grid.Column="0" Grid.Row="1" Content="FILTER" Margin="12,18,211,18" Foreground="#fff" Background="#FFE3405F" Width="200" Click="Button_OpenFilterWindow_Click"/>
-                    <Button x:Name="Button_ClearFilter" Grid.Row="1" Content="CLEAR" Margin="223,18,0,18" Foreground="#fff" Background="#FFE3405F" Width="200" HorizontalAlignment="Left" RenderTransformOrigin="0.312,0.551" Click="Button_ClearFilter_Click"/>
+                    <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="Enter name" Foreground="#676e69 " TextWrapping="Wrap" Width="1029" HorizontalAlignment="Left" RenderTransformOrigin="0.55,0.198" HorizontalContentAlignment="Stretch" FontSize="20" Padding="10,20,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Margin="10,30,0,10" />
+                    <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Search" Grid.Column="2" Grid.Row="0" Content="SEARCH" Margin="214,30,10,10" Foreground="#fff" Background="#FFE3405F" Click="Button_Search_Click"/>
+                    <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_OpenFilterWindow" Grid.Column="0" Grid.Row="1" Content="FILTER" Margin="12,18,211,18" Foreground="#fff" Background="#FFE3405F" Width="200" Click="Button_OpenFilterWindow_Click"/>
+                    <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ClearFilter" Grid.Row="1" Content="CLEAR" Margin="223,18,0,18" Foreground="#fff" Background="#FFE3405F" Width="200" HorizontalAlignment="Left" RenderTransformOrigin="0.312,0.551" Click="Button_ClearFilter_Click"/>
                     <DataGrid x:Name="DataGrid_Employees" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
     RowBackground="LightGray" AlternatingRowBackground="White" Margin="10,44,10,-131" Grid.Row="2" Grid.ColumnSpan="3">
                         <DataGrid.Resources>
@@ -107,7 +107,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Text="First name" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Tag="First name" />
                         <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Content="LOGOUT" Grid.Column="2" Click="Button_LogOut_Click"/>
                     </Grid>
                     <Grid x:Name ="GridSecondName" Grid.Row="1">
@@ -116,7 +116,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name ="TxtSecondName" Grid.Column="1" Text="Second name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name ="TxtSecondName" Grid.Column="1" Tag="Second name"/>
                     </Grid>
                     <Grid x:Name ="GridCompany" Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -124,7 +124,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Text="Company"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Tag="Company"/>
                     </Grid>
                     <Grid x:Name ="GridCity" Grid.Row="3">
                         <Grid.ColumnDefinitions>
@@ -132,7 +132,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Text="City"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Tag="City"/>
                     </Grid>
                     <Grid x:Name ="GridChangePassword" Grid.Row="4">
                         <Grid.ColumnDefinitions>
@@ -170,10 +170,10 @@
                     <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" RowBackground="LightGray">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"/>
-                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*" />
-                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
-                            <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*" />
-                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*" />
+                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*"/>
+                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*"/>
+                            <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*"/>
+                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
