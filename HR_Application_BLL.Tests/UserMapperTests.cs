@@ -29,7 +29,14 @@ namespace HR_Application_BLL.Tests
         public void GetAllFromUserDTOToUserModel_WhenValidTestPassed_ShouldReturnListUserModel(List<UserDTO> returnedUsersDTO,List<UserModel> expected)
         {
             _mock.Setup(getAll => (getAll.UserRepository.GetAll())).Returns(returnedUsersDTO);
-            List<UserModel> actual = _userMapper.GetAllFromUserDTOToUserModel();
+            List<UserModel> actual = _userMapper.GetAllUserModelsFromUserDTO();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestCaseSource(typeof(GetUserDTOFromUserModelSource))]
+        public void GetUserDTOFromUserModel_WhenValidTestPassed_ShouldReturnUserDTO(UserModel userModel, UserDTO expected)
+        {
+            UserDTO actual = _userMapper.GetUserDTOFromUserModel(userModel);
 
             Assert.AreEqual(expected, actual);
         }

@@ -24,6 +24,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         public AuthorizationWindow()
         {
             InitializeComponent();
+            // TODO: Нужно прикрутить визуальное отображение что неправильный логин или пароль
         }
 
         private void SignInButton__Click(object sender, RoutedEventArgs e)

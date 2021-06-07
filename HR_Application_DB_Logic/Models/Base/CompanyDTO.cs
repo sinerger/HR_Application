@@ -12,5 +12,25 @@
         {
             return ID.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            bool result = false;
+
+            if(obj is CompanyDTO)
+            {
+                CompanyDTO companyDTO = (CompanyDTO)obj;
+                if(companyDTO.ID == ID
+                    && companyDTO.Title == Title
+                    && companyDTO.LocationID == LocationID
+                    && companyDTO.Description == Description
+                    && companyDTO.IsActual == IsActual)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
     }
 }
