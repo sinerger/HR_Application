@@ -26,7 +26,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="0.5s*"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             <Label Style="{DynamicResource LabelHeader}" Grid.Column="1" Content="REGISTRATION"/>
         </Grid>
