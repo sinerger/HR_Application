@@ -299,7 +299,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="Foreground" Value="#878383"/>
-        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontFamily" Value="Global User Interface"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -358,7 +358,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="0,0,1,1"/>
-        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontSize" Value="36"/>
         <Setter Property="Foreground" Value="AliceBlue"/>
         <Setter Property="FontFamily" Value="Global User Interface"/>
         <Setter Property="Margin" Value="10"/>
