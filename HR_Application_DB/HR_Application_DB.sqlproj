@@ -89,6 +89,7 @@
     <Folder Include="Stored Procedures\Custom\Companies" />
     <Folder Include="Stored Procedures\Custom\Skills" />
     <Folder Include="Stored Procedures\Custom\Departments" />
+    <Folder Include="Stored Procedures\Custom\CompanyAdress" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -243,6 +244,9 @@
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkill.sql" />
     <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPositionByEmployeeID.sql" />
     <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjectsByDepartmentID.sql" />
+    <Build Include="Stored Procedures\Custom\CompanyAdress\GetCompaniesAdreses.sql" />
+    <Build Include="Stored Procedures\Custom\CompanyAdress\GetCompanyAdressByCompanyID.sql" />
+    <Build Include="Stored Procedures\Base\Countries\GetCountries.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />

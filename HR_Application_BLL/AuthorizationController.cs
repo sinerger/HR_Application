@@ -10,7 +10,7 @@ namespace HR_Application_BLL
     public static class AuthorizationController
     {
         private static int _minAmountSymbolPassword = 8;
-        public static UserModel CurrentUser { get; private set; }
+        public static User CurrentUser { get; private set; }
 
         public static bool SignIn(string email, string password)
         {
@@ -21,7 +21,7 @@ namespace HR_Application_BLL
                 try
                 {
                     var mapper = new UserMapper(new DBController(DBConfigurator.ConnectionString));
-                    List<UserModel> users = mapper.GetAllUserModelsFromUserDTO();
+                    List<User> users = mapper.GetAllUsersFromUserDTO();
 
                     foreach (var user in users)
                     {
@@ -43,7 +43,7 @@ namespace HR_Application_BLL
             return result;
         }
 
-        public static bool RegistrationNewUser(UserModel user)
+        public static bool RegistrationNewUser(User user)
         {
             return true;
         }

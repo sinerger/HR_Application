@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Custom;
 using Dapper;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
@@ -25,47 +26,46 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    result = dbConnection.Query<CompanyDepartmentsDTO, CompanyDTO, int, CompanyDepartmentsDTO>(query,
-                        (companyDepartment, company, departmentID) =>
+                    result = dbConnection.Query<CompanyDepartmentsDTO, int, DepartmentDTO, CompanyDepartmentsDTO>(query,
+                        (companyDepartment, companyID, department) =>
                         {
-                            companyDepartment.Company = company;
-                            companyDepartment.DepartmentsID = new List<int>();
-                            companyDepartment.DepartmentsID.Add(departmentID);
+                            companyDepartment.CompanyID = companyID;
+                            companyDepartment.Departments = new List<DepartmentDTO>();
+                            companyDepartment.Departments.Add(department);
 
                             return companyDepartment;
-                        }
-                        , splitOn: "IDD,ID,IDDepartment")
+                        })
                         .AsList<CompanyDepartmentsDTO>();
                 }
             }
-            catch
+            catch(Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
         }
 
-        public List<CompanyDepartmentsDTO> GetALLByCompanyID(int companyID)
+        public List<CompanyDepartmentsDTO> GetALLByCompanyID(int id)
         {
-            string query = "[HRAppDB].GetCompanyDepartmentsByCompanyID @CompanyID";
+            string query = "[HRAppDB].GetCompanyDepartmentsByCompanyID @ID";
             List<CompanyDepartmentsDTO> companyDepartments = new List<CompanyDepartmentsDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Query<CompanyDepartmentsDTO, CompanyDTO, int, CompanyDepartmentsDTO>(query,
-                        (companyDepartment, company, departmentID) =>
+                    dbConnection.Query<CompanyDepartmentsDTO, int, DepartmentDTO, CompanyDepartmentsDTO>(query,
+                        (companyDepartment, companyID, department) =>
                         {
                             CompanyDepartmentsDTO currentCD = null;
 
                             foreach (CompanyDepartmentsDTO cD in companyDepartments)
                             {
-                                if (cD.Company.ID == company.ID)
+                                if (cD.CompanyID == companyID)
                                 {
                                     currentCD = companyDepartment;
-                                    cD.DepartmentsID.Add(departmentID);
+                                    cD.Departments.Add(department);
                                     break;
                                 }
                             }
@@ -74,19 +74,19 @@ namespace HR_Application_DB_Logic.Repositories
                             {
                                 currentCD = companyDepartment;
                                 companyDepartments.Add(currentCD);
-                                currentCD.Company = company;
-                                currentCD.DepartmentsID = new List<int>();
-                                currentCD.DepartmentsID.Add(departmentID);
+                                currentCD.CompanyID = companyID;
+                                currentCD.Departments = new List<DepartmentDTO>();
+                                currentCD.Departments.Add(department);
                             }
 
                             return companyDepartment;
-                        }, new { companyID }, splitOn: "IDD,ID,IDDepartment")
+                        }, new { id })
                         .AsList<CompanyDepartmentsDTO>();
                 }
             }
-            catch
+            catch ( Exception e)
             {
-                companyDepartments = null;
+                throw e;
             }
 
             return companyDepartments;

@@ -34,7 +34,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 if (AuthorizationController.IsValidPassword(TextBox_Password.Text)
                     && AuthorizationController.IsValidPassword(TextBox_Password.Text))
                 {
-                    UserModel user = CreateUser();
+                    User user = CreateUser();
 
                 }
                 else
@@ -52,9 +52,9 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             this.Close();
         }
 
-        private UserModel CreateUser()
+        private User CreateUser()
         {
-            UserModel user = new UserModel()
+            User user = new User()
             {
                 FirstName = TextBox_FirstName.Text,
                 LastName = TextBox_LastName.Text,

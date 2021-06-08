@@ -3,33 +3,35 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
 using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class LocationRepository
+    public class LocationRepository : IRepository<LocationDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public LocationRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public List<LocationDTO> GetAll()
         {
-            string query = "GetLocations";
+            string query = "[HRAppDB].GetLocations";
             List<LocationDTO> result = new List<LocationDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<LocationDTO>(query).AsList<LocationDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -37,15 +39,15 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(LocationDTO Location)
         {
-            string query = "CreateLocation @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
+            string query = "[HRAppDB].CreateLocation @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
-                    { 
+                    {
                         Location.CityID,
                         Location.Street,
                         Location.HourseNumber,
@@ -55,9 +57,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -65,12 +67,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(LocationDTO Location)
         {
-            string query = "UpdateLocation @ID @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
+            string query = "[HRAppDB].UpdateLocation @ID @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
@@ -84,9 +86,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -94,19 +96,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteLocation @ID";
+            string query = "[HRAppDB].DeleteLocation @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -114,39 +116,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public LocationDTO GetByID(int id)
         {
-            string query = "GetLocationsByID @ID";
+            string query = "[HRAppDB].GetLocationsByID @ID";
             LocationDTO result = new LocationDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<LocationDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public LocationDTO GetByStreet(string Name)
-        {
-            string query = "GetLocationsByStreet @Street";
-            LocationDTO result = new LocationDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<LocationDTO>(query, new { Name });
-                }
-            }
-            catch
-            {
-                result = null;
+                throw e;
             }
 
             return result;
