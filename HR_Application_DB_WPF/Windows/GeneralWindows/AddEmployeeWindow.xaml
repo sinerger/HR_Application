@@ -28,19 +28,19 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label x:Name="AuthorisationTitle" Grid.Row="0" Grid.ColumnSpan="2" Content="ADD EMPLOYEE" Background="#E9E9E9" FontSize="36" FontWeight="Bold" Foreground="#FFE64E6C" Margin="101,1,101,4" Width="Auto" HorizontalContentAlignment="Center"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Margin="10,0,0,0" Text="First name"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="2" Margin="10,0,0,0" Text="Last name"/>
-        <DatePicker Style="{DynamicResource DatePickerStyle}" Margin="10" Padding="10" Grid.Row="3"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Margin="10,0,0,0" Text="Phone"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Margin="10,0,0,0" Text="E-mail"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin="10,0,0,0" Text="Registration date"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin="10,0,0,0" Text="Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin="10,0,0,0" Text="Direction/position"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Margin="10,0,0,0" Text="Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="10" Margin="10,0,0,0" Text="Project name" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
-        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Content="CANCEL" Grid.Row="11" Grid.Column="0" Click="Button_Cancel_Click"/>
-        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Content="SAVE" Grid.Row="11" Grid.Column="1" Click="Button_Save_Click"/>
-        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddPhoto" Content="ADD PHOTO"  Grid.Row="4" Grid.Column="1" Width="160" FontSize="24" IsEnabled="False"/>
-        <Rectangle Fill="White" Height="152" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4"  Stroke="White" VerticalAlignment="Top" Width="130" Margin="0,15,0,0"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Margin="10,0,0,0" Tag="First name"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="2" Margin="10,0,0,0" Tag="Last name"/>
+        <DatePicker Style="{DynamicResource DatePickerStyle}" Grid.Row="3" Margin="20"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Margin="10,0,0,0" Tag="Phone"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Margin="10,0,0,0" Tag="E-mail"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin="10,0,0,0" Tag="Registration date"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin="10,0,0,0" Tag="Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin="10,0,0,0" Tag="Direction/position"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Margin="10,0,0,0" Tag="Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="10" Margin="10,0,0,0" Tag="Project name" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Content="Cancel" Grid.Row="11" Width="200" Grid.Column="1" Click="Button_Cancel_Click"/>
+        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Content="Save" Grid.Row="11" Grid.Column="0" Width="200" Click="Button_Save_Click"/>
+        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddPhoto" Content="Add photo"  Grid.Row="4" Grid.Column="1" Width="160" FontSize="24" IsEnabled="False"/>
+        <Rectangle Fill="White" Height="152" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Stroke="White" VerticalAlignment="Top" Width="130" Margin="0,15,0,0"/>
     </Grid>
 </Window>
