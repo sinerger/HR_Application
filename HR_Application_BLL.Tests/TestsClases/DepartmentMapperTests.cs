@@ -19,7 +19,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]
-        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListLocationModels(List<DepartmentDTO> actualDepartmentDTO, List<DepartmentModel> expected)
+        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListDepartmentModels(List<DepartmentDTO> actualDepartmentDTO, List<DepartmentModel> expected)
         {
             List<DepartmentModel> actual = _departmentMapper.GetModelsFromDTO(actualDepartmentDTO);
 
@@ -33,7 +33,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetDTOFromModelSource))]
-        public void GetDTOFromModel_WhenValidTestPassed_ShouldReturnLocationDTO(DepartmentModel departmentModel, DepartmentDTO expected)
+        public void GetDTOFromModel_WhenValidTestPassed_ShouldReturnDepartmentDTO(DepartmentModel departmentModel, DepartmentDTO expected)
         {
             DepartmentDTO actual = _departmentMapper.GetDTOFromModel(departmentModel);
 
@@ -47,7 +47,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetModelFromDTOSource))]
-        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnLocationModelByID(DepartmentDTO actualDepartmentDTO, DepartmentModel expected)
+        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnDepartmentModelByID(DepartmentDTO actualDepartmentDTO, DepartmentModel expected)
         {
             DepartmentModel actual = _departmentMapper.GetModelFromDTO(actualDepartmentDTO);
 

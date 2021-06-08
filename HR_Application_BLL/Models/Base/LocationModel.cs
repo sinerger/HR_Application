@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HR_Application_BLL.Models.Base
+﻿namespace HR_Application_BLL.Models.Base
 {
     public class LocationModel
     {
