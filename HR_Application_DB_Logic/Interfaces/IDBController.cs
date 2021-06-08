@@ -17,7 +17,7 @@ namespace HR_Application_DB_Logic.Interfaces
         CompanyRepository CompanyRepository { get; }
         IRepository<CountryDTO> CountryRepository { get; }
         DepartmentProjectsRepository DepartmentProjectsRepository { get; }
-        DepartmentRepository DepartmentRepository { get; }
+        IRepository<DepartmentDTO> DepartmentRepository { get; }
         DirectionRepository DirectionRepository { get; }
         EmployeePositionRepository EmployeePositionRepository { get; }
         EmployeeProjectRepository EmployeeProjectRepository { get; }

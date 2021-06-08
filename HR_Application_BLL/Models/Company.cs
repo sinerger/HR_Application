@@ -1,6 +1,5 @@
-﻿using System;
+﻿using HR_Application_BLL.Models.Base;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HR_Application_BLL.Models
 {
@@ -10,7 +9,7 @@ namespace HR_Application_BLL.Models
         public string Title { get; set; }
         public string Desctiption { get; set; }
         public AdressModel Adress { get; set; }
-        public List<Department> Departments { get; set; }
+        public List<DepartmentModel> Departments { get; set; }
 
         public override bool Equals(object obj)
         {
