@@ -1,5 +1,5 @@
 ﻿using HR_Application_BLL;
-using HR_Application_BLL.Models;
+using HR_Application_BLL.Base.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,15 +54,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private UserModel CreateUser()
         {
-            UserModel user = new UserModel()
-            {
-                FirstName = TextBox_FirstName.Text,
-                LastName = TextBox_LastName.Text,
-                Company = TextBox_Company.Text,
-                City = TextBox_City.Text,
-                Email = TextBox_Login.Text,
-                Password = TextBox_Password.Text
-            };
+            UserModel user = new UserModel();
 
             return user;
         }

@@ -1,5 +1,5 @@
-﻿using HR_Application_BLL.Mappers;
-using HR_Application_BLL.Models;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,11 +1,10 @@
 ﻿using HR_Application_BLL.Mappers;
-using HR_Application_BLL.Models;
 using HR_Application_DB_Logic.Models;
 using HR_Application_BLL.Tests.Souces.User;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using HR_Application_BLL.Base.Models;
 
 namespace HR_Application_BLL.Tests.TestsClases
 {

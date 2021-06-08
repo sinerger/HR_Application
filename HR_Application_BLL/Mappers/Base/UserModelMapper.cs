@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using HR_Application_BLL.Mappers;
+using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Mappers.Base;
-using HR_Application_BLL.Models;
-using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
