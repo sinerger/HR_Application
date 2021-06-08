@@ -1,6 +1,5 @@
-﻿using HR_Application_BLL.Models;
+﻿using HR_Application_BLL.Base.Models;
 using HR_Application_DB_Logic.Models;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
