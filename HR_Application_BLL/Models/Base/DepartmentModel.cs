@@ -1,8 +1,13 @@
-﻿namespace HR_Application_DB_Logic.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace HR_Application_BLL.Models.Base
 {
-    public class DepartmentDTO
+    public class DepartmentModel
+
     {
-        public int? ID { get; set; }
+        public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
@@ -10,14 +15,13 @@
         {
             bool result = false;
 
-            if (obj is DepartmentDTO)
+            if (obj is DepartmentModel)
             {
-                DepartmentDTO department = (DepartmentDTO)obj;
+                DepartmentModel department = (DepartmentModel)obj;
 
-                if (department.ID == ID
-                    && department.Title == Title
-                    && department.Description == Description
-                   )
+                if (department.ID == ID 
+                    && department.Title == Title 
+                    && department.Description == Description)
                 {
                     result = true;
                 }

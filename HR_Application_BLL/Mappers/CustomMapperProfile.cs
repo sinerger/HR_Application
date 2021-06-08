@@ -24,6 +24,12 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<CountryDTO, CountryModel>();
             CreateMap<CountryModel, CountryDTO>();
+
+            CreateMap<DepartmentDTO, DepartmentModel>();
+            CreateMap<DepartmentModel, DepartmentDTO>();
+
+            CreateMap<CompanyDTO, CompanyModel>();
+            CreateMap<CompanyModel, CompanyDTO>();
         }
     }
 }

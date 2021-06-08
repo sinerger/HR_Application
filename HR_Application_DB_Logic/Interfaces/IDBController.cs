@@ -1,9 +1,6 @@
 ﻿using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Custom;
 using HR_Application_DB_Logic.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Interfaces
 {
@@ -14,10 +11,10 @@ namespace HR_Application_DB_Logic.Interfaces
         IRepository<CompanyAdressDTO> CompanyAdressRepository { get; }
         CommentRepository CommentRepository { get; }
         CompanyDepartmentsRepository CompanyDepartmentsRepository { get; }
-        CompanyRepository CompanyRepository { get; }
+        IRepository<CompanyDTO> CompanyRepository { get; }
         IRepository<CountryDTO> CountryRepository { get; }
         DepartmentProjectsRepository DepartmentProjectsRepository { get; }
-        DepartmentRepository DepartmentRepository { get; }
+        IRepository<DepartmentDTO> DepartmentRepository { get; }
         DirectionRepository DirectionRepository { get; }
         EmployeePositionRepository EmployeePositionRepository { get; }
         EmployeeProjectRepository EmployeeProjectRepository { get; }

@@ -10,7 +10,7 @@
 
         public override string ToString()
         {
-            return ID.ToString();
+            return $"{Title} d.{Description} i.{IsActual}";
         }
 
         public override bool Equals(object obj)
@@ -20,6 +20,7 @@
             if(obj is CompanyDTO)
             {
                 CompanyDTO companyDTO = (CompanyDTO)obj;
+
                 if(companyDTO.ID == ID
                     && companyDTO.Title == Title
                     && companyDTO.LocationID == LocationID
