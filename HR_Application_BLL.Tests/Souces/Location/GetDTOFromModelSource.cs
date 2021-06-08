@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace HR_Application_BLL.Tests.Souces.Location
 {
-    public class GetLocationDTOFromLocationModelSource : IEnumerable
+    public class GetDTOFromModelSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

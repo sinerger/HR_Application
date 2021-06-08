@@ -6,40 +6,56 @@ using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HR_Application_BLL.Mappers
 {
-    public class AdressMapper : BaseMapper<Adress,AdressDTO>
+    public class AdressMapper : BaseMapper
     {
-        public AdressMapper(IDBController dbController) : base(dbController)
+        public List<AdressModel> GetModelsFromDTO(List<LocationDTO> locationsDTO, List<CityDTO> citiesDTO, List<CountryDTO> countriesDTO)
         {
-        }
-
-        public override List<Adress> GetAllModelsFromDTO()
-        {
-            List<LocationModel> locations = new LocationMapper(DBController).GetAllModelsFromDTO();
-            List<CityModel> cities = new CityMapper(DBController).GetAllModelsFromDTO();
-            List<CountryModel> countries = new CountryMapper(DBController).GetAllModelsFromDTO();
-            List<Adress> adresses = new List<Adress>();
-
-            foreach (LocationModel location in locations)
+            if (locationsDTO != null && citiesDTO != null && countriesDTO != null)
             {
-                foreach (CityModel city in cities)
+                List<LocationModel> locations = new LocationMapper().GetModelsFromDTO(locationsDTO);
+                List<CityModel> cities = new CityMapper().GetModelsFromDTO(citiesDTO);
+                List<CountryModel> countries = new CountryMapper().GetModelsFromDTO(countriesDTO);
+                List<AdressModel> adresses = new List<AdressModel>();
+
+                foreach (LocationModel location in locations)
                 {
-                    if(city.ID == location.CityID)
+                    var city = cities.First(city => city.ID == location.CityID);
+
+                    adresses.Add(new AdressModel()
                     {
-                        foreach (CountryModel country in countries)
-                        {
-                            if(city.CountryID == country.ID)
-                            {
-                                adresses.Add(new Adress() { Location = location, City = city, Country = country });
-                            }
-                        }
-                    }
+                        Location = location,
+                        City = city,
+                        Country = countries.First(country => country.ID == city.CountryID)
+                    });
                 }
+
+                return adresses;
             }
 
-            return adresses;
+            throw new ArgumentNullException("Some list is null");
+        }
+
+        public AdressModel GetModelFromDTO(LocationDTO locationDTO, CityDTO cityDTO, CountryDTO countryDTO)
+        {
+            if (locationDTO != null && cityDTO != null && countryDTO != null)
+            {
+                LocationModel location = new LocationMapper().GetModelFromDTO(locationDTO);
+                CityModel city = new CityMapper().GetModelFromDTO(cityDTO);
+                CountryModel country = new CountryMapper().GetModelFromDTO(countryDTO);
+
+                return new AdressModel()
+                {
+                    Location = location,
+                    City = city,
+                    Country = country
+                };
+            }
+
+            throw new ArgumentNullException("Some object is null");
         }
     }
 }

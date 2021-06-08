@@ -14,6 +14,11 @@ namespace HR_Application_BLL.Models.Base
         public int ApartmentNumber { get; set; }
         public int PostIndex { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Street} h.{HourseNumber} a.{ApartmentNumber}";
+        }
+
         public override bool Equals(object obj)
         {
             bool result = false;

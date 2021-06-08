@@ -6,50 +6,29 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Mappers.Base
 {
-    public class CountryMapper : BaseMapper<CountryModel,CountryDTO>
+    public class CountryMapper : BaseMapper
     {
-        public CountryMapper(IDBController dbController) : base(dbController)
+        public List<CountryModel> GetModelsFromDTO(List<CountryDTO> countriesDTO)
         {
-        }
-
-        public override List<CountryModel> GetAllModelsFromDTO()
-        {
-            List<CountryDTO> countriesDTO = null;
-
-            try
+            if(countriesDTO != null)
             {
-                countriesDTO = DBController.CountryRepository.GetAll();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
             return _mapper.Map<List<CountryModel>>(countriesDTO);
+            }
+
+            throw new ArgumentNullException("List countires is null");
         }
 
-        public CountryModel GetCountryModelFromCountryDTOByID(int id)
+        public CountryModel GetModelFromDTO(CountryDTO countryDTO)
         {
-            if (id >= 0)
+            if (countryDTO !=null)
             {
-                CountryDTO countryDTO = null;
-
-                try
-                {
-                    countryDTO = DBController.CountryRepository.GetByID(id);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-
                 return _mapper.Map<CountryModel>(countryDTO);
             }
 
-            throw new ArgumentException("Invalid id");
+            throw new ArgumentNullException("Country is null");
         }
 
-        public override CountryDTO GetDTOFromModel(CountryModel countryModel)
+        public CountryDTO GetDTOFromModel(CountryModel countryModel)
         {
             if (countryModel != null)
             {

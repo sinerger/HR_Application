@@ -5,13 +5,12 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Tests.Souces.City
 {
-    public class GetCityModelFromCityDTOByIDSource :IEnumerable
+    public class GetModelFromDTOSource :IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[]
             {
-                1,
                 new CityDTO()
                 {
                     ID = 1,
@@ -27,7 +26,6 @@ namespace HR_Application_BLL.Tests.Souces.City
             };
             yield return new object[]
             {
-                2,
                  new CityDTO()
                  {
                      ID = 2,
@@ -43,7 +41,6 @@ namespace HR_Application_BLL.Tests.Souces.City
             };
             yield return new object[]
             {
-               3,
                new CityDTO()
                {
                    ID = 3,

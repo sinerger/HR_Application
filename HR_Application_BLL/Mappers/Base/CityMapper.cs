@@ -6,52 +6,31 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Mappers.Base
 {
-    public class CityMapper : BaseMapper<CityModel,CityDTO>
+    public class CityMapper : BaseMapper
     {
-        public CityMapper(IDBController dbController) : base(dbController)
+        public List<CityModel> GetModelsFromDTO(List<CityDTO> citiesDTO)
         {
-        }
-
-        public override List<CityModel> GetAllModelsFromDTO()
-        {
-            List<CityDTO> citiesDTO = null;
-
-            try
+            if (citiesDTO != null)
             {
-                citiesDTO = DBController.CityRepository.GetAll();
-            }
-            catch (Exception e)
-            {
-                throw e;
+                return _mapper.Map<List<CityModel>>(citiesDTO);
             }
 
-            return _mapper.Map<List<CityModel>>(citiesDTO);
+            throw new ArgumentNullException("List cities is null");
         }
 
-        public  CityModel GetModelFromDTOByID(int id)
+        public CityModel GetModelFromDTO(CityDTO cityDTO)
         {
-            if (id >= 0)
+            if (cityDTO != null)
             {
-                CityDTO cityDTO = null;
-
-                try
-                {
-                    cityDTO = DBController.CityRepository.GetByID(id);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-
                 return _mapper.Map<CityModel>(cityDTO);
             }
 
-            throw new ArgumentException("Invalid id");
+            throw new ArgumentNullException("City DTO is null");
         }
 
-        public override CityDTO GetDTOFromModel(CityModel cityModel)
+        public CityDTO GetDTOFromModel(CityModel cityModel)
         {
-            if(cityModel != null)
+            if (cityModel != null)
             {
                 return _mapper.Map<CityDTO>(cityModel);
             }

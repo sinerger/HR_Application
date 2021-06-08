@@ -8,25 +8,12 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Mappers.Base
 {
-    public class BaseMapper<T, J>
+    public class BaseMapper
     {
         protected Mapper _mapper;
-        public IDBController DBController { get; private set; }
 
-        public virtual List<T> GetAllModelsFromDTO()
+        public BaseMapper()
         {
-            throw new NotImplementedException();
-        }
-
-        public virtual J GetDTOFromModel(T model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BaseMapper(IDBController dbController)
-        {
-            DBController = dbController;
-
             MapperConfiguration config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<CustomMapperProfile>();

@@ -1,9 +1,7 @@
 ﻿using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models.Base;
 using HR_Application_BLL.Tests.Souces.Location;
-using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
-using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,36 +10,30 @@ namespace HR_Application_BLL.Tests.TestsClases
 {
     public class LocationMapperTests
     {
-        private Mock<IDBController> _mock;
         private LocationMapper _locationMapper;
 
         [SetUp]
         public void Setup()
         {
-            _mock = new Mock<IDBController>();
-            _locationMapper = new LocationMapper(_mock.Object);
+            _locationMapper = new LocationMapper();
         }
 
-        [TestCaseSource(typeof(GetAllLocationModelsFromLocationDTOSource))]
-        public void GetAllLocationModelsFromLocationDTO_WhenValidTestPassed_ShouldReturnListLocationModels(List<LocationDTO> returnedLocationsDTO, List<LocationModel> expected)
+        [TestCaseSource(typeof(GetModelsFromDTOSource))]
+        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListLocationModels(List<LocationDTO> actualLocationsDTO, List<LocationModel> expected)
         {
-            _mock.Setup(dbController => (dbController.LocationRepository.GetAll())).Returns(returnedLocationsDTO);
-
-            List<LocationModel> actual = _locationMapper.GetAllModelsFromDTO();
+            List<LocationModel> actual = _locationMapper.GetModelsFromDTO(actualLocationsDTO);
 
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void GetAllLocationModelsFromLocationDTO_WhenInvalidTestPassed_ShouldReturnArgumentNullException()
+        [TestCase(null)]
+        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnArgumentNullException(List<LocationDTO> locationsModel)
         {
-            _mock.Setup(dbController => (dbController.LocationRepository.GetAll())).Throws(new ArgumentNullException());
-
-            Assert.Throws<ArgumentNullException>(() => _locationMapper.GetAllModelsFromDTO());
+            Assert.Throws<ArgumentNullException>(() => _locationMapper.GetModelsFromDTO(locationsModel));
         }
 
-        [TestCaseSource(typeof(GetLocationDTOFromLocationModelSource))]
-        public void GetLocationDTOFromLocationModel_WhenValidTestPassed(LocationModel locationModel, LocationDTO expected)
+        [TestCaseSource(typeof(GetDTOFromModelSource))]
+        public void GetDTOFromModel_WhenValidTestPassed_ShouldReturnLocationDTO(LocationModel locationModel, LocationDTO expected)
         {
             LocationDTO actual = _locationMapper.GetDTOFromModel(locationModel);
 
@@ -49,37 +41,23 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCase(null)]
-        public void GetLocationDTOFromLocationModel_WhenInvaildTestPassed_ShouldReturnArgumentNullException(LocationModel locationModel)
+        public void GetDTOFromModel_WhenInvaildTestPassed_ShouldReturnArgumentNullException(LocationModel locationModel)
         {
             Assert.Throws<ArgumentNullException>(() => _locationMapper.GetDTOFromModel(locationModel));
         }
 
-        [TestCaseSource(typeof(GetLocationModelsFromLocationDTOByIDSource))]
-        public void GetLocationModelsFromLocationDTOByID_WhenInvaildTestPassed_ShouldReturnLocationModelByID(int id, LocationDTO returnedLocationDTO, LocationModel expected)
+        [TestCaseSource(typeof(GetModelFromDTOSource))]
+        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnLocationModelByID( LocationDTO actualLocationDTO, LocationModel expected)
         {
-            _mock.Setup(dbController => (dbController.LocationRepository.GetByID(id))).Returns(returnedLocationDTO);
-
-            LocationModel actual = _locationMapper.GetLocationModelsFromLocationDTOByID(id);
+            LocationModel actual = _locationMapper.GetModelFromDTO(actualLocationDTO);
 
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(1)]
-        public void GetLocationModelsFromLocationDTOByID_WhenInvalidTestPassed_ShouldReturnArgumentNullException(int id )
+        [TestCase(null)]
+        public void GetModelFromDTO_WhenInvaildTestPassed_ShouldReturnArgumentNullException(LocationDTO locationDTO)
         {
-            _mock.Setup(dbController => (dbController.LocationRepository.GetByID(id))).Throws(new ArgumentNullException());
-
-            Assert.Throws<ArgumentNullException>(() => _locationMapper.GetLocationModelsFromLocationDTOByID(id));
-        }
-
-        [TestCase(-100)]
-        [TestCase(-10)]
-        [TestCase(-1)]
-        public void GetLocationModelsFromLocationDTOByID_WhenInvalidTestPassed_ShouldReturnArgumentException(int id)
-        {
-            _mock.Setup(dbController => (dbController.LocationRepository.GetByID(id))).Throws(new ArgumentException());
-
-            Assert.Throws<ArgumentException>(() => _locationMapper.GetLocationModelsFromLocationDTOByID(id));
+            Assert.Throws<ArgumentNullException>(() => _locationMapper.GetModelFromDTO(locationDTO));
         }
     }
 }

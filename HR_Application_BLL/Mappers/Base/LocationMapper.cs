@@ -9,50 +9,29 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Mappers.Base
 {
-    public class LocationMapper : BaseMapper<LocationModel,LocationDTO>
+    public class LocationMapper : BaseMapper
     {
-        public LocationMapper(IDBController dBController) : base(dBController)
+        public List<LocationModel> GetModelsFromDTO(List<LocationDTO> locationsDTO)
         {
-        }
-
-        public override List<LocationModel> GetAllModelsFromDTO()
-        {
-            List<LocationDTO> locationsDTO = null;
-
-            try
+            if (locationsDTO != null)
             {
-                locationsDTO = DBController.LocationRepository.GetAll();
-            }
-            catch (Exception e)
-            {
-                throw e;
+                return _mapper.Map<List<LocationModel>>(locationsDTO);
             }
 
-            return _mapper.Map<List<LocationModel>>(locationsDTO);
+            throw new ArgumentNullException("List locations is null");
         }
 
-        public LocationModel GetLocationModelsFromLocationDTOByID(int id)
+        public LocationModel GetModelFromDTO(LocationDTO locationDTO)
         {
-            if (id >= 0)
+            if (locationDTO !=null)
             {
-                LocationDTO locationsDTO = null;
-
-                try
-                {
-                    locationsDTO = DBController.LocationRepository.GetByID(id);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-
-                return _mapper.Map<LocationModel>(locationsDTO);
+                return _mapper.Map<LocationModel>(locationDTO);
             }
 
-            throw new ArgumentException("Invalid id");
+            throw new ArgumentNullException("Location DTO is null");
         }
 
-        public override LocationDTO GetDTOFromModel(LocationModel locationModel)
+        public LocationDTO GetDTOFromModel(LocationModel locationModel)
         {
             if (locationModel != null)
             {

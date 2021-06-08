@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Models
 {
-    public class Adress
+    public class AdressModel
     {
         public LocationModel Location { get; set; }
         public CityModel City { get; set; }
@@ -13,17 +13,18 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"{Country} {City} {Location.Street}";
+            return $"Adress: {Country} {City} {Location}";
         }
 
         public override bool Equals(object obj)
         {
             bool result = false;
 
-            if (obj is Adress)
+            if (obj is AdressModel)
             {
-                Adress adress = (Adress)obj;
-                if (adress.Location == Location && adress.Country == Country && adress.City == City)
+                AdressModel adress = (AdressModel)obj;
+
+                if (adress.Location.Equals(Location) && adress.Country.Equals(Country) && adress.City.Equals(City))
                 {
                     result = true;
                 }

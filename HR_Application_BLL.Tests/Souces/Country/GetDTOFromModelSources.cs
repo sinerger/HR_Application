@@ -1,56 +1,51 @@
 ﻿using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
 using System.Collections;
+using System.Collections.Generic;
 
-namespace HR_Application_BLL.Tests.Souces.City
+namespace HR_Application_BLL.Tests.Souces.Country
 {
-    public class GetCityDTOFromCityModelSource : IEnumerable
+    public class GetDTOFromModelSources : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[]
             {
-                new CityModel()
+                new CountryModel()
                 {
                     ID = 1,
-                    Name = "Dnipro",
-                    CountryID = 1
+                    Name = "Ukraine"
                 },
-                new CityDTO()
+                new CountryDTO()
                 {
                     ID = 1,
-                    Name = "Dnipro",
-                    CountryID = 1
+                    Name = "Ukraine"
                 }
             };
             yield return new object[]
             {
-                new CityModel()
+                new CountryModel()
                 {
                     ID = 2,
-                    Name = "Kiev",
-                    CountryID = 1
+                    Name = "Russia"
                 },
-                new CityDTO()
+                new CountryDTO()
                 {
                     ID = 2,
-                    Name = "Kiev",
-                    CountryID = 1
+                    Name = "Russia"
                 }
             };
             yield return new object[]
             {
-                new CityModel()
+                new CountryModel()
                 {
                     ID = 3,
-                    Name = "Moscow",
-                    CountryID = 2
+                    Name = "Turkey"
                 },
-                new CityDTO()
+                new CountryDTO()
                 {
                     ID = 3,
-                    Name = "Moscow",
-                    CountryID = 2
+                    Name = "Turkey"
                 }
             };
         }

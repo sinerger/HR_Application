@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Tests.Souces.City
 {
-    class GetAllCityModelFromSityDTOSource : IEnumerable
+    class GetModelsFromDTOSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

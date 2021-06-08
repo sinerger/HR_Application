@@ -5,13 +5,12 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Tests.Souces.Country
 {
-    public class GetCountryModelFromCountryDTOByIDSource : IEnumerable
+    public class GetModelFromDTOSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[]
             {
-                1,
                 new CountryDTO()
                 {
                     ID = 1,
@@ -25,7 +24,6 @@ namespace HR_Application_BLL.Tests.Souces.Country
             };
             yield return new object[]
             {
-                2,
                 new CountryDTO()
                 {
                     ID = 2,
@@ -39,7 +37,6 @@ namespace HR_Application_BLL.Tests.Souces.Country
             };
             yield return new object[]
             {
-                3,
                 new CountryDTO()
                 {
                     ID = 3,

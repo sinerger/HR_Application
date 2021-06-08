@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Tests.Souces.Location
 {
-    public class GetAllLocationModelsFromLocationDTOSource : IEnumerable
+    public class GetModelsFromDTOSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

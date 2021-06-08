@@ -4,13 +4,12 @@ using System.Collections;
 
 namespace HR_Application_BLL.Tests.Souces.Location
 {
-    public class GetLocationModelsFromLocationDTOByIDSource : IEnumerable
+    public class GetModelFromDTOSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[]
             {
-                1,
                 new LocationDTO()
                 {
                     ID = 1,
@@ -34,7 +33,6 @@ namespace HR_Application_BLL.Tests.Souces.Location
             };
             yield return new object[]
             {
-                2,
                 new LocationDTO()
                 {
                     ID = 2,

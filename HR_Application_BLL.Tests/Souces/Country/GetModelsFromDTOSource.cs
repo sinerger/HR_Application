@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Tests.Souces.Country
 {
-    public class GetAllCountryModelFromCountryDTOSource : IEnumerable
+    public class GetModelsFromDTOSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
