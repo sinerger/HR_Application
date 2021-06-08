@@ -28,7 +28,7 @@ namespace HR_Application_BLL.Tests
         public void GetAllAdressesFromAdressDTO_WhenValidTestPassed_ShouldReturnListAdesses(List<AdressDTO> returnedAdressesDTO, List<Adress> expected)
         {
             _mock.Setup(getAll => (getAll.AdressRepository.GetAll())).Returns(returnedAdressesDTO);
-            List<Adress> actual = _adressMapper.GetAllAdressesFromAdressDTO();
+            List<Adress> actual = _adressMapper.GetAllModelsFromDTO();
 
             Assert.AreEqual(expected, actual);
         }

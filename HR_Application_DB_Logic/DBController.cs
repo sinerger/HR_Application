@@ -1,8 +1,4 @@
-﻿using Dapper;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using HR_Application_DB_Logic.Models;
+﻿using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Repositories;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models.Custom;
@@ -20,11 +16,11 @@ namespace HR_Application_DB_Logic
         }
 
         public IRepository<AdressDTO> AdressRepository => new AdressRepository(_connectionString);
-        public CityRepository CityRepository => new CityRepository(_connectionString);
+        public IRepository<CityDTO> CityRepository => new CityRepository(_connectionString);
         public CommentRepository CommentRepository => new CommentRepository(_connectionString);
         public CompanyDepartmentsRepository CompanyDepartmentsRepository => new CompanyDepartmentsRepository(_connectionString);
         public CompanyRepository CompanyRepository => new CompanyRepository(_connectionString);
-        public CountryRepository CountryRepository => new CountryRepository(_connectionString);
+        public IRepository<CountryDTO> CountryRepository => new CountryRepository(_connectionString);
         public DepartmentProjectsRepository DepartmentProjectsRepository => new DepartmentProjectsRepository(_connectionString);
         public DepartmentRepository DepartmentRepository => new DepartmentRepository(_connectionString);
         public DirectionRepository DirectionRepository => new DirectionRepository(_connectionString);
@@ -38,7 +34,7 @@ namespace HR_Application_DB_Logic
         public HistoriesRepository HistoriesRepository => new HistoriesRepository(_connectionString);
         public LevelPositionRepository LevelPositionRepository => new LevelPositionRepository(_connectionString);
         public LevelSkillRepository LevelSkillRepository => new LevelSkillRepository(_connectionString);
-        public LocationRepository LocationRepository => new LocationRepository(_connectionString);
+        public IRepository<LocationDTO> LocationRepository => new LocationRepository(_connectionString);
         public PositionRepository PositionRepository => new PositionRepository(_connectionString);
         public ProjectRepository ProjectRepository => new ProjectRepository(_connectionString);
         public RequirementRepository RequirementRepository => new RequirementRepository(_connectionString);

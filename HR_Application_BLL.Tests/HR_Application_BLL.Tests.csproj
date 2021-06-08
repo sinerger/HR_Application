@@ -17,8 +17,4 @@
     <ProjectReference Include="..\HR_Application_BLL\HR_Application_BLL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TestsClases\" />
-  </ItemGroup>
-
 </Project>

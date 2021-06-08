@@ -10,12 +10,12 @@ namespace HR_Application_DB_Logic.Interfaces
     public interface IDBController
     {
         IRepository<AdressDTO> AdressRepository { get; }
-        CityRepository CityRepository { get; }
+        IRepository<CityDTO> CityRepository { get; }
         IRepository<CompanyAdressDTO> CompanyAdressRepository { get; }
         CommentRepository CommentRepository { get; }
         CompanyDepartmentsRepository CompanyDepartmentsRepository { get; }
         CompanyRepository CompanyRepository { get; }
-        CountryRepository CountryRepository { get; }
+        IRepository<CountryDTO> CountryRepository { get; }
         DepartmentProjectsRepository DepartmentProjectsRepository { get; }
         DepartmentRepository DepartmentRepository { get; }
         DirectionRepository DirectionRepository { get; }
@@ -29,7 +29,7 @@ namespace HR_Application_DB_Logic.Interfaces
         HistoriesRepository HistoriesRepository { get; }
         LevelPositionRepository LevelPositionRepository { get; }
         LevelSkillRepository LevelSkillRepository { get; }
-        LocationRepository LocationRepository { get; }
+        IRepository<LocationDTO> LocationRepository { get; }
         PositionRepository PositionRepository { get; }
         ProjectRepository ProjectRepository { get; }
         RequirementRepository RequirementRepository { get; }

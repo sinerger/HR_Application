@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models;
+using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
@@ -7,41 +9,37 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Mappers
 {
-    public class AdressMapper
+    public class AdressMapper : BaseMapper<Adress,AdressDTO>
     {
-        private Mapper _mapper;
-        public IDBController DBController { get; private set; }
-
-        public AdressMapper(IDBController dbController)
+        public AdressMapper(IDBController dbController) : base(dbController)
         {
-            DBController = dbController;
         }
 
-        public List<Adress> GetAllAdressesFromAdressDTO()
+        public override List<Adress> GetAllModelsFromDTO()
         {
-            _mapper = new Mapper(GetMapperConfigurationForMapAdressDTOToAdress());
-            List<AdressDTO> allAdresses = new List<AdressDTO>();
+            List<LocationModel> locations = new LocationMapper(DBController).GetAllModelsFromDTO();
+            List<CityModel> cities = new CityMapper(DBController).GetAllModelsFromDTO();
+            List<CountryModel> countries = new CountryMapper(DBController).GetAllModelsFromDTO();
+            List<Adress> adresses = new List<Adress>();
 
-            try
+            foreach (LocationModel location in locations)
             {
-                allAdresses = DBController.AdressRepository.GetAll();
+                foreach (CityModel city in cities)
+                {
+                    if(city.ID == location.CityID)
+                    {
+                        foreach (CountryModel country in countries)
+                        {
+                            if(city.CountryID == country.ID)
+                            {
+                                adresses.Add(new Adress() { Location = location, City = city, Country = country });
+                            }
+                        }
+                    }
+                }
             }
-            catch (Exception e )
-            {
 
-                throw e;
-            }
-
-            return _mapper.Map<List<Adress>>(allAdresses);
-        }
-
-        private MapperConfiguration GetMapperConfigurationForMapAdressDTOToAdress()
-        {
-            return new MapperConfiguration(config => config.CreateMap<AdressDTO, Adress>()
-            .ForMember(dest => dest.City, option => option
-               .MapFrom(source => source.City.Name))
-            .ForMember(dest => dest.Country, option => option
-               .MapFrom(source => source.Country.Name)));
+            return adresses;
         }
     }
 }

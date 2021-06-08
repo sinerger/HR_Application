@@ -3,34 +3,35 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using Dapper;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CityRepository
+    public class CityRepository : IRepository<CityDTO>
     {
-        private string _connectionString;
-
+        public string ConnectionString { get; private set; }
 
         public CityRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public List<CityDTO> GetAll()
         {
-            string query = "GetCities";
+            string query = "[HRAppDB].GetCities";
             List<CityDTO> result = new List<CityDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<CityDTO>(query).AsList<CityDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -38,19 +39,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CityDTO city)
         {
-            string query = "CreateCity @Name @CountryID";
+            string query = "[HRAppDB].CreateCity @Name @CountryID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { city.Name, city.CountryID });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -58,19 +59,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CityDTO city)
         {
-            string query = "UpdateCity @ID @Name @CountryID";
+            string query = "[HRAppDB].UpdateCity @ID @Name @CountryID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { city.ID, city.Name, city.CountryID });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -78,19 +79,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteCity @ID";
+            string query = "[HRAppDB].DeleteCity @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -98,19 +99,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CityDTO GetByID(int id)
         {
-            string query = "GetCityByID @ID";
+            string query = "[HRAppDB].GetCityByID @ID";
             CityDTO result = new CityDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<CityDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -118,19 +119,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CityDTO GetByName(string name)
         {
-            string query = "GetCityByName @Name";
+            string query = "[HRAppDB].GetCityByName @Name";
             CityDTO result = new CityDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<CityDTO>(query, new { name });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;

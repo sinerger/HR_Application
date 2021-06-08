@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using HR_Application_BLL.Mappers;
 using HR_Application_BLL.Models;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HR_Application_BLL.Controllers
 {
@@ -16,12 +16,18 @@ namespace HR_Application_BLL.Controllers
         public UserMapper(IDBController dbController)
         {
             DBController = dbController;
+
+            MapperConfiguration config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<CustomMapperProfile>();
+            });
+
+            _mapper = new Mapper(config);
         }
 
         public List<User> GetAllUsersFromUserDTO()
         {
-            List<UserDTO> users = new List<UserDTO>();
-            _mapper = new Mapper(GetMapperConfigurationForMapUserDTOToUserModel());
+            List<UserDTO> users = new List<UserDTO>(); 
 
             try
             {

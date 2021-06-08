@@ -246,6 +246,7 @@
     <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjectsByDepartmentID.sql" />
     <Build Include="Stored Procedures\Custom\CompanyAdress\GetCompaniesAdreses.sql" />
     <Build Include="Stored Procedures\Custom\CompanyAdress\GetCompanyAdressByCompanyID.sql" />
+    <Build Include="Stored Procedures\Base\Countries\GetCountries.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />
