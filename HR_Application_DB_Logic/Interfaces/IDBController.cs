@@ -28,12 +28,12 @@ namespace HR_Application_DB_Logic.Interfaces
         GeneralInformationRepository GeneralInformationRepository { get; }
         HistoriesRepository HistoriesRepository { get; }
         LevelPositionRepository LevelPositionRepository { get; }
-        LevelSkillRepository LevelSkillRepository { get; }
+        IRepository <LevelSkillDTO> LevelSkillRepository { get; }
         IRepository<LocationDTO> LocationRepository { get; }
         PositionRepository PositionRepository { get; }
         ProjectRepository ProjectRepository { get; }
         RequirementRepository RequirementRepository { get; }
-        SkillRepository SkillRepository { get; }
+        IRepository <SkillDTO> SkillRepository { get; }
         StatusRepository StatusRepository { get; }
         IRepository<UserDTO> UserRepository { get; }
     }
