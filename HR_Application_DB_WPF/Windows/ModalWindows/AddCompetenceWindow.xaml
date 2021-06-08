@@ -5,25 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HR_Application_DB_WPF.ModalWindows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="AddCompetenceWindow" Height="600" Width="600" Background="#FFE9E9E9">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
     </Window.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="404"></RowDefinition>
-            <RowDefinition Height="114" ></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="1*" ></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Style="{DynamicResource LabelHeader}" Content="ADD COMPETENCE"  VerticalAlignment="Top" FontFamily="Global User Interface" Grid.RowSpan="2"/>
-        <Button x:Name="Button_Cancel" Style="{DynamicResource CoralRoundButtonStyle}"  HorizontalAlignment="Left" Margin="65,0,0,0" Grid.Row="2" VerticalAlignment="Center" Background="#FFE3405F" Foreground="White" Height="50" Width="180" Click="Button_Cancel_Click" >
-            <TextBlock Text="CANCEL" FontSize="32" FontFamily="Global User Interface"/>
-        </Button>
-        <Button x:Name="Button_Accept" Style="{DynamicResource CoralRoundButtonStyle}" Margin="353,0,0,0" Grid.Row="2"  VerticalAlignment="Center" Background="#FFE3405F" Foreground="White" HorizontalAlignment="Left" Width="182" Click="Button_Accept_Click" Height="50">
-            <TextBlock Text="ACCEPT" FontSize="32" FontFamily="Global User Interface"/>
-        </Button>
-        <ScrollViewer  Margin="0,10,0,10" Grid.Row="1" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
+        <Label Grid.Row="0" Style="{DynamicResource LabelHeader}" Content="ADD COMPETENCE"/>
+        <ScrollViewer Margin="0,10,0,10" Grid.Row="1" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
             <StackPanel x:Name="AllCompetenceStackPanel" Grid.Row="1" Orientation="Vertical" Height="364" Width="450" Grid.RowSpan="2"/>
         </ScrollViewer>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Button_Accept" Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="0" Margin ="20,15,20,15" Content="Accept" Click="Button_Accept_Click"/>
+            <Button x:Name="Button_Cancel" Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="1" Margin ="20,15,20,15" Content="Cancel" Click="Button_Cancel_Click"/>
+        </Grid>
     </Grid>
 </Window>

@@ -3,37 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HR_Application_DB_WPF.ModalWindows"
         mc:Ignorable="d"
-        Title="AddPositionWindow" Height="450" Width="800" Background="#FFE9E9E9">
+        WindowStartupLocation="CenterScreen"
+        Title="AddPositionWindow" Height="300" Width="600" Background="#FFE9E9E9">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
     </Window.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.8*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.2*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Margin="0,182,0,0" Grid.RowSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Label Grid.Row="0" Style="{DynamicResource LabelHeader}" Content="ADD POSITION"/>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Button_Cancel" Style="{DynamicResource CoralRoundButtonStyle}"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Cancel_Click" Height="50" Width="180" >
-                <TextBlock Text="CANCEL" FontSize="32" FontFamily="Global User Interface"/>
-            </Button>
-            <Button x:Name="Button_Accept" Style="{DynamicResource CoralRoundButtonStyle}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="182" Click="Button_Accept_Click" Height="50" Grid.Column="1">
-                <TextBlock Text="ACCEPT" FontSize="32" FontFamily="Global User Interface"/>
-            </Button>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="PositionComboBox" Grid.Column="0"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="LevelPositionComboBox" Grid.Column="1"/>
         </Grid>
-        <Label Style="{DynamicResource LabelHeader}" Content="ADD POSITION" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" Width="360">
-            <ComboBox x:Name="PositionComboBox" FontSize="18" Width="180" IsEditable="True" StaysOpenOnEdit="True"/>
-            <ComboBox x:Name="LevelPositionComboBox"  FontSize="18" Width="180" IsEditable="True" StaysOpenOnEdit="True"/>
-        </StackPanel>
+        
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Button_Accept" Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="0" Width="200" Margin ="20,15,20,15" Click="Button_Accept_Click" Content="Accept"/>
+            <Button x:Name="Button_Cancel" Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="1" Width="200" Margin ="20,15,20,15" Click="Button_Cancel_Click" Content="Cancel"/>
+        </Grid>
     </Grid>
 </Window>
