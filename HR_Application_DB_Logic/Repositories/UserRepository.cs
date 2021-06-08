@@ -30,7 +30,7 @@ namespace HR_Application_DB_Logic.Repositories
                     {
                         user.FirstName,
                         user.LastName,
-                        user.Company.ID,
+                        user.CompanyID,
                         user.Email,
                         user.Password,
                         user.IsActual
@@ -59,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
                         user.ID,
                         user.FirstName,
                         user.LastName,
-                        user.Company,
+                        user.CompanyID,
                         user.Email,
                         user.Password,
                         user.IsActual
@@ -102,18 +102,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<UserDTO, CompanyDTO, AdressDTO, CityDTO, CountryDTO, UserDTO>
-                        (query,
-                        (user, conpany, adress, city, country) =>
-                        {
-                            user.Company = conpany;
-                            user.Adress = adress;
-                            user.Adress.City = city;
-                            user.Adress.Country = country;
-
-                            return user;
-                        })
-                        .AsList<UserDTO>();
+                    result = dbConnection.Query<UserDTO>(query).AsList<UserDTO>();
                 }
             }
             catch (Exception e)
@@ -128,22 +117,12 @@ namespace HR_Application_DB_Logic.Repositories
         {
             string query = "[HRAppDB].GetUserByID @ID";
             UserDTO result = new UserDTO();
+
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<UserDTO, CompanyDTO, AdressDTO, CityDTO, CountryDTO, UserDTO>
-                        (query,
-                        (user, conpany, adress, city, country) =>
-                        {
-                            user.Company = conpany;
-                            user.Adress = adress;
-                            user.Adress.City = city;
-                            user.Adress.Country = country;
-
-                            return user;
-                        }, new { id })
-                        .AsList<UserDTO>()[0];
+                    result = dbConnection.QuerySingle<UserDTO>(query,new { id });
                 }
             }
             catch (Exception e)

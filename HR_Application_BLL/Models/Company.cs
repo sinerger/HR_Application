@@ -9,7 +9,7 @@ namespace HR_Application_BLL.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public string Desctiption { get; set; }
-        public AdressModel Adress { get; set; }
+        public Adress Adress { get; set; }
         public List<Department> Departments { get; set; }
 
         public override bool Equals(object obj)

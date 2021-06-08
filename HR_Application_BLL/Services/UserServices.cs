@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HR_Application_BLL.Models
+namespace HR_Application_BLL.Services
 {
-    public class User
+    class UserServices
     {
-
     }
 }

@@ -13,8 +13,8 @@ namespace HR_Application_BLL.Mappers
     {
         public CustomMapperProfile()
         {
-            CreateMap<UserDTO, User>();
-            CreateMap<User, UserDTO>();
+            CreateMap<UserDTO, UserModel>();
+            CreateMap<UserModel, UserDTO>();
 
             CreateMap<LocationDTO, LocationModel>();
             CreateMap<LocationModel, LocationDTO>();

@@ -34,7 +34,7 @@ namespace HR_Application_BLL.Tests.Souces.Adress
                     ID = 1,
                     Name = "Ukraine"
                 },
-                new AdressModel()
+                new Models.Adress()
                 {
                     Location = new LocationModel()
                     {
@@ -82,7 +82,7 @@ namespace HR_Application_BLL.Tests.Souces.Adress
                     ID = 2,
                     Name = "Russia"
                 },
-                new AdressModel()
+                new Models.Adress()
                 {
                     Location = new LocationModel()
                     {

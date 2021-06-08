@@ -74,9 +74,9 @@ namespace HR_Application_BLL.Tests.Souces.Adress
                         Name = "Turkey"
                     }
                 },
-                new List<AdressModel>()
+                new List<Models.Adress>()
                 {
-                    new AdressModel()
+                    new Models.Adress()
                     {
                         Location = new LocationModel()
                         {
@@ -100,7 +100,7 @@ namespace HR_Application_BLL.Tests.Souces.Adress
                             Name = "Ukraine"
                         }
                     },
-                    new AdressModel()
+                    new Models.Adress()
                     {
                         Location = new LocationModel()
                         {

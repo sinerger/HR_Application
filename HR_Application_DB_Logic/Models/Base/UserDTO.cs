@@ -8,8 +8,7 @@
         public string Email { get; set; }
         public string Password { get; set; }
         public bool? IsActual { get; set; }
-        public CompanyDTO Company { get; set; }
-        public AdressDTO Adress { get; set; }
+        public int? CompanyID { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -24,8 +23,7 @@
                     && userDTO.Email == Email
                     && userDTO.Password == Password
                     && userDTO.IsActual == IsActual
-                    && userDTO.Company.Equals(Company)
-                    && userDTO.Adress.Equals(Adress))
+                    && userDTO.CompanyID == CompanyID)
                 {
                     result = true;
                 }
