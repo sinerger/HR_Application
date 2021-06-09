@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using HR_Application_BLL.Models.Base;
 
 
-namespace HR_Application_BLL.Tests.Souces.Adress
+namespace HR_Application_BLL.Tests.Souces.AdressSources
 {
     public class GetModelFromDTOSource : IEnumerable
     {
@@ -34,7 +34,7 @@ namespace HR_Application_BLL.Tests.Souces.Adress
                     ID = 1,
                     Name = "Ukraine"
                 },
-                new AdressModel()
+                new Models.Adress()
                 {
                     Location = new LocationModel()
                     {
@@ -82,7 +82,7 @@ namespace HR_Application_BLL.Tests.Souces.Adress
                     ID = 2,
                     Name = "Russia"
                 },
-                new AdressModel()
+                new Models.Adress()
                 {
                     Location = new LocationModel()
                     {

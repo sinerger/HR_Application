@@ -1,6 +1,6 @@
 ﻿using HR_Application_BLL.Mappers;
 using HR_Application_BLL.Models;
-using HR_Application_BLL.Tests.Souces.Adress;
+using HR_Application_BLL.Tests.Souces.AdressSources;
 using HR_Application_DB_Logic.Models;
 using NUnit.Framework;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Tests.TestsClases
 {
-    public class AdressTests
+    public class AdressMapperTests
     {
         private AdressMapper _adressMapper;
 
@@ -20,18 +20,18 @@ namespace HR_Application_BLL.Tests.TestsClases
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]
         public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListAdressesModel(List<LocationDTO> locationsDTO,
-            List<CityDTO> citiesDTO, List<CountryDTO> countiresDTO, List<AdressModel> expected)
+            List<CityDTO> citiesDTO, List<CountryDTO> countiresDTO, List<Adress> expected)
         {
-            List<AdressModel> actual = _adressMapper.GetModelsFromDTO(locationsDTO, citiesDTO, countiresDTO);
+            List<Adress> actual = _adressMapper.GetModelsFromDTO(locationsDTO, citiesDTO, countiresDTO);
 
             Assert.AreEqual(expected, actual);
         }
 
         [TestCaseSource(typeof(GetModelFromDTOSource))]
         public void GetModelFromDTO_WhenValidTestPassed_ShouldReturnAdressModelObj(LocationDTO locationDTO,
-            CityDTO cityDTO,CountryDTO countryDTO ,AdressModel expected)
+            CityDTO cityDTO,CountryDTO countryDTO ,Adress expected)
         {
-            AdressModel actual = _adressMapper.GetModelFromDTO(locationDTO, cityDTO, countryDTO);
+            Adress actual = _adressMapper.GetModelFromDTO(locationDTO, cityDTO, countryDTO);
 
             Assert.AreEqual(expected, actual);
         }

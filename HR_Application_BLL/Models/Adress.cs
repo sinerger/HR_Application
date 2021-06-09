@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Models
 {
-    public class AdressModel
+    public class Adress
     {
         public LocationModel Location { get; set; }
         public CityModel City { get; set; }
@@ -20,9 +20,9 @@ namespace HR_Application_BLL.Models
         {
             bool result = false;
 
-            if (obj is AdressModel)
+            if (obj is Adress)
             {
-                AdressModel adress = (AdressModel)obj;
+                Adress adress = (Adress)obj;
 
                 if (adress.Location.Equals(Location) && adress.Country.Equals(Country) && adress.City.Equals(City))
                 {

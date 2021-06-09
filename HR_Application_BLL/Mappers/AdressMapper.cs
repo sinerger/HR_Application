@@ -12,20 +12,20 @@ namespace HR_Application_BLL.Mappers
 {
     public class AdressMapper : BaseMapper
     {
-        public List<AdressModel> GetModelsFromDTO(List<LocationDTO> locationsDTO, List<CityDTO> citiesDTO, List<CountryDTO> countriesDTO)
+        public List<Adress> GetModelsFromDTO(List<LocationDTO> locationsDTO, List<CityDTO> citiesDTO, List<CountryDTO> countriesDTO)
         {
             if (locationsDTO != null && citiesDTO != null && countriesDTO != null)
             {
                 List<LocationModel> locations = new LocationMapper().GetModelsFromDTO(locationsDTO);
                 List<CityModel> cities = new CityMapper().GetModelsFromDTO(citiesDTO);
                 List<CountryModel> countries = new CountryMapper().GetModelsFromDTO(countriesDTO);
-                List<AdressModel> adresses = new List<AdressModel>();
+                List<Adress> adresses = new List<Adress>();
 
                 foreach (LocationModel location in locations)
                 {
                     var city = cities.First(city => city.ID == location.CityID);
 
-                    adresses.Add(new AdressModel()
+                    adresses.Add(new Adress()
                     {
                         Location = location,
                         City = city,
@@ -39,7 +39,7 @@ namespace HR_Application_BLL.Mappers
             throw new ArgumentNullException("Some list is null");
         }
 
-        public AdressModel GetModelFromDTO(LocationDTO locationDTO, CityDTO cityDTO, CountryDTO countryDTO)
+        public Adress GetModelFromDTO(LocationDTO locationDTO, CityDTO cityDTO, CountryDTO countryDTO)
         {
             if (locationDTO != null && cityDTO != null && countryDTO != null)
             {
@@ -47,7 +47,7 @@ namespace HR_Application_BLL.Mappers
                 CityModel city = new CityMapper().GetModelFromDTO(cityDTO);
                 CountryModel country = new CountryMapper().GetModelFromDTO(countryDTO);
 
-                return new AdressModel()
+                return new Adress()
                 {
                     Location = location,
                     City = city,

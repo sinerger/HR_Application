@@ -1,86 +1,65 @@
-﻿using AutoMapper;
-using HR_Application_BLL.Mappers;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models;
-using HR_Application_DB_Logic.Interfaces;
-using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace HR_Application_BLL.Controllers
+namespace HR_Application_BLL.Mappers
 {
-    public class UserMapper
+    public class UserMapper : BaseMapper
     {
-        private Mapper _mapper;
-        public IDBController DBController { get; private set; }
-
-        public UserMapper(IDBController dbController)
+        public List<User> GetUsersFromModels(List<UserModel> usersModel, List<Company> companies)
         {
-            DBController = dbController;
-
-            MapperConfiguration config = new MapperConfiguration(cfg =>
+            if (usersModel != null && companies != null)
             {
-                cfg.AddProfile<CustomMapperProfile>();
-            });
-
-            _mapper = new Mapper(config);
-        }
-
-        public List<User> GetAllUsersFromUserDTO()
-        {
-            List<UserDTO> users = new List<UserDTO>(); 
-
-            try
-            {
-                users = DBController.UserRepository.GetAll();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            List<User> userModels = _mapper.Map<List<User>>(users);
-
-            return userModels;
-        }
-
-        public UserDTO GetUserDTOFromUser(User userModel)
-        {
-            if (userModel != null)
-            {
-                _mapper = new Mapper(GetMapperConfigurationForMapUserModelToUserDTO());
-                UserDTO userDTO = new UserDTO();
-
-                try
+                var users = _mapper.Map<List<User>>(usersModel);
+                foreach (var user in users)
                 {
-                    userDTO = _mapper.Map<UserDTO>(userModel);
-                }
-                catch (Exception e)
-                {
-                    throw e;
+                    var userModel = usersModel.First(userModel => userModel.ID == user.ID);
+                    user.Company = companies.First(company => company.ID == userModel.CompanyID);
                 }
 
-                return userDTO;
+                return users;
+            }
+            else if (usersModel == null)
+            {
+                throw new ArgumentNullException("List users model is null");
+            }
+            else
+            {
+                throw new ArgumentNullException("List companies is null");
+            }
+        }
+
+        public User GetUserFromModel(UserModel userModel, Company company)
+        {
+            if (userModel != null && company != null)
+            {
+                var user = _mapper.Map<User>(userModel);
+                user.Company = company;
+
+                return user;
+            }
+            else if (userModel == null)
+            {
+                throw new ArgumentNullException("User model is null");
+            }
+            else
+            {
+                throw new ArgumentNullException("Company is null");
+            }
+        }
+
+        public UserModel GetModelFromUser(User user)
+        {
+            if (user != null)
+            {
+                return _mapper.Map<UserModel>(user);
             }
 
-            throw new ArgumentNullException("User model is null");
-        }
-
-        private MapperConfiguration GetMapperConfigurationForMapUserModelToUserDTO()
-        {
-            return new MapperConfiguration(config => config.CreateMap<User, UserDTO>()
-            .ForMember(dest => dest.Company, option => option
-             .MapFrom(sourse => new CompanyDTO() { Title = sourse.Company }))
-            .ForMember(dest => dest.Adress, option => option
-             .MapFrom(sourse => new AdressDTO() { City = new CityDTO() { Name = sourse.City } })));
-        }
-
-        private MapperConfiguration GetMapperConfigurationForMapUserDTOToUserModel()
-        {
-            return new MapperConfiguration(config => config.CreateMap<UserDTO, User>()
-            .ForMember(dest => dest.Company, option => option
-              .MapFrom(sourse => sourse.Company.Title))
-            .ForMember(dest => dest.City, option => option
-              .MapFrom(sourse => sourse.Adress.City.Name)));
+            throw new ArgumentNullException("User is null");
         }
     }
 }
