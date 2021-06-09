@@ -1,9 +1,13 @@
-﻿namespace HR_Application_DB_Logic.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace HR_Application_BLL.Models.Base
 {
-    public class CommentDTO
+    public class CommentModel
     {
-        public int? ID { get; set; }
-        public int? EmployeeID { get; set; }
+        public int ID { get; set; }
+        public int EmployeeID { get; set; }
         public string Information { get; set; }
         public string Date { get; set; }
 
@@ -16,12 +20,12 @@
         {
             bool result = false;
 
-            if (obj is CommentDTO)
+            if (obj is CommentModel)
             {
-                CommentDTO comment = (CommentDTO)obj;
+                CommentModel comment = (CommentModel)obj;
 
                 if (comment.ID == ID
-                    && comment.EmployeeID == EmployeeID
+                    && comment.EmployeeID== EmployeeID
                     && comment.Information == Information
                     && comment.Date == Date)
                 {
