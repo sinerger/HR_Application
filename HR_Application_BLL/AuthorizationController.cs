@@ -20,7 +20,7 @@ namespace HR_Application_BLL
             {
                 try
                 {
-                    List<UserModel> users = new UserServices().;
+                    List<UserModel> users =null;
 
                     foreach (var user in users)
                     {
