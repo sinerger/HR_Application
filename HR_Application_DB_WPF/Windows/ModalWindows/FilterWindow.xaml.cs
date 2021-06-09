@@ -165,6 +165,7 @@ namespace HR_Application_DB_WPF.ModalWindows
         {
             ComboBox comboBox = new ComboBox()
             {
+                //TODO: add style for comboboxes
                 Height = _height,
                 Width = _widthComboBox,
                 IsEditable = true,

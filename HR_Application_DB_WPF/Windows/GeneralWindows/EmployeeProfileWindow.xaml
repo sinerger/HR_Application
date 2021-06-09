@@ -6,57 +6,92 @@
         xmlns:local="clr-namespace:HR_Application_DB_WPF"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="EmployeeProfileWindow" Height="600" Width="800" Background="#FFE9E9E9">
+        WindowStartupLocation="CenterScreen"
+        Title="EmployeeProfileWindow" Height="720" Width="1280" Background="#FFE9E9E9">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
     </Window.Resources>
     <Grid>
-        <TabControl>
-            <TabItem x:Name="EmployeeProfileTabItem" Header="Employee profile" Foreground="#878383" Margin="365,0,-385,0" FontSize="24" MouseEnter="TabItem_MouseEnter" MouseLeave="TabItem_MouseLeave" FontFamily="Global User Interface">
+        <TabControl Style="{DynamicResource TabControlStyle}">
+            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeProfileTabItem" Header="Employee profile">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="9*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="Button_Cancel" Grid.Row="0" Grid.Column="0" Content="CANCEL" Style="{DynamicResource CoralRoundButtonStyle}" Width="200" Height="40" Click="Button_Cancel_Click"/>
-                        <Button x:Name="Button_Save" Grid.Row="1" Grid.Column="1" Content="SAVE" Style="{DynamicResource CoralRoundButtonStyle}" Width="200" Height="40" Click="Button_Save_Click"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1.2*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="1.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="First name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="0" Grid.Column="1" Margin="2" x:Name="FirstNameTextBox"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Last name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Grid.Column="1" Margin="2" x:Name="LastNameTextBox"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Date of Birth"/>
+                        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="2" Grid.Column="1" Margin="2" x:Name="DateOfBirthDatePicker"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Phone" HorizontalAlignment="Left"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="3" Grid.Column="1" Margin="2" x:Name="PhoneTextBox"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="E-mail"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Grid.Column="1" Margin="2" x:Name="EmailTextBox"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Registration date"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Grid.Column="1" Margin="2" x:Name="RegistrationDateTextBox"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Department" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Grid.Column="1" Margin="2" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="7" Grid.Column="0" Content="Position" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Grid.Column="1" Margin="2" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Competence"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Grid.Column="1" Margin="2" x:Name="ProjectNameTextBox"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="5" Content="Add comment" Click="Button_AddComment_Click"/>
+                        <ScrollViewer Grid.Row="11" Grid.ColumnSpan="2" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
+                            <StackPanel x:Name ="AllEmployeeComments" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="90">
+                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="CommentsTextBox" Height="90" Margin="0,0,40,0"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="0" Margin ="5" Width="200" x:Name="Button_Save" Content="Save" Click="Button_Save_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="1" Margin ="5" Width="200" x:Name="Button_Cancel" Content="Cancel" Click="Button_Cancel_Click"/>
                     </Grid>
-                    <Label Content="First name" HorizontalAlignment="Left" Margin="16,16,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.488,0.516" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="161,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface"/>
-                    <Label Content="Last name" HorizontalAlignment="Left" Margin="16,44,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" Width="127" IsEnabled="False" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="161,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface"/>
-                    <Label Content="Date of Birth" HorizontalAlignment="Left" Margin="16,78,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False" FontFamily="Global User Interface"/>
-                    <DatePicker  x:Name="DateOfBirthDatePicker" Style="{DynamicResource DatePickerStyle}" HorizontalAlignment="Left" Margin="161,74,0,0" Padding="5,0,0,0" VerticalAlignment="Top" FontSize="16" Width="329"/>
-                    <Label Content="Phone" HorizontalAlignment="Left" Margin="16,106,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="PhoneTextBox" HorizontalAlignment="Left" Margin="161,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface"/>
-                    <Label Content="E-mail" HorizontalAlignment="Left" Margin="16,136,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Margin="161,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface"/>
-                    <Label Content="Department" HorizontalAlignment="Left" Margin="16,166,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="TextBox_Department" HorizontalAlignment="Left" Margin="161,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
-                    <Label Content="Position" HorizontalAlignment="Left" Margin="16,196,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="TextBox_Position" HorizontalAlignment="Left" Margin="161,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" IsReadOnly="True" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
-                    <Label Content="Competence" HorizontalAlignment="Left" Margin="16,224,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" Width="127" IsEnabled="False" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="TextBox_Competence" HorizontalAlignment="Left" Margin="161,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" IsReadOnly="True" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
-                    <Label Content="Project name" HorizontalAlignment="Left" Margin="16,254,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" Width="127" IsEnabled="False" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="ProjectNameTextBox" HorizontalAlignment="Left" Margin="161,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface"/>
-                    <Label Content="Registration date" HorizontalAlignment="Left" Margin="16,286,0,0" Padding="0,0,0,0" VerticalAlignment="Top" FontSize="16" IsEnabled="False" Width="127" FontFamily="Global User Interface"/>
-                    <TextBox x:Name="RegistrationDateTextBox" HorizontalAlignment="Left" Margin="161,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" FontSize="16" IsReadOnly="True" Style="{DynamicResource RoundTextBoxStyle}" FontFamily="Global User Interface"/>
-                    <Button x:Name="Button_AddComment" Style="{DynamicResource CoralRoundButtonStyle}" Content="ADD COMMENT" HorizontalAlignment="Left" Margin="16,325,0,0" Padding="10,10,10,10" Foreground="#FFFFFF" Background="#E3405F" VerticalAlignment="Top" FontSize="16" FontFamily="Global User Interface" Click="Button_AddComment_Click"/>
-                    <TextBox x:Name="CommentsTextBox" HorizontalAlignment="Left" Margin="16,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474" FontSize="16" Height="100" Style="{DynamicResource RoundTextBoxStyle}"/>
-                    <Rectangle HorizontalAlignment="Left" Height="110" Margin="602,25,0,0" Stroke="White" VerticalAlignment="Top" Width="95" Fill="White"/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="0.35*"></RowDefinition>
+                            <RowDefinition Height="1.8*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Rectangle Grid.Row="0" Grid.Column="1" Fill="White" Height="180" Width="150" Stroke="White" VerticalAlignment="Top" Margin="0,15,0,0"/>
+                        <Button Grid.Row="1" Grid.Column="1" Style="{DynamicResource CoralRoundButtonStyle}" Width="160" Margin ="15" Content="Edit photo" IsEnabled="False"></Button>
+                    </Grid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="EmployeeHistoryTabItem" Header="Employee history" Foreground="#878383" Margin="385,0,-396,0" FontSize="24" MouseEnter="TabItem_MouseEnter" MouseLeave="TabItem_MouseLeave" FontFamily="Global User Interface">
+            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeHistoryTabItem" Header="Employee history">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="HistoryTextBox" Style="{DynamicResource RoundTextBoxStyle}" HorizontalAlignment="Left" Margin="21,22,0,0" Padding="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719" Height="168" FontSize="16"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <TextBox Grid.Row="0" Grid.Column="0" Style="{DynamicResource RoundTextBoxStyle}" x:Name="HistoryTextBox" Height="200"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
-        <ScrollBar HorizontalAlignment="Left" Margin="764,63,0,0" VerticalAlignment="Top" Height="460"/>
     </Grid>
 </Window>

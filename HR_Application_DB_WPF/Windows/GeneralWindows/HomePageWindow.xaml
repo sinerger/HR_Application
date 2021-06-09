@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:HR_Application_DB_WPF.Windows.GeneralWindows" xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Title="HomePageWindow" Height="720" Width="1280">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
@@ -15,37 +16,45 @@
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemFindEmployee" Header="Find Employee">
                 <Grid x:Name="FindEmployee" Background="#FFE9E9E9">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="300"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="Enter name" Foreground="#676e69 " TextWrapping="Wrap" Width="1029" HorizontalAlignment="Left" RenderTransformOrigin="0.55,0.198" HorizontalContentAlignment="Stretch" FontSize="20" Padding="10,20,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Margin="10,30,0,10" />
-                    <Button x:Name="Button_Search" Grid.Column="2" Grid.Row="0" Content="SEARCH" Margin="214,30,10,10" Foreground="#fff" Background="#FFE3405F" Click="Button_Search_Click"/>
-                    <Button x:Name="Button_OpenFilterWindow" Grid.Column="0" Grid.Row="1" Content="FILTER" Margin="12,18,211,18" Foreground="#fff" Background="#FFE3405F" Width="200" Click="Button_OpenFilterWindow_Click"/>
-                    <Button x:Name="Button_ClearFilter" Grid.Row="1" Content="CLEAR" Margin="223,18,0,18" Foreground="#fff" Background="#FFE3405F" Width="200" HorizontalAlignment="Left" RenderTransformOrigin="0.312,0.551" Click="Button_ClearFilter_Click"/>
-                    <DataGrid x:Name="DataGrid_Employees" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-    RowBackground="LightGray" AlternatingRowBackground="White" Margin="10,44,10,-131" Grid.Row="2" Grid.ColumnSpan="3">
-                        <DataGrid.Resources>
-                            <Style TargetType="{x:Type DataGridCell}">
-                                <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
-                            </Style>
-                        </DataGrid.Resources>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="FullName" Binding="{Binding Path=FullName}" Width="5*" />
-                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="5*" />
-                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="txtName" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" Tag="Enter name"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Search" Grid.Row="0" Grid.Column="1" Margin ="10,15,0,15" Content="Search" Click="Button_Search_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_OpenFilterWindow" Grid.Row="0" Grid.Column="0" Content="Filter" Margin ="10,15,0,15" Click="Button_OpenFilterWindow_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ClearFilter" Grid.Row="0" Grid.Column="1" Content="Clear" Margin ="10,15,0,15" Click="Button_ClearFilter_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <DataGrid x:Name="DataGrid_Employees" AutoGenerateColumns="False" Margin="10">
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="FullName" Binding="{Binding Path=FullName}" Width="5*" />
+                                <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="5*" />
+                                <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemStats" Header="Stats">
                 <Grid Background="#FFE9E9E9">
-
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -55,51 +64,70 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many employees are in the application at all:"/>
-                    <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid Grid.Row="0" Grid.Column="0" Margin="30,0,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="0.55*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many employees are in the application at all:"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0" Margin="30,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
                         <Label Style="{DynamicResource LabelStyle}" Content="How many employees are in the " Grid.Column="0"/>
-                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0">
-                            <ComboBoxItem Name="cbi1">Department1</ComboBoxItem>
-                            <ComboBoxItem Name="cbi2">Department2</ComboBoxItem>
-                            <ComboBoxItem Name="cbi3">Department3</ComboBoxItem>
+                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0" Width="250" HorizontalAlignment="Left">
+                            <ComboBoxItem Name="cbi1">Department</ComboBoxItem>
                         </ComboBox>
                     </Grid>
-                    <Grid Grid.Row="2" Grid.Column="0">
+                    <Grid Grid.Row="2" Grid.Column="0" Margin="30,0,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="0.7*"/>
                             <ColumnDefinition Width="0.55*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Style="{DynamicResource LabelStyle}" Content="How many are in the application:" Grid.Column="0"/>
-                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0">
-                            <ComboBoxItem Name="cbid1">Employee1</ComboBoxItem>
-                            <ComboBoxItem Name="cbid2">Employee2</ComboBoxItem>
-                            <ComboBoxItem Name="cbid3">Employee3</ComboBoxItem>
+                        <StackPanel VerticalAlignment="Center">
+                        <Label Style="{DynamicResource LabelStyle}" Content="How many" Grid.Column="0"/>
+                        <Label Style="{DynamicResource LabelStyle}" Content="are in the application:" Grid.Column="0"/>
+                        </StackPanel>
+                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0" Width="250" HorizontalAlignment="Left">
+                            <ComboBoxItem Name="cbid1">Employee</ComboBoxItem>
                         </ComboBox>
                     </Grid>
-                    <Label Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many hr's are in the application now:"/>
-                    <Label Grid.Row="4" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many people were added to the app in the last month:"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountEmployeeInAppAll" Text="Count employee in App"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountEmployeeInDepartment" Text="Count employee in department"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountEmployeeInApp" Text="Count employee in direction"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountHRInApp" Text="Count HRs in App"/>
-                    <TextBox Grid.Row="4" Grid.Column="1" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountPeopleInApp"  Text="Count employee for last month"/>
+                    <Grid Grid.Row="3" Grid.Column="0" Margin="30,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many hr's are in the application now:"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="0" Margin="30,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many people were added to the app in the last month:"/>
+                    </Grid>
+                    <TextBox Grid.Row="0" Grid.Column="2" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountEmployeeInAppAll" Margin="20" Text="Count" IsReadOnly="True" VerticalAlignment="Stretch"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountEmployeeInDepartment" Text="Count" IsReadOnly="True" Margin="20" VerticalAlignment="Stretch"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountEmployeeInApp" Text="Count" IsReadOnly="True" Margin="20" VerticalAlignment="Stretch"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountHRInApp" Text="Count" IsReadOnly="True" Margin="20" VerticalAlignment="Stretch"/>
+                    <TextBox Grid.Row="4" Grid.Column="2" Style="{DynamicResource RoundTextBoxStyle}" x:Name="TxtCountPeopleInApp" Text="Count" IsReadOnly="True" Margin="20" VerticalAlignment="Stretch"/>
                 </Grid>
             </TabItem>
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemMyAccount" Header="My Account">
                 <Grid x:Name="Main" Background="#FFE9E9E9">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="94*"/>
-                        <RowDefinition Height="94"/>
-                        <RowDefinition Height="94*"/>
-                        <RowDefinition Height="94*"/>
-                        <RowDefinition Height="123*"/>
-                        <RowDefinition Height="123*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Grid x:Name ="GridFirstName" Grid.Row="0">
                         <Grid.ColumnDefinitions>
@@ -107,8 +135,8 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Text="First name" />
-                        <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Content="LOGOUT" Grid.Column="2" Click="Button_LogOut_Click"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Tag="First name" />
+                        <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Content="Log out" Grid.Column="2" Click="Button_LogOut_Click"/>
                     </Grid>
                     <Grid x:Name ="GridSecondName" Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -116,7 +144,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name ="TxtSecondName" Grid.Column="1" Text="Second name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name ="TxtSecondName" Grid.Column="1" Tag="Second name"/>
                     </Grid>
                     <Grid x:Name ="GridCompany" Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -124,7 +152,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Text="Company"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Tag="Company"/>
                     </Grid>
                     <Grid x:Name ="GridCity" Grid.Row="3">
                         <Grid.ColumnDefinitions>
@@ -132,25 +160,25 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Text="City"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Tag="City"/>
                     </Grid>
                     <Grid x:Name ="GridChangePassword" Grid.Row="4">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0.4*"/>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ChangePassword" Grid.Column="1" Content="CHANGE PASSWORD" Click="Button_ChangePassword_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ChangePassword" Grid.Column="1" Content="Change password" Click="Button_ChangePassword_Click"/>
                     </Grid>
                     <Grid x:Name ="GridSaveCancel" Grid.Row="5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0.4*"/>
                             <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Grid.Column="1" Content="CANCEL" IsEnabled="False" Click="Button_Cancel_Click"/>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Grid.Column="2" Content="SAVE" IsEnabled="False" Click="Button_Save_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Grid.Column="1" Content="Save" IsEnabled="False" Click="Button_Save_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Grid.Column="2" Content="Cancel" IsEnabled="False" Click="Button_Cancel_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -162,23 +190,22 @@
                     </Grid.RowDefinitions>
                     <Grid x:Name="MainButton" Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="903*"/>
-                            <ColumnDefinition Width="367*"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddEmployee" Grid.Column="1" Content="ADD EMPLOYEE" IsEnabled="True" Margin="10,20,20,20" Click="Button_AddEmployee_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddEmployee" Grid.Column="1" Content="Add employee" Click="Button_AddEmployee_Click"/>
                     </Grid>
-                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" RowBackground="LightGray">
+                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"/>
-                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*" />
-                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*" />
-                            <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*" />
-                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*" />
+                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*"/>
+                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*"/>
+                            <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*"/>
+                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
-
         </TabControl>
     </DockPanel>
 </Window>
