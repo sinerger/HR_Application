@@ -37,9 +37,9 @@
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Margin ="10,15,0,15" Tag="E-mail"/>
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin ="10,15,0,15" Tag="Registration date"/>
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin ="10,15,0,15" Tag="Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin ="10,15,0,15" Tag="Direction/position"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin ="10,15,0,15" Tag="Direction/position" PreviewMouseDown="TextBox_Direction_PreviewMouseDown"/>
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Margin ="10,15,0,15" Tag="Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="10" Margin ="10,15,0,15" Tag="Project name" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="10" Margin ="10,15,0,15" Tag="Project name" PreviewMouseDown="TextBox_ProjectName_PreviewMouseDown"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Margin ="10,15,0,15" Content="Cancel" Grid.Row="11" Grid.Column="1" Width="160" Click="Button_Cancel_Click"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Margin ="10,15,0,15" Content="Save" Grid.Row="11" Grid.Column="0" Width="160" Click="Button_Save_Click"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddPhoto" Margin ="10,15,0,15" Content="Add photo" Grid.Row="4" Grid.Column="1" Width="160" IsEnabled="False"/>
