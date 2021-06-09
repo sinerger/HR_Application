@@ -28,7 +28,7 @@ namespace HR_Application_DB_Logic.Interfaces
         LevelSkillRepository LevelSkillRepository { get; }
         IRepository<LocationDTO> LocationRepository { get; }
         PositionRepository PositionRepository { get; }
-        ProjectRepository ProjectRepository { get; }
+        IRepository<ProjectDTO> ProjectRepository { get; }
         RequirementRepository RequirementRepository { get; }
         SkillRepository SkillRepository { get; }
         StatusRepository StatusRepository { get; }

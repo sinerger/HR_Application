@@ -1,11 +1,11 @@
-﻿namespace HR_Application_DB_Logic.Models
+﻿namespace HR_Application_BLL.Models.Base
 {
-    public class ProjectDTO
+    public class ProjectModel
     {
-        public int? ID { get; set; }
+        public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public int? DirectionID { get; set; }
+        public int DirectionID { get; set; }
 
         public override string ToString()
         {
@@ -16,9 +16,9 @@
         {
             bool result = false;
 
-            if (obj is ProjectDTO)
+            if (obj is ProjectModel)
             {
-                ProjectDTO project = (ProjectDTO)obj;
+                ProjectModel project = (ProjectModel)obj;
 
                 if (project.ID == ID
                     && project.Title == Title

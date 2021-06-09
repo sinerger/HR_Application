@@ -30,6 +30,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<UserModel, User>();
             CreateMap<User, UserModel>().ForMember(dest=>dest.IsActual,option=>option.MapFrom(source=>true));
+
+            CreateMap<ProjectDTO, ProjectModel>();
+            CreateMap<ProjectModel, ProjectDTO>();
         }
     }
 }

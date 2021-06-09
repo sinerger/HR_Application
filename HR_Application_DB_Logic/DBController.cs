@@ -36,7 +36,7 @@ namespace HR_Application_DB_Logic
         public LevelSkillRepository LevelSkillRepository => new LevelSkillRepository(_connectionString);
         public IRepository<LocationDTO> LocationRepository => new LocationRepository(_connectionString);
         public PositionRepository PositionRepository => new PositionRepository(_connectionString);
-        public ProjectRepository ProjectRepository => new ProjectRepository(_connectionString);
+        public IRepository<ProjectDTO> ProjectRepository => new ProjectRepository(_connectionString);
         public RequirementRepository RequirementRepository => new RequirementRepository(_connectionString);
         public SkillRepository SkillRepository => new SkillRepository(_connectionString);
         public StatusRepository StatusRepository => new StatusRepository(_connectionString);
