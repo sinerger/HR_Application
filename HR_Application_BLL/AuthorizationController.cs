@@ -1,5 +1,6 @@
 ﻿using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Mappers;
+using HR_Application_BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,8 +20,7 @@ namespace HR_Application_BLL
             {
                 try
                 {
-                    var mapper = new UserModelMapper();
-                    List<UserModel> users = mapper.GetModelsFromDTO(null);
+                    List<UserModel> users = new UserServices().;
 
                     foreach (var user in users)
                     {

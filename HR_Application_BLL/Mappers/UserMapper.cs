@@ -33,9 +33,33 @@ namespace HR_Application_BLL.Mappers
             }
         }
 
-        public UserModel GetModelFromUser()
+        public User GetUserFromModel(UserModel userModel, Company company)
         {
-            return null;
+            if (userModel != null && company != null)
+            {
+                var user = _mapper.Map<User>(userModel);
+                user.Company = company;
+
+                return user;
+            }
+            else if (userModel == null)
+            {
+                throw new ArgumentNullException("User model is null");
+            }
+            else
+            {
+                throw new ArgumentNullException("Company is null");
+            }
+        }
+
+        public UserModel GetModelFromUser(User user)
+        {
+            if (user != null)
+            {
+                return _mapper.Map<UserModel>(user);
+            }
+
+            throw new ArgumentNullException("User is null");
         }
     }
 }

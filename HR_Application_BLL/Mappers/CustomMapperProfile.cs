@@ -29,7 +29,7 @@ namespace HR_Application_BLL.Mappers
             CreateMap<CompanyModel, CompanyDTO>();
 
             CreateMap<UserModel, User>();
-            CreateMap<User, UserModel>();
+            CreateMap<User, UserModel>().ForMember(dest=>dest.IsActual,option=>option.MapFrom(source=>true));
         }
     }
 }
