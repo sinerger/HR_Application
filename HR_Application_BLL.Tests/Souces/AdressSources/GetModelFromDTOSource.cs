@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using HR_Application_BLL.Models.Base;
 
 
-namespace HR_Application_BLL.Tests.Souces.Adress
+namespace HR_Application_BLL.Tests.Souces.AdressSources
 {
     public class GetModelFromDTOSource : IEnumerable
     {

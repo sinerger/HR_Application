@@ -1,6 +1,6 @@
 ﻿using HR_Application_BLL.Mappers;
 using HR_Application_BLL.Models;
-using HR_Application_BLL.Tests.Souces.Adress;
+using HR_Application_BLL.Tests.Souces.AdressSources;
 using HR_Application_DB_Logic.Models;
 using NUnit.Framework;
 using System;

@@ -1,7 +1,7 @@
 ﻿using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
-using HR_Application_BLL.Tests.Souces.Company;
+using HR_Application_BLL.Tests.Souces.CompanySources;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

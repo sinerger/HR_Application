@@ -1,6 +1,7 @@
 ﻿using HR_Application_BLL.Models.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace HR_Application_BLL.Models
@@ -15,7 +16,7 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"{Title} Count departmetns: {Departments.Count}";
+            return $"{Title} Count departments: {Departments.Count}";
         }
 
         public override bool Equals(object obj)
@@ -26,11 +27,11 @@ namespace HR_Application_BLL.Models
             {
                 Company company = (Company)obj;
 
-                if (company.ID == ID 
-                    && company.Title == Title 
-                    && company.Desctiption == Desctiption 
+                if (company.ID == ID
+                    && company.Title == Title
+                    && company.Desctiption == Desctiption
                     && company.Adress.Equals(Adress)
-                    && company.Departments == Departments)
+                    && company.Departments.SequenceEqual(Departments))
                 {
                     result = true;
                 }

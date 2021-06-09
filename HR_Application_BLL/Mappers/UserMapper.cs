@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Mappers
 {
-    class UserMapper : BaseMapper
+    public class UserMapper : BaseMapper
     {
         public List<User> GetUsersFromModels(List<UserModel> usersModel, List<Company> companies)
         {
@@ -31,6 +31,11 @@ namespace HR_Application_BLL.Mappers
             {
                 throw new ArgumentNullException("List companies is null");
             }
+        }
+
+        public UserModel GetModelFromUser()
+        {
+            return null;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
 
@@ -26,6 +27,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<CompanyDTO, CompanyModel>();
             CreateMap<CompanyModel, CompanyDTO>();
+
+            CreateMap<UserModel, User>();
+            CreateMap<User, UserModel>();
         }
     }
 }

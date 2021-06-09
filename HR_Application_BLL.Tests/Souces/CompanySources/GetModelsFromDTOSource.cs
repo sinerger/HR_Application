@@ -3,7 +3,7 @@ using HR_Application_DB_Logic.Models;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace HR_Application_BLL.Tests.Souces.Company
+namespace HR_Application_BLL.Tests.Souces.CompanySources
 {
     public class GetModelsFromDTOSource : IEnumerable
     {
