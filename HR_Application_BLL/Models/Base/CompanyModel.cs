@@ -10,7 +10,7 @@
 
         public override string ToString()
         {
-            return $"{Title} d.{Description} i.{IsActual}";
+            return $"Title: {Title} Description: {Description}";
         }
 
         public override bool Equals(object obj)
