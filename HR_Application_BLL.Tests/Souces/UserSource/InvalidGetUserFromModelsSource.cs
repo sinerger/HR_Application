@@ -21,29 +21,26 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                     Title = "WizardsDev",
                     Desctiption = "IT company",
                     Adress = new Adress()
+                    {
+                        ID = 1,
+                        CityID=1,
+                        ApartmentNumber = 1,
+                        Street = "Lenina",
+                        Block = "perviy",
+                        HourseNumber = 1,
+                        PostIndex = 49000,
+                        City = new CityModel()
                         {
-                            Location = new LocationModel()
-                            {
-                                ID = 1,
-                                CityID=1,
-                                ApartmentNumber = 1,
-                                Street = "Lenina",
-                                Block = "perviy",
-                                HourseNumber = 1,
-                                PostIndex = 49000
-                            },
-                            City = new CityModel()
-                            {
-                                ID = 1,
-                                Name = "Dnipro",
-                                CountryID = 1
-                            },
-                            Country = new CountryModel()
-                            {
-                                ID = 1,
-                                Name = "Ukraine"
-                            }
+                            ID = 1,
+                            Name = "Dnipro",
+                            CountryID = 1
                         },
+                        Country = new CountryModel()
+                        {
+                            ID = 1,
+                            Name = "Ukraine"
+                        }
+                    },
                     Departments = new List<DepartmentModel>()
                     {
                         new DepartmentModel()

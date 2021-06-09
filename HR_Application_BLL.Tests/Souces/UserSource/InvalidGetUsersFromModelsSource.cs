@@ -24,16 +24,13 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                         Desctiption = "IT company",
                         Adress = new Adress()
                         {
-                            Location = new LocationModel()
-                            {
-                                ID = 1,
-                                CityID=1,
-                                ApartmentNumber = 1,
-                                Street = "Lenina",
-                                Block = "perviy",
-                                HourseNumber = 1,
-                                PostIndex = 49000
-                            },
+                            ID = 1,
+                            CityID=1,
+                            ApartmentNumber = 1,
+                            Street = "Lenina",
+                            Block = "perviy",
+                            HourseNumber = 1,
+                            PostIndex = 49000,
                             City = new CityModel()
                             {
                                 ID = 1,
@@ -69,16 +66,13 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                         Desctiption = "Outsource company",
                         Adress = new Adress()
                         {
-                            Location = new LocationModel()
-                            {
-                                ID = 2,
-                                CityID=2,
-                                ApartmentNumber = 13,
-                                Street = "Pushkina",
-                                Block = "vtoroy",
-                                HourseNumber = 15,
-                                PostIndex = 25000
-                            },
+                            ID = 2,
+                            CityID=2,
+                            ApartmentNumber = 13,
+                            Street = "Pushkina",
+                            Block = "vtoroy",
+                            HourseNumber = 15,
+                            PostIndex = 25000,
                             City = new CityModel()
                             {
                                 ID = 2,
