@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HR_Application_BLL.Models.Base
+﻿namespace HR_Application_BLL.Models.Base
 {
     public class DepartmentModel
-
     {
         public int ID { get; set; }
         public string Title { get; set; }
@@ -32,7 +27,7 @@ namespace HR_Application_BLL.Models.Base
 
         public override string ToString()
         {
-            return $"{Title} d.{Description}";
+            return $"Department title: {Title}";
         }
     }
 }

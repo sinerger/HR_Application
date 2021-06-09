@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"Title:{Title} Description:{Description}";
+            return $"Project title:{Title}";
         }
 
         public override bool Equals(object obj)

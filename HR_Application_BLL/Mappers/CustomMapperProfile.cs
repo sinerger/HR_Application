@@ -3,6 +3,7 @@ using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Base;
 
 namespace HR_Application_BLL.Mappers
 {
@@ -33,6 +34,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<ProjectDTO, ProjectModel>();
             CreateMap<ProjectModel, ProjectDTO>();
+
+            CreateMap<DepartmentProjectsDTO, DepartmentProjectsModel>();
+            CreateMap<DepartmentProjectsModel, DepartmentProjectsDTO>();
         }
     }
 }

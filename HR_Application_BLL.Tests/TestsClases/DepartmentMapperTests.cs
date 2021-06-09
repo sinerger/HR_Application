@@ -10,12 +10,12 @@ namespace HR_Application_BLL.Tests.TestsClases
 {
     public class DepartmentMapperTests
     {
-        private DepartmentMapper _departmentMapper;
+        private DepartmentModelMapper _departmentMapper;
 
         [SetUp]
         public void Setup()
         {
-            _departmentMapper = new DepartmentMapper();
+            _departmentMapper = new DepartmentModelMapper();
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]
