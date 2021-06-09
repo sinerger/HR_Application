@@ -24,7 +24,7 @@ namespace HR_Application_DB_Logic.Interfaces
         GeneralInformationFamilyStatusRepository GeneralInformationFamilyStatusRepository { get; }
         GeneralInformationRepository GeneralInformationRepository { get; }
         HistoriesRepository HistoriesRepository { get; }
-        LevelPositionRepository LevelPositionRepository { get; }
+        LevelsPositionRepository LevelPositionRepository { get; }
         LevelSkillRepository LevelSkillRepository { get; }
         IRepository<LocationDTO> LocationRepository { get; }
         PositionRepository PositionRepository { get; }

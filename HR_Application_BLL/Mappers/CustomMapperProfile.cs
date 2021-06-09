@@ -29,6 +29,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<PositionDTO, PositionModel>();
             CreateMap<PositionModel, PositionDTO>();
+
+            CreateMap<LevelsPositionDTO, LevelsPositionModel>();
+            CreateMap<LevelsPositionModel, LevelsPositionDTO>();
         }
     }
 }
