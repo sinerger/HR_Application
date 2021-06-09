@@ -21,7 +21,7 @@ namespace HR_Application_BLL.Controllers
 
             _mapperConfig = new MapperConfiguration(config => config.CreateMap<EmployeeSkillDTO, TestCompetence>()
                 .ForMember(dest => dest.Level, option => option
-                    .MapFrom(sourse => _dbController.LevelSkillRepository.GetByID(sourse.LevelID).Title))
+                    .MapFrom(sourse => _dbController.LevelSkillRepository.GetByID(sourse.LevelSkillID).Title))
                 .ForMember(dest => dest.Name, option => option
                     .MapFrom(sourse => _dbController.SkillRepository.GetByID(sourse.SkillID).Title))
                 .ForMember(dest=> dest.Date, option =>option.MapFrom(source=>source.Date)));
@@ -31,7 +31,7 @@ namespace HR_Application_BLL.Controllers
 
         public List<TestCompetence> GetCompetencesByEmployeeID(int employeeID)
         {
-            List<EmployeeSkillDTO> skills = _dbController.EmployeeSkillRepository.GetAllByEmployeeID(employeeID);
+            List<EmployeeSkillDTO> skills = _dbController.EmployeeSkillRepository.GetAll();
             var result = new List<TestCompetence>();
 
             if (skills != null)

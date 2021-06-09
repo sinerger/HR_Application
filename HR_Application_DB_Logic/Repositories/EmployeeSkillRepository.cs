@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models.Custom;
 using System;
 using System.Collections.Generic;
@@ -8,13 +8,61 @@ using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class EmployeeSkillRepository
+    public class EmployeeSkillRepository : IRepository<EmployeeSkillDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public EmployeeSkillRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
+        }
+
+        public bool Create(EmployeeSkillDTO employeeSkill)
+        {
+            string query = @"[HRAppDB].CreateEmployeeSkill @EmployeeID @Date 
+                @IsActual @UserID @LevelSkillID @SkillID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { 
+                        employeeSkill.EmployeeID,
+                        employeeSkill.Date,
+                        employeeSkill.IsActual,
+                        employeeSkill.UserID,
+                        employeeSkill.LevelSkillID,
+                        employeeSkill.SkillID
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public bool Delete(int id)
+        {
+            string query = "[HRAppDB].DeleteEmployeeSkill @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
 
         public List<EmployeeSkillDTO> GetAll()
@@ -24,56 +72,63 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<EmployeeSkillDTO, int, int, EmployeeSkillDTO>
-                         (query,
-                         (employeeSkill, levelSkill, skill) =>
-                         {
-                             employeeSkill.LevelID = levelSkill;
-                             employeeSkill.SkillID = skill;
-
-                             return employeeSkill;
-                         },
-                         splitOn: "ID,IDLevelSkills,IDSkill")
-                         .AsList<EmployeeSkillDTO>();
+                    result = dbConnection.Query<EmployeeSkillDTO>(query).AsList<EmployeeSkillDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
         }
 
-        public List<EmployeeSkillDTO> GetAllByEmployeeID(int employeeID)
+        public EmployeeSkillDTO GetByID(int id)
         {
-            string query = "[HRAppDB].GetEmployeeSkillByEmployeeID @EmployeeID";
-            List<EmployeeSkillDTO> result = new List<EmployeeSkillDTO>();
+            string query = "[HRAppDB].GetEmployeeSkillByEmployeeID @ID";
+            EmployeeSkillDTO result = new EmployeeSkillDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<EmployeeSkillDTO, int, int, EmployeeSkillDTO>
-                         (query,
-                         (employeeSkill, levelSkill, skill) =>
-                         {
-                             employeeSkill.LevelID = levelSkill;
-                             employeeSkill.SkillID = skill;
-
-                             return employeeSkill;
-                         },
-                         new { employeeID },
-                         splitOn: "ID,IDLevelSkills,IDSkill")
-                         .AsList<EmployeeSkillDTO>();
+                    result = dbConnection.QuerySingle<EmployeeSkillDTO>(query, new { id });
                 }
             }
             catch (Exception e)
             {
-                var s = e.ToString();
-                result = null;
+                throw e;
+            }
+
+            return result;
+        }
+
+        public bool Update(EmployeeSkillDTO employeeSkill)
+        {
+            string query = @"[HRAppDB].UpdateEmployeeSkill @ID @EmployeeID @Date 
+                @IsActual @UserID @LevelSkillID @SkillID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new {
+                        employeeSkill.ID,
+                        employeeSkill.EmployeeID,
+                        employeeSkill.Date,
+                        employeeSkill.IsActual,
+                        employeeSkill.UserID,
+                        employeeSkill.LevelSkillID,
+                        employeeSkill.SkillID
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;

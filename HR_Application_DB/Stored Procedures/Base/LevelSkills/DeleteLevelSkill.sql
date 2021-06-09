@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[DeleteLevelSkills]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteLevelSkill]
 @ID int
 AS
 DELETE

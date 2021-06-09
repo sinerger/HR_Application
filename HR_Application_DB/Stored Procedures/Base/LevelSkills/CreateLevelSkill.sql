@@ -1,10 +1,7 @@
-﻿CREATE PROCEDURE [HRAppDB].[CreateLevelSkills]
-@ID int,
+﻿CREATE PROCEDURE [HRAppDB].[CreateLevelSkill]
 @Title nvarchar
 AS
 INSERT INTO [HRAppDB].[LevelSkills](
-[HRAppDB].[LevelSkills].ID,
 [HRAppDB].[LevelSkills].Title)
 VALUES(
-@ID,
 @Title)

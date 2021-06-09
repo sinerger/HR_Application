@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[GetLevelSkillsByTitle]
+﻿CREATE PROCEDURE [HRAppDB].[GetLevelSkillByTitle]
 @Title nvarchar
 AS
 	SELECT * FROM [HRAppDB].[LevelSkills]

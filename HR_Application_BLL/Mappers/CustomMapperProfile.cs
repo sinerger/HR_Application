@@ -27,6 +27,15 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<DepartmentDTO, DepartmentModel>();
             CreateMap<DepartmentModel, DepartmentDTO>();
+
+            CreateMap<SkillDTO, SkillModel>();
+            CreateMap<SkillModel, SkillDTO>();
+
+            CreateMap<LevelSkillDTO, LevelSkillModel>();
+            CreateMap<LevelSkillModel, LevelSkillDTO>();
+
+            CreateMap <EmployeeSkillDTO, EmployeeSkillModel>();
+            CreateMap<EmployeeSkillModel, EmployeeSkillDTO>();
         }
     }
 }

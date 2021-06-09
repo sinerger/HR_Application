@@ -22,7 +22,7 @@ namespace HR_Application_DB_Logic.Interfaces
         EmployeePositionRepository EmployeePositionRepository { get; }
         EmployeeProjectRepository EmployeeProjectRepository { get; }
         EmployeeRepository EmployeeRepository { get; }
-        EmployeeSkillRepository EmployeeSkillRepository { get; }
+        IRepository<EmployeeSkillDTO> EmployeeSkillRepository { get; }
         EmployeeStatusRepository EmployeeStatusRepository { get; }
         GeneralInformationFamilyStatusRepository GeneralInformationFamilyStatusRepository { get; }
         GeneralInformationRepository GeneralInformationRepository { get; }
