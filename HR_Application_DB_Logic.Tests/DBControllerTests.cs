@@ -21,7 +21,7 @@ namespace HR_Application_DB_Logic.Tests
         {
             var repository = new CompanyDepartmentsRepository(_connectionString);
 
-            //var actual = repository.GetALLByCompanyID(1);
+            var actual = repository.GetAll();
         }
     }
 }

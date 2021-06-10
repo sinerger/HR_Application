@@ -9,4 +9,4 @@ SELECT
 
 FROM [HRAppDB].[Companies_Depatments] 
 
-WHERE [HRAppDB].[Companies_Depatments].[ID] = @ID
+WHERE [HRAppDB].[Companies_Depatments].[CompanyID] = @ID

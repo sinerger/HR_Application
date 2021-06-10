@@ -32,12 +32,12 @@ namespace HR_Application_DB_Logic.Repositories
                         {
                             CompanyDepartmentsDTO currentCompany = null;
 
-                            foreach (var company in companiesDepartments)
+                            foreach (var companyDep in companiesDepartments)
                             {
-                                if (company.ID == companyDepartment.ID)
+                                if (companyDep.CompanyID == companyDepartment.CompanyID)
                                 {
-                                    company.DepartmentsID.Add(departmentID);
-                                    currentCompany = company;
+                                    companyDep.DepartmentsID.Add(departmentID);
+                                    currentCompany = companyDep;
                                     break;
                                 }
                             }
@@ -48,7 +48,7 @@ namespace HR_Application_DB_Logic.Repositories
                                 companyDepartment.DepartmentsID.Add(departmentID);
                                 currentCompany = companyDepartment;
 
-                                companiesDepartments.Add(companyDepartment);
+                                companiesDepartments.Add(currentCompany);
                             }
 
                             return currentCompany;

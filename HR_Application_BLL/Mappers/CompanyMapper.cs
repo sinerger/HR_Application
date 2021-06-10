@@ -19,7 +19,7 @@ namespace HR_Application_BLL.Mappers
             throw new ArgumentNullException("List companies is null");
         }
 
-        public Company GetModelFromDTO(CompanyDTO companyDTO)
+        public Company GetCompanyFromDTO(CompanyDTO companyDTO)
         {
             if (companyDTO != null)
             {

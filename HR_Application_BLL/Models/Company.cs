@@ -16,7 +16,7 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"{Title} Count departments: {Departments.Count}";
+            return $"Company name: {Title}";
         }
 
         public override bool Equals(object obj)

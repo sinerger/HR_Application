@@ -60,9 +60,13 @@ namespace HR_Application_BLL.Services
                 List<ProjectDTO> projectsDTO = _dbController.ProjectRepository.GetAll();
 
                 Department department = _departmentMapper.GetDepartmentFromDTO(departmentDTO);
-                List<ProjectDTO> targetProjectDTO = new List<ProjectDTO>(projectsDTO.Select(project => project)
-                        .Where(project => departmentProjectsDTO.ProjectsID.Contains((int)project.ID)));
-                department.Projects = new List<ProjectModel>(new ProjectMapper().GetModelsFromDTO(targetProjectDTO));
+                if (departmentProjectsDTO != null)
+                {
+                    List<ProjectDTO> targetProjectDTO = new List<ProjectDTO>(projectsDTO.Select(project => project)
+                            .Where(project => departmentProjectsDTO.ProjectsID.Contains((int)project.ID)));
+                    department.Projects = new List<ProjectModel>(new ProjectMapper().GetModelsFromDTO(targetProjectDTO));
+                }
+                department.Projects = new List<ProjectModel>();
 
                 return department;
             }
