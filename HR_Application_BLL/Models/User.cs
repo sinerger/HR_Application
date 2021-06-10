@@ -32,7 +32,7 @@ namespace HR_Application_BLL.Models
                     && user.LastName == LastName
                     && user.Email == Email
                     && user.Password == Password
-                    && user.Company.Equals(Company))
+                    && user.Company == Company)
                 {
                     result = true;
                 }

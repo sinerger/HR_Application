@@ -1,6 +1,7 @@
 ﻿using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
+using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Tests.Souces.UserSource
 {
-    public class GetModelFromUserSource : IEnumerable
+    public class UserMapperGetModelFromUserSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -64,7 +65,7 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                             }
                         },
                 },
-                new UserModel()
+                new UserDTO()
                 {
                     ID =1,
                     FirstName = "Rostik",

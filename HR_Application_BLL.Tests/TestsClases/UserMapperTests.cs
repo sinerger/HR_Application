@@ -2,6 +2,7 @@
 using HR_Application_BLL.Mappers;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Tests.Souces.UserSource;
+using HR_Application_DB_Logic.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,38 +20,38 @@ namespace HR_Application_BLL.Tests.TestsClases
             _userMapper = new UserMapper();
         }
 
-        [TestCaseSource(typeof(GetUsersFromModelsSource))]
-        public void GetUsersFromModels_WhenValidTestPassed_ShoukdReturnListUser(List<UserModel> usersModel, List<Company> companies, List<User> expected)
+        [TestCaseSource(typeof(UserMapperGetUsersFromModelsSource))]
+        public void GetUsersFromModels_WhenValidTestPassed_ShoukdReturnListUser(List<UserDTO> userDTO, List<User> expected)
         {
-            List<User> actual = _userMapper.GetUsersFromModels(usersModel, companies);
+            List<User> actual = _userMapper.GetUsersFromDTO(userDTO);
 
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCaseSource(typeof(InvalidGetUsersFromModelsSource))]
-        public void GetUsersFromModels_WhenInvalidTestPassed_ShoukdReturnListUser(List<UserModel> usersModel, List<Company> companies)
+        [TestCase(null)]
+        public void GetUsersFromModels_WhenInvalidTestPassed_ShoukdReturnListUser(List<UserDTO> userDTO)
         {
-            Assert.Throws<ArgumentNullException>(()=> _userMapper.GetUsersFromModels(usersModel, companies));
+            Assert.Throws<ArgumentNullException>(()=> _userMapper.GetUsersFromDTO(userDTO));
         }
 
-        [TestCaseSource(typeof(GetUserFromModelSource))]
-        public void GetUserFromModel_WhenValidTestPassed_ShoukdReturnListUser(UserModel userModel, Company company, User expected)
+        [TestCaseSource(typeof(UserMapperGetUserFromModelSource))]
+        public void GetUserFromModel_WhenValidTestPassed_ShoukdReturnListUser(UserDTO userDTO, User expected)
         {
-            User actual = _userMapper.GetUserFromModel(userModel, company);
+            User actual = _userMapper.GetUserFromDTO(userDTO);
 
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCaseSource(typeof(InvalidGetUserFromModelsSource))]
-        public void GetUserFromModel_WhenInvalidTestPassed_ShoukdReturnListUser(UserModel userModel, Company company)
+        [TestCase(null)]
+        public void GetUserFromModel_WhenInvalidTestPassed_ShoukdReturnListUser(UserDTO userDTO)
         {
-            Assert.Throws<ArgumentNullException>(() => _userMapper.GetUserFromModel(userModel, company));
+            Assert.Throws<ArgumentNullException>(() => _userMapper.GetUserFromDTO(userDTO));
         }
 
-        [TestCaseSource(typeof(GetModelFromUserSource))]
-        public void GetModelFromUser_WhenValidTestPassed_ShouldReturnUserModel(User user, UserModel expected)
+        [TestCaseSource(typeof(UserMapperGetModelFromUserSource))]
+        public void GetModelFromUser_WhenValidTestPassed_ShouldReturnUserModel(User user, UserDTO expected)
         {
-            UserModel actual = _userMapper.GetModelFromUser(user);
+            UserDTO actual = _userMapper.GetDTOFromUser(user);
 
             Assert.AreEqual(expected, actual);
         }
@@ -58,7 +59,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         [TestCase(null)]
         public void GetModelFromUser_WhenInvalidTestPassed_ShoukdReturnListUser(User user)
         {
-            Assert.Throws<ArgumentNullException>(() => _userMapper.GetModelFromUser(user));
+            Assert.Throws<ArgumentNullException>(() => _userMapper.GetDTOFromUser(user));
         }
     }
 }

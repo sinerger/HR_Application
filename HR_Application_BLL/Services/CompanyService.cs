@@ -48,5 +48,10 @@ namespace HR_Application_BLL.Services
                 throw e;
             }
         }
+
+        public Company GetByID(int id)
+        {
+            return null;
+        }
     }
 }

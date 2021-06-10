@@ -1,6 +1,7 @@
 ﻿using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models;
+using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,53 +11,31 @@ namespace HR_Application_BLL.Mappers
 {
     public class UserMapper : BaseMapper
     {
-        public List<User> GetUsersFromModels(List<UserModel> usersModel, List<Company> companies)
+        public List<User> GetUsersFromDTO(List<UserDTO> usersDTO)
         {
-            if (usersModel != null && companies != null)
+            if (usersDTO != null)
             {
-                var users = _mapper.Map<List<User>>(usersModel);
-                foreach (var user in users)
-                {
-                    var userModel = usersModel.First(userModel => userModel.ID == user.ID);
-                    user.Company = companies.First(company => company.ID == userModel.CompanyID);
-                }
+                return _mapper.Map<List<User>>(usersDTO);
+            }
 
-                return users;
-            }
-            else if (usersModel == null)
-            {
-                throw new ArgumentNullException("List users model is null");
-            }
-            else
-            {
-                throw new ArgumentNullException("List companies is null");
-            }
+            throw new ArgumentNullException("List users DTO is null");
         }
 
-        public User GetUserFromModel(UserModel userModel, Company company)
+        public User GetUserFromDTO(UserDTO userDTO)
         {
-            if (userModel != null && company != null)
+            if (userDTO != null)
             {
-                var user = _mapper.Map<User>(userModel);
-                user.Company = company;
+                return _mapper.Map<User>(userDTO);
+            }
 
-                return user;
-            }
-            else if (userModel == null)
-            {
-                throw new ArgumentNullException("User model is null");
-            }
-            else
-            {
-                throw new ArgumentNullException("Company is null");
-            }
+            throw new ArgumentNullException("User DTO is null");
         }
 
-        public UserModel GetModelFromUser(User user)
+        public UserDTO GetDTOFromUser(User user)
         {
             if (user != null)
             {
-                return _mapper.Map<UserModel>(user);
+                return _mapper.Map<UserDTO>(user);
             }
 
             throw new ArgumentNullException("User is null");
