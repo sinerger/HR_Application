@@ -1,9 +1,6 @@
 ﻿using HR_Application_BLL.Models;
 using HR_Application_DB_Logic;
 using HR_Application_DB_Logic.Models.Custom;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using AutoMapper;
 
 namespace HR_Application_BLL.Controllers
@@ -13,7 +10,6 @@ namespace HR_Application_BLL.Controllers
         private DBController _dbController;
         private MapperConfiguration _mapperConfig;
         private Mapper _mapper;
-
 
         public TestCompetenceMapper()
         {
@@ -27,19 +23,6 @@ namespace HR_Application_BLL.Controllers
                 .ForMember(dest=> dest.Date, option =>option.MapFrom(source=>source.Date)));
 
             _mapper = new Mapper(_mapperConfig);
-        }
-
-        public List<TestCompetence> GetCompetencesByEmployeeID(int employeeID)
-        {
-            List<EmployeeSkillDTO> skills = _dbController.EmployeeSkillRepository.GetAll();
-            var result = new List<TestCompetence>();
-
-            if (skills != null)
-            {
-                result = _mapper.Map<List<TestCompetence>>(skills);
-            }
-
-            return result;
         }
     }
 }

@@ -10,12 +10,12 @@ namespace HR_Application_BLL.Tests.TestsClases
 {
    public class SkillMapperTests
     {
-        private SkillMapper _skillMapper;
+        private SkillModelMapper _skillMapper;
 
         [SetUp]
         public void Setup()
         {
-            _skillMapper = new SkillMapper();
+            _skillMapper = new SkillModelMapper();
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]

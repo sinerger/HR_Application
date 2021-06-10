@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Mappers.Base
 {
-    public class SkillMapper: BaseMapper
+    public class SkillModelMapper: BaseMapper
     {
          public List<SkillModel> GetModelsFromDTO(List<SkillDTO> skillDTO)
         {

@@ -1,8 +1,7 @@
-﻿
-using HR_Application_BLL.Mappers;
+﻿using HR_Application_BLL.Mappers;
 using HR_Application_BLL.Models;
-using HR_Application_BLL.Tests.Souces;
-using HR_Application_DB_Logic.Models;
+using HR_Application_BLL.Tests.Souces.EmployeeSkill;
+using HR_Application_DB_Logic.Models.Custom;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,12 +10,12 @@ namespace HR_Application_BLL.Tests.TestsClases
 {
     public class EmployeeSkillMapperTests
     {
-        private EmployeeSkillMapper _employeeSkillMapper;
+        private EmployeeSkillModelMapper _employeeSkillMapper;
 
         [SetUp]
         public void Setup()
         {
-            _employeeSkillMapper = new EmployeeSkillMapper();
+            _employeeSkillMapper = new EmployeeSkillModelMapper();
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]

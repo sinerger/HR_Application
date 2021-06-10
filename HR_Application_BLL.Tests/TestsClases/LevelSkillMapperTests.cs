@@ -11,12 +11,12 @@ namespace HR_Application_BLL.Tests.TestsClases
 {
     public class LevelSkillMapperTests
     {
-        private LevelSkillMapper _levelSkillMapper;
+        private LevelSkillModelMapper _levelSkillMapper;
 
         [SetUp]
         public void Setup()
         {
-            _levelSkillMapper = new LevelSkillMapper();
+            _levelSkillMapper = new LevelSkillModelMapper();
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]

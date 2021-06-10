@@ -4,8 +4,8 @@
     {
         public int? ID { get; set; }
         public int? EmployeeID { get; set; }
-        public int SkillID { get; set; }
-        public int LevelSkillID { get; set; }
+        public int? SkillID { get; set; }
+        public int? LevelSkillID { get; set; }
         public string Date { get; set; }
         public bool? IsActual { get; set; }
         public int? UserID { get; set; }
