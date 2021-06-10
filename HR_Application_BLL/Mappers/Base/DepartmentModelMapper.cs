@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Mappers.Base
 {
-    public class DepartmentMapper : BaseMapper
+    public class DepartmentModelMapper : BaseMapper
     {
         public List<DepartmentModel> GetModelsFromDTO(List<DepartmentDTO> departmentsDTO)
         {

@@ -3,6 +3,7 @@ using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Base;
 
 namespace HR_Application_BLL.Mappers
 {
@@ -28,11 +29,20 @@ namespace HR_Application_BLL.Mappers
             CreateMap<DepartmentDTO, DepartmentModel>();
             CreateMap<DepartmentModel, DepartmentDTO>();
 
+            CreateMap<DepartmentDTO, Department>();
+            CreateMap<Department, DepartmentDTO>();
+
             CreateMap<CompanyDTO, CompanyModel>();
             CreateMap<CompanyModel, CompanyDTO>();
 
             CreateMap<UserModel, User>();
             CreateMap<User, UserModel>().ForMember(dest=>dest.IsActual,option=>option.MapFrom(source=>true));
+
+            CreateMap<ProjectDTO, ProjectModel>();
+            CreateMap<ProjectModel, ProjectDTO>();
+
+            CreateMap<DepartmentProjectsDTO, DepartmentProjectsModel>();
+            CreateMap<DepartmentProjectsModel, DepartmentProjectsDTO>();
         }
     }
 }

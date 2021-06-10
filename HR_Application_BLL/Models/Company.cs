@@ -12,7 +12,7 @@ namespace HR_Application_BLL.Models
         public string Title { get; set; }
         public string Desctiption { get; set; }
         public Adress Adress { get; set; }
-        public List<DepartmentModel> Departments { get; set; }
+        public List<Department> Departments { get; set; }
 
         public override string ToString()
         {

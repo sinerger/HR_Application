@@ -10,12 +10,12 @@ namespace HR_Application_BLL.Tests.TestsClases
 {
     public class CompanyMapperTests
     {
-        private CompanyMapper _companyMapper;
+        private CompanyModelMapper _companyMapper;
 
         [SetUp]
         public void Setup()
         {
-            _companyMapper = new CompanyMapper();
+            _companyMapper = new CompanyModelMapper();
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]

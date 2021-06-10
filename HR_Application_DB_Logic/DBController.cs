@@ -2,6 +2,7 @@
 using HR_Application_DB_Logic.Repositories;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models.Custom;
+using HR_Application_DB_Logic.Models.Base;
 
 namespace HR_Application_DB_Logic
 {
@@ -21,7 +22,7 @@ namespace HR_Application_DB_Logic
         public CompanyDepartmentsRepository CompanyDepartmentsRepository => new CompanyDepartmentsRepository(_connectionString);
         public IRepository<CompanyDTO> CompanyRepository => new CompanyRepository(_connectionString);
         public IRepository<CountryDTO> CountryRepository => new CountryRepository(_connectionString);
-        public DepartmentProjectsRepository DepartmentProjectsRepository => new DepartmentProjectsRepository(_connectionString);
+        public IRepository<DepartmentProjectsDTO> DepartmentProjectsRepository => new DepartmentProjectsRepository(_connectionString);
         public IRepository<DepartmentDTO> DepartmentRepository => new DepartmentRepository(_connectionString);
         public DirectionRepository DirectionRepository => new DirectionRepository(_connectionString);
         public EmployeePositionRepository EmployeePositionRepository => new EmployeePositionRepository(_connectionString);
@@ -36,7 +37,7 @@ namespace HR_Application_DB_Logic
         public LevelSkillRepository LevelSkillRepository => new LevelSkillRepository(_connectionString);
         public IRepository<LocationDTO> LocationRepository => new LocationRepository(_connectionString);
         public PositionRepository PositionRepository => new PositionRepository(_connectionString);
-        public ProjectRepository ProjectRepository => new ProjectRepository(_connectionString);
+        public IRepository<ProjectDTO> ProjectRepository => new ProjectRepository(_connectionString);
         public RequirementRepository RequirementRepository => new RequirementRepository(_connectionString);
         public SkillRepository SkillRepository => new SkillRepository(_connectionString);
         public StatusRepository StatusRepository => new StatusRepository(_connectionString);

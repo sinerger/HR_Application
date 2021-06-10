@@ -4,7 +4,7 @@ using HR_Application_DB_Logic.Models;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace HR_Application_BLL.Tests.Souces.Department
+namespace HR_Application_BLL.Tests.Souces.DepartmentModelSource
 {
     public class GetModelsFromDTOSource : IEnumerable
     {
