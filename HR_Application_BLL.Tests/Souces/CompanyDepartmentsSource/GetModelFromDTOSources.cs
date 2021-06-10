@@ -15,14 +15,14 @@ namespace HR_Application_BLL.Tests.Souces.CompanyDepartmentsSource
                 {
                     ID = 1,
                     CompanyID = 1,
-                    DepartmentsID = new List<int>(),
+                    DepartmentsID = new List<int>(){ 1, 2, 3 },
                     IsActual = true
                 },
                 new CompanyDepartmentsModel()
                 {
                     ID = 1,
                     CompanyID = 1,
-                    DepartmentsID = new List<int>(),
+                    DepartmentsID = new List<int>(){ 1, 2, 3 },
                     IsActual = true
                 }
             };

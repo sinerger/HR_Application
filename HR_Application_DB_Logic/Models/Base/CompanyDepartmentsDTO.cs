@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace HR_Application_DB_Logic.Models.Base
 {
@@ -24,7 +25,7 @@ namespace HR_Application_DB_Logic.Models.Base
 
                 if (companyDepartments.ID == ID
                     && companyDepartments.CompanyID == CompanyID
-                    && companyDepartments.DepartmentsID.Equals(DepartmentsID)
+                    && companyDepartments.DepartmentsID.SequenceEqual(DepartmentsID)
                     && companyDepartments.IsActual == IsActual)
                 {
                     result = true;
