@@ -3,7 +3,7 @@ using System.Text;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_BLL.Services;
-using HR_Application_BLL.Tests.Souces.AdressServiceSources;
+using HR_Application_BLL.Tests.Souces.CommentServiceSources;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using Moq;
@@ -23,7 +23,7 @@ namespace HR_Application_BLL.Tests.TestsClases.TestsServices
             _commentService = new CommentService(_mock.Object);
         }
 
-        [TestCaseSource(typeof(AdressServicesGetAllSoruce))]
+        [TestCaseSource(typeof(CommentServicesGetAllSource))]
         public void GetAll_WhenValidTestPassed_ShouldReturnListCOfComments(List<CommentDTO> returnedCommentsDTO, List<CommentModel> expected)
         {
             _mock.Setup(dbController => dbController.CommentRepository.GetAll()).Returns(returnedCommentsDTO);
@@ -33,7 +33,7 @@ namespace HR_Application_BLL.Tests.TestsClases.TestsServices
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCaseSource(typeof(AdressServiceGetByIDCource))]
+        [TestCaseSource(typeof(CommentServiceGetByIDCource))]
         public void GetByID_WhenValidTestPassed_ShouldReturnCommentObject(int id, CommentDTO returnedCommentsDTO, CommentModel expected)
         {
             _mock.Setup(dbController => dbController.CommentRepository.GetByID(id)).Returns(returnedCommentsDTO);
