@@ -1,18 +1,19 @@
-﻿using HR_Application_DB_Logic.Models;
-using HR_Application_BLL.Models;
+﻿using HR_Application_BLL.Models.Base;
+using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using HR_Application_BLL.Models.Base;
+using System.Text;
 
-
-namespace HR_Application_BLL.Tests.Souces.AdressSources
+namespace HR_Application_BLL.Tests.Souces.AdressServiceSources
 {
-    public class GetModelFromDTOSource : IEnumerable
+    class AdressServiceGetByIDCource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[]
             {
+                1,
                 new LocationDTO()
                 {
                     ID = 1,
@@ -58,6 +59,7 @@ namespace HR_Application_BLL.Tests.Souces.AdressSources
             };
             yield return new object[]
             {
+                2,
                 new LocationDTO()
                 {
                     ID = 2,
