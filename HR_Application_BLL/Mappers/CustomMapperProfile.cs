@@ -2,6 +2,7 @@
 using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Custom;
 
 namespace HR_Application_BLL.Mappers
 {
@@ -32,6 +33,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<LevelsPositionDTO, LevelsPositionModel>();
             CreateMap<LevelsPositionModel, LevelsPositionDTO>();
+
+            CreateMap<EmployeePositionDTO, EmployeePositionModel>();
+            CreateMap<EmployeePositionModel, EmployeePositionDTO>();
         }
     }
 }
