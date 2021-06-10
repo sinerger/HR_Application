@@ -57,5 +57,16 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             // TODO: Добавляем нового сотрудника
             this.Close();
         }
+
+        private void TextBox_Direction_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            AddPositionWindow addPositionWindow = new AddPositionWindow();
+            addPositionWindow.ShowDialog();
+        }
+
+        private void TextBox_ProjectName_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

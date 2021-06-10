@@ -206,6 +206,155 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+          <!--  <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemAddLocations" Header="Add Locations">
+                <Grid x:Name="MainAddLocations" Background="#FFE9E9E9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="1.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="0.5*"/>
+                        </Grid.RowDefinitions>
+                        <DataGrid x:Name="CountriesGrid" Margin="10" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="CountryID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="Country Name" Binding="{Binding Path=FullName}" Width="1*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.6*"/>
+                            <RowDefinition Height="1.6*"/>
+                            <RowDefinition Height="0.6*"/>
+                            <RowDefinition Height="1.8*"/>
+                        </Grid.RowDefinitions>
+                        <DataGrid Grid.Row="1" x:Name="CitiesGrid" Margin="10" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="CityID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="City Name" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="CountryID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <DataGrid Grid.Row="1" x:Name="LocationGrid" Margin="10" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="LocationID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="Street" Binding="{Binding Path=FullName}" Width="0.3*"/>
+                                <DataGridTextColumn Header="House" Binding="{Binding Path=FullName}" Width="0.3*"/>
+                                <DataGridTextColumn Header="Block" Binding="{Binding Path=FullName}"  Width="0.25*"/>
+                                <DataGridTextColumn Header="Apart" Binding="{Binding Path=FullName}" Width="0.2*"/>
+                                <DataGridTextColumn Header="Post" Binding="{Binding Path=FullName}" Width="0.25*"/>
+                                <DataGridTextColumn Header="CityID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            -->
+            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemAddCompanies" Header="Add Companies">
+                <Grid x:Name="MainAddCompanies" Background="#FFE9E9E9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.75*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="Companies" Margin="15,0,0,0"/>
+                        <DataGrid Grid.Row="1" Grid.Column="0" x:Name="CompanyGrid" Margin="10,10,0,30" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="CompanyID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        
+                        <Label Grid.Row="0" Grid.Column="1" Style="{DynamicResource LabelStyle}" Content="Departments"  Margin="15,0,0,0"/>
+                        <DataGrid Grid.Row="1" Grid.Column="1" x:Name="DepartmentGrid" Margin="10,20,0,20" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="DepartmentID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=FullName}" Width="0.6*"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        
+                        <Label Grid.Row="0" Grid.Column="2" Style="{DynamicResource LabelStyle}" Content="Projects" Margin="15,0,0,0"/>
+                        <DataGrid Grid.Row="1" Grid.Column="2" x:Name="ProjectGrid" Margin="10,30,0,10" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ProjectID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=FullName}" Width="0.6*"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="0.2*"/>
+                            <RowDefinition Height="0.2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" x:Name="rbGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Content="Companies" Grid.Column="1" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                            <RadioButton Content="Departments" Grid.Column="2" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                            <RadioButton Content="Projects" Grid.Column="3" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                        </Grid>
+                        
+                        <Grid Grid.Row="1" x:Name="tbGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="txtTitleProject" Margin="2" Grid.Column="0" Tag="Title"/>
+                            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="txtDescriptionProject" Margin="2" Grid.Column="1" Tag="Description"/>
+                        </Grid>
+
+                        <Grid Grid.Row="2" x:Name="butGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="1" Margin ="10" Height="60" x:Name="Button_Add" Content="Add" Click="Button_Add_Click"/>
+                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="2" Margin ="10" Height="60" x:Name="Button_Delete" Content="Delete" Click="Button_Delete_Click"/>
+                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="3" Margin ="10" Height="60" x:Name="Button_Update" Content="Update" Click="Button_Update_Click"/>
+                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="3" Margin ="10" Height="60" x:Name="Button_SaveUpdate" Content="Save" Click="Button_SaveUpdate_Click" Visibility="Hidden"/>
+                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="4" Margin ="10" Height="60" x:Name="Button_CancelUpd" Content="Cancel" Click="Button_Cancel_Click"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>

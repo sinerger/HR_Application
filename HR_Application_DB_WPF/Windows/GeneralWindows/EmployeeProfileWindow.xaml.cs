@@ -56,18 +56,20 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Окно? добавления комментария
+            AddCommentWindow addCommentWindow = new AddCommentWindow();
+            addCommentWindow.ShowDialog();
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            //TODO:откат данных из модели Employee profile
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             //TODO:Сохранение данных в моделе Employee profile
-            this.Close();
+            //this.Close();
         }
     }
 }
