@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HR_Application_BLL.Models;
 using HR_Application_BLL.Services;
 using HR_Application_DB_Logic;
 using NUnit.Framework;
@@ -12,7 +13,8 @@ namespace HR_Application_BLL.Tests
         [Test]
         public void Testas()
         {
-            var a = new DepartmentService(new DBController(DBConfigurator.ConnectionString)).GetByID(1);
+            var a = new CompanyService(new DBController(DBConfigurator.ConnectionString)).GetByID(3);
+            string str = a.ToString();
         }
     }
 }

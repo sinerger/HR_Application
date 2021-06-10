@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Tests.Souces.DepartmentProjectsSources
 {
-    public class DepartmentProjectsGetModelFromDTOSources : IEnumerable
+    public class GetModelFromDTOSources : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

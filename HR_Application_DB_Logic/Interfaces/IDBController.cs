@@ -11,7 +11,7 @@ namespace HR_Application_DB_Logic.Interfaces
         IRepository<CityDTO> CityRepository { get; }
         IRepository<CompanyAdressDTO> CompanyAdressRepository { get; }
         CommentRepository CommentRepository { get; }
-        CompanyDepartmentsRepository CompanyDepartmentsRepository { get; }
+        IRepository<CompanyDepartmentsDTO> CompanyDepartmentsRepository { get; }
         IRepository<CompanyDTO> CompanyRepository { get; }
         IRepository<CountryDTO> CountryRepository { get; }
         IRepository<DepartmentProjectsDTO> DepartmentProjectsRepository { get; }

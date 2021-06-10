@@ -248,6 +248,9 @@
     <Build Include="Stored Procedures\Custom\Departments\CreateDepartmentsProjects.sql" />
     <Build Include="Stored Procedures\Custom\Departments\DeleteDepartmentsProjects.sql" />
     <Build Include="Stored Procedures\Custom\Departments\UpdateDepartmentsProjects.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\CreateCompanyDepartments.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\DeleteCompanyDepartments.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\UpdateCompanyDepartments.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />

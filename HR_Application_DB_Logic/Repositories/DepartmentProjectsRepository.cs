@@ -81,10 +81,9 @@ namespace HR_Application_DB_Logic.Repositories
                                 departmentProject.ProjectsID = new List<int>();
                             }
                             departmentProject.ProjectsID.Add(projectID);
-                            return departmentProject;
 
-                        }, new { id }, splitOn: "ID, ProjectID")
-                        .AsList<DepartmentProjectsDTO>();
+                            return departmentProject;
+                        }, new { id }).AsList<DepartmentProjectsDTO>();
                 }
             }
             catch (Exception e)
