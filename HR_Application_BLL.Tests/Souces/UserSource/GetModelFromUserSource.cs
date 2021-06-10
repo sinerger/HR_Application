@@ -28,16 +28,13 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                             Desctiption = "IT company",
                             Adress = new Adress()
                             {
-                                Location = new LocationModel()
-                                {
-                                    ID = 1,
-                                    CityID=1,
-                                    ApartmentNumber = 1,
-                                    Street = "Lenina",
-                                    Block = "perviy",
-                                    HourseNumber = 1,
-                                    PostIndex = 49000
-                                },
+                                ID = 1,
+                                CityID=1,
+                                ApartmentNumber = 1,
+                                Street = "Lenina",
+                                Block = "perviy",
+                                HourseNumber = 1,
+                                PostIndex = 49000,
                                 City = new CityModel()
                                 {
                                     ID = 1,

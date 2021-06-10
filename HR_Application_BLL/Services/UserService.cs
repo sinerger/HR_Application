@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class UserServices
+    public class UserService
     {
         //public List<User> GetUsers()
         //{
