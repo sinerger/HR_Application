@@ -55,7 +55,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCase(null)]
-        public void GetCountryDTOFromCountryModel_WhenInvaildTestPassed_ShouldReturnArgumentNullException(EmployeePositionModel employeePositionModel)
+        public void GetDTOFromModel_WhenInvaildTestPassed_ShouldReturnArgumentNullException(EmployeePositionModel employeePositionModel)
         {
             Assert.Throws<ArgumentNullException>(() => _employeePositionModelMapper.GetDTOFromModel(employeePositionModel));
         }
