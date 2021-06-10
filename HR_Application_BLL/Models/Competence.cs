@@ -1,7 +1,5 @@
 ﻿using HR_Application_BLL.Models.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace HR_Application_BLL.Models
 {
@@ -9,7 +7,8 @@ namespace HR_Application_BLL.Models
     {
         public int ID { get; set; }
         public int EmployeeID { get; set; }
-        public string Data { get; set; }
+        public string Date { get; set; }
+        public int UserID { get; set; }
         public SkillModel Skill { get; set; }
         public LevelSkillModel LevelSkill { get; set; }
 
@@ -23,23 +22,27 @@ namespace HR_Application_BLL.Models
 
                 if (competence.ID == ID
                     && competence.EmployeeID == EmployeeID
-                    && competence.Data == Data
-                    && competence.Skill == Skill
-                    && competence.LevelSkill == LevelSkill
-                    && competence.Equals(competence))
+                    && competence.Date == Date)
                 {
-                    result = true;
+                    if (competence.Skill != null && competence.Skill.Equals(Skill))
+                    {
+                        if (competence.LevelSkill != null && competence.LevelSkill.Equals(LevelSkill))
+                        {
+                            result = true;
+                        }
+                    }
+                    else if (competence.Skill == null && Skill == null)
+                    {
+                        if (competence.LevelSkill == null && LevelSkill == null)
+                        {
+                            result = true;
+                        }
+                    }
                 }
             }
 
             return result;
         }
-
-        public override string ToString()
-        {
-            return $"Competence skill:{Skill.Title}, Level:{LevelSkill.Title}";
-        }
-
     }
 }
 

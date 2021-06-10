@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace HR_Application_BLL.Tests.TestsClases
 {
-    public class EmployeeSkillMapperTests
+    public class EmployeeSkillModelMapperTests
     {
         private EmployeeSkillModelMapper _employeeSkillMapper;
 

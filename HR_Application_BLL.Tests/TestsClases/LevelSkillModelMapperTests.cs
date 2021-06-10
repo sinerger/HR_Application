@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Tests.TestsClases
 {
-    public class LevelSkillMapperTests
+    public class LevelSkillModelMapperTests
     {
         private LevelSkillModelMapper _levelSkillMapper;
 
