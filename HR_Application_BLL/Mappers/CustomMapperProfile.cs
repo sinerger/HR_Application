@@ -43,6 +43,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<DepartmentProjectsDTO, DepartmentProjectsModel>();
             CreateMap<DepartmentProjectsModel, DepartmentProjectsDTO>();
+
+            CreateMap<CompanyDepartmentsDTO, CompanyDepartmentsModel>();
+            CreateMap<CompanyDepartmentsModel, CompanyDepartmentsDTO>();
         }
     }
 }

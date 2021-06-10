@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic
         public IRepository<AdressDTO> AdressRepository => new AdressRepository(_connectionString);
         public IRepository<CityDTO> CityRepository => new CityRepository(_connectionString);
         public CommentRepository CommentRepository => new CommentRepository(_connectionString);
-        public CompanyDepartmentsRepository CompanyDepartmentsRepository => new CompanyDepartmentsRepository(_connectionString);
+        public IRepository<CompanyDepartmentsDTO> CompanyDepartmentsRepository => new CompanyDepartmentsRepository(_connectionString);
         public IRepository<CompanyDTO> CompanyRepository => new CompanyRepository(_connectionString);
         public IRepository<CountryDTO> CountryRepository => new CountryRepository(_connectionString);
         public IRepository<DepartmentProjectsDTO> DepartmentProjectsRepository => new DepartmentProjectsRepository(_connectionString);

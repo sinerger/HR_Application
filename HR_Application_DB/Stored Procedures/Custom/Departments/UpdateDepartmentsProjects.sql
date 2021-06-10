@@ -6,6 +6,6 @@ AS
 	Update [HRAppDB].[Departments_Projects]
 	set
 	[HRAppDB].[Departments_Projects].ProjectID = @ProjectID,
-	[HRAppDB].[Departments_Projects].DepartmentID = @ProjectID
+	[HRAppDB].[Departments_Projects].DepartmentID = @DepartmentID
 	where 
 	[HRAppDB].[Departments_Projects].ID = @ID
