@@ -219,7 +219,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="FontFamily" Value="Global User Interface"/>
-        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontSize" Value="33"/>
         <Setter Property="Foreground" Value="#878383"/>
         <Setter Property="Template">
             <Setter.Value>
