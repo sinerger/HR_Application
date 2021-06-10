@@ -29,7 +29,7 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
                         (ep, levelPos, position) =>
                         {
-                            ep.LevelPositionID = levelPos;
+                            ep.LevelsPosition = levelPos;
                             ep.PositionID = position;
                             return ep;
                         })
@@ -55,7 +55,7 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
                         (ep, levelPos, position) =>
                         {
-                            ep.LevelPositionID = levelPos;
+                            ep.LevelsPosition = levelPos;
                             ep.PositionID = position;
                             return ep;
                         },new { employeeID })

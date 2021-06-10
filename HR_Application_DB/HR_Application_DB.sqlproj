@@ -90,6 +90,7 @@
     <Folder Include="Stored Procedures\Custom\Skills" />
     <Folder Include="Stored Procedures\Custom\Departments" />
     <Folder Include="Stored Procedures\Custom\CompanyAdress" />
+    <Folder Include="Stored Procedures\Base\EmployeePosition" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -251,6 +252,11 @@
     <Build Include="Stored Procedures\Custom\Companies\CreateCompanyDepartments.sql" />
     <Build Include="Stored Procedures\Custom\Companies\DeleteCompanyDepartments.sql" />
     <Build Include="Stored Procedures\Custom\Companies\UpdateCompanyDepartments.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\CreateEmployeePosition.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\DeleteEmployeePosition.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\GetEmployeesPositions.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\GetEmployeePositionByID.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\UpdateEmployeePosition.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />

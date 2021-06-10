@@ -17,20 +17,20 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     {
                     ID = 1,
                     EmployeeID = 12,
-                    HiderDate = "1",
+                    HiredDate = "1",
                     FiredDate = "25",
                     IsActual = true,
-                    LevelPositionID = 1,
+                    LevelsPosition = 1,
                     PositionID = 1
                     },
                     new EmployeePositionDTO()
                     {
                     ID = 2,
                     EmployeeID = 2,
-                    HiderDate = "2",
+                    HiredDate = "2",
                     FiredDate = "2",
                     IsActual = true,
-                    LevelPositionID = 1,
+                    LevelsPosition = 1,
                     PositionID = 1
                     }
                 },
@@ -40,20 +40,20 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     {
                     ID = 1,
                     EmployeeID = 12,
-                    HiderDate = "1",
+                    HiredDate = "1",
                     FiredDate = "25",
                     IsActual = true,
-                    LevelPositionID = 1,
+                    LevelsPosition = 1,
                     PositionID = 1
                     },
                     new EmployeePositionModel()
                     {
                     ID = 2,
                     EmployeeID = 2,
-                    HiderDate = "2",
+                    HiredDate = "2",
                     FiredDate = "2",
                     IsActual = true,
-                    LevelPositionID = 1,
+                    LevelsPosition = 1,
                     PositionID = 1
                     }
                 }
