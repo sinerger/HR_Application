@@ -52,8 +52,7 @@ namespace HR_Application_DB_Logic.Repositories
                             }
 
                             return currentDP;
-                        },splitOn: "ID, ProjectID"
-                        ).AsList<DepartmentProjectsDTO>();
+                        }).AsList<DepartmentProjectsDTO>();
                 }
             }
             catch (Exception e)

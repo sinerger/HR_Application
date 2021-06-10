@@ -12,50 +12,24 @@ namespace HR_Application_BLL.Mappers
 {
     public class DepartmentMapper : BaseMapper
     {
-        public List<Department> GetDepartmentsFromDTO(List<DepartmentDTO> departmentsDTO, List<ProjectDTO> projectsDTO,
-            List<DepartmentProjectsDTO> departmentsProjectsDTO)
+        public List<Department> GetDepartmentsFromDTO(List<DepartmentDTO> departmentsDTO)
         {
-            List<Department> departments = _mapper.Map<List<Department>>(departmentsDTO);
-
-            foreach (Department currentDepartment in departments)
+            if (departmentsDTO != null)
             {
-                var projectsID = departmentsProjectsDTO.Select(department => department.DepartmentID)
-                    .Where(id => id == currentDepartment.ID);
-                var projects = projectsDTO.Select(project => project)
-                    .Where(project=> projectsID.Contains(project.ID));
-
-                currentDepartment.Projects = new List<ProjectModel>();
-                currentDepartment.Projects.AddRange(new ProjectMapper().GetModelsFromDTO((List<ProjectDTO>)projects));
+                return _mapper.Map<List<Department>>(departmentsDTO);
             }
 
-            return departments;
+            throw new ArgumentNullException("Department DTO is null");
         }
 
-        public Department GetDepartmentFromDTO(DepartmentDTO departmentDTO, List<ProjectDTO> projectsDTO,
-            DepartmentProjectsDTO departmentProjectsDTO)
+        public Department GetDepartmentFromDTO(DepartmentDTO departmentDTO)
         {
-            if (departmentDTO != null && projectsDTO != null && departmentProjectsDTO != null)
+            if (departmentDTO != null )
             {
-                Department department = _mapper.Map<Department>(departmentDTO);
-                department.Projects = new List<ProjectModel>();
-
-                var projects = projectsDTO.Select(project => project)
-                    .Where(project => departmentProjectsDTO.ProjectsID.Contains((int)project.ID));
-
-                department.Projects.AddRange(new ProjectMapper().GetModelsFromDTO((List<ProjectDTO>)projects));
-
-                return department;
-            }
-            else if(departmentDTO == null)
-            {
-                throw new ArgumentNullException("Department DTO is null");
-            }
-            else if(departmentProjectsDTO == null)
-            {
-                throw new ArgumentNullException("Department Projects DTO is null");
+                return _mapper.Map<Department>(departmentDTO);
             }
 
-            throw new ArgumentNullException("List projects DTO is null");
+            throw new ArgumentNullException("Department DTO is null");
         }
 
         public DepartmentDTO GetDTOFromDepartment(Department department)

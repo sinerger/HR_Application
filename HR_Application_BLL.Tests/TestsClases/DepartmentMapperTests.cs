@@ -1,6 +1,6 @@
 ﻿using HR_Application_BLL.Models.Base;
 using HR_Application_BLL.Mappers.Base;
-using HR_Application_BLL.Tests.Souces.Department;
+using HR_Application_BLL.Tests.Souces.DepartmentModelSource;
 using HR_Application_DB_Logic.Models;
 using NUnit.Framework;
 using System;

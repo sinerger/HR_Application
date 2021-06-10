@@ -49,15 +49,15 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                                 Name = "Ukraine"
                             }
                         },
-                    Departments = new List<DepartmentModel>()
+                    Departments = new List<Department>()
                     {
-                        new DepartmentModel()
+                        new Department()
                         {
                             ID = 1,
                             Title = "CRM",
                             Description = "CRM doing work"
                         },
-                        new DepartmentModel()
+                        new Department()
                         {
                             ID = 2,
                             Title = "Mobile",
@@ -98,15 +98,15 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                                 Name = "Ukraine"
                             }
                         },
-                        Departments = new List<DepartmentModel>()
+                        Departments = new List<Department>()
                         {
-                            new DepartmentModel()
+                            new Department()
                             {
                                 ID = 1,
                                 Title = "CRM",
                                 Description = "CRM doing work"
                             },
-                            new DepartmentModel()
+                            new Department()
                             {
                                 ID = 2,
                                 Title = "Mobile",

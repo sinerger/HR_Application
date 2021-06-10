@@ -6,8 +6,8 @@ namespace HR_Application_DB_Logic.Models.Base
     {
         public int? ID { get; set; }
         public int? DepartmentID { get; set; }
-        public List<int> ProjectsID { get; set; }
         public bool? IsActual { get; set; }
+        public List<int> ProjectsID { get; set; }
 
         public override string ToString()
         {
