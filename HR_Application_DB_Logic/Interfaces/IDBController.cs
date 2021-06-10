@@ -1,4 +1,5 @@
 ﻿using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Base;
 using HR_Application_DB_Logic.Models.Custom;
 using HR_Application_DB_Logic.Repositories;
 
@@ -10,10 +11,10 @@ namespace HR_Application_DB_Logic.Interfaces
         IRepository<CityDTO> CityRepository { get; }
         IRepository<CompanyAdressDTO> CompanyAdressRepository { get; }
         CommentRepository CommentRepository { get; }
-        CompanyDepartmentsRepository CompanyDepartmentsRepository { get; }
+        IRepository<CompanyDepartmentsDTO> CompanyDepartmentsRepository { get; }
         IRepository<CompanyDTO> CompanyRepository { get; }
         IRepository<CountryDTO> CountryRepository { get; }
-        DepartmentProjectsRepository DepartmentProjectsRepository { get; }
+        IRepository<DepartmentProjectsDTO> DepartmentProjectsRepository { get; }
         IRepository<DepartmentDTO> DepartmentRepository { get; }
         DirectionRepository DirectionRepository { get; }
         EmployeePositionRepository EmployeePositionRepository { get; }
@@ -28,7 +29,7 @@ namespace HR_Application_DB_Logic.Interfaces
         LevelSkillRepository LevelSkillRepository { get; }
         IRepository<LocationDTO> LocationRepository { get; }
         PositionRepository PositionRepository { get; }
-        ProjectRepository ProjectRepository { get; }
+        IRepository<ProjectDTO> ProjectRepository { get; }
         RequirementRepository RequirementRepository { get; }
         SkillRepository SkillRepository { get; }
         StatusRepository StatusRepository { get; }

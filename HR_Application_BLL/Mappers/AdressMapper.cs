@@ -19,18 +19,13 @@ namespace HR_Application_BLL.Mappers
                 List<LocationModel> locations = new LocationMapper().GetModelsFromDTO(locationsDTO);
                 List<CityModel> cities = new CityMapper().GetModelsFromDTO(citiesDTO);
                 List<CountryModel> countries = new CountryMapper().GetModelsFromDTO(countriesDTO);
-                List<Adress> adresses = new List<Adress>();
+                List<Adress> adresses = _mapper.Map<List<Adress>>(locations);
 
-                foreach (LocationModel location in locations)
+                foreach (Adress adress in adresses)
                 {
-                    var city = cities.First(city => city.ID == location.CityID);
-
-                    adresses.Add(new Adress()
-                    {
-                        Location = location,
-                        City = city,
-                        Country = countries.First(country => country.ID == city.CountryID)
-                    });
+                    var city = cities.First(city => city.ID == adress.CityID);
+                    adress.City = city;
+                    adress.Country = countries.First(country => country.ID == city.CountryID);
                 }
 
                 return adresses;
@@ -46,13 +41,11 @@ namespace HR_Application_BLL.Mappers
                 LocationModel location = new LocationMapper().GetModelFromDTO(locationDTO);
                 CityModel city = new CityMapper().GetModelFromDTO(cityDTO);
                 CountryModel country = new CountryMapper().GetModelFromDTO(countryDTO);
+                Adress adress = _mapper.Map<Adress>(location);
+                adress.City = city;
+                adress.Country = country;
 
-                return new Adress()
-                {
-                    Location = location,
-                    City = city,
-                    Country = country
-                };
+                return adress;
             }
 
             throw new ArgumentNullException("Some object is null");

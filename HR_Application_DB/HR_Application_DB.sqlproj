@@ -202,7 +202,6 @@
     <Build Include="Stored Procedures\Base\Projects\CreateProjects.sql" />
     <Build Include="Stored Procedures\Base\Projects\DeleteProjects.sql" />
     <Build Include="Stored Procedures\Base\Projects\GetProjectByID.sql" />
-    <Build Include="Stored Procedures\Base\Projects\GetProjectByTitle.sql" />
     <Build Include="Stored Procedures\Base\Projects\GetProjects.sql" />
     <Build Include="Stored Procedures\Base\Projects\UpdateProjects.sql" />
     <Build Include="Stored Procedures\Base\Requirements\CreateRequirements.sql" />
@@ -226,7 +225,6 @@
     <Build Include="Stored Procedures\Base\Users\DeletedUsers.sql" />
     <Build Include="Stored Procedures\Base\Users\GetAllUsers.sql" />
     <Build Include="Stored Procedures\Base\Users\GetUserByID.sql" />
-    <Build Include="Stored Procedures\Base\Users\GetUserByName.sql" />
     <Build Include="Stored Procedures\Base\Users\UpdateUsers.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeeStatuses.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeeAdress.sql" />
@@ -243,10 +241,16 @@
     <Build Include="Stored Procedures\Custom\Locations\GetAdressByID.sql" />
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkill.sql" />
     <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPositionByEmployeeID.sql" />
-    <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjectsByDepartmentID.sql" />
+    <Build Include="Stored Procedures\Custom\Departments\GetDepartmentProjectsByDepartmentID.sql" />
     <Build Include="Stored Procedures\Custom\CompanyAdress\GetCompaniesAdreses.sql" />
     <Build Include="Stored Procedures\Custom\CompanyAdress\GetCompanyAdressByCompanyID.sql" />
     <Build Include="Stored Procedures\Base\Countries\GetCountries.sql" />
+    <Build Include="Stored Procedures\Custom\Departments\CreateDepartmentsProjects.sql" />
+    <Build Include="Stored Procedures\Custom\Departments\DeleteDepartmentsProjects.sql" />
+    <Build Include="Stored Procedures\Custom\Departments\UpdateDepartmentsProjects.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\CreateCompanyDepartments.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\DeleteCompanyDepartments.sql" />
+    <Build Include="Stored Procedures\Custom\Companies\UpdateCompanyDepartments.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />

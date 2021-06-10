@@ -1,36 +1,37 @@
-﻿using HR_Application_DB_Logic.Models;
-using System.Collections.Generic;
-using Dapper;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using HR_Application_DB_Logic.Models;
+using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class ProjectRepository
+    public class ProjectRepository : IRepository<ProjectDTO>
     {
-        private string _connectionString;
-        public string query;
+        public string ConnectionString { get; private set; }
 
         public ProjectRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public List<ProjectDTO> GetAll()
         {
-            query = "GetProjects";
+            string query = "[HRAppDB].GetProjects";
             List<ProjectDTO> result = new List<ProjectDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<ProjectDTO>(query).AsList<ProjectDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -38,39 +39,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public ProjectDTO GetByID(int id)
         {
-            query = "GetProjectByID";
+            string query = "[HRAppDB].GetProjectByID @ID";
             ProjectDTO result = new ProjectDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<ProjectDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public List<ProjectDTO> GetByTitle(ProjectDTO project)
-        {
-            query = "GetProjectByTitle";
-            List<ProjectDTO> result = new List<ProjectDTO>();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.Query<ProjectDTO>(query, new { project.Title }).AsList<ProjectDTO>();
-                }
-            }
-            catch
-            {
-                return null;
+                throw e;
             }
 
             return result;
@@ -78,12 +59,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create (ProjectDTO project)
         {
-            query = "CreateProjects @Title, @Description, @DirectionID";
+            string query = "[HRAppDB].CreateProjects @Title, @Description, @DirectionID";
             bool result = true;
 
             try
             {
-                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using(IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new 
                     {
@@ -93,9 +74,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -103,12 +84,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(ProjectDTO project)
         {
-            query = "CreateProjects @ID, @Title, @Description, @DirectionID";
+            string query = "[HRAppDB].CreateProjects @ID, @Title, @Description, @DirectionID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
@@ -119,9 +100,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -129,19 +110,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            query = "DeleteProjects @ID";
+            string query = "[HRAppDB].DeleteProjects @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
 
             return result;

@@ -1,94 +1,157 @@
-﻿using HR_Application_DB_Logic.Models.Custom;
-using HR_Application_DB_Logic.Models;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using HR_Application_DB_Logic.Models;
 using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using System;
+using HR_Application_DB_Logic.Models.Base;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class DepartmentProjectsRepository
+    public class DepartmentProjectsRepository : IRepository<DepartmentProjectsDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public DepartmentProjectsRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public List<DepartmentProjectsDTO> GetAll()
         {
             string query = "[HRAppDB].GetDepartmentsProjects";
-            List<DepartmentProjectsDTO> result = new List<DepartmentProjectsDTO>();
+            List<DepartmentProjectsDTO> departmentsProjects = new List<DepartmentProjectsDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<DepartmentProjectsDTO, DepartmentDTO, int, DepartmentProjectsDTO>(query,
-                        (departmentProject, department, projectID) =>
-                        {
-                            departmentProject.Department = department;
-                            departmentProject.ProjectsID = new List<int>();
-                            departmentProject.ProjectsID.Add(projectID);
-
-                            return departmentProject;
-                        })
-                        .AsList<DepartmentProjectsDTO>();
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public List<DepartmentProjectsDTO> GetAllByDepartmentID(int departmentID)
-        {
-            string query = "[HRAppDB].GetDepartmentsProjectsByDepartmentID";
-            List<DepartmentProjectsDTO> departmentProjects = new List<DepartmentProjectsDTO>();
-
-            try
-            {
-                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    dbConnection.Query<DepartmentProjectsDTO, DepartmentDTO, int, DepartmentProjectsDTO>(query,
-                        (departmentProject, department, projectID) =>
+                    dbConnection.Query<DepartmentProjectsDTO, int, DepartmentProjectsDTO>(query,
+                        (departmentProject, projectID) =>
                         {
                             DepartmentProjectsDTO currentDP = null;
 
-                            foreach (DepartmentProjectsDTO dP in departmentProjects)
+                            foreach (var dp in departmentsProjects)
                             {
-                                if (dP.Department.ID == department.ID)
+                                if (dp.ID == departmentProject.ID)
                                 {
-                                    currentDP = departmentProject;
-                                    dP.ProjectsID.Add(projectID);
+                                    dp.ProjectsID.Add(projectID);
+                                    currentDP = dp;
                                     break;
                                 }
                             }
 
                             if (currentDP == null)
                             {
+                                departmentProject.ProjectsID = new List<int>();
+                                departmentProject.ProjectsID.Add(projectID);
                                 currentDP = departmentProject;
-                                departmentProjects.Add(currentDP);
-                                currentDP.Department = department;
-                                currentDP.ProjectsID = new List<int>();
-                                currentDP.ProjectsID.Add(projectID);
+
+                                departmentsProjects.Add(departmentProject);
                             }
 
-                            return departmentProject;
-                        }, new { departmentID })
-                        .AsList<DepartmentProjectsDTO>();
+                            return currentDP;
+                        }).AsList<DepartmentProjectsDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                departmentProjects = null;
+                throw e;
             }
 
-            return departmentProjects;
+            return departmentsProjects;
+        }
+
+        public DepartmentProjectsDTO GetByID(int id)
+        {
+            string query = "[HRAppDB].GetDepartmentProjectsByDepartmentID @ID";
+            DepartmentProjectsDTO departmentProject = null;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Query<DepartmentProjectsDTO, int, DepartmentProjectsDTO>(query,
+                        (dp, projectID) =>
+                        {
+                            if (departmentProject == null)
+                            {
+                                departmentProject = dp;
+                                departmentProject.ProjectsID = new List<int>();
+                            }
+                            departmentProject.ProjectsID.Add(projectID);
+
+                            return departmentProject;
+                        }, new { id }).AsList<DepartmentProjectsDTO>();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return departmentProject;
+        }
+
+        public bool Update(DepartmentProjectsDTO obj)
+        {
+            string query = "[HRAppDB].[UpdateDepartmentsProjects] @ID @ProjectID @DepartmentID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { obj.ID, obj.ProjectsID, obj.DepartmentID });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public bool Delete(int id)
+        {
+            string query = "[HRAppDB].DeleteDepartmentsProjects @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public bool Create(DepartmentProjectsDTO obj)
+        {
+            string query = "[HRAppDB].CreateDepartmentsProjects @ProjectID @DepartmentID @IsActual";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { obj.ProjectsID, obj.DepartmentID, obj.IsActual });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
     }
 }
