@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HR_Application_DB_WPF.Windows.GeneralWindows" xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        WindowStartupLocation="CenterScreen"      
+        WindowStartupLocation="CenterOwner"      
         Title="HomePageWindow" Height="720" Width="1280">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
@@ -135,7 +135,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Name" Grid.Column="1" Tag="First name" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtFirstName" Grid.Column="1" Tag="First name" />
                         <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Content="Log out" Grid.Column="2" Click="Button_LogOut_Click"/>
                     </Grid>
                     <Grid x:Name ="GridSecondName" Grid.Row="1">
@@ -152,7 +152,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Company" Grid.Column="1" Tag="Company" PreviewMouseDown="TextBox_Company_PreviewMouseDown" SelectionChanged="TextBox_Company_SelectionChanged"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCompany" Grid.Column="1" Tag="Company"/>
                     </Grid>
                     <Grid x:Name ="GridCity" Grid.Row="3">
                         <Grid.ColumnDefinitions>
@@ -160,7 +160,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_City" Grid.Column="1" Tag="City"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Name="TxtCity" Grid.Column="1" Tag="City"/>
                     </Grid>
                     <Grid x:Name ="GridChangePassword" Grid.Row="4">
                         <Grid.ColumnDefinitions>
