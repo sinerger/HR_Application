@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[UpdateLevelSkills]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateLevelSkill]
 @ID int,
 @Title nvarchar
 AS

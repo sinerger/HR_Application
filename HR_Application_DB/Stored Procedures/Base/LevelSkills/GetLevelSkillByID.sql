@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[GetLevelSkillsByID]
+﻿CREATE PROCEDURE [HRAppDB].[GetLevelSkillByID]
 @ID int
 AS
 	SELECT * FROM [HRAppDB].[LevelSkills]

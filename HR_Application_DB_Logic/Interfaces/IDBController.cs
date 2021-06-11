@@ -20,18 +20,18 @@ namespace HR_Application_DB_Logic.Interfaces
         EmployeePositionRepository EmployeePositionRepository { get; }
         EmployeeProjectRepository EmployeeProjectRepository { get; }
         EmployeeRepository EmployeeRepository { get; }
-        EmployeeSkillRepository EmployeeSkillRepository { get; }
+        IRepository<EmployeeSkillDTO> EmployeeSkillRepository { get; }
         EmployeeStatusRepository EmployeeStatusRepository { get; }
         GeneralInformationFamilyStatusRepository GeneralInformationFamilyStatusRepository { get; }
         GeneralInformationRepository GeneralInformationRepository { get; }
         HistoriesRepository HistoriesRepository { get; }
         LevelPositionRepository LevelPositionRepository { get; }
-        LevelSkillRepository LevelSkillRepository { get; }
+        IRepository <LevelSkillDTO> LevelSkillRepository { get; }
         IRepository<LocationDTO> LocationRepository { get; }
         PositionRepository PositionRepository { get; }
         IRepository<ProjectDTO> ProjectRepository { get; }
         RequirementRepository RequirementRepository { get; }
-        SkillRepository SkillRepository { get; }
+        IRepository <SkillDTO> SkillRepository { get; }
         StatusRepository StatusRepository { get; }
         IRepository<UserDTO> UserRepository { get; }
     }

@@ -52,6 +52,23 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<EmployeeDTO, EmployeeModel>();
             CreateMap<EmployeeModel, EmployeeDTO>();
+
+            CreateMap<SkillDTO, SkillModel>();
+            CreateMap<SkillModel, SkillDTO>();
+
+            CreateMap<LevelSkillDTO, LevelSkillModel>();
+            CreateMap<LevelSkillModel, LevelSkillDTO>();
+
+            CreateMap <EmployeeSkillDTO, EmployeeSkillModel>();
+            CreateMap<EmployeeSkillModel, EmployeeSkillDTO>();
+
+            CreateMap<EmployeeSkillDTO, Competence>();
+            CreateMap<Competence, EmployeeSkillDTO>();
+
+            CreateMap<Competence, EmployeeSkillDTO>().ForMember(dest=>dest.SkillID,option=>option.MapFrom(source=>source.Skill.ID))
+                .ForMember(dest => dest.LevelSkillID, option => option.MapFrom(source => source.LevelSkill.ID))
+                .ForMember(dest=>dest.IsActual, option=>option.MapFrom(source=>true));
+            CreateMap<EmployeeSkillDTO, Competence>();
         }
     }
 }
