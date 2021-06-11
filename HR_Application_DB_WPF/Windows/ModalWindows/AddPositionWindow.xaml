@@ -1,0 +1,40 @@
+﻿<Window x:Class="HR_Application_DB_WPF.Windows.ModalWindows.AddPositionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterOwner"
+        Title="AddPositionWindow" Height="300" Width="600" Background="#FFE9E9E9">
+    <Window.Resources>
+        <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
+    </Window.Resources>
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.8*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Style="{DynamicResource LabelHeader}" Content="ADD POSITION"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="PositionComboBox" Grid.Column="0"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="LevelPositionComboBox" Grid.Column="1"/>
+        </Grid>
+        
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Button_Accept" Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="0" Width="200" Margin ="20,15,20,15" Click="Button_Accept_Click" Content="Accept"/>
+            <Button x:Name="Button_Cancel" Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="1" Width="200" Margin ="20,15,20,15" Click="Button_Cancel_Click" Content="Cancel"/>
+        </Grid>
+    </Grid>
+</Window>

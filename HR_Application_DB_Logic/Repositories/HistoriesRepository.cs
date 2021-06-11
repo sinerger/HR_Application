@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,7 +17,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(HistoryDTO history)
         {
-            string query = "CreateHistories @Table @CollumnName @OldValue @NewValue @UpdatedBy @Updated ";
+            string query = "CreateHistories @Table, @CollumnName, @OldValue, @NewValue, @UpdatedBy, @Updated ";
             bool result = true;
 
             try
@@ -46,7 +45,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(HistoryDTO history)
         {
-            string query = "UpdateHistories @ID @Table @CollumnName @OldValue @NewValue @UpdatedBy @Updated";
+            string query = "UpdateHistories @ID, @Table, @CollumnName, @OldValue, @NewValue, @UpdatedBy, @Updated";
             bool result = true;
 
             try
@@ -153,7 +152,7 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public HistoryDTO GetByUpdated(DateTime updated)
+        public HistoryDTO GetByUpdated(string updated)
         {
             string query = "GetCityByUpdated @Updated";
             HistoryDTO result = new HistoryDTO();

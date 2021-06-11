@@ -95,9 +95,9 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Updete(GeneralInformationDTO generalInformation)
+        public bool Update(GeneralInformationDTO generalInformation)
         {
-            string query = "DeleteGeneralInformation @ID @EmployeeID @Sex @Education @FamilyStatusID @Phone @Email @BirthDate @Hobby @AmountChildren";
+            string query = "DeleteGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
             bool result = true;
 
             try
@@ -129,7 +129,7 @@ namespace HR_Application_DB_Logic.Repositories
         
         public bool Create(GeneralInformationDTO generalInformation)
         {
-            string query = "CreateGeneralInformation @ID @EmployeeID @Sex @Education @FamilyStatusID @Phone @Email @BirthDate @Hobby @AmountChildren";
+            string query = "CreateGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
             bool result = true;
 
             try

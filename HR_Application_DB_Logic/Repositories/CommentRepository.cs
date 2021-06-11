@@ -1,20 +1,20 @@
-﻿using Dapper;
-using HR_Application_DB_Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Text;
+using System.Collections.Generic;
+using HR_Application_DB_Logic.Models;
+using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CommentRepository
+    public class CommentRepository : IRepository<CommentDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public CommentRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public CommentDTO GetByID(int id)
@@ -24,7 +24,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<CommentDTO>(query, new { id });
                 }
@@ -44,7 +44,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<CommentDTO>(query, new { id });
                 }
@@ -64,7 +64,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<CommentDTO>(query).AsList<CommentDTO>();
                 }
@@ -84,7 +84,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using(IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using(IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
@@ -99,12 +99,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CommentDTO comment)
         {
-            string query = "CreateComment @EmployeeID @Information @Date";
+            string query = "CreateComment @EmployeeID, @Information, @Date";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
@@ -124,12 +124,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CommentDTO comment)
         {
-            string query = "UpdateComment @ID @EmployeeID @Information @Date";
+            string query = "UpdateComment @ID, @EmployeeID, @Information, @Date";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {

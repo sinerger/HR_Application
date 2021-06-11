@@ -1,58 +1,37 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CountryRepository
+    public class CountryRepository : IRepository<CountryDTO>
     {
-
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public CountryRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public CountryDTO GetByID(int id)
         {
-            string query = "GetCountryByID";
-            CountryDTO result = new CountryDTO();
+            string query = "[HRAppDB].GetCountryByID @ID";
+            CountryDTO result = null;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<CountryDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public CountryDTO GetByName(string Name)
-        {
-            string query = "GetCountryByName";
-            CountryDTO result = new CountryDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<CountryDTO>(query, new { Name });
-                }
-            }
-            catch
-            {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -60,19 +39,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteCounty @ID";
+            string query = "[HRAppDB].DeleteCounty @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -80,19 +59,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CountryDTO country)
         {
-            string query = "CreateCounty @Name";
+            string query = "[HRAppDB].CreateCounty @Name";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { country.Name });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -100,23 +79,39 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CountryDTO country)
         {
-            string query = "UpdateCounty @ID @Name";
+            string query = "[HRAppDB].UpdateCounty @ID, @Name";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new 
-                    { 
-                        country.ID,
-                        country.Name 
-                    });
+                    dbConnection.Execute(query, new { country.ID, country.Name });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
+            }
+
+            return result;
+        }
+
+        public List<CountryDTO> GetAll()
+        {
+            string query = "[HRAppDB].GetCountries";
+            List<CountryDTO> result = null;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.Query<CountryDTO>(query).AsList<CountryDTO>();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;

@@ -77,7 +77,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(FamilyStatusDTO familyStatus)
         {
-            string query = "UpdateFamilyStatus @ID @Status";
+            string query = "UpdateFamilyStatus @ID, @Status";
             bool result = true;
 
             try

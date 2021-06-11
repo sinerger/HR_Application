@@ -1,0 +1,3 @@
+﻿CREATE PROCEDURE [HRAppDB].[GetAllUsers]
+	AS
+	SELECT * FROM [HRAppDB].[Users]
