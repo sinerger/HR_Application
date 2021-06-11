@@ -107,5 +107,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 this.Close();
             }
         }
+
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
+
+            this.Close();
+        }
     }
 }
