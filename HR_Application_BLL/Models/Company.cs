@@ -23,7 +23,7 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"Company name: {Title}";
+            return $"{Title}";
         }
 
         public override bool Equals(object obj)
