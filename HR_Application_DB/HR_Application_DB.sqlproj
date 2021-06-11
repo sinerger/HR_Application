@@ -91,6 +91,7 @@
     <Folder Include="Stored Procedures\Custom\Departments" />
     <Folder Include="Stored Procedures\Custom\CompanyAdress" />
     <Folder Include="Stored Procedures\Base\EmployeePosition" />
+    <Folder Include="Stored Procedures\Base\LevelPositions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />

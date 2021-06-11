@@ -33,7 +33,7 @@ namespace HR_Application_DB_Logic
         public GeneralInformationFamilyStatusRepository GeneralInformationFamilyStatusRepository => new GeneralInformationFamilyStatusRepository(_connectionString);
         public GeneralInformationRepository GeneralInformationRepository => new GeneralInformationRepository(_connectionString);
         public HistoriesRepository HistoriesRepository => new HistoriesRepository(_connectionString);
-        public LevelPositionRepository LevelPositionRepository => new LevelPositionRepository(_connectionString);
+        public LevelsPositionRepository LevelPositionRepository => new LevelsPositionRepository(_connectionString);
         public IRepository<LevelSkillDTO> LevelSkillRepository => new LevelSkillRepository(_connectionString);
         public IRepository<LocationDTO> LocationRepository => new LocationRepository(_connectionString);
         public PositionRepository PositionRepository => new PositionRepository(_connectionString);
