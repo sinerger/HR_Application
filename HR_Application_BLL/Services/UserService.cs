@@ -34,7 +34,7 @@ namespace HR_Application_BLL.Services
                 List<User> users = _userMapper.GetUsersFromDTO(usersDTO);
                 foreach (User user in users)
                 {
-                    user.Company = companies.Find(comp => comp.ID == usersDTO.Find(userDTO => userDTO.ID == user.ID).ID);
+                    user.Company = companies.Find(comp => comp.ID == usersDTO.Find(userDTO => userDTO.ID == user.ID).CompanyID);
                 }
 
                 return users;

@@ -19,15 +19,17 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        private Cache _cache;
         public AuthorizationWindow()
         {
             InitializeComponent();
 
             var loader = new Loader();
+            _cache = Cache.GetCache();
+
             try
             {
-            loader.LoadAllData();
-
+                loader.LoadAllData();
             }
             catch (Exception e)
             {
@@ -42,7 +44,9 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 if (AuthorizationController.SignIn(TextBox_Login.Text, TextBox_Password.Text))
                 {
+                    _cache.CurrentUser = AuthorizationController.CurrentUser;
                     HomePageWindow homePageWindow = new HomePageWindow();
+
                     homePageWindow.Show();
                     this.Close();
                 }
