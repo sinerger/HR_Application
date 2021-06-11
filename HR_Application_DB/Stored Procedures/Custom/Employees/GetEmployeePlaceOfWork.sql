@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetEmployeePlaceOfWork]
 AS
 	SELECT
-	Empl.[ID] as EmplID, 
+	Empl.[ID], 
 	Empl.[Photo], 
 	Empl.[FirstName], 
 	Empl.[LastName], 

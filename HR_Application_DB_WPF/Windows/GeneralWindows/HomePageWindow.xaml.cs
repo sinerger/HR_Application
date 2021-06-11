@@ -88,5 +88,25 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             AddEmployeeWindow addEmployeeWindow = new AddEmployeeWindow();
             addEmployeeWindow.ShowDialog();
         }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Update_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_SaveUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,3 +1,4 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetEmployees]
 AS
-SELECT * FROM [HRAppDB].[Employees]
+SELECT [HRAppDB].[Employees].*
+FROM [HRAppDB].[Employees]

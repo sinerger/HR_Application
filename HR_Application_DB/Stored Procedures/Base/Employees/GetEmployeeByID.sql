@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[GetEmployeeByID]
 	@ID int
 AS
-	select * from [HRAppDB].[Employees]
-	where [HRAppDB].[Employees].[ID] = @ID
+	SELECT [HRAppDB].[Employees].*
+	FROM [HRAppDB].[Employees]
+	WHERE [HRAppDB].[Employees].[ID] = @ID
