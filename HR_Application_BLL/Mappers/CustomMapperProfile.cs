@@ -4,6 +4,7 @@ using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Base;
+using HR_Application_DB_Logic.Models.Custom;
 
 namespace HR_Application_BLL.Mappers
 {
