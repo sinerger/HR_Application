@@ -6,6 +6,7 @@ using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Custom;
 using HR_Application_DB_Logic.Models.Base;
 using HR_Application_DB_Logic.Models.Custom;
+using HR_Application_BLL.Mappers.Base;
 
 namespace HR_Application_BLL.Mappers
 {
@@ -85,6 +86,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<CommentDTO, CommentModel>();
             CreateMap<CommentModel, CommentDTO>();
+
+            CreateMap<GeneralInformationDTO, GeneralInformationModel>();
+            CreateMap<GeneralInformationModel, GeneralInformationDTO>();
         }
     }
 }
