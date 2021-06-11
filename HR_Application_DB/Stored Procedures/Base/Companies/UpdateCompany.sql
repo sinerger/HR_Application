@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateCompany]
 	@ID int,
-	@Title nvarchar,
+	@Title nvarchar (255),
 	@LocationID int,
-	@Description nvarchar,
+	@Description nvarchar (255),
 	@IsActual bit
 AS
 	update [HRAppDB].[Companies]

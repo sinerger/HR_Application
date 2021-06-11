@@ -39,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(LevelsPositionDTO levelsPosition)
         {
-            string query = "CreateLevelPosition @Title @Description";
+            string query = "CreateLevelPosition @Title, @Description";
             bool result = true;
 
             try
@@ -59,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(LevelsPositionDTO levelsPosition)
         {
-            string query = "UpdateLevelPosition @ID @Title @Description";
+            string query = "UpdateLevelPosition @ID, @Title, @Description";
             bool result = true;
 
             try

@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateDepartment]
 	@ID int,
-	@Title nvarchar,
-	@Description nvarchar
+	@Title nvarchar (255),
+	@Description nvarchar (255)
 AS
 	Update [HRAppDB].[Departments]
 	set

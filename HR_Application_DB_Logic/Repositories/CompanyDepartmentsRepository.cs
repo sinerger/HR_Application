@@ -96,7 +96,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CompanyDepartmentsDTO obj)
         {
-            string query = "[HRAppDB].[UpdateCompanyDepartments] @ID @DepartmentID @CompanyID";
+            string query = "[HRAppDB].[UpdateCompanyDepartments] @ID, @DepartmentID, @CompanyID";
             bool result = true;
 
             try
@@ -136,7 +136,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CompanyDepartmentsDTO obj)
         {
-            string query = "[HRAppDB].CreateCompanyDepartments @DepartmentID @CompanyID @IsActual";
+            string query = "[HRAppDB].CreateCompanyDepartments @DepartmentID, @CompanyID, @IsActual";
             bool result = true;
 
             try

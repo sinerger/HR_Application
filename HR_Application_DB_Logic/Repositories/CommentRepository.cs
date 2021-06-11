@@ -99,7 +99,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CommentDTO comment)
         {
-            string query = "CreateComment @EmployeeID @Information @Date";
+            string query = "CreateComment @EmployeeID, @Information, @Date";
             bool result = true;
 
             try
@@ -124,7 +124,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CommentDTO comment)
         {
-            string query = "UpdateComment @ID @EmployeeID @Information @Date";
+            string query = "UpdateComment @ID, @EmployeeID, @Information, @Date";
             bool result = true;
 
             try

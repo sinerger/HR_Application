@@ -79,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CountryDTO country)
         {
-            string query = "[HRAppDB].UpdateCounty @ID @Name";
+            string query = "[HRAppDB].UpdateCounty @ID, @Name";
             bool result = true;
 
             try

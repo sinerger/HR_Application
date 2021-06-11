@@ -57,7 +57,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(StatusDTO status)
         {
-            string query = "UpdateStatus @ID @Name";
+            string query = "UpdateStatus @ID, @Name";
             bool result = true;
 
             try

@@ -39,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(LocationDTO Location)
         {
-            string query = "[HRAppDB].CreateLocation @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
+            string query = "[HRAppDB].CreateLocation @CityID, @Street, @HouseNumber, @Block, @ApartmentNumber, @PostIndex";
             bool result = true;
 
             try
@@ -67,7 +67,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(LocationDTO Location)
         {
-            string query = "[HRAppDB].UpdateLocation @ID @CityID @Street @HouseNumber @Block @ApartmentNumber @PostIndex";
+            string query = "[HRAppDB].UpdateLocation @ID, @CityID, @Street, @HouseNumber, @Block, @ApartmentNumber, @PostIndex";
             bool result = true;
 
             try

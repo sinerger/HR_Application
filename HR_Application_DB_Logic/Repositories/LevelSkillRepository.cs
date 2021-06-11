@@ -20,7 +20,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(LevelSkillDTO levelSkill)
         {
-            string query = "[HRAppDB].CreateLevelSkill @ID @Title";
+            string query = "[HRAppDB].CreateLevelSkill @ID, @Title";
             bool result = true;
 
             try
@@ -100,7 +100,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(LevelSkillDTO levelSkill)
         {
-            string query = "[HRAppDB].UpdateLevelSkill @ID @Title";
+            string query = "[HRAppDB].UpdateLevelSkill @ID, @Title";
             bool result = true;
 
             try

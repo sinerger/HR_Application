@@ -47,7 +47,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(UserDTO user)
         {
-            string query = "[HRAppDB].UpdateUsers @ID @FirstName @LastName @CompanyID @Email @Password @IsActual";
+            string query = "[HRAppDB].UpdateUsers @ID, @FirstName, @LastName, @CompanyID, @Email, @Password, @IsActual";
             bool result = true;
 
             try

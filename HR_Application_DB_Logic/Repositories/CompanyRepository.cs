@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CompanyDTO company)
         {
-            string query = "[HRAppDB].CreateCompany @Title @LocationID @Description @IsActual";
+            string query = "[HRAppDB].CreateCompany @Title, @LocationID, @Description, @IsActual";
             bool result = true;
 
             try
@@ -45,7 +45,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CompanyDTO company)
         {
-            string query = "[HRAppDB].UpdateCompany @ID @Title @LocationID @Description @IsActual";
+            string query = "[HRAppDB].UpdateCompany @ID, @Title, @LocationID, @Description, @IsActual";
             bool result = true;
 
             try

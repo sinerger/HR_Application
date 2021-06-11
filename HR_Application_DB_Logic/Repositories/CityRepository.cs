@@ -39,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CityDTO city)
         {
-            string query = "[HRAppDB].CreateCity @Name @CountryID";
+            string query = "[HRAppDB].CreateCity @Name, @CountryID";
             bool result = true;
 
             try
@@ -59,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CityDTO city)
         {
-            string query = "[HRAppDB].UpdateCity @ID @Name @CountryID";
+            string query = "[HRAppDB].UpdateCity @ID, @Name, @CountryID";
             bool result = true;
 
             try

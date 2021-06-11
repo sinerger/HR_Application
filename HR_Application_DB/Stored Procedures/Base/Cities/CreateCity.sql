@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateCity]
-	@Name nvarchar,
+	@Name nvarchar (255),
 	@CountryID int
 AS
 INSERT INTO [HRAppDB].[Cities] (

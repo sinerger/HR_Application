@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(SkillDTO skill)
         {
-            string query = "[HRAppDB].CreateSkill @Title @Description";
+            string query = "[HRAppDB].CreateSkill @Title, @Description";
             bool result = true;
 
             try
@@ -99,7 +99,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(SkillDTO skill)
         {
-            string query = "[HRAppDB].UpdateSkill @ID @Title @Description";
+            string query = "[HRAppDB].UpdateSkill @ID, @Title, @Description";
             bool result = true;
 
             try

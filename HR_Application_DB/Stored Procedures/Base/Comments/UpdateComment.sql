@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateComment]
 	@ID int,
 	@EmployeeID int,
-	@Information nvarchar,
-	@Date nvarchar
+	@Information nvarchar (255),
+	@Date nvarchar (255)
 AS
 	Update [HRAppDB].[Comments]
 	SET [HRAppDB].[Comments].EmployeeID = @EmployeeID,

@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateEmployeeSkill]
 @EmployeeID int,
-@Date nvarchar,
+@Date nvarchar (255),
 @IsActual bit,
 @UserID int,
 @LevelSkillID int,
