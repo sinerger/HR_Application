@@ -60,7 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(DepartmentDTO department)
         {
-            string query = "[HRAppDB].CreateDepartment @Title @Description";
+            string query = "[HRAppDB].CreateDepartment @Title, @Description";
             bool result = true;
 
             try
@@ -80,7 +80,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(DepartmentDTO department)
         {
-            string query = "[HRAppDB].UpdateDepartment @ID @Title @Description";
+            string query = "[HRAppDB].UpdateDepartment @ID, @Title, @Description";
             bool result = true;
 
             try

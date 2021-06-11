@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateLevelSkill]
-@Title nvarchar
+@Title nvarchar (255)
 AS
 INSERT INTO [HRAppDB].[LevelSkills](
 [HRAppDB].[LevelSkills].Title)

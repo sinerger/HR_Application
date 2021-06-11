@@ -1,7 +1,7 @@
 ﻿CREATE PROC [HRAppDB].[UpdatePosition]
     @ID int,
-    @Title nvarchar,
-    @Description nvarchar
+    @Title nvarchar (255),
+    @Description nvarchar (255)
 AS
 UPDATE [HRAppDB].[Positions]
 SET  [HRAppDB].[Positions].[Title] = @Title,

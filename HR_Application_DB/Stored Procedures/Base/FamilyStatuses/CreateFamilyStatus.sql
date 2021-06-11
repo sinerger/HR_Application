@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateFamilyStatus]
-	@Status nvarchar
+	@Status nvarchar (255)
 AS
 INSERT INTO [HRAppDB].[FamilyStatuses] (
 		[HRAppDB].[FamilyStatuses].[Status]

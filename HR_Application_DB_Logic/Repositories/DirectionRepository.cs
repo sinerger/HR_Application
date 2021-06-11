@@ -57,7 +57,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(DirectionDTO direction)
         {
-            string query = "CreateDirection @Title @Description";
+            string query = "CreateDirection @Title, @Description";
             bool result = true;
 
             try
@@ -81,7 +81,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(DirectionDTO direction)
         {
-            string query = "UpdateDirection @ID @Title @Description";
+            string query = "UpdateDirection @ID, @Title, @Description";
             bool result = true;
 
             try

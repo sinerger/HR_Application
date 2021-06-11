@@ -19,8 +19,8 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(EmployeeSkillDTO employeeSkill)
         {
-            string query = @"[HRAppDB].CreateEmployeeSkill @EmployeeID @Date 
-                @IsActual @UserID @LevelSkillID @SkillID";
+            string query = @"[HRAppDB].CreateEmployeeSkill @EmployeeID, @Date, 
+                @IsActual, @UserID, @LevelSkillID, @SkillID";
             bool result = true;
 
             try
@@ -107,8 +107,8 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(EmployeeSkillDTO employeeSkill)
         {
-            string query = @"[HRAppDB].UpdateEmployeeSkill @ID @EmployeeID @Date 
-                @IsActual @UserID @LevelSkillID @SkillID";
+            string query = @"[HRAppDB].UpdateEmployeeSkill @ID, @EmployeeID, @Date, 
+                @IsActual, @UserID, @LevelSkillID, @SkillID";
             bool result = true;
 
             try

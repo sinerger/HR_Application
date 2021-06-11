@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateStatus]
-	@Name nvarchar
+	@Name nvarchar (255)
 AS
 INSERT INTO [HRAppDB].Statuses
 	VALUES (@Name)

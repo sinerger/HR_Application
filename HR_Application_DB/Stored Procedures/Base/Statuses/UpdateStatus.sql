@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateStatus]
 	@ID int,
-	@Name nvarchar
+	@Name nvarchar (255)
 AS
 	UPDATE [HRAppDB].[Statuses]
 	SET [HRAppDB].[Statuses].[Name] = @Name

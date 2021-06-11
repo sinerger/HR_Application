@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateProjects]
 	@ID int,
-	@Title nvarchar,
-	@Description nvarchar,
+	@Title nvarchar (255),
+	@Description nvarchar (255),
 	@DirectionID int
 AS
 UPDATE [HRAppDB].[Projects]

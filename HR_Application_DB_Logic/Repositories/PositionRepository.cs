@@ -79,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(PositionDTO position)
         {
-            string query = "CreatePosition @Title @Description";
+            string query = "CreatePosition @Title, @Description";
             bool result = true;
 
             try

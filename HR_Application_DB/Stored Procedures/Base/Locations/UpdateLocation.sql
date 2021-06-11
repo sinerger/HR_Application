@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateLocation]
 	@ID int,
 	@CityID int,
-	@Street nvarchar,
+	@Street nvarchar (255),
 	@HouseNumber int,
-	@Block nvarchar,
+	@Block nvarchar (255),
 	@ApartmentNumber int,
 	@PostIndex int
 AS

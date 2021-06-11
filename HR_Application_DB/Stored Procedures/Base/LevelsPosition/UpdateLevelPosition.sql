@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateLevelPosition]
 	@ID int,
-	@Title nvarchar,
-	@Description nvarchar
+	@Title nvarchar (255),
+	@Description nvarchar (255)
 AS
 UPDATE [HRAppDB].[LevelPosition]
 SET [HRAppDB].[LevelPosition].[Title] = @Title,

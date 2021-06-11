@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateSkill]
-	@Title nvarchar,
-	@Description nvarchar
+	@Title nvarchar (255),
+	@Description nvarchar (255)
 AS
 	INSERT INTO [HRAppDB].[Skills](
 		[HRAppDB].[Skills].[Title],

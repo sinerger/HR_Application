@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateComment]
 	@EmployeeID int,
-	@Information nvarchar,
-	@Date nvarchar
+	@Information nvarchar (255),
+	@Date nvarchar (255)
 AS
 	insert into [HRAppDB].[Comments]
 	values (@EmployeeID,
