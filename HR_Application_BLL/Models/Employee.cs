@@ -23,9 +23,21 @@ namespace HR_Application_BLL.Models
         public Department Department { get; set; }
         public List<CommentModel> Comments { get; set; }
 
+        public Employee()
+        {
+            GeneralInformation = new GeneralInformationModel();
+            Position = new PositionModel();
+            Company = new Company();
+            Adress = new Adress();
+            Project = new ProjectModel();
+            Competence = new List<Competence>();
+            Department = new Department();
+            Comments = new List<CommentModel>();
+        }
+        
         public override string ToString()
         {
-            return $"FirstName:{FirstName} LastName:{LastName} Email:{GeneralInformation.Email} RegistrationDate:{RegistrationDate} Position: {Position.Title} Company:{Company.Title} Adress:{Adress.Country} { Adress.City} {Adress.Street} {Adress.HourseNumber} {Adress.Block} {Adress.ApartmentNumber} Project{Project.Title}";
+            return $"{FirstName} {LastName}";
         }
         public override bool Equals(object obj)
         {
@@ -36,7 +48,6 @@ namespace HR_Application_BLL.Models
                 Employee employee = (Employee)obj;
 
                 if (employee.ID == ID
-                    && employee.Photo == Photo
                     && employee.FirstName == FirstName
                     && employee.LastName == LastName
                     && employee.RegistrationDate == RegistrationDate
