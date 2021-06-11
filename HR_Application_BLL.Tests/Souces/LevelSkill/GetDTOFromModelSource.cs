@@ -1,9 +1,7 @@
 ﻿using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace HR_Application_BLL.Tests.Souces.LevelSkill
 {
