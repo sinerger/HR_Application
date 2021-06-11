@@ -82,6 +82,9 @@ namespace HR_Application_BLL.Mappers
                 .ForMember(dest => dest.LevelSkillID, option => option.MapFrom(source => source.LevelSkill.ID))
                 .ForMember(dest=>dest.IsActual, option=>option.MapFrom(source=>true));
             CreateMap<EmployeeSkillDTO, Competence>();
+
+            CreateMap<CommentDTO, CommentModel>();
+            CreateMap<CommentModel, CommentDTO>();
         }
     }
 }
