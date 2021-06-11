@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateUsers]
-	@FisrtName nvarchar,
-	@LastName nvarchar,
+	@FirstName nvarchar (255),
+	@LastName nvarchar(255),
 	@CompanyID int,
-	@Email nvarchar,
-	@Password nvarchar,
+	@Email nvarchar (255),
+	@Password nvarchar (255),
 	@IsActual bit
 AS
 	INSERT INTO [HRAppDB].[Users](
-		[HRAppDB].[Users].[FisrtName],
+		[HRAppDB].[Users].[FirstName],
 		[HRAppDB].[Users].[LastName],
 		[HRAppDB].[Users].[CompanyID],
 		[HRAppDB].[Users].[Email],
@@ -15,7 +15,7 @@ AS
 		[HRAppDB].[Users].[IsActual]
 		)
 	VALUES (
-		@FisrtName,
+		@FirstName,
 		@LastName,
 		@CompanyID,
 		@Email,

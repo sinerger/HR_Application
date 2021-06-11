@@ -12,7 +12,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class UserService
+    public class UserService :IService<User>
     {
         private IDBController _dbController;
         private UserMapper _userMapper;
@@ -23,7 +23,7 @@ namespace HR_Application_BLL.Services
             _userMapper = new UserMapper();
         }
 
-        public List<User> GetUsers()
+        public List<User> GetAll()
         {
             try
             {
@@ -48,20 +48,34 @@ namespace HR_Application_BLL.Services
 
         public User GetByID(int id)
         {
-            //try
-            //{
-            //    UserDTO userDTO = _dbController.UserRepository.GetByID(id);
-            //    User user = _userMapper.GetUserFromDTO(userDTO);
-            //    user.Company = new CompanyService().GetByID(userDTO.CompanyID);
+            try
+            {
+                UserDTO userDTO = _dbController.UserRepository.GetByID(id);
+                User user = _userMapper.GetUserFromDTO(userDTO);
+                user.Company = new CompanyService(_dbController).GetByID((int)userDTO.CompanyID);
 
-            //}
-            //catch (Exception e)
-            //{
+                return user;
+            }
+            catch (Exception e)
+            {
 
-            //    throw e;
-            //}
+                throw e;
+            }
+        }
 
-            return null;
+        public bool Create(User user)
+        {
+            try
+            {
+                UserDTO userDTO = _userMapper.GetDTOFromUser(user);
+                userDTO.CompanyID = user.Company.ID;
+                _dbController.UserRepository.Create(userDTO);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -11,6 +11,11 @@ namespace HR_Application_BLL.Models
         public string Description { get; set; }
         public List<ProjectModel> Projects { get; set; }
 
+        public Department()
+        {
+            Projects = new List<ProjectModel>();
+        }
+
         public override string ToString()
         {
             return $"Department title: {Title}";

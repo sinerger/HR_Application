@@ -9,6 +9,6 @@
     CONSTRAINT [PK_POSITIONS_EMPLOYEES] PRIMARY KEY CLUSTERED ([ID] ASC),
     CONSTRAINT [Positions_Employees_fk0] FOREIGN KEY ([EmployeeID]) REFERENCES [HRAppDB].[Employees] ([ID]),
     CONSTRAINT [Positions_Employees_fk1] FOREIGN KEY ([PositionID]) REFERENCES [HRAppDB].[Positions] ([ID]),
-    CONSTRAINT [Positions_Employees_fk2] FOREIGN KEY ([LevelsPosition]) REFERENCES [HRAppDB].[LevelsPosition] ([ID])
+    CONSTRAINT [Positions_Employees_fk2] FOREIGN KEY ([LevelsPosition]) REFERENCES [HRAppDB].[LevelPositions] ([ID])
 );
 

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HR_Application_DB_WPF.Classes;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -18,12 +19,20 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        private const string _defaultTextLogin = "Login";
-        private const string _defaultTextPassword = "Password";
-
         public AuthorizationWindow()
         {
             InitializeComponent();
+
+            var loader = new Loader();
+            try
+            {
+            loader.LoadAllData();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Oops, something went wrong\n{e.ToString()}");
+            }
             // TODO: Нужно прикрутить визуальное отображение что неправильный логин или пароль
         }
 

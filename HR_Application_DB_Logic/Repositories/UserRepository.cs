@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(UserDTO user)
         {
-            string query = "[HRAppDB].CreateUsers @FirstName @LastName @CompanyID @Email @Password @IsActual";
+            string query = "[HRAppDB].[CreateUsers] @FirstName, @LastName, @CompanyID, @Email, @Password, @IsActual";
             bool result = true;
 
             try

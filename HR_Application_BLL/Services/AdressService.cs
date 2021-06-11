@@ -11,7 +11,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class AdressService
+    public class AdressService : IService<Adress>
     {
         private IDBController _dbController;
         private AdressMapper _adressMapper;

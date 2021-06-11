@@ -4,13 +4,15 @@ using HR_Application_BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using HR_Application_BLL.Models;
+using HR_Application_DB_Logic;
 
 namespace HR_Application_BLL
 {
     public static class AuthorizationController
     {
         private static int _minAmountSymbolPassword = 8;
-        public static UserModel CurrentUser { get; private set; }
+        public static User CurrentUser { get; private set; }
 
         public static bool SignIn(string email, string password)
         {
@@ -20,7 +22,7 @@ namespace HR_Application_BLL
             {
                 try
                 {
-                    List<UserModel> users = null;
+                    List<User> users = new UserService(new DBController(DBConfigurator.ConnectionString)).GetAll();
 
                     foreach (var user in users)
                     {
@@ -42,9 +44,16 @@ namespace HR_Application_BLL
             return result;
         }
 
-        public static bool RegistrationNewUser(UserModel user)
+        public static bool RegistrationNewUser(User user)
         {
-            return true;
+            try
+            {
+                return new UserService(new DBController(DBConfigurator.ConnectionString)).Create(user);
+            }
+            catch (Exception e)
+            {
+                throw e ;
+            }
         }
 
         public static bool IsValidEmail(string email)

@@ -13,7 +13,7 @@ namespace HR_Application_BLL.Tests
         [Test]
         public void Testas()
         {
-            var a = new CompanyService(new DBController(DBConfigurator.ConnectionString)).GetByID(3);
+            var a = new UserService(new DBController(@"Server=(LocalDB)\MSSQLLocalDB;Database =test data 4;Integrated Security=true;")).GetAll();
             string str = a.ToString();
         }
     }

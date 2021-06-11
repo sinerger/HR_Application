@@ -14,6 +14,10 @@ namespace HR_Application_BLL.Models
         public string Password { get; set; }
         public Company Company { get; set; }
 
+        public User()
+        {
+            Company = new Company();
+        }
         public override string ToString()
         {
             return $"{FirstName} {LastName} Company: {Company}";
@@ -32,7 +36,7 @@ namespace HR_Application_BLL.Models
                     && user.LastName == LastName
                     && user.Email == Email
                     && user.Password == Password
-                    && user.Company == Company)
+                    && user.Company.Equals(Company))
                 {
                     result = true;
                 }

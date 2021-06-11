@@ -111,7 +111,7 @@
     <Build Include="Tables\GeneralInformation.sql" />
     <Build Include="Tables\Histories.sql" />
     <Build Include="Tables\LevelSkills.sql" />
-    <Build Include="Tables\LevelsPosition.sql" />
+    <Build Include="Tables\LevelPositions.sql" />
     <Build Include="Tables\Locations.sql" />
     <Build Include="Tables\Positions.sql" />
     <Build Include="Tables\Positions_Employees.sql" />
@@ -179,11 +179,11 @@
     <Build Include="Stored Procedures\Base\Histories\UpdateHistories.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\CreateLevelSkill.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\DeleteLevelSkill.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\DeleteLevelsPosition.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelsPosition.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelsPositionByID.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelsPositionByTitle.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\UpdateLevelsPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\DeleteLevelPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPositionByID.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPositionByTitle.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\UpdateLevelPosition.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillByID.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillByTitle.sql" />
@@ -260,7 +260,7 @@
     <Build Include="Stored Procedures\Base\EmployeePosition\GetEmployeesPositions.sql" />
     <Build Include="Stored Procedures\Base\EmployeePosition\GetEmployeePositionByID.sql" />
     <Build Include="Stored Procedures\Base\EmployeePosition\UpdateEmployeePosition.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\CreateLevelsPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\CreateLevelPosition.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />

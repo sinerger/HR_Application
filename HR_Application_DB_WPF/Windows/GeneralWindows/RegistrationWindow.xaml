@@ -56,7 +56,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="ConfirmPasswordInput" Grid.Column="1" Margin ="0,15,0,15" Tag="Confirm password" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_ConfirmPassword" Grid.Column="1" Margin ="0,15,0,15" Tag="Confirm password" FontSize="25"/>
         </Grid>
 
         <Grid Grid.Row="4">
@@ -65,7 +65,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="FirstNameInput" Grid.Column="1" Margin ="0,15,0,15" Tag="First Name" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_FirstName" Grid.Column="1" Margin ="0,15,0,15" Tag="First Name" FontSize="25"/>
         </Grid>
 
         <Grid Grid.Row="5">
@@ -74,7 +74,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="LastNameInput" Grid.Column="1" Margin ="0,15,0,15" Tag="Last Name" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_LastName" Grid.Column="1" Margin ="0,15,0,15" Tag="Last Name" FontSize="25"/>
         </Grid>
 
         <Grid Grid.Row="6">
@@ -83,7 +83,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="CompanyInput" Grid.Column="1" Margin ="0,15,0,15" Tag="Company" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Company" Grid.Column="1" Margin ="0,15,0,15" Tag="Company" FontSize="25" PreviewMouseDown="TextBox_Company_PreviewMouseDown" SelectionChanged="TextBox_Company_SelectionChanged"/>
         </Grid>
 
         <Grid Grid.Row="7">
@@ -92,7 +92,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="CityInput" Grid.Column="1" Margin ="0,15,0,15" Tag="City" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_City" Grid.Column="1" Margin ="0,15,0,15" Tag="City" FontSize="25"/>
         </Grid>
 
         <Grid Grid.Row="8">
@@ -101,7 +101,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="SignUpButton" Content="Register" Grid.Column ="1" Margin ="10,15,0,15" Click="SignUpButton_Click"/>
+            <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Regist" Content="Register" Grid.Column ="1" Margin ="10,15,0,15" Click="Button_Regist_Click"/>
         </Grid>
     </Grid>
 </Window>

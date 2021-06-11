@@ -17,6 +17,12 @@ namespace HR_Application_BLL.Models
         public CityModel City { get; set; }
         public CountryModel Country { get; set; }
 
+        public Adress()
+        {
+            City = new CityModel();
+            Country = new CountryModel();
+        }
+
         public override string ToString()
         {
             return $"Adress: {Country} {City} {Street}";

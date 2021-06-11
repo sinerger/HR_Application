@@ -12,7 +12,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class DepartmentService
+    public class DepartmentService : IService<Department>
     {
         private IDBController _dbController;
         private DepartmentMapper _departmentMapper;

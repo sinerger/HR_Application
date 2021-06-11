@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[DeleteEmployeeSkill]
+﻿CREATE PROCEDURE [HRAppDB].[DeleteEmployeeSkill]
 @ID int
 AS
 DELETE

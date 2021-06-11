@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [HRAppDB].[Users] (
     [ID]        INT            IDENTITY (1, 1) NOT NULL,
-    [FisrtName] NVARCHAR (255) NOT NULL,
+    [FirstName] NVARCHAR (255) NOT NULL,
     [LastName]  NVARCHAR (255) NOT NULL,
     [CompanyID] INT            NOT NULL,
     [Email]     NVARCHAR (255) NOT NULL,

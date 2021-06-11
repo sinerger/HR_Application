@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-   public class CommentService
+   public class CommentService : IService<CommentModel>
     {
         private IDBController _dbController;
         private CommentMapper _commentMapper;

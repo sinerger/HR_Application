@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[UpdateEmployeeSkill]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateEmployeeSkill]
 @ID int,
 @EmployeeID int,
 @Date nvarchar,
@@ -10,10 +10,11 @@
 AS
 UPDATE [HRAppDB].[Employees_Skills]
 SET 
-[HRAppDB].[Employees_Skills].ID=@ID,
 [HRAppDB].[Employees_Skills].EmployeeID=@EmployeeID,
 [HRAppDB].[Employees_Skills].[Date]=@Date,
 [HRAppDB].[Employees_Skills].IsActual=@IsActual,
 [HRAppDB].[Employees_Skills].UserID=@UserID,
 [HRAppDB].[Employees_Skills].LevelSkillID=@LevelSkillID,
 [HRAppDB].[Employees_Skills].SkillID=@SkillID
+
+WHERE [HRAppDB].[Employees_Skills].ID=@ID

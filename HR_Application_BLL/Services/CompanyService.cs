@@ -10,7 +10,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class CompanyService
+    public class CompanyService :IService<Company>
     {
         private IDBController _dbController;
         private CompanyMapper _companyMapper;

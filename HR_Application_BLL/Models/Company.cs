@@ -14,6 +14,13 @@ namespace HR_Application_BLL.Models
         public Adress Adress { get; set; }
         public List<Department> Departments { get; set; }
 
+
+        public Company()
+        {
+            Adress = new Adress();
+            Departments = new List<Department>();
+        }
+
         public override string ToString()
         {
             return $"Company name: {Title}";
