@@ -19,7 +19,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]
-        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListLocationModels(List<EmployeeSkillDTO> actualEmployeeSkillDTO, List<EmployeeSkillModel> expected)
+        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListEmployeeSkillModel(List<EmployeeSkillDTO> actualEmployeeSkillDTO, List<EmployeeSkillModel> expected)
         {
             List<EmployeeSkillModel> actual = _employeeSkillMapper.GetModelsFromDTO(actualEmployeeSkillDTO);
 
@@ -27,15 +27,15 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCase(null)]
-        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnArgumentNullException(List<HR_Application_DB_Logic.Models.Custom.EmployeeSkillDTO> employeeSkillModel)
+        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnArgumentNullException(List<EmployeeSkillDTO> employeeSkillDTO)
         {
-            Assert.Throws<ArgumentNullException>(() => _employeeSkillMapper.GetModelsFromDTO(employeeSkillModel));
+            Assert.Throws<ArgumentNullException>(() => _employeeSkillMapper.GetModelsFromDTO(employeeSkillDTO));
         }
 
         [TestCaseSource(typeof(GetDTOFromModelSource))]
-        public void GetDTOFromModel_WhenValidTestPassed_ShouldReturnLocationDTO(EmployeeSkillModel employeeSkillModel, EmployeeSkillDTO expected)
+        public void GetDTOFromModel_WhenValidTestPassed_ShouldReturnEmployeeSkillDTO(EmployeeSkillModel employeeSkillModel, EmployeeSkillDTO expected)
         {
-            HR_Application_DB_Logic.Models.Custom.EmployeeSkillDTO actual = _employeeSkillMapper.GetDTOFromModel(employeeSkillModel);
+            EmployeeSkillDTO actual = _employeeSkillMapper.GetDTOFromModel(employeeSkillModel);
 
             Assert.AreEqual(expected, actual);
         }
@@ -47,7 +47,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetModelFromDTOSource))]
-        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnLocationModelByID(EmployeeSkillDTO actualEmployeeSkillDTO, EmployeeSkillModel expected)
+        public void GetModelsFromDTO_WhenInvaildTestPassed_ShouldReturnEmployeeSkillModelByID(EmployeeSkillDTO actualEmployeeSkillDTO, EmployeeSkillModel expected)
         {
             EmployeeSkillModel actual = _employeeSkillMapper.GetModelFromDTO(actualEmployeeSkillDTO);
 
