@@ -1,115 +1,37 @@
-﻿using Dapper;
-using HR_Application_DB_Logic.Models;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using Dapper;
+using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class SkillRepository
+    public class SkillRepository: IRepository<SkillDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public SkillRepository(string connectionString)
         {
-            _connectionString = connectionString;
-        }
-
-        public SkillDTO GetByID(int id)
-        {
-            string query = "[HRAppDB].GetSkillByID @ID";
-            SkillDTO result = new SkillDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<SkillDTO>(query, new { id });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public SkillDTO GetByTitle(string title)
-        {
-            string query = "[HRAppDB].GetSkillByTitle @Title";
-            SkillDTO result = new SkillDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<SkillDTO>(query, new { title });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public List<SkillDTO> GetAll()
-        {
-            string query = "GetSkills";
-            List<SkillDTO> result = new List<SkillDTO>();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.Query<SkillDTO>(query).AsList<SkillDTO>();
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
+            ConnectionString = connectionString;
         }
 
         public bool Create(SkillDTO skill)
         {
-            string query = "[HRAppDB].CreateSkill @Title @Description";
+            string query = "[HRAppDB].CreateSkill @Title, @Description";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { skill.Title, skill.Description });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
-            }
-
-            return result;
-        }
-
-        public bool Update(SkillDTO skill)
-        {
-            string query = "[HRAppDB].UpdateSkill @ID @Title @Description";
-            bool result = true;
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    dbConnection.Execute(query, new { skill.ID, skill.Title, skill.Description });
-                }
-            }
-            catch
-            {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -122,14 +44,74 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
+            }
+
+            return result;
+        }
+
+        public List<SkillDTO> GetAll()
+        {
+            string query = "[HRAppDB].GetSkills";
+            List<SkillDTO> result = new List<SkillDTO>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.Query<SkillDTO>(query).AsList<SkillDTO>();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public SkillDTO GetByID(int id)
+        {
+            string query = "[HRAppDB].GetSkillByID @ID";
+            SkillDTO result = new SkillDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.QuerySingle<SkillDTO>(query, new { id });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public bool Update(SkillDTO skill)
+        {
+            string query = "[HRAppDB].UpdateSkill @ID, @Title, @Description";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { skill.ID, skill.Title, skill.Description });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;

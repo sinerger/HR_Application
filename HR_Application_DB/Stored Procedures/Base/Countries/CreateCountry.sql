@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateCountry]
-	@Name nvarchar
+	@Name nvarchar (255)
 AS
 	insert into [HRAppDB].[Countries]
 	values (@Name)

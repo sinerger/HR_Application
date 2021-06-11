@@ -2,4 +2,4 @@
 	@ID int
 	AS
 	SELECT * FROM [HRAppDB].[Users]
-	WHERE [HRAppDB].[Users].[ID] = @ID
+		WHERE [HRAppDB].[Users].ID = @ID

@@ -38,8 +38,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Department_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow();
-            addDepartmentWindow.ShowDialog();
+            //AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow();
+            //addDepartmentWindow.ShowDialog();
         }
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)

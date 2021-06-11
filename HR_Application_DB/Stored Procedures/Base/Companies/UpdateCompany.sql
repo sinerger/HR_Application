@@ -1,13 +1,15 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateCompany]
 	@ID int,
-	@Title nvarchar,
+	@Title nvarchar (255),
 	@LocationID int,
-	@Description nvarchar
+	@Description nvarchar (255),
+	@IsActual bit
 AS
 	update [HRAppDB].[Companies]
 	set
 	[HRAppDB].[Companies].Title = @Title,
 	[HRAppDB].[Companies].LocationID = @LocationID,
-	[HRAppDB].[Companies].[Description] = @Description
+	[HRAppDB].[Companies].[Description] = @Description,
+	[HRAppDB].[Companies].[IsActual] = @IsActual
 	
 	where [HRAppDB].[Companies].ID = @ID

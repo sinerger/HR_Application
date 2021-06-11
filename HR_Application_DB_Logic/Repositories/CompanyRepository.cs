@@ -1,35 +1,43 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using Dapper;
+using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
+using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CompanyRepository
+    public class CompanyRepository : IRepository<CompanyDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public CompanyRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public bool Create(CompanyDTO company)
         {
-            string query = "CreateCompany @Title @LocationID @Description";
+            string query = "[HRAppDB].CreateCompany @Title, @LocationID, @Description, @IsActual";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { company.Title, company.LocationID, company.Description });
+                    dbConnection.Execute(query, new 
+                    { 
+                        company.Title,
+                        company.LocationID,
+                        company.Description,
+                        company.IsActual
+                    });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -37,19 +45,26 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CompanyDTO company)
         {
-            string query = "UpdateCompany @ID @Title @LocationID @Description";
+            string query = "[HRAppDB].UpdateCompany @ID, @Title, @LocationID, @Description, @IsActual";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { company.ID, company.Title, company.LocationID, company.Description });
+                    dbConnection.Execute(query, new
+                    { 
+                        company.ID,
+                        company.Title,
+                        company.LocationID,
+                        company.Description,
+                        company.IsActual
+                    });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -57,19 +72,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteCompany @ID";
+            string query = "[HRAppDB].DeleteCompany @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -77,19 +92,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<CompanyDTO> GetAll()
         {
-            string query = "GetCompanies";
+            string query = "[HRAppDB].GetCompanies";
             List<CompanyDTO> result = new List<CompanyDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<CompanyDTO>(query).AsList<CompanyDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -97,39 +112,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CompanyDTO GetByID(int id)
         {
-            string query = "GetCompanyByID @ID";
+            string query = "[HRAppDB].GetCompanyByID @ID";
             CompanyDTO result = new CompanyDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<CompanyDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public CompanyDTO GetByName(string Name)
-        {
-            string query = "GetCompanyByName @Name";
-            CompanyDTO result = new CompanyDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<CompanyDTO>(query, new { Name });
-                }
-            }
-            catch
-            {
-                result = null;
+                throw e;
             }
 
             return result;

@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateCompany]
-	@Title nvarchar,
+	@Title nvarchar (255),
 	@LocationID int,
-	@Description nvarchar,
+	@Description nvarchar (255),
 	@IsActual bit
 AS
 	insert into [HRAppDB].[Companies]

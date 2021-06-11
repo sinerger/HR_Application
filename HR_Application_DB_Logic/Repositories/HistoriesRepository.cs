@@ -17,7 +17,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(HistoryDTO history)
         {
-            string query = "CreateHistories @Table @CollumnName @OldValue @NewValue @UpdatedBy @Updated ";
+            string query = "CreateHistories @Table, @CollumnName, @OldValue, @NewValue, @UpdatedBy, @Updated ";
             bool result = true;
 
             try
@@ -45,7 +45,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(HistoryDTO history)
         {
-            string query = "UpdateHistories @ID @Table @CollumnName @OldValue @NewValue @UpdatedBy @Updated";
+            string query = "UpdateHistories @ID, @Table, @CollumnName, @OldValue, @NewValue, @UpdatedBy, @Updated";
             bool result = true;
 
             try

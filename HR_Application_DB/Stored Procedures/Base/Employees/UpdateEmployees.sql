@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateEmployees]
 	@ID int,
-	@Photo nvarchar,
-	@FirstName nvarchar,
-	@LastName nvarchar,
-	@RegistationDate nvarchar,
+	@Photo nvarchar (255),
+	@FirstName nvarchar (255),
+	@LastName nvarchar (255),
+	@RegistationDate nvarchar (255),
 	@StatusID int,
 	@LocationID int,
 	@IsActual bit

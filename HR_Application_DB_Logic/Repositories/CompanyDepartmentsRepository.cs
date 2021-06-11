@@ -2,94 +2,156 @@
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using HR_Application_DB_Logic.Models;
-using HR_Application_DB_Logic.Models.Custom;
 using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using System;
+using HR_Application_DB_Logic.Models.Base;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class CompanyDepartmentsRepository
+    public class CompanyDepartmentsRepository : IRepository<CompanyDepartmentsDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public CompanyDepartmentsRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
-        public List<CompanyDepartmentsDTO> GetALL()
+        public List<CompanyDepartmentsDTO> GetAll()
         {
             string query = "[HRAppDB].GetCompaniesDepartments";
-            List<CompanyDepartmentsDTO> result = new List<CompanyDepartmentsDTO>();
+            List<CompanyDepartmentsDTO> companiesDepartments = new List<CompanyDepartmentsDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<CompanyDepartmentsDTO, CompanyDTO, int, CompanyDepartmentsDTO>(query,
-                        (companyDepartment, company, departmentID) =>
+                    dbConnection.Query<CompanyDepartmentsDTO, int, CompanyDepartmentsDTO>(query,
+                        (companyDepartment, departmentID) =>
                         {
-                            companyDepartment.Company = company;
-                            companyDepartment.DepartmentsID = new List<int>();
-                            companyDepartment.DepartmentsID.Add(departmentID);
+                            CompanyDepartmentsDTO currentCompany = null;
 
-                            return companyDepartment;
-                        }
-                        , splitOn: "IDD,ID,IDDepartment")
-                        .AsList<CompanyDepartmentsDTO>();
+                            foreach (var companyDep in companiesDepartments)
+                            {
+                                if (companyDep.CompanyID == companyDepartment.CompanyID)
+                                {
+                                    companyDep.DepartmentsID.Add(departmentID);
+                                    currentCompany = companyDep;
+                                    break;
+                                }
+                            }
+
+                            if (currentCompany == null)
+                            {
+                                companyDepartment.DepartmentsID = new List<int>();
+                                companyDepartment.DepartmentsID.Add(departmentID);
+                                currentCompany = companyDepartment;
+
+                                companiesDepartments.Add(currentCompany);
+                            }
+
+                            return currentCompany;
+                        }).AsList<CompanyDepartmentsDTO>();
                 }
             }
-            catch
+            catch(Exception e)
             {
-                result = null;
+                throw e;
+            }
+
+            return companiesDepartments;
+        }
+
+        public CompanyDepartmentsDTO GetByID(int id)
+        {
+            string query = "[HRAppDB].GetCompanyDepartmentsByCompanyID @ID";
+            CompanyDepartmentsDTO companyDepartments = null;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Query<CompanyDepartmentsDTO, int, CompanyDepartmentsDTO>(query,
+                        (companyDeps, departmentID) =>
+                        {
+                            if (companyDepartments == null)
+                            {
+                                companyDepartments = companyDeps;
+                                companyDepartments.DepartmentsID = new List<int>();
+                            }
+                            companyDepartments.DepartmentsID.Add(departmentID);
+
+                            return companyDeps;
+                        }, new { id }).AsList<CompanyDepartmentsDTO>();
+                }
+            }
+            catch ( Exception e)
+            {
+                throw e;
+            }
+
+            return companyDepartments;
+        }
+
+        public bool Update(CompanyDepartmentsDTO obj)
+        {
+            string query = "[HRAppDB].[UpdateCompanyDepartments] @ID, @DepartmentID, @CompanyID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { obj.ID, obj.DepartmentsID, obj.CompanyID });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;
         }
 
-        public List<CompanyDepartmentsDTO> GetALLByCompanyID(int companyID)
+        public bool Delete(int id)
         {
-            string query = "[HRAppDB].GetCompanyDepartmentsByCompanyID @CompanyID";
-            List<CompanyDepartmentsDTO> companyDepartments = new List<CompanyDepartmentsDTO>();
+            string query = "[HRAppDB].DeleteCompanyDepartments @ID";
+            bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Query<CompanyDepartmentsDTO, CompanyDTO, int, CompanyDepartmentsDTO>(query,
-                        (companyDepartment, company, departmentID) =>
-                        {
-                            CompanyDepartmentsDTO currentCD = null;
-
-                            foreach (CompanyDepartmentsDTO cD in companyDepartments)
-                            {
-                                if (cD.Company.ID == company.ID)
-                                {
-                                    currentCD = companyDepartment;
-                                    cD.DepartmentsID.Add(departmentID);
-                                    break;
-                                }
-                            }
-
-                            if (currentCD == null)
-                            {
-                                currentCD = companyDepartment;
-                                companyDepartments.Add(currentCD);
-                                currentCD.Company = company;
-                                currentCD.DepartmentsID = new List<int>();
-                                currentCD.DepartmentsID.Add(departmentID);
-                            }
-
-                            return companyDepartment;
-                        }, new { companyID }, splitOn: "IDD,ID,IDDepartment")
-                        .AsList<CompanyDepartmentsDTO>();
+                    dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                companyDepartments = null;
+                throw e;
             }
 
-            return companyDepartments;
+            return result;
+        }
+
+        public bool Create(CompanyDepartmentsDTO obj)
+        {
+            string query = "[HRAppDB].CreateCompanyDepartments @DepartmentID, @CompanyID, @IsActual";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { obj.DepartmentsID, obj.CompanyID, obj.IsActual });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="44dae3d6-435f-46a2-b5b7-e55734387a7b" ChangeDateTime="06/04/2021 09:52:37">
+    <Property Name="ElementName" Value="[HRAppDB].[Users].[Passvord]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[HRAppDB].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Password" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f389a7cd-be75-4277-b479-2cf4e6964dd0" ChangeDateTime="06/09/2021 16:01:46">
+    <Property Name="ElementName" Value="[HRAppDB].[Positions_Employees].[LevelPosition]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[HRAppDB].[Positions_Employees]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LevelsPosition" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b0046e02-06bd-4274-83b0-f8ba91be2090" ChangeDateTime="06/11/2021 12:55:09">
+    <Property Name="ElementName" Value="[HRAppDB].[Users].[FisrtName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[HRAppDB].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirstName" />
+  </Operation>
+</Operations>

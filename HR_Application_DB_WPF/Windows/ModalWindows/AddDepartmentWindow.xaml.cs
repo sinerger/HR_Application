@@ -9,6 +9,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HR_Application_BLL;
+using HR_Application_BLL.Models;
+using HR_Application_BLL.Services;
+using HR_Application_DB_Logic;
+using HR_Application_DB_WPF.Classes;
+using System.Linq;
+using HR_Application_BLL.Models.Base;
 
 namespace HR_Application_DB_WPF.ModalWindows
 {
@@ -17,55 +24,26 @@ namespace HR_Application_DB_WPF.ModalWindows
     /// </summary>
     public partial class AddDepartmentWindow : Window
     {
-        //=============>
-        //=============>
-        #region Загушка Данных
-        private string[] _cities = new string[]
-        {
-            "Dnipro",
-            "Kiev",
-            "Moscow",
-            "sankt petersburg",
-            "Baku"
-        };
-        private string[] _companies = new string[]
-        {
-            "Wizardsdev",
-            "SoftServe",
-            "Nix"
-        };
-        private string[] _departments = new string[]
-        {
-            "Mobile",
-            "CRM",
-            "Web"
-        };
-        #endregion
-        //=============>
-        //=============>
+        private Cache _cache;
+        private TextBox _textBoxCompany;
 
-
-        public AddDepartmentWindow()
+        public AddDepartmentWindow(TextBox textBoxCompany)
         {
             InitializeComponent();
-            SetDataCity(_cities);
-            SetDataCompany(_companies);
-            SetDataDepartment(_departments);
+            _cache = Cache.GetCache();
+            _textBoxCompany = textBoxCompany;
+            InitializeComboBoxSources();
         }
 
-        public void SetDataCity(string[] cities)
+        private void InitializeComboBoxSources()
         {
-            CitiesComboBox.ItemsSource = cities;
-        }
+            if (_cache.Companies == null)
+            {
+                _cache.Companies = new CompanyService(new DBController(DBConfigurator.ConnectionString)).GetAll();
+            }
 
-        public void SetDataCompany(string[] companies)
-        {
-            CompaniesComboBox.ItemsSource = companies;
-        }
-
-        public void SetDataDepartment(string[] departments)
-        {
-            DepartmentsComboBox.ItemsSource = departments;
+            var cities = _cache.Companies.Select(city => city.Adress.City);
+            ComboBox_Cities.ItemsSource = cities;
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -75,9 +53,43 @@ namespace HR_Application_DB_WPF.ModalWindows
 
         private void Butoon_Accept_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Сохраняем данные что ввели для сотрудника
+            if (ComboBox_Companies.SelectedItem is Company)
+            {
+                _cache.SelectedCompany = (Company)ComboBox_Companies.SelectedItem;
+                _textBoxCompany.Text = _cache.SelectedCompany.ToString();
 
-            this.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Enter city, company and department");
+            }
+        }
+
+        private void ComboBox_Cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var companies = _cache.Companies.Select(company => company)
+                .Where(company => company.Adress.City.Equals((CityModel)ComboBox_Cities.SelectedItem));
+
+            if (companies != null)
+            {
+                ComboBox_Companies.ItemsSource = companies;
+                ComboBox_Departments.ItemsSource = null;
+            }
+        }
+
+        private void ComboBox_Companies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var currentCompany = _cache.Companies.Find(comp => comp.Equals((Company)ComboBox_Companies.SelectedItem));
+
+            if (currentCompany != null)
+            {
+                ComboBox_Departments.ItemsSource = currentCompany.Departments;
+            }
+            else
+            {
+                ComboBox_Departments.ItemsSource = null;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HR_Application_DB_WPF.ModalWindows;
+﻿using HR_Application_DB_WPF.Classes;
+using HR_Application_DB_WPF.ModalWindows;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +18,15 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             public string Direction { get; set; }
         }
 
+        private Cache _cache;
+
         public HomePageWindow()
         {
             InitializeComponent();
+            _cache = Cache.GetCache();
+
+            InitializeUserData();
+
             DataGrid_Employees.ItemsSource = new List<Employee>()
             {
                 new Employee()
@@ -29,6 +36,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                     Direction = "ddd"
                 }
             };
+        }
+
+        private void InitializeUserData()
+        {
+            TextBox_Name.Text = $"{_cache.CurrentUser.FirstName} {_cache.CurrentUser.LastName}";
+            TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
+            TextBox_City.Text = _cache.CurrentUser.Company.Adress.City.ToString();
         }
 
         private void DataGridCell_MouseDoubleClick(object sender, RoutedEventArgs e)
@@ -107,6 +121,21 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private void Button_SaveUpdate_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TextBox_Company_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var AddDepWindow = new AddDepartmentWindow((TextBox)sender);
+
+            AddDepWindow.ShowDialog();
+        }
+
+        private void TextBox_Company_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (_cache.SelectedCompany != null)
+            {
+                TextBox_City.Text = _cache.SelectedCompany.ToString();
+            }
         }
     }
 }

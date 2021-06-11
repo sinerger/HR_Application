@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HR_Application_DB_WPF.ModalWindows"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterOwner"
         Title="AddCompetenceWindow" Height="600" Width="600" Background="#FFE9E9E9">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>

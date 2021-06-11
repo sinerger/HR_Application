@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateDirection]
-	@Title nvarchar,
-	@Description nvarchar
+	@Title nvarchar (255),
+	@Description nvarchar (255)
 AS
 	insert into [HRAppDB].[Directions]
 	values(

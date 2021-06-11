@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterOwner"
         Title="AddDepartmentWindow" Height="300" Width="600" Background="#FFE9E9E9">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
@@ -24,9 +25,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="CitiesComboBox" Grid.Column="0"/>
-            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="CompaniesComboBox" Grid.Column="1"/>
-            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="DepartmentsComboBox" Grid.Column="2"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="ComboBox_Cities" Grid.Column="0" SelectionChanged="ComboBox_Cities_SelectionChanged"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="ComboBox_Companies" Grid.Column="1" SelectionChanged="ComboBox_Companies_SelectionChanged"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="ComboBox_Departments" Grid.Column="2"/>
             </Grid>
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>

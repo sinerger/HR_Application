@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateGeneralInformation]
 	@ID int ,
 	@EmployeeID int,
-	@Sex nvarchar,
-	@Education nvarchar,
+	@Sex nvarchar (255),
+	@Education nvarchar (255),
 	@FamilyStatusID int,
-	@Phone nvarchar,
-	@Email nvarchar,
-	@BirthDate nvarchar,
-	@Hobby nvarchar,
+	@Phone nvarchar (255),
+	@Email nvarchar (255),
+	@BirthDate nvarchar (255),
+	@Hobby nvarchar (255),
 	@AmountChildren int
 
 AS

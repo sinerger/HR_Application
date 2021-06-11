@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using System;
 using System.Collections.Generic;
@@ -8,50 +9,30 @@ using System.Linq;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class LevelSkillRepository
+    public class LevelSkillRepository : IRepository<LevelSkillDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public LevelSkillRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public bool Create(LevelSkillDTO levelSkill)
         {
-            string query = "CreateLevelSkills @Title";
+            string query = "[HRAppDB].CreateLevelSkill @ID, @Title";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    dbConnection.Execute(query, new { levelSkill.Title });
-                }
-            }
-            catch
-            {
-                result = false;
-            }
-
-            return result;
-        }
-
-        public bool Update(LevelSkillDTO levelSkill)
-        {
-            string query = "UpdateLevelSkills @ID @Title";
-            bool result = true;
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { levelSkill.ID, levelSkill.Title });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -59,19 +40,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteLevelSkills @ID";
+            string query = "[HRAppDB].DeleteLevelSkill @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -79,12 +60,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<LevelSkillDTO> GetAll()
         {
-            string query = "GetLevelSkills";
+            string query = "[HRAppDB].GetLevelSkills";
             List<LevelSkillDTO> result = new List<LevelSkillDTO>();
 
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            try
             {
-                result = dbConnection.Query<LevelSkillDTO>(query, commandType: CommandType.StoredProcedure).ToList<LevelSkillDTO>();
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.Query<LevelSkillDTO>(query).AsList<LevelSkillDTO>();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;
@@ -92,31 +80,39 @@ namespace HR_Application_DB_Logic.Repositories
 
         public LevelSkillDTO GetByID(int id)
         {
-            string query = "[HRAppDB].GetLevelSkillsByID @ID";
+            string query = "[HRAppDB].GetLevelSkillByID @ID";
             LevelSkillDTO result = new LevelSkillDTO();
+
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { id });
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                var s = e.ToString();
+                throw e;
             }
 
             return result;
         }
 
-        public LevelSkillDTO GetByTitle(string title)
+        public bool Update(LevelSkillDTO levelSkill)
         {
-            string query = "GetLevelSkillsByTitle @Title";
-            LevelSkillDTO result = new LevelSkillDTO();
+            string query = "[HRAppDB].UpdateLevelSkill @ID, @Title";
+            bool result = true;
 
-            using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+            try
             {
-                result = dbConnection.QuerySingle<LevelSkillDTO>(query, new { title });
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { levelSkill.ID, levelSkill.Title });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;

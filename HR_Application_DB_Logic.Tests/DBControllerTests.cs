@@ -13,12 +13,14 @@ namespace HR_Application_DB_Logic.Tests
 {
     public class DBControllerTests
     {
-        private string _connectionString = @"Server=(LocalDB)\MSSQLLocalDB; DataBase = Test 2; Trusted_Connection = True; Integrated Security = True;";
+        private string _connectionString = @"Server = 80.78.240.16; Database = Sandbox.Test; User Id = devEd; Password = qqq!11;";
+        private string _connectionString2 = @"Server=(LocalDB)\MSSQLLocalDB;Database =test data 4;Integrated Security=true;";
+
 
         [Test]
-       public void Test()
+        public void Test()
         {
-            var repository = new EmployeePositionRepository(_connectionString);
+            var repository = new UserRepository(_connectionString2);
 
             var actual = repository.GetAll();
         }

@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateCountry]
 	@ID int,
-	@Name nvarchar
+	@Name nvarchar (255)
 	
 AS
 	Update [HRAppDB].[Countries]
