@@ -3,6 +3,7 @@ using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Custom;
 using HR_Application_DB_Logic.Models.Base;
 using HR_Application_DB_Logic.Models.Custom;
 
@@ -38,6 +39,17 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<UserDTO, User>();
             CreateMap<User, UserDTO>().ForMember(dest=>dest.IsActual,option=>option.MapFrom(source=>true));
+            CreateMap<PositionDTO, PositionModel>();
+            CreateMap<PositionModel, PositionDTO>();
+
+            CreateMap<LevelsPositionDTO, LevelsPositionModel>();
+            CreateMap<LevelsPositionModel, LevelsPositionDTO>();
+
+            CreateMap<EmployeePositionDTO, EmployeePositionModel>();
+            CreateMap<EmployeePositionModel, EmployeePositionDTO>();
+
+            CreateMap<UserModel, User>();
+            CreateMap<User, UserModel>().ForMember(dest=>dest.IsActual,option=>option.MapFrom(source=>true));
 
             CreateMap<ProjectDTO, ProjectModel>();
             CreateMap<ProjectModel, ProjectDTO>();

@@ -72,7 +72,7 @@
     <Folder Include="Stored Procedures\Base\FamilyStatuses" />
     <Folder Include="Stored Procedures\Base\GeneralInformation" />
     <Folder Include="Stored Procedures\Base\Histories" />
-    <Folder Include="Stored Procedures\Base\LevelPositions" />
+    <Folder Include="Stored Procedures\Base\LevelsPosition" />
     <Folder Include="Stored Procedures\Base\LevelSkills" />
     <Folder Include="Stored Procedures\Base\Locations" />
     <Folder Include="Stored Procedures\Base\Positions" />
@@ -90,6 +90,7 @@
     <Folder Include="Stored Procedures\Custom\Skills" />
     <Folder Include="Stored Procedures\Custom\Departments" />
     <Folder Include="Stored Procedures\Custom\CompanyAdress" />
+    <Folder Include="Stored Procedures\Base\EmployeePosition" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Cities.sql" />
@@ -109,7 +110,7 @@
     <Build Include="Tables\GeneralInformation.sql" />
     <Build Include="Tables\Histories.sql" />
     <Build Include="Tables\LevelSkills.sql" />
-    <Build Include="Tables\LevelPositions.sql" />
+    <Build Include="Tables\LevelsPosition.sql" />
     <Build Include="Tables\Locations.sql" />
     <Build Include="Tables\Positions.sql" />
     <Build Include="Tables\Positions_Employees.sql" />
@@ -183,6 +184,14 @@
     <Build Include="Stored Procedures\Base\LevelPositions\UpdateLevelPosition.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\CreateLevelSkill.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\DeleteLevelSkill.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\CreateLevelsPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\DeleteLevelsPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelsPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelsPositionByID.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelsPositionByTitle.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\UpdateLevelsPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelSkills\CreateLevelSkills.sql" />
+    <Build Include="Stored Procedures\Base\LevelSkills\DeleteLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkills.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillByID.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\GetLevelSkillByTitle.sql" />
@@ -254,6 +263,11 @@
     <Build Include="Stored Procedures\Custom\Skills\CreateEmployeeSkill.sql" />
     <Build Include="Stored Procedures\Custom\Skills\DeleteEmployeeSkill.sql" />
     <Build Include="Stored Procedures\Custom\Skills\UpdateEmployeeSkill.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\CreateEmployeePosition.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\DeleteEmployeePosition.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\GetEmployeesPositions.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\GetEmployeePositionByID.sql" />
+    <Build Include="Stored Procedures\Base\EmployeePosition\UpdateEmployeePosition.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HR_Application_DB.refactorlog" />

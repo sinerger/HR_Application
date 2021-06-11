@@ -7,4 +7,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Password" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f389a7cd-be75-4277-b479-2cf4e6964dd0" ChangeDateTime="06/09/2021 16:01:46">
+    <Property Name="ElementName" Value="[HRAppDB].[Positions_Employees].[LevelPosition]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[HRAppDB].[Positions_Employees]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LevelsPosition" />
+  </Operation>
 </Operations>

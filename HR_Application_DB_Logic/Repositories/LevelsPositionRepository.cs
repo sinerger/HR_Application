@@ -1,18 +1,20 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
-using HR_Application_DB_Logic.Models;
 using Dapper;
+using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Interfaces;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class LevelPositionRepository
+    public class LevelsPositionRepository : IRepository<LevelsPositionDTO>
     {
-        private string _connectionString;
+       public string ConnectionString { get; private set; }
 
-        public LevelPositionRepository(string connectionString)
+        public LevelsPositionRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public List<LevelsPositionDTO> GetAll()
@@ -22,7 +24,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<LevelsPositionDTO>(query).AsList<LevelsPositionDTO>();
                 }
@@ -35,16 +37,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(LevelsPositionDTO levelPosition)
+        public bool Create(LevelsPositionDTO levelsPosition)
         {
             string query = "CreateLevelPosition @Title @Description";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { levelPosition.Title, levelPosition.Description });
+                    dbConnection.Execute(query, new { levelsPosition.Title, levelsPosition.Description });
                 }
             }
             catch
@@ -55,20 +57,20 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Update(LevelsPositionDTO levelPosition)
+        public bool Update(LevelsPositionDTO levelsPosition)
         {
             string query = "UpdateLevelPosition @ID @Title @Description";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
-                        levelPosition.ID,
-                        levelPosition.Title,
-                        levelPosition.Description
+                        levelsPosition.ID,
+                        levelsPosition.Title,
+                        levelsPosition.Description
                     });
                 }
             }
@@ -82,12 +84,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteLevelPosition @ID";
+            string query = "DeleteLevelsPosition @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
@@ -102,12 +104,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public LevelsPositionDTO GetByID(int id)
         {
-            string query = "GetLevelPositionsByID @ID";
+            string query = "GetLevelsPositionsByID @ID";
             LevelsPositionDTO result = new LevelsPositionDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<LevelsPositionDTO>(query, new { id });
                 }
@@ -127,7 +129,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<LevelsPositionDTO>(query, new { title });
                 }

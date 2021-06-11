@@ -1,19 +1,20 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using System;
 using System.Collections.Generic;
-using HR_Application_DB_Logic.Models;
-using HR_Application_DB_Logic.Models.Custom;
+using System.Data;
+using System.Data.SqlClient;
 using Dapper;
+using HR_Application_DB_Logic.Interfaces;
+using HR_Application_DB_Logic.Models;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class EmployeePositionRepository
+    public class EmployeePositionRepository : IRepository<EmployeePositionDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; }
 
         public EmployeePositionRepository(string connectionString)
         {
-             _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public List<EmployeePositionDTO> GetAll()
@@ -23,13 +24,13 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<EmployeePositionDTO, LevelsPositionDTO, PositionDTO, EmployeePositionDTO>(query,
+                    result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
                         (ep, levelPos, position) =>
                         {
-                            ep.LevelPosition = levelPos;
-                            ep.Position = position;
+                            ep.LevelsPosition = levelPos;
+                            ep.PositionID = position;
                             return ep;
                         })
                         .AsList<EmployeePositionDTO>();
@@ -49,13 +50,13 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<EmployeePositionDTO, LevelsPositionDTO, PositionDTO, EmployeePositionDTO>(query,
+                    result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
                         (ep, levelPos, position) =>
                         {
-                            ep.LevelPosition = levelPos;
-                            ep.Position = position;
+                            ep.LevelsPosition = levelPos;
+                            ep.PositionID = position;
                             return ep;
                         },new { employeeID })
                         .AsList<EmployeePositionDTO>();
@@ -67,6 +68,26 @@ namespace HR_Application_DB_Logic.Repositories
             }
 
             return result;
+        }
+
+        public EmployeePositionDTO GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(EmployeePositionDTO obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Create(EmployeePositionDTO obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
