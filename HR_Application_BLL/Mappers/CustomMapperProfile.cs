@@ -49,6 +49,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<CompanyDTO, Company>();
             CreateMap<Company, CompanyDTO>();
+
+            CreateMap<EmployeeDTO, EmployeeModel>();
+            CreateMap<EmployeeModel, EmployeeDTO>();
         }
     }
 }

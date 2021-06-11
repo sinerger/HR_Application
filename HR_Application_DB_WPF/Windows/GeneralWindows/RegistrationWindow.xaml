@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="LoginInput_" Grid.Column="1" Margin ="0,15,0,15" Tag="Login" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Login" Grid.Column="1" Margin ="0,15,0,15" Tag="Login" FontSize="25"/>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -47,7 +47,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="PasswordInput" Grid.Column="1" Margin ="0,15,0,15" Tag="Password" FontSize="25"/>
+            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Password" Grid.Column="1" Margin ="0,15,0,15" Tag="Password" FontSize="25"/>
         </Grid>
 
         <Grid Grid.Row="3">

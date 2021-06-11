@@ -4,6 +4,7 @@ using HR_Application_BLL.Models;
 using HR_Application_DB_Logic;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Base;
 using HR_Application_DB_Logic.Models.Custom;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace HR_Application_BLL.Services
             {
                 List<UserDTO> usersDTO = _dbController.UserRepository.GetAll();
                 List<Company> companies = new CompanyService(_dbController).GetAll();
-                List<CompanyDepartmentsDTO> companysDepartmentsDTO = _dbController.CompanyDepartmentsRepository.GetALL();
+                List<CompanyDepartmentsDTO> companysDepartmentsDTO = _dbController.CompanyDepartmentsRepository.GetAll();
 
                 List<User> users = _userMapper.GetUsersFromDTO(usersDTO);
                 foreach (User user in users)
@@ -47,18 +48,20 @@ namespace HR_Application_BLL.Services
 
         public User GetByID(int id)
         {
-            try
-            {
-                UserDTO userDTO = _dbController.UserRepository.GetByID(id);
-                User user = _userMapper.GetUserFromDTO(userDTO);
-                user.Company = new CompanyService().GetByID(userDTO.CompanyID);
-                
-            }
-            catch (Exception e)
-            {
+            //try
+            //{
+            //    UserDTO userDTO = _dbController.UserRepository.GetByID(id);
+            //    User user = _userMapper.GetUserFromDTO(userDTO);
+            //    user.Company = new CompanyService().GetByID(userDTO.CompanyID);
 
-                throw e;
-            }
+            //}
+            //catch (Exception e)
+            //{
+
+            //    throw e;
+            //}
+
+            return null;
         }
     }
 }
