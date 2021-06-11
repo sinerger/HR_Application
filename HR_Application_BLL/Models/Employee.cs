@@ -1,9 +1,7 @@
 ﻿using HR_Application_BLL.Models.Base;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace HR_Application_BLL.Models
 {
@@ -16,7 +14,7 @@ namespace HR_Application_BLL.Models
         public string RegistrationDate { get; set; }
         public int StatusID { get; set; }
         public bool IsActual { get; set; }
-        //public GeneralInformationModel GeneralInformation { get; set; }
+        public GeneralInformationModel GeneralInformation { get; set; }
         public PositionModel Position { get; set; }
         public Company Company { get; set; }
         public Adress Adress { get; set; }
@@ -27,7 +25,7 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"FirstName:{FirstName} LastName:{LastName} RegistrationDate:{RegistrationDate} Position: {Position.Title} Company:{Company.Title} Adress:{Adress.Country} { Adress.City} {Adress.Street} {Adress.HourseNumber} {Adress.Block} {Adress.ApartmentNumber} Project{Project.Title}";
+            return $"FirstName:{FirstName} LastName:{LastName} Email:{GeneralInformation.Email} RegistrationDate:{RegistrationDate} Position: {Position.Title} Company:{Company.Title} Adress:{Adress.Country} { Adress.City} {Adress.Street} {Adress.HourseNumber} {Adress.Block} {Adress.ApartmentNumber} Project{Project.Title}";
         }
         public override bool Equals(object obj)
         {
@@ -44,6 +42,7 @@ namespace HR_Application_BLL.Models
                     && employee.RegistrationDate == RegistrationDate
                     && employee.StatusID == StatusID
                     && employee.IsActual == IsActual
+                    && employee.GeneralInformation.Equals(GeneralInformation)
                     && employee.Position.Equals(Position)
                     && employee.Company.Equals(Company)
                     && employee.Adress.Equals(Adress)
