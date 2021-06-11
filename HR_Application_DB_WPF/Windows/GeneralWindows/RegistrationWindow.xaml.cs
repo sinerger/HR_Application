@@ -39,7 +39,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 FirstName = TextBox_FirstName.Text,
                 LastName = TextBox_LastName.Text,
                 Email = TextBox_Login.Text,
-                Password = TextBox_Password.Text,
+                Password = Cryptography.GetHash("Password"),
                 Company = _cache.SelectedCompany
             };
             new UserService(new DBController(DBConfigurator.ConnectionString)).Create(user);
