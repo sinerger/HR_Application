@@ -1,4 +1,5 @@
-﻿using HR_Application_DB_WPF.ModalWindows;
+﻿using HR_Application_BLL.Models;
+using HR_Application_DB_WPF.ModalWindows;
 using HR_Application_DB_WPF.Windows.ModalWindows;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static HR_Application_DB_WPF.Windows.GeneralWindows.HomePageWindow;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -19,8 +21,15 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class EmployeeProfileWindow : Window
     {
+        public EmployeeTest employee;
         public EmployeeProfileWindow()
         {
+            InitializeComponent();
+        }
+
+        public EmployeeProfileWindow(EmployeeTest fromEmployee)
+        {
+            employee = fromEmployee;
             InitializeComponent();
         }
 
@@ -50,7 +59,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow();
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(employee.Competence);
             addCompetenceWindow.ShowDialog();
         }
 
@@ -70,6 +79,37 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             //TODO:Сохранение данных в моделе Employee profile
             //this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string competence = string.Empty;
+            StringBuilder stringBuilderCompetence = new StringBuilder(competence);
+
+            foreach (var comp in employee.Competence)
+            {
+                stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill} ");
+            }
+
+            string comments = string.Empty;
+            StringBuilder stringBuilderComments = new StringBuilder(comments);
+
+            foreach(var comm in employee.Comments)
+            {
+                stringBuilderComments.Append($"{comm.Information} - {comm.Date} ");
+            }
+
+            FirstNameTextBox.Text = employee.FirstName;
+            LastNameTextBox.Text = employee.LastName;
+            RegistrationDateTextBox.Text = employee.RegistrationDate;
+            DateOfBirthDatePicker.SelectedDate = Convert.ToDateTime(employee.GeneralInformation.BirthDate);
+            PhoneTextBox.Text = employee.GeneralInformation.Phone;
+            EmailTextBox.Text = employee.GeneralInformation.Email;
+            DepartmentTextBox.Text = employee.Department.Title;
+            PositionTextBox.Text = employee.Position.Title;
+            CompetenceTextBox.Text = stringBuilderCompetence.ToString();
+            ProjectNameTextBox.Text = employee.Project.Title;
+            CommentsTextBox.Text = stringBuilderComments.ToString();
         }
     }
 }
