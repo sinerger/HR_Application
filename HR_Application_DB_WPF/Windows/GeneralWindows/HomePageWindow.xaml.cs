@@ -6,8 +6,10 @@ using HR_Application_DB_WPF.ModalWindows;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
