@@ -24,8 +24,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="PositionComboBox" Grid.Column="0"/>
-            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="LevelPositionComboBox" Grid.Column="1"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="ComboBox_Position" Grid.Column="0"/>
+            <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="ComboBox_LevelPosition" Grid.Column="1"/>
         </Grid>
         
         <Grid Grid.Row="4">
