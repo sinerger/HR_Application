@@ -1,4 +1,5 @@
-﻿using HR_Application_BLL.Models.Base;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Models.Base;
 using HR_Application_DB_WPF.Classes;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         //=============>
         //=============>
         private Cache _cache;
-        private PositionModel _positionEmployee;
+        private Position _positionEmployee;
 
         public AddPositionWindow()
         {
@@ -51,7 +52,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             _positionEmployee = _cache.SelectedPositionEmployee;
         }
 
-        public AddPositionWindow(PositionModel fromEmployee)
+        public AddPositionWindow(Position fromEmployee)
         {
             _positionEmployee = fromEmployee;
             InitializeComponent();
@@ -81,7 +82,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PositionComboBox.SelectedItem = _positionEmployee.Title;
+            PositionComboBox.SelectedItem = _positionEmployee.Post;
             LevelPositionComboBox.SelectedItem = _positionEmployee.Level;
         }
     }

@@ -58,13 +58,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(employee.Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow(_employeeFromSelect.Position);
             addPositionWindow.ShowDialog();
         }
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(employee.Competence);
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employeeFromSelect.Competences);
             addCompetenceWindow.ShowDialog();
         }
 
