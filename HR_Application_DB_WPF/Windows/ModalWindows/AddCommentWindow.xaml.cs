@@ -42,11 +42,11 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            if (CommentsTextBox.Text != string.Empty)
+            if (TextBox_Comments.Text != string.Empty)
             {
                 CommentModel comment = new CommentModel()
                 {
-                    Information = CommentsTextBox.Text,
+                    Information = TextBox_Comments.Text,
                     EmployeeID = _employeeFromSelect.ID,
                     Date = DateTime.Now.Date.ToString("dd.mm.yyy")
                 };

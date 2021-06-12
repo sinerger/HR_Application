@@ -25,7 +25,7 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"Adress: {Country} {City} {Street}";
+            return $"{Country} {City} {Street}";
         }
 
         public override bool Equals(object obj)

@@ -18,98 +18,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class HomePageWindow : Window
     {
-        /*TestDATA For Employee
-        public class EmployeeTest
-        {
-            public int ID { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string RegistrationDate { get; set; }
-            public GeneralInformationModel GeneralInformation { get; set; }
-            public Department Department { get; set; }
-            public PositionModel Position { get; set; }
-            public List<Competence> Competence { get; set; }
-            public ProjectModel Project { get; set; }
-            public List<CommentModel> Comments { get; set; }
-            public EmployeeTest()
-            {
-                ID = 1;
-                FirstName = "aaa";
-                LastName = "qqq";
-                RegistrationDate = "20.12.2019";
-                GeneralInformation = new GeneralInformationModel()
-                {
-                    ID = 1,
-                    EmployeeID = 1,
-                    FamilyStatusID = 1,
-                    Education = "Hight",
-                    Hobby = "Swimming",
-                    Sex = "Male",
-                    AmountChildren = 0,
-                    BirthDate = "20.02.1989",
-                    Phone = "+380632581254",
-                    Email = "Goga@gmail.com"
-                };
-                Department = new Department()
-                {
-                    ID = 1,
-                    Title = "RoR",
-                    Description = "Description",
-                    Projects = new List<ProjectModel>()
-                };
-                Position = new PositionModel()
-                {
-                    ID =1,
-                    Title = "Middle",
-                    Description = "Description"
-                };
-                Competence = new List<Competence>()
-                {
-                    new Competence()
-                    {
-                        Skill = new SkillModel(){ID = 1, Title = "C#", Description = "blabla"},
-                        LevelSkill = new LevelSkillModel(){ ID = 1, Title = "Base"}
-                    },
-                    new Competence()
-                    {
-                        Skill = new SkillModel(){ID = 1, Title = "RoR", Description = "blabla2"},
-                        LevelSkill = new LevelSkillModel(){ID = 2, Title = "God"}
-                    }
-                };
-                Project = new ProjectModel()
-                {
-                    ID = 1,
-                    Title = "EconomicSystem",
-                    Description = "Description",
-                    DirectionID = 2
-                };
-                Comments = new List<CommentModel>()
-                {
-                    new CommentModel()
-                    {
-                        Information = "Good employee with perfect soft skills",
-                        Date = "20.11.2020"
-                    },
-                    new CommentModel()
-                    {
-                        Information = "Nice Bro with strong hard skills",
-                        Date = "20.01.2020"
-                    }
-                };
-            }
-        }
-        */
-
         private Cache _cache;
-        private Employee _employeeFromSelect;
 
         public HomePageWindow()
         {
             InitializeComponent();
             _cache = Cache.GetCache();
-            //EmployeeTest employee = new EmployeeTest();
-            _employeeFromSelect = _cache.SelectedEmployee;
-            DataContext = _employeeFromSelect;
+            DataContext = _cache.SelectedEmployee;
 
             InitializeUserData();
 

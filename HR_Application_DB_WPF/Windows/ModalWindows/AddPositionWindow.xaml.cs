@@ -21,56 +21,32 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
     /// </summary>
     public partial class AddPositionWindow : Window
     {
-        //=============>
-        //=============>
-        #region Загушка Данных
-        private string[] _position = new string[]
-        {
-            "Dev",
-            "QA",
-            "Disigner"
-        };
-        private string[] _levelPosition = new string[]
-        {
-            "1",
-            "2",
-            "3"
-        };
-
-        #endregion
-        //=============>
-        //=============>
         private Cache _cache;
-        private Position _positionEmployee;
+        private TextBox _textBoxPosition;
 
-        public AddPositionWindow()
+        public AddPositionWindow(TextBox textBoxPosition)
         {
-            InitializeComponent();
-            SetDataPosition(_position);
-            SetDataLevelPosition(_levelPosition);
             _cache = Cache.GetCache();
-            _positionEmployee = _cache.SelectedPositionEmployee;
-        }
-
-        public AddPositionWindow(Position fromEmployee)
-        {
-            _positionEmployee = fromEmployee;
+            _textBoxPosition = textBoxPosition;
             InitializeComponent();
+            SetDataPosition();
+            SetDataLevelPosition();
         }
 
-        public void SetDataPosition(string[] positions)
+        public void SetDataPosition()
         {
-            PositionComboBox.ItemsSource = positions;
+            ComboBox_Position.ItemsSource = _cache.PositionsModels;
         }
 
-        public void SetDataLevelPosition(string[] levelsPosition)
+        public void SetDataLevelPosition()
         {
-            LevelPositionComboBox.ItemsSource = levelsPosition;
+            ComboBox_LevelPosition.ItemsSource = _cache.levelsPositionModels;
         }
 
         private void Button_Accept_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Сохраняем данные что ввели для сотрудника
+            _textBoxPosition.Text = _cache.SelectedPosition.ToString();
 
             this.Close();
         }
@@ -82,8 +58,8 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PositionComboBox.SelectedItem = _positionEmployee.Post;
-            LevelPositionComboBox.SelectedItem = _positionEmployee.Level;
+            ComboBox_Position.SelectedItem = _cache.SelectedEmployee.Position.Post;
+            ComboBox_LevelPosition.SelectedItem = _cache.SelectedEmployee.Position.Level;
         }
     }
 }
