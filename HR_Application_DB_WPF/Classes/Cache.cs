@@ -21,8 +21,12 @@ namespace HR_Application_DB_WPF.Classes
 
         public List<PositionModel> PositionsModels { get;  set; }
         public List<LevelsPositionModel> levelsPositionModels { get;  set; }
+        public List<Competence> SelectedCompetences { get; set; }
 
         public Position SelectedPosition { get; set; }
+
+        public Position SelectedPosition { get; set; }
+        public ProjectModel SelectedProject { get; set; }
 
         private Cache()
         {

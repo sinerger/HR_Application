@@ -31,6 +31,12 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             _cache = Cache.GetCache();
             _employee = employee;
             _textBoxPosition = textBoxPosition;
+            _positionEmployee = _cache.SelectedPosition;
+        }
+
+        public AddPositionWindow(Position fromEmployee)
+        {
+            _positionEmployee = fromEmployee;
             InitializeComponent();
             SetDataPosition();
             SetDataLevelPosition();

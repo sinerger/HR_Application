@@ -79,7 +79,19 @@ namespace HR_Application_DB_WPF.Classes
 
                 throw e;
             }
+        }
 
+        public void CreateEmployee(Employee employee)
+        {
+            try
+            {
+                employee.ID = new EmployeeService(_dbController).Create(employee);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         private void LoadAllPositionsModels()

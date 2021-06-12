@@ -47,21 +47,21 @@
                         <DataGrid x:Name="DataGrid_Employees" AutoGenerateColumns="False" Margin="10">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="5*" />
-                                <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="5*" />
-                                <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Width="3*" />
+                                <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*"/>
+                                <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="1*"/>
+                                <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Visibility="Hidden" Width="1*"/>
                                 <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=DateOfBirth}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="Phone" Binding="{Binding Path=Phone}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Phone" Binding="{Binding Path=GeneralInformation.Phone}" Width="1*"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Path=GeneralInformation.Email}" Width="1*"/>
+                                <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="1*"/>
+                                <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Width="1*"/>
                                 <DataGridTextColumn Header="Competence" Binding="{Binding Path=Competence}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="ProjectName" Binding="{Binding Path=ProjectName}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Project" Binding="{Binding Path=Project}" Visibility="Hidden" Width="1*"/>
                                 <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}" Visibility="Hidden"/>
                                 <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Edit" Click="Button_Edit_Click" Content="Edit"/>
+                                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Margin="0" Padding="0" x:Name="Edit" Click="Button_Edit_Click" Content="Edit"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -214,11 +214,18 @@
                     </Grid>
                     <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="DataGridTextColumn_FullName" Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"/>
-                            <DataGridTextColumn x:Name="DataGridTextColumn_Level" Header="Level" Binding="{Binding Path=Level}" Width="3*"/>
-                            <DataGridTextColumn x:Name="DataGridTextColumn_Direction" Header="Direction" Binding="{Binding Path=Direction}" Width="5*"/>
-                            <DataGridTextColumn x:Name="DataGridTextColumn_Date" Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*"/>
-                            <DataGridTextColumn x:Name="DataGridTextColumn_Department" Header="Department" Binding="{Binding Path=Department}" Width="5*"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Visibility="Hidden"/>
+                             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*"/>
+                             <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="1*"/>
+                             <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Visibility="Hidden" Width="1*"/>
+                            <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=GeneralInformation.DateOfBirth}"/>
+                            <DataGridTextColumn Header="Phone" Binding="{Binding Path=GeneralInformation.Phone}" Visibility="Hidden" Width="1*"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Path=GeneralInformation.Email}" Visibility="Hidden" Width="1*"/>
+                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="1*"/>
+                            <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Width="1*"/>
+                            <DataGridTextColumn Header="Competence" Binding="{Binding Path=Competence}" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Project" Binding="{Binding Path=Project}" Visibility="Hidden" Width="1*"/>
+                            <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}" Visibility="Hidden"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

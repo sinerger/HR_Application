@@ -48,7 +48,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
                 {
                     Information = TextBox_Comments.Text,
                     EmployeeID = _employeeFromSelect.ID,
-                    Date = DateTime.Now.Date.ToString("dd.mm.yyy")
+                    Date = DateTime.Now.Date.ToString("yyyy-mm-dd")
                 };
                 _employeeFromSelect.Comments.Add(comment);
 

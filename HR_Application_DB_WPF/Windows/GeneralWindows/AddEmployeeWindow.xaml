@@ -30,20 +30,19 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label Style="{DynamicResource LabelHeader}" x:Name="AuthorisationTitle" Grid.Row="0" Grid.ColumnSpan="2" Content="ADD EMPLOYEE"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Margin ="10,15,0,15" Tag="First name"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="2" Margin ="10,15,0,15" Tag="Last name"/>
-        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="3" Margin ="10,15,0,15"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Margin ="10,15,0,15" Tag="Phone"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Margin ="10,15,0,15" Tag="E-mail"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin ="10,15,0,15" Tag="Registration date"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin ="10,15,0,15" Tag="Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
-        <TextBox x:Name="TextBox_Position" Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin ="10,15,0,15" Tag="Direction/position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Margin ="10,15,0,15" Tag="Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="10" Margin ="10,15,0,15" Tag="Project name" PreviewMouseDown="TextBox_ProjectName_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Margin ="10,15,0,15" Tag="First name" x:Name="TextBox_FirstName"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="2" Margin ="10,15,0,15" Tag="Last name" x:Name="TextBox_LastName"/>
+        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="3" Margin ="10,15,0,15" x:Name="DatePicker_BirthDate"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Margin ="10,15,0,15" Tag="Phone" x:Name="TextBox_Phone"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Margin ="10,15,0,15" Tag="E-mail" x:Name="TextBox_Email"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin ="10,15,0,15" Tag="Registration date" x:Name="TextBox_Registration" IsReadOnly="True"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin ="10,15,0,15" Tag="Department" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin ="10,15,0,15" Tag="Position" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Margin ="10,15,0,15" Tag="Competence" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="10" Margin ="10,15,0,15" Tag="Project name" x:Name="TextBox_Project" PreviewMouseDown="TextBox_ProjectName_PreviewMouseDown"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Margin ="10,15,0,15" Content="Cancel" Grid.Row="11" Grid.Column="1" Width="160" Click="Button_Cancel_Click"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Margin ="10,15,0,15" Content="Save" Grid.Row="11" Grid.Column="0" Width="160" Click="Button_Save_Click"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddPhoto" Margin ="10,15,0,15" Content="Add photo" Grid.Row="4" Grid.Column="1" Width="160" IsEnabled="False"/>
         <Rectangle Fill="White" Height="180" Width="150" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Stroke="White" VerticalAlignment="Top" Margin="0,15,0,0"/>
-
     </Grid>
 </Window>
