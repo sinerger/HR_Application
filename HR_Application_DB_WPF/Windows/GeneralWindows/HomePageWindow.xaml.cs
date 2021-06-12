@@ -217,7 +217,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
             if (!(DataGrid_Employees.SelectedItem is null))
-            {
+            {   //TODO: Ucommit this string
                 //_cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
                 EmployeeTest employee = DataGrid_Employees.SelectedItem as EmployeeTest;
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(employee);
