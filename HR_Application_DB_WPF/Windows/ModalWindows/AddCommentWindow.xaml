@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddCommentWindow"
         ResizeMode="CanMinimize"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Height="300" Width="600" Background="#FFE9E9E9">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
