@@ -18,11 +18,6 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public bool Create(EmployeesProjectsDTO obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(int id)
         {
             throw new NotImplementedException();
@@ -69,6 +64,11 @@ namespace HR_Application_DB_Logic.Repositories
         }
 
         public bool Update(EmployeesProjectsDTO obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Create(EmployeesProjectsDTO obj)
         {
             throw new NotImplementedException();
         }

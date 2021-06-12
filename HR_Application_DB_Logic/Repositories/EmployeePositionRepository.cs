@@ -68,8 +68,16 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { obj.ID, obj.EmployeeID, obj.PositionID, obj.HiredDate,
-                    obj.FiredDate, obj.IsActual, obj.LevelPosition});
+                    dbConnection.Execute(query, new 
+                    { 
+                        obj.ID, 
+                        obj.EmployeeID, 
+                        obj.PositionID, 
+                        obj.HiredDate,
+                        obj.FiredDate, 
+                        obj.IsActual, 
+                        obj.LevelsPosition
+                    });
                 }
             }
             catch (Exception e)
@@ -104,14 +112,20 @@ namespace HR_Application_DB_Logic.Repositories
         {
             string query = "[HRAppDB].[CreateEmployeePosition] @EmployeeID, @PositionID," +
                 "@HiredDate, @FiredDate, @IsActual, @LevelPosition";
-            bool result = true;
+            int returnedID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { obj.EmployeeID, obj.PositionID,
-                        obj.HiredDate, obj.FiredDate, obj.IsActual, obj.LevelPosition });
+                    returnedID=dbConnection.QuerySingle<int>(query, new 
+                    { 
+                        obj.EmployeeID, 
+                        obj.PositionID,
+                        obj.HiredDate, 
+                        obj.FiredDate, 
+                        obj.IsActual, 
+                        obj.LevelsPosition });
                 }
             }
             catch (Exception e)
@@ -119,7 +133,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnedID;
         }
     }
 }
