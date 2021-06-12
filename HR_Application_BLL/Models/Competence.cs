@@ -12,6 +12,10 @@ namespace HR_Application_BLL.Models
         public SkillModel Skill { get; set; }
         public LevelSkillModel LevelSkill { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Skill} {LevelSkill} - {Date}";
+        }
         public override bool Equals(object obj)
         {
             bool result = false;

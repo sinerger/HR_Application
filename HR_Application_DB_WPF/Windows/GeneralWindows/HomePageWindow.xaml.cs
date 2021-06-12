@@ -1,8 +1,15 @@
-﻿using HR_Application_DB_WPF.Classes;
+﻿using HR_Application_BLL.Models;
+using HR_Application_BLL.Services;
+using HR_Application_BLL.Models.Base;
+using HR_Application_DB_WPF.Classes;
 using HR_Application_DB_WPF.ModalWindows;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -11,31 +18,17 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class HomePageWindow : Window
     {
-        public class Employee
-        {
-            public string FullName { get; set; }
-            public string Level { get; set; }
-            public string Direction { get; set; }
-        }
-
         private Cache _cache;
 
         public HomePageWindow()
         {
             InitializeComponent();
             _cache = Cache.GetCache();
+            DataContext = _cache.SelectedEmployee;
 
             InitializeUserData();
 
-            DataGrid_Employees.ItemsSource = new List<Employee>()
-            {
-                new Employee()
-                {
-                    FullName = "qqq",
-                    Level = "1",
-                    Direction = "ddd"
-                }
-            };
+            DataGrid_Employees.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
@@ -47,11 +40,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void DataGridCell_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            var dataGridCellTarget = (DataGridCell)sender;
             // TODO: Запретить редактирование ячеек в таблицах 
-            
-            EmployeeProfileWindow employeeProfileWindow = new EmployeeProfileWindow();
-            employeeProfileWindow.ShowDialog();
         }
 
         private void Button_OpenFilterWindow_Click(object sender, RoutedEventArgs e)
@@ -135,6 +124,17 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             if (_cache.SelectedCompany != null)
             {
                 TextBox_City.Text = _cache.SelectedCompany.ToString();
+            }
+        }
+
+        private void Button_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(DataGrid_Employees.SelectedItem is null))
+            {
+                _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
+                
+                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow();
+                editEmployeeWindow.ShowDialog();
             }
         }
     }

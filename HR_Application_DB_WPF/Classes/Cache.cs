@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HR_Application_BLL.Base.Models;
 using HR_Application_BLL.Models;
+using HR_Application_BLL.Models.Base;
 
 namespace HR_Application_DB_WPF.Classes
 {
@@ -9,11 +11,19 @@ namespace HR_Application_DB_WPF.Classes
     {
         private static Cache _cashe;
 
-        public List<Company> Companies { get; set; }
-        public Company SelectedCompany { get; set; }
         public List<User> Users { get; set; }
-
+        public List<Company> Companies { get;  set; }
+        public Company SelectedCompany { get; set; }
+        public Employee SelectedEmployee { get; set; }
+        public Employee SelectedEmployeeCopy { get; set; }
         public User CurrentUser { get; set; }
+        public List<Employee> Employees { get; set; }
+
+        public List<PositionModel> PositionsModels { get;  set; }
+        public List<LevelsPositionModel> levelsPositionModels { get;  set; }
+
+        public Position SelectedPosition { get; set; }
+
         private Cache()
         {
 

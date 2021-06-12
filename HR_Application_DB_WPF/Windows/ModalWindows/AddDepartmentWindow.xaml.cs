@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -29,21 +29,23 @@ namespace HR_Application_DB_WPF.ModalWindows
 
         public AddDepartmentWindow(TextBox textBoxCompany)
         {
-            InitializeComponent();
             _cache = Cache.GetCache();
             _textBoxCompany = textBoxCompany;
+            InitializeComponent();
             InitializeComboBoxSources();
         }
 
         private void InitializeComboBoxSources()
         {
-            if (_cache.Companies == null)
-            {
-                _cache.Companies = new CompanyService(new DBController(DBConfigurator.ConnectionString)).GetAll();
-            }
-
             var cities = _cache.Companies.Select(city => city.Adress.City);
             ComboBox_Cities.ItemsSource = cities;
+
+            if (_cache.SelectedEmployee != null)
+            {
+                ComboBox_Cities.SelectedItem = _cache.SelectedEmployee.Adress.City;
+                ComboBox_Companies.SelectedItem = _cache.SelectedEmployee.Company;
+                ComboBox_Departments.SelectedItem = _cache.SelectedEmployee.Department;
+            }
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)

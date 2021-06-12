@@ -6,6 +6,7 @@ AS
 		[HRAppDB].[Skills].[Title],
 		[HRAppDB].[Skills].[Description]
 		)
+	OUTPUT INSERTED.[ID]
 	VALUES (
 		@Title,
 		@Description

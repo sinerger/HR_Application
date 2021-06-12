@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Models.Base
 {
-  public  class LevelsPositionModel
+  public class LevelsPositionModel
     {
         public int ID { get; set; }
         public string Title { get; set; }
@@ -13,7 +13,7 @@ namespace HR_Application_BLL.Models.Base
 
         public override string ToString()
         {
-            return $"Title:{Title} Description:{Description}";
+            return $"{Title}";
         }
 
         public override bool Equals(object obj)

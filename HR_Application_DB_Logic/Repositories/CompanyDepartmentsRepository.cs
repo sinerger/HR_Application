@@ -134,16 +134,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CompanyDepartmentsDTO obj)
+        public int Create(CompanyDepartmentsDTO obj)
         {
+            int returnID = 0;
             string query = "[HRAppDB].CreateCompanyDepartments @DepartmentID, @CompanyID, @IsActual";
-            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { obj.DepartmentsID, obj.CompanyID, obj.IsActual });
+                    dbConnection.QuerySingle<int>(query, new { obj.DepartmentsID, obj.CompanyID, obj.IsActual });
                 }
             }
             catch (Exception e)
@@ -151,7 +151,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
     }
 }

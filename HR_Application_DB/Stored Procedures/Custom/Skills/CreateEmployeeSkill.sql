@@ -15,6 +15,7 @@ INSERT INTO [HRAppDB].[Employees_Skills](
 [HRAppDB].[Employees_Skills].LevelSkillID,
 [HRAppDB].[Employees_Skills].SkillID)
 
+OUTPUT INSERTED.[ID]
 VALUES(
 @EmployeeID,
 @Date,

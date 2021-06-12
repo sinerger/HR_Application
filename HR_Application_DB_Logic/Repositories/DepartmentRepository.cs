@@ -58,16 +58,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(DepartmentDTO department)
+        public int Create(DepartmentDTO department)
         {
             string query = "[HRAppDB].CreateDepartment @Title, @Description";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { department.Title, department.Description });
+                    dbConnection.QuerySingle<int>(query, new { department.Title, department.Description });
                 }
             }
             catch (Exception e)
@@ -75,7 +75,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(DepartmentDTO department)

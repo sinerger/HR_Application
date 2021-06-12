@@ -11,6 +11,6 @@ namespace HR_Application_DB_Logic.Interfaces
         T GetByID(int id);
         bool Update(T obj);
         bool Delete(int id);
-        bool Create(T obj);
+        int Create(T obj);
     }
 }

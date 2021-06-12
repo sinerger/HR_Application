@@ -13,7 +13,7 @@ namespace HR_Application_BLL.Models.Base
 
         public override string ToString()
         {
-            return $"{Information} d.{Date}";
+            return $"{Information} - {Date}";
         }
 
         public override bool Equals(object obj)

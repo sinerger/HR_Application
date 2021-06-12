@@ -18,10 +18,10 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public bool Create(LevelSkillDTO levelSkill)
+        public int Create(LevelSkillDTO levelSkill)
         {
             string query = "[HRAppDB].CreateLevelSkill @ID, @Title";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
@@ -35,7 +35,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Delete(int id)

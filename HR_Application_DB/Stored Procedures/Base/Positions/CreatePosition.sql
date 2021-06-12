@@ -6,7 +6,8 @@ INSERT INTO [HRAppDB].[Positions]  (
 	   [HRAppDB].[Positions].[Title],
 	   [HRAppDB].[Positions].[Description]
 	   )
-    VALUES (
+	   OUTPUT INSERTED.[ID]
+	   VALUES (
 	   @Title,
 	   @Description
 	   )

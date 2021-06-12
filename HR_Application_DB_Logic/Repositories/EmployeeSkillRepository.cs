@@ -17,17 +17,17 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public bool Create(EmployeeSkillDTO employeeSkill)
+        public int Create(EmployeeSkillDTO employeeSkill)
         {
+            int returnID = 0;
             string query = @"[HRAppDB].CreateEmployeeSkill @EmployeeID, @Date, 
                 @IsActual, @UserID, @LevelSkillID, @SkillID";
-            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { 
+                    dbConnection.QuerySingle<int>(query, new { 
                         employeeSkill.EmployeeID,
                         employeeSkill.Date,
                         employeeSkill.IsActual,
@@ -42,7 +42,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Delete(int id)
@@ -87,7 +87,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public EmployeeSkillDTO GetByID(int id)
         {
-            string query = "[HRAppDB].GetEmployeeSkillByEmployeeID @ID";
+            string query = "[HRAppDB].GetEmployeeSkillByID @ID";
             EmployeeSkillDTO result = new EmployeeSkillDTO();
 
             try

@@ -17,29 +17,9 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public PositionDTO GetByTitle(string title)
-        {
-            string query = "GetPositionByTitle @Title";
-            PositionDTO result = new PositionDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-                {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { title });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
         public List<PositionDTO> GetAll()
         {
-            string query = "GetPositions";
+            string query = "[HRAppDB].GetPositions";
             List<PositionDTO> result = new List<PositionDTO>();
 
             try
@@ -49,61 +29,41 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.Query<PositionDTO>(query).AsList<PositionDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
         }
 
-        public PositionDTO GetById(int id)
+        public int Create(PositionDTO position)
         {
-            string query = "GetPositionByID @ID";
-            PositionDTO result = new PositionDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-                {
-                    result = dbConnection.QuerySingle<PositionDTO>(query, new { id });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public bool Create(PositionDTO position)
-        {
-            string query = "CreatePosition @Title, @Description";
-            bool result = true;
+            string query = "[HRAppDB].CreatePosition @Title, @Description";
+            int returnID = 0;
 
             try
             {
                 using(IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.QuerySingle<int>(query, new
                     {
                         position.Title,
                         position.Description
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(PositionDTO position)
         {
-            string query = "CreatePosition @ID, @Title, @Description";
+            string query = "[HRAppDB].CreatePosition @ID, @Title, @Description";
             bool result = true;
 
             try
@@ -118,9 +78,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
 
             return result;
@@ -128,7 +88,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeletePosition @ID";
+            string query = "[HRAppDB].DeletePosition @ID";
             bool result = true;
 
             try
@@ -138,9 +98,9 @@ namespace HR_Application_DB_Logic.Repositories
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
 
             return result;
@@ -148,7 +108,22 @@ namespace HR_Application_DB_Logic.Repositories
 
         public PositionDTO GetByID(int id)
         {
-            throw new NotImplementedException();
+            string query = "[HRAppDB].GetPositionByID @ID";
+            PositionDTO result = new PositionDTO();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    result = dbConnection.QuerySingle<PositionDTO>(query, new { id });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
     }
 }

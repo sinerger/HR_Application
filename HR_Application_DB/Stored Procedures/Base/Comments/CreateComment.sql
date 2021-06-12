@@ -3,7 +3,10 @@
 	@Information nvarchar (255),
 	@Date nvarchar (255)
 AS
-	insert into [HRAppDB].[Comments]
-	values (@EmployeeID,
+	INSERT INTO [HRAppDB].[Comments]
+	OUTPUT INSERTED.[ID]
+	VALUES (
+	@EmployeeID,
 	@Information,
-	@Date)
+	@Date
+	)
