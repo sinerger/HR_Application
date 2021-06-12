@@ -52,32 +52,25 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         //=============>
         //=============>
         private Cache _cache;
-        private int _height = 50;
+        private int _height = 35;
         private int _widthComboBox = 200;
-        private int _fontSize = 32;
+        private int _fontSize = 20;
         private string _backColorButton = "#E3405F";
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
-        public List<Competence> competences = new List<Competence>();
 
-        public AddCompetenceWindow()
+        private Employee _employee;
+        private TextBox _textBoxCompetence;
+
+        public AddCompetenceWindow(Employee employee,TextBox textBoxCompetence)
         {
+            _cache = Cache.GetCache();
+            _employee = employee;
+            _textBoxCompetence = textBoxCompetence;
+
             InitializeComponent();
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
-            _cache = Cache.GetCache();
-        }
-        public AddCompetenceWindow(List<Competence> competencesFrom)
-        {
-            competences = competencesFrom;
-        }
-
-        private void SetSourceCompetences()
-        {
-            for (int i = 0; i < _cache.SelectedEmployee.Competences.Count; i++)
-            {
-
-            }
         }
 
         private void AddLineSkillStackPanelEvent(object sender, RoutedEventArgs e)

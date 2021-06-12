@@ -9,6 +9,15 @@ namespace HR_Application_BLL.Models.Base
         public int ID { get; set; }
         public string Name { get; set; }
 
+        public CountryModel Clone()
+        {
+            return new CountryModel()
+            {
+                ID = ID,
+                Name = Name
+            };
+        }
+
         public override string ToString()
         {
             return Name;

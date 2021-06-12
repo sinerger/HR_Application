@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HR_Application_BLL.Models
 {
-    public class Employee : ICloneable
+    public class Employee
     {
         public int ID { get; set; }
         public string Photo { get; set; }
@@ -35,10 +35,26 @@ namespace HR_Application_BLL.Models
             Department = new Department();
             Comments = new List<CommentModel>();
         }
-        
+
         public Employee Clone()
         {
-            return new Employee();
+            return new Employee()
+            {
+                ID = ID,
+                FirstName = FirstName,
+                LastName = LastName,
+                RegistrationDate = RegistrationDate,
+                StatusID = StatusID,
+                IsActual = IsActual,
+                GeneralInformation = GeneralInformation.Clone(),
+                Position = Position.Clone(),
+                Company = Company.Clone(),
+                Adress = Adress.Clone(),
+                Project = Project.Clone(),
+                Competences = new List<Competence>(Competences.Select(comp => comp.Clone())),
+                Department = Department.Clone(),
+                Comments = new List<CommentModel>(Comments.Select(com => com.Clone()))
+            };
         }
 
         public override string ToString()
@@ -73,11 +89,6 @@ namespace HR_Application_BLL.Models
             }
 
             return result;
-        }
-
-        object ICloneable.Clone()
-        {
-            return MemberwiseClone();
         }
     }
 }

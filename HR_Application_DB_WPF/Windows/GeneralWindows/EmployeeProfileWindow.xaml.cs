@@ -51,7 +51,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Department_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(TextBox_Department);
+            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee,TextBox_Department);
             addDepartmentWindow.ShowDialog();
         }
 
@@ -63,7 +63,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(/*TextBox_Competence*/);
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employeem,TextBox_Competence);
             addCompetenceWindow.ShowDialog();
         }
 
@@ -93,7 +93,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
             if (_employee != _cache.SelectedEmployee)
             {
-                //_loader.UpdateEmployee(_employee);
+                _loader.UpdateEmployee(_employee);
                 _cache.SelectedEmployee = _employee;
                 IsUpdatet = true;
 
@@ -112,47 +112,35 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             _employee.GeneralInformation.BirthDate = DatePicker_BirthDate.SelectedDate.ToString();
             _employee.GeneralInformation.Phone = TextBox_Phone.Text;
             _employee.GeneralInformation.Email = TextBox_Email.Text;
-            _employee.Position = _cache.SelectedPosition;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) //TODO: Change employee to _employeeFromSelect
         {
-            string competence = string.Empty;
-            StringBuilder stringBuilderCompetence = new StringBuilder(competence);
+            StringBuilder competence = new StringBuilder();
 
             foreach (var comp in _employee.Competences)
             {
-                stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
+                competence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
             }
 
-            competence = stringBuilderCompetence.ToString();
-
-            string comments = string.Empty;
-            StringBuilder stringBuilderComments = new StringBuilder(comments);
+            StringBuilder comments = new StringBuilder();
 
             foreach (var comm in _employee.Comments)
             {
-                stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
+                comments.Append($"{comm.Information} - {comm.Date}\n");
             }
-
-            comments = stringBuilderComments.ToString();
 
             TextBox_FirstName.Text = _employee.FirstName;
             TextBox_LastName.Text = _employee.LastName;
             TextBox_RegistrationDate.Text = _employee.RegistrationDate;
-
-            if (!(_employee.GeneralInformation is null))
-            {
-                DatePicker_BirthDate.SelectedDate = Convert.ToDateTime(_employee.GeneralInformation.BirthDate);
-                TextBox_Phone.Text = _employee.GeneralInformation.Phone;
-                TextBox_Email.Text = _employee.GeneralInformation.Email;
-            }
-
+            DatePicker_BirthDate.SelectedDate = Convert.ToDateTime(_employee.GeneralInformation.BirthDate);
+            TextBox_Phone.Text = _employee.GeneralInformation.Phone;
+            TextBox_Email.Text = _employee.GeneralInformation.Email;
             TextBox_Department.Text = _employee.Department.ToString();
             TextBox_Position.Text = _employee.Position.ToString();
-            TextBox_Competence.Text = competence.Remove(competence.Length - 2);
+            TextBox_Competence.Text = competence.Remove(competence.Length - 3, competence.Length-1).ToString();
             TextBox_Project.Text = _employee.Project.ToString();
-            TextBox_Comments.Text = comments;
+            TextBox_Comments.Text = comments.ToString();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

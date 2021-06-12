@@ -10,6 +10,15 @@ namespace HR_Application_BLL.Models.Base
         public string Title { get; set; }
         public string Description { get; set; }
 
+        public LevelsPositionModel Clone()
+        {
+            return new LevelsPositionModel()
+            {
+                ID = ID,
+                Title = Title,
+                Description = Description
+            };
+        }
 
         public override string ToString()
         {

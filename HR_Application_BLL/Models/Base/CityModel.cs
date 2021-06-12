@@ -10,10 +10,21 @@ namespace HR_Application_BLL.Models.Base
         public string Name { get; set; }
         public int CountryID { get; set; }
 
+        public CityModel Clone()
+        {
+            return new CityModel()
+            {
+                ID = ID,
+                Name = Name,
+                CountryID = CountryID
+            };
+        }
+
         public override string ToString()
         {
             return Name;
         }
+
         public override bool Equals(object obj)
         {
             bool result = false;

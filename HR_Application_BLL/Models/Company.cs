@@ -14,11 +14,22 @@ namespace HR_Application_BLL.Models
         public Adress Adress { get; set; }
         public List<Department> Departments { get; set; }
 
-
         public Company()
         {
             Adress = new Adress();
             Departments = new List<Department>();
+        }
+
+        public Company Clone()
+        {
+            return new Company()
+            {
+                ID = ID,
+                Title = Title,
+                Desctiption = Desctiption,
+                Adress = Adress.Clone(),
+                Departments = new List<Department>(Departments.Select(dep => dep.Clone()))
+            };
         }
 
         public override string ToString()

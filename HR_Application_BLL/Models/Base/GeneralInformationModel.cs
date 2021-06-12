@@ -17,6 +17,22 @@ namespace HR_Application_BLL.Models.Base
         public string Hobby { get; set; }
         public int AmountChildren { get; set; }
 
+        public GeneralInformationModel Clone()
+        {
+            return new GeneralInformationModel()
+            {
+                EmployeeID = EmployeeID,
+                Sex = Sex,
+                Education = Education,
+                FamilyStatusID = FamilyStatusID,
+                Phone = Phone,
+                Email = Email,
+                BirthDate = BirthDate,
+                Hobby = Hobby,
+                AmountChildren = AmountChildren
+            };
+        }
+
         public override bool Equals(object obj)
         {
             bool result = false;
@@ -26,15 +42,15 @@ namespace HR_Application_BLL.Models.Base
                 GeneralInformationModel generalInformation = (GeneralInformationModel)obj;
 
                 if (generalInformation.ID == ID
-                    && generalInformation.EmployeeID==EmployeeID
-                    && generalInformation.Sex==Sex
-                    && generalInformation.Education==Education
-                    && generalInformation.FamilyStatusID==FamilyStatusID
-                    && generalInformation.Phone ==Phone
-                    && generalInformation.Email==Email
-                    && generalInformation.BirthDate==BirthDate
-                    && generalInformation.Hobby==Hobby
-                    && generalInformation.AmountChildren== AmountChildren)
+                    && generalInformation.EmployeeID == EmployeeID
+                    && generalInformation.Sex == Sex
+                    && generalInformation.Education == Education
+                    && generalInformation.FamilyStatusID == FamilyStatusID
+                    && generalInformation.Phone == Phone
+                    && generalInformation.Email == Email
+                    && generalInformation.BirthDate == BirthDate
+                    && generalInformation.Hobby == Hobby
+                    && generalInformation.AmountChildren == AmountChildren)
                 {
                     result = true;
                 }

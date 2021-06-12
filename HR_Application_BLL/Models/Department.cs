@@ -16,6 +16,17 @@ namespace HR_Application_BLL.Models
             Projects = new List<ProjectModel>();
         }
 
+        public Department Clone()
+        {
+            return new Department()
+            {
+                ID = ID,
+                Title = Title,
+                Description = Description,
+                Projects = new List<ProjectModel>(Projects.Select(project => project.Clone()))
+            };
+        }
+
         public override string ToString()
         {
             return $"Department title: {Title}";

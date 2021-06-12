@@ -17,6 +17,21 @@ namespace HR_Application_BLL.Base.Models
             Level = new LevelsPositionModel();
             Post = new PositionModel();
         }
+
+        public Position Clone()
+        {
+            return new Position()
+            {
+                ID = ID,
+                EmployeeID = EmployeeID,
+                HiredDate = HiredDate,
+                FiredDate = FiredDate,
+                IsActual = IsActual,
+                Level = Level.Clone(),
+                Post = Post.Clone()
+            };
+        }
+
         public override string ToString()
         {
             return $"{Post} {Level}";

@@ -23,6 +23,21 @@ namespace HR_Application_BLL.Models
             Country = new CountryModel();
         }
 
+        public Adress Clone()
+        {
+            return new Adress()
+            {
+                ID = ID,
+                Street = Street,
+                HourseNumber = HourseNumber,
+                Block = Block,
+                ApartmentNumber = ApartmentNumber,
+                PostIndex = PostIndex,
+                Country = Country.Clone(),
+                City = City.Clone()
+            };
+        }
+
         public override string ToString()
         {
             return $"{Country} {City} {Street}";
@@ -42,7 +57,7 @@ namespace HR_Application_BLL.Models
                     && adress.Block == Block
                     && adress.ApartmentNumber == ApartmentNumber
                     && adress.PostIndex == PostIndex
-                    && adress.Country.Equals(Country) 
+                    && adress.Country.Equals(Country)
                     && adress.City.Equals(City))
                 {
                     result = true;
