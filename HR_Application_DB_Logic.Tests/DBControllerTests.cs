@@ -22,7 +22,7 @@ namespace HR_Application_DB_Logic.Tests
         {
             var repository = new EmployeeRepository(_connectionString);
 
-            var actual = repository.CreateIdd(new EmployeeDTO()
+            var actual = repository.Create(new EmployeeDTO()
             {
                 FirstName = "56ID",
                 LastName = "a",
