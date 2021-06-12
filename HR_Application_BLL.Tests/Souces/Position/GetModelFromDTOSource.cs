@@ -17,7 +17,7 @@ namespace HR_Application_BLL.Tests.Souces.Position
                     Title = "Middle",
                     Description = "lite"
                 },
-                new PositionModel()
+                new Models.Base.PositionModel()
                 {
                     ID = 1,
                     Title = "Middle",
@@ -32,7 +32,7 @@ namespace HR_Application_BLL.Tests.Souces.Position
                      Title = "junior",
                      Description = "lite"
                  },
-                 new PositionModel()
+                 new Models.Base.PositionModel()
                  {
                      ID = 2,
                      Title = "junior",
@@ -47,7 +47,7 @@ namespace HR_Application_BLL.Tests.Souces.Position
                    Title = "Senior",
                    Description = "strong"
                },
-               new PositionModel()
+               new Models.Base.PositionModel()
                {
                    ID = 3,
                    Title = "Senior",

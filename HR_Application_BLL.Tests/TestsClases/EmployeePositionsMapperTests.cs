@@ -19,9 +19,9 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetModelsFromDTOSource))]
-        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListEmployeePositionModels(List<EmployeePositionDTO> actualEmployeePositionsDTO, List<EmployeePositionModel> expected)
+        public void GetModelsFromDTO_WhenValidTestPassed_ShouldReturnListEmployeePositionModels(List<EmployeePositionDTO> actualEmployeePositionsDTO, List<Position> expected)
         {
-            List<EmployeePositionModel> actual = _employeePositionModelMapper.GetModelsFromDTO(actualEmployeePositionsDTO);
+            List<Position> actual = _employeePositionModelMapper.GetModelsFromDTO(actualEmployeePositionsDTO);
 
             Assert.AreEqual(expected, actual);
         }
@@ -33,9 +33,9 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetModelFromDTOSource))]
-        public void GetModelFromDTO_WhenValidTestPassed_ShouldReturnEmployeePositionModelByID(EmployeePositionDTO actualEmployeePositionDTO, EmployeePositionModel expected)
+        public void GetModelFromDTO_WhenValidTestPassed_ShouldReturnEmployeePositionModelByID(EmployeePositionDTO actualEmployeePositionDTO, Position expected)
         {
-            EmployeePositionModel actual = _employeePositionModelMapper.GetModelFromDTO(actualEmployeePositionDTO);
+            Position actual = _employeePositionModelMapper.GetModelFromDTO(actualEmployeePositionDTO);
 
             Assert.AreEqual(expected, actual);
         }
@@ -47,7 +47,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCaseSource(typeof(GetDTOFromModelSource))]
-        public void GetDTOFromModel_WhenValidTestPassed(EmployeePositionModel employeePositionModel, EmployeePositionDTO expected)
+        public void GetDTOFromModel_WhenValidTestPassed(Position employeePositionModel, EmployeePositionDTO expected)
         {
             EmployeePositionDTO actual = _employeePositionModelMapper.GetDTOFromModel(employeePositionModel);
 
@@ -55,7 +55,7 @@ namespace HR_Application_BLL.Tests.TestsClases
         }
 
         [TestCase(null)]
-        public void GetDTOFromModel_WhenInvaildTestPassed_ShouldReturnArgumentNullException(EmployeePositionModel employeePositionModel)
+        public void GetDTOFromModel_WhenInvaildTestPassed_ShouldReturnArgumentNullException(Position employeePositionModel)
         {
             Assert.Throws<ArgumentNullException>(() => _employeePositionModelMapper.GetDTOFromModel(employeePositionModel));
         }

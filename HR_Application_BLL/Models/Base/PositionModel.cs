@@ -7,14 +7,12 @@ namespace HR_Application_BLL.Models.Base
     public class PositionModel
     {
         public int ID { get; set; }
-
         public string Title { get; set; }
-
         public string Description { get; set; }
 
         public override string ToString()
         {
-            return $"Title: {Title} Description: {Description}";
+            return $"{Title}";
         }
 
         public override bool Equals(object obj)

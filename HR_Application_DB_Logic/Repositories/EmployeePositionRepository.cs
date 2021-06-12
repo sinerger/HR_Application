@@ -10,7 +10,7 @@ namespace HR_Application_DB_Logic.Repositories
 {
     public class EmployeePositionRepository : IRepository<EmployeePositionDTO>
     {
-        public string ConnectionString { get; }
+        public string ConnectionString { get; private set; }
 
         public EmployeePositionRepository(string connectionString)
         {
@@ -19,52 +19,20 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeePositionDTO> GetAll()
         {
-            string query = "[HRAppDB].GetEmployeesPosition";
+            string query = "[HRAppDB].[GetEmployeesPositions]";
+
             List<EmployeePositionDTO> result = new List<EmployeePositionDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
-                        (ep, levelPos, position) =>
-                        {
-                            ep.LevelsPosition = levelPos;
-                            ep.PositionID = position;
-                            return ep;
-                        })
-                        .AsList<EmployeePositionDTO>();
+                    result = dbConnection.Query<EmployeePositionDTO>(query).AsList<EmployeePositionDTO>();
                 }
             }
-            catch 
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-        public List<EmployeePositionDTO> GetByEmployeeID(int employeeID)
-        {
-            string query = "[HRAppDB].GetEmployeesPositionByEmployeeID @EmployeeID";
-            List<EmployeePositionDTO> result = new List<EmployeePositionDTO>();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-                {
-                    result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
-                        (ep, levelPos, position) =>
-                        {
-                            ep.LevelsPosition = levelPos;
-                            ep.PositionID = position;
-                            return ep;
-                        },new { employeeID })
-                        .AsList<EmployeePositionDTO>();
-                }
-            }
-            catch
-            {
-                result = null;
+                throw e;
             }
 
             return result;

@@ -17,11 +17,11 @@
 
             if (obj is LevelsPositionDTO)
             {
-                LevelsPositionDTO levelsPositionDTODTO = (LevelsPositionDTO)obj;
+                LevelsPositionDTO levelsPositionDTO = (LevelsPositionDTO)obj;
 
-                if (levelsPositionDTODTO.ID == ID
-                    && levelsPositionDTODTO.Title == Title
-                    && levelsPositionDTODTO.Description == Description)
+                if (levelsPositionDTO.ID == ID
+                    && levelsPositionDTO.Title == Title
+                    && levelsPositionDTO.Description == Description)
                 {
                     result = true;
                 }

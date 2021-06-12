@@ -13,8 +13,11 @@ namespace HR_Application_BLL.Tests
         [Test]
         public void Testas()
         {
-            var a = new UserService(new DBController(DBConfigurator.ConnectionString)).GetAll();
-            string str = a.ToString();
+            var a = new EmployeeService(new DBController(DBConfigurator.ConnectionString)).GetAll();
+            //var b = new EmployeeService(new DBController(DBConfigurator.ConnectionString)).GetByID(1);
+
+            //var c = new PositionService(new DBController(DBConfigurator.ConnectionString)).GetAll();
+            //string str = a.ToString();
         }
     }
 }

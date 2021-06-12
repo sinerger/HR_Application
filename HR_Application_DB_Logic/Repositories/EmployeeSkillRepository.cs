@@ -87,7 +87,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public EmployeeSkillDTO GetByID(int id)
         {
-            string query = "[HRAppDB].GetEmployeeSkillByEmployeeID @ID";
+            string query = "[HRAppDB].GetEmployeeSkillByID @ID";
             EmployeeSkillDTO result = new EmployeeSkillDTO();
 
             try
