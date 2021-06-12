@@ -6,7 +6,8 @@ INSERT INTO [HRAppDB].[Cities] (
 	   [HRAppDB].[Cities].[Name],
 	   [HRAppDB].[Cities].[CountryID]
 	   )
-    VALUES (
+	   OUTPUT INSERTED.[ID]
+	   VALUES (
 	   @Name,
 	   @CountryID
 	   )

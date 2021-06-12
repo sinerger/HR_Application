@@ -134,16 +134,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(DepartmentProjectsDTO obj)
+        public int Create(DepartmentProjectsDTO obj)
         {
             string query = "[HRAppDB].CreateDepartmentsProjects @ProjectID, @DepartmentID, @IsActual";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { obj.ProjectsID, obj.DepartmentID, obj.IsActual });
+                    dbConnection.QuerySingle<int>(query, new { obj.ProjectsID, obj.DepartmentID, obj.IsActual });
                 }
             }
             catch (Exception e)
@@ -151,7 +151,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
     }
 }

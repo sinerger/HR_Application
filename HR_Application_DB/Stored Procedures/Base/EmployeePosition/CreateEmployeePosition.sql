@@ -8,6 +8,7 @@
 
 AS
 INSERT INTO [HRAppDB].[Positions_Employees]
+OUTPUT INSERTED.[ID]
 	VALUES (
 	@EmployeeID,
 	@HiredDate,

@@ -37,16 +37,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(PositionDTO position)
+        public int Create(PositionDTO position)
         {
             string query = "[HRAppDB].CreatePosition @Title, @Description";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using(IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.QuerySingle<int>(query, new
                     {
                         position.Title,
                         position.Description
@@ -58,7 +58,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(PositionDTO position)

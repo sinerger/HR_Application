@@ -53,7 +53,7 @@ namespace HR_Application_DB_Logic.Repositories
             throw new NotImplementedException();
         }
 
-        public bool Create(EmployeePositionDTO obj)
+        public int Create(EmployeePositionDTO obj)
         {
             throw new NotImplementedException();
         }

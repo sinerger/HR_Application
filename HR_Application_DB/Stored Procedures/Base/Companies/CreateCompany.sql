@@ -5,6 +5,7 @@
 	@IsActual bit
 AS
 	insert into [HRAppDB].[Companies]
+	OUTPUT INSERTED.[ID]
 	values (
 	@Title,
 	@LocationID,

@@ -3,6 +3,7 @@
 	@Description nvarchar (255)
 AS
 	insert into [HRAppDB].[Departments]
+	OUTPUT INSERTED.[ID]
 	values (
 	@Title,
 	@Description)

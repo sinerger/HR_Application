@@ -21,7 +21,7 @@ namespace HR_Application_DB_Logic.Repositories
         public int Create(LevelSkillDTO levelSkill)
         {
             string query = "[HRAppDB].CreateLevelSkill @ID, @Title";
-            int returnID = true;
+            int returnID = 0;
 
             try
             {
