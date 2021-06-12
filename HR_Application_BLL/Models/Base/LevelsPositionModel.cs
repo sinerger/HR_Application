@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Models.Base
 {
-  public  class LevelsPositionModel
+  public class LevelsPositionModel
     {
         public int ID { get; set; }
         public string Title { get; set; }

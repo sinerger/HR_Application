@@ -1,4 +1,6 @@
-﻿using HR_Application_DB_WPF.ModalWindows;
+﻿using HR_Application_BLL.Models;
+using HR_Application_DB_WPF.Classes;
+using HR_Application_DB_WPF.ModalWindows;
 using HR_Application_DB_WPF.Windows.ModalWindows;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static HR_Application_DB_WPF.Windows.GeneralWindows.HomePageWindow;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -19,9 +22,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class EmployeeProfileWindow : Window
     {
+        private Cache _cache;
+        private Employee _employeeFromSelect;
         public EmployeeProfileWindow()
         {
             InitializeComponent();
+            _cache = Cache.GetCache();
+            _employeeFromSelect = _cache.SelectedEmployee;
         }
 
         private void TabItem_MouseEnter(object sender, MouseEventArgs e)
@@ -50,13 +57,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow();
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employeeFromSelect.Competences);
             addCompetenceWindow.ShowDialog();
         }
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)
         {
-            AddCommentWindow addCommentWindow = new AddCommentWindow();
+            AddCommentWindow addCommentWindow = new AddCommentWindow(CommentsTextBox);
             addCommentWindow.ShowDialog();
         }
 
@@ -70,6 +77,42 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             //TODO:Сохранение данных в моделе Employee profile
             //this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) //TODO: Change employee to _employeeFromSelect
+        {
+            string competence = string.Empty;
+            StringBuilder stringBuilderCompetence = new StringBuilder(competence);
+
+            foreach (var comp in _employeeFromSelect.Competences)
+            {
+                stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
+            }
+            competence = stringBuilderCompetence.ToString();
+
+            string comments = string.Empty;
+            StringBuilder stringBuilderComments = new StringBuilder(comments);
+
+            foreach(var comm in _employeeFromSelect.Comments)
+            {
+                stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
+            }
+            comments = stringBuilderComments.ToString();
+
+            FirstNameTextBox.Text = _employeeFromSelect.FirstName;
+            LastNameTextBox.Text = _employeeFromSelect.LastName;
+            RegistrationDateTextBox.Text = _employeeFromSelect.RegistrationDate;
+            if (!(_employeeFromSelect.GeneralInformation is null))
+            {
+            DateOfBirthDatePicker.SelectedDate = Convert.ToDateTime(_employeeFromSelect.GeneralInformation.BirthDate);
+            PhoneTextBox.Text = _employeeFromSelect.GeneralInformation.Phone;
+            EmailTextBox.Text = _employeeFromSelect.GeneralInformation.Email; 
+            }
+            DepartmentTextBox.Text = _employeeFromSelect.Department.Title;
+            PositionTextBox.Text = _employeeFromSelect.Position.ToString();
+            CompetenceTextBox.Text = competence.Remove(competence.Length - 2);
+            ProjectNameTextBox.Text = _employeeFromSelect.Project.Title;
+            CommentsTextBox.Text = comments;
         }
     }
 }

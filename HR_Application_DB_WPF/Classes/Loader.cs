@@ -22,6 +22,7 @@ namespace HR_Application_DB_WPF.Classes
         {
             LoadAllCompanies();
             LoadAllUsers();
+            LoadAllEmployees();
         }
 
         private void LoadAllCompanies()
@@ -46,6 +47,21 @@ namespace HR_Application_DB_WPF.Classes
             {
                 throw e;
             }
+        }
+
+        private void LoadAllEmployees()
+        {
+            try
+            {
+                _cache.Employees = new EmployeeService(_dbController).GetAll();
+            }
+
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
         }
     }
 }

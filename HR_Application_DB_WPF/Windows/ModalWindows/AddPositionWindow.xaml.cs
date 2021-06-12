@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Models.Base;
+using HR_Application_DB_WPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static HR_Application_DB_WPF.Windows.GeneralWindows.HomePageWindow;
 
 namespace HR_Application_DB_WPF.Windows.ModalWindows
 {
@@ -32,16 +36,26 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             "2",
             "3"
         };
-        
+
         #endregion
         //=============>
         //=============>
+        private Cache _cache;
+        private Position _positionEmployee;
 
         public AddPositionWindow()
         {
             InitializeComponent();
             SetDataPosition(_position);
             SetDataLevelPosition(_levelPosition);
+            _cache = Cache.GetCache();
+            _positionEmployee = _cache.SelectedPositionEmployee;
+        }
+
+        public AddPositionWindow(Position fromEmployee)
+        {
+            _positionEmployee = fromEmployee;
+            InitializeComponent();
         }
 
         public void SetDataPosition(string[] positions)
@@ -64,6 +78,12 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            PositionComboBox.SelectedItem = _positionEmployee.Post;
+            LevelPositionComboBox.SelectedItem = _positionEmployee.Level;
         }
     }
 }

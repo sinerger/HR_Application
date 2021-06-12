@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:HR_Application_DB_WPF"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
-        Title="EmployeeProfileWindow" Height="720" Width="1280" Background="#FFE9E9E9">
+        Title="EmployeeProfileWindow" Height="720" Width="1280" Background="#FFE9E9E9" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
     </Window.Resources>
@@ -44,7 +45,7 @@
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Last name"/>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Grid.Column="1" Margin="2" x:Name="LastNameTextBox"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Date of Birth"/>
-                        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="2" Grid.Column="1" Margin="2" x:Name="DateOfBirthDatePicker"/>
+                        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="2" Grid.Column="1" SelectedDate="{x:Static sys:DateTime.Now}" Margin="2" x:Name="DateOfBirthDatePicker"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Phone" HorizontalAlignment="Left"/>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="3" Grid.Column="1" Margin="2" x:Name="PhoneTextBox"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="E-mail"/>
@@ -52,11 +53,11 @@
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Registration date"/>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Grid.Column="1" Margin="2" x:Name="RegistrationDateTextBox"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Department" />
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Grid.Column="1" Margin="2" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Grid.Column="1" Margin="2" x:Name="DepartmentTextBox" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="7" Grid.Column="0" Content="Position" />
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Grid.Column="1" Margin="2" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Grid.Column="1" Margin="2" x:Name="PositionTextBox" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Competence"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2" x:Name="CompetenceTextBox" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name"/>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Grid.Column="1" Margin="2" x:Name="ProjectNameTextBox"/>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="5" Content="Add comment" Click="Button_AddComment_Click"/>
@@ -79,7 +80,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeHistoryTabItem" Header="Employee history">
+            <!--<TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeHistoryTabItem" Header="Employee history">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -91,7 +92,7 @@
                         <TextBox Grid.Row="0" Grid.Column="0" Style="{DynamicResource RoundTextBoxStyle}" x:Name="HistoryTextBox" Height="200"/>
                     </StackPanel>
                 </Grid>
-            </TabItem>
+            </TabItem>-->
         </TabControl>
     </Grid>
 </Window>

@@ -1,3 +1,4 @@
+﻿using HR_Application_BLL.Models;
 ﻿using HR_Application_DB_WPF.Classes;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         private string _backColorButton = "#E3405F";
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
+        public List<Competence> competences = new List<Competence>();
 
         public AddCompetenceWindow()
         {
@@ -64,6 +66,10 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
             _cache = Cache.GetCache();
+        }
+        public AddCompetenceWindow(List<Competence> competencesFrom)
+        {
+            competences = competencesFrom;
         }
 
         private void SetSourceCompetences()
