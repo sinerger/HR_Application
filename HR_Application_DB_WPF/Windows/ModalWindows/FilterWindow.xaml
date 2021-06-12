@@ -14,10 +14,12 @@
 
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="FILTER" Style="{DynamicResource LabelHeader}"/>
         <ScrollViewer Grid.Row="1" Margin="0,10,0,10" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
@@ -26,7 +28,7 @@
         <ScrollViewer Grid.Row="2" Margin="0,10,0,10" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
             <StackPanel x:Name ="AllAdressStackPanel" Height="160" Width="450" HorizontalAlignment="Center"/>
         </ScrollViewer>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
