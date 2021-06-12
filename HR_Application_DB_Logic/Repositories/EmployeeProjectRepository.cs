@@ -117,10 +117,5 @@ namespace HR_Application_DB_Logic.Repositories
 
             return result;
         }
-
-        public int Create(EmployeesProjectsDTO obj)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
