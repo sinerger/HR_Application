@@ -16,3 +16,4 @@ INSERT INTO [HRAppDB].[Positions_Employees]
 	@LevelPositionID,
 	@PositionID
 	)
+	RETURN @@IDENTITY 

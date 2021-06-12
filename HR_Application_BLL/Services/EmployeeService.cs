@@ -13,7 +13,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class EmployeeService
+    public class EmployeeService :IService<Employee>
     {
         private IDBController _dbController;
         private Mappers.EmployeeMapper _employeeMapper;
@@ -72,6 +72,38 @@ namespace HR_Application_BLL.Services
             {
                 throw e;
             }
+        }
+
+        public Employee GetByID(int id)
+        {
+            try
+            {
+                return GetAll().FirstOrDefault(employee => employee.ID == id);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        public bool Create(Employee employee)
+        {
+            try
+            {
+                EmployeeDTO employeeDTO = _employeeMapper.GetDTOFromModel(employee);
+                _dbController.EmployeeRepository.Create(employeeDTO);
+
+                GeneralInformationDTO generalInformationDTO = new GeneralInformationModelMapper()
+                    .GetDTOFromModel(employee.GeneralInformation);
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
         }
     }
 }
