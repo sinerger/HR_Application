@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Base;
 using System;
@@ -8,23 +9,33 @@ using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class EmployeeProjectRepository
+    public class EmployeeProjectRepository : IRepository<EmployeesProjectsDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get;private set;}
 
         public EmployeeProjectRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
-        public List<EmployeesProjectsDTO> GetALL()
+        public bool Create(EmployeesProjectsDTO obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<EmployeesProjectsDTO> GetAll()
         {
             string query = "[HRAppDB].GetEmployeesProjects";
             List<EmployeesProjectsDTO> employeesProjects = new List<EmployeesProjectsDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
                         (employeeProjects, projectID) =>
@@ -68,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
                         (employeeProjects, projectID) =>
@@ -104,6 +115,11 @@ namespace HR_Application_DB_Logic.Repositories
             }
 
             return employeesProjects[0];
+        }
+
+        public bool Update(EmployeesProjectsDTO obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

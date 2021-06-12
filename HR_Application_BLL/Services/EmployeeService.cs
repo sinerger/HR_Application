@@ -13,7 +13,7 @@ using System.Text;
 
 namespace HR_Application_BLL.Services
 {
-    public class EmployeeService :IService<Employee>
+    public class EmployeeService : IService<Employee>
     {
         private IDBController _dbController;
         private Mappers.EmployeeMapper _employeeMapper;
@@ -35,7 +35,7 @@ namespace HR_Application_BLL.Services
                 List<Company> companies = new CompanyService(_dbController).GetAll();
                 List<CompanyDepartmentsDTO> companiesDepartments = _dbController.CompanyDepartmentsRepository.GetAll();
                 List<Adress> adresses = new AdressService(_dbController).GetAll();
-                List<EmployeesProjectsDTO> emploeesProjects = _dbController.EmployeeProjectRepository.GetALL();
+                List<EmployeesProjectsDTO> emploeesProjects = _dbController.EmployeeProjectRepository.GetAll();
                 List<ProjectModel> projects = new ProjectMapper()
                     .GetModelsFromDTO(_dbController.ProjectRepository.GetAll());
                 List<DepartmentProjectsDTO> departmentsProjects = _dbController.DepartmentProjectsRepository.GetAll();
@@ -55,7 +55,7 @@ namespace HR_Application_BLL.Services
                     var companyDepartments = companiesDepartments.FirstOrDefault(comp => comp.DepartmentsID.Contains((int)departmentProject.DepartmentID));
 
                     employee.GeneralInformation = generalInformations.FirstOrDefault(genInform => genInform.EmployeeID == employee.ID);
-                    employee.Position = positions.FirstOrDefault(pos => pos.EmployeeID==employee.ID);
+                    employee.Position = positions.FirstOrDefault(pos => pos.EmployeeID == employee.ID);
                     employee.Company = companies.FirstOrDefault(comp => comp.ID == companyDepartments.CompanyID);
                     employee.Adress = adresses.FirstOrDefault(adress => adress.ID == employeeDTO.LocationID);
                     employee.Project = projects.FirstOrDefault(project => project.ID == employeeProject.ProjectsID[0]);
@@ -92,11 +92,17 @@ namespace HR_Application_BLL.Services
             try
             {
                 EmployeeDTO employeeDTO = _employeeMapper.GetDTOFromModel(employee);
-                _dbController.EmployeeRepository.Create(employeeDTO);
+                employee.ID = _dbController.EmployeeRepository.Create(employeeDTO);
 
                 GeneralInformationDTO generalInformationDTO = new GeneralInformationModelMapper()
                     .GetDTOFromModel(employee.GeneralInformation);
-                return true;
+                _dbController.GeneralInformationRepository.Create(generalInformationDTO);
+
+                EmployeePositionDTO employeePositionDTO = new EmployeePositionModelMapper()
+                    .GetDTOFromModel(employee.Position);
+                _dbController.EmployeePositionRepository.Create(employeePositionDTO);
+                //ProjectDTO projectDTO = new ProjectMapper().GetDTOFromModel(employee)
+                _dbController.EmployeeProjectRepository.cr
             }
             catch (Exception e)
             {
