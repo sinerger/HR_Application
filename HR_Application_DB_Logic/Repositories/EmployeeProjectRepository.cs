@@ -27,7 +27,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.QuerySingle<int>(query, new { EmployeesProjects.EmployeeID, EmployeesProjects.ProjectsID, EmployeesProjects.StartDate, EmployeesProjects.EndDate, EmployeesProjects.IsActual });
+                    dbConnection.QuerySingle<int>(query, new { EmployeesProjects.EmployeeID, EmployeesProjects.ProjectID, EmployeesProjects.StartDate, EmployeesProjects.EndDate, EmployeesProjects.IsActual });
                 }
             }
             catch (Exception e)
@@ -107,7 +107,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { EmployeesProjects.ID, EmployeesProjects.EmployeeID, EmployeesProjects.ProjectsID, EmployeesProjects.StartDate, EmployeesProjects.EndDate, EmployeesProjects.IsActual });
+                    dbConnection.Execute(query, new { EmployeesProjects.ID, EmployeesProjects.EmployeeID, EmployeesProjects.ProjectID, EmployeesProjects.StartDate, EmployeesProjects.EndDate, EmployeesProjects.IsActual });
                 }
             }
             catch (Exception e)

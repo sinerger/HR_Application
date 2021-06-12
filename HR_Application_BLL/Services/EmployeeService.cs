@@ -52,14 +52,14 @@ namespace HR_Application_BLL.Services
                 {
                     var employeeDTO = employeesDTO.FirstOrDefault(empl => empl.ID == employee.ID);
                     var employeeProject = emploeesProjects.FirstOrDefault(empPr => empPr.EmployeeID == employee.ID);
-                    var departmentProject = departmentsProjects.FirstOrDefault(depProj => depProj.ProjectsID.Contains((int)employeeProject.ProjectsID));
+                    var departmentProject = departmentsProjects.FirstOrDefault(depProj => depProj.ProjectsID.Contains((int)employeeProject.ProjectID));
                     var companyDepartments = companiesDepartments.FirstOrDefault(comp => comp.DepartmentsID.Contains((int)departmentProject.DepartmentID));
 
                     employee.GeneralInformation = generalInformations.FirstOrDefault(genInform => genInform.EmployeeID == employee.ID);
                     employee.Position = positions.FirstOrDefault(pos => pos.EmployeeID == employee.ID);
                     employee.Company = companies.FirstOrDefault(comp => comp.ID == companyDepartments.CompanyID);
                     employee.Adress = adresses.FirstOrDefault(adress => adress.ID == employeeDTO.LocationID);
-                    employee.Project = projects.FirstOrDefault(project => project.ID == employeeProject.ProjectsID);
+                    employee.Project = projects.FirstOrDefault(project => project.ID == employeeProject.ProjectID);
                     employee.Competences = new List<Competence>(competences.Select(comp => comp)
                         .Where(comp => comp.EmployeeID == employee.ID));
                     employee.Department = departments.FirstOrDefault(dep => dep.ID == departmentProject.DepartmentID);
@@ -106,7 +106,7 @@ namespace HR_Application_BLL.Services
                 _dbController.EmployeeProjectRepository.Create(new EmployeesProjectsDTO()
                 {
                     EmployeeID = employee.ID,
-                    ProjectsID = employee.Project.ID,
+                    ProjectID = employee.Project.ID,
                     IsActual = true
                 });
 

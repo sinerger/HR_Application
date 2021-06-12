@@ -20,17 +20,17 @@ namespace HR_Application_DB_Logic.Tests
         [Test]
         public void Test()
         {
-            var repository = new EmployeeRepository(_connectionString);
+            //var repository = new EmployeeRepository(_connectionString);
 
-            var actual = repository.Create(new EmployeeDTO()
-            {
-                FirstName = "56ID",
-                LastName = "a",
-                LocationID =1,
-                RegistrationDate= "10.10.10",
-                StatusID =1,
-                IsActual = true
-            });
+            //var actual = repository.Create(new EmployeeDTO()
+            //{
+            //    FirstName = "56ID",
+            //    LastName = "a",
+            //    LocationID =1,
+            //    RegistrationDate= "10.10.10",
+            //    StatusID =1,
+            //    IsActual = true
+            //});
         }
     }
 }

@@ -6,5 +6,5 @@ SELECT
 [HRAppDB].[Employees_Projects].StartDate,
 [HRAppDB].[Employees_Projects].EndDate,
 [HRAppDB].[Employees_Projects].IsActual,
-[HRAppDB].[Employees_Projects].ProjectID as ID
+[HRAppDB].[Employees_Projects].ProjectID
 FROM [HRAppDB].[Employees_Projects]
