@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using HR_Application_BLL;
 using HR_Application_BLL.Mappers.Base;
+using HR_Application_BLL.Models;
 using HR_Application_BLL.Services;
 using HR_Application_DB_Logic;
+using HR_Application_DB_Logic.Interfaces;
 
 namespace HR_Application_DB_WPF.Classes
 {
     public class Loader
     {
         private Cache _cache;
-        private DBController _dbController;
+        private IDBController _dbController;
 
         public Loader()
         {
@@ -26,6 +28,19 @@ namespace HR_Application_DB_WPF.Classes
             LoadAllEmployees();
             LoadAllPositionsModels();
             LoadAllLevelsPosition();
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            try
+            {
+                new EmployeeService(_dbController).Update(employee);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         private void LoadAllCompanies()

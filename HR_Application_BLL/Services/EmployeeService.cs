@@ -88,7 +88,7 @@ namespace HR_Application_BLL.Services
             }
         }
 
-        public bool Create(Employee employee)
+        public int Create(Employee employee)
         {
             try
             {
@@ -122,14 +122,19 @@ namespace HR_Application_BLL.Services
                         .GetDTOFromModel(comment));
                 }
 
-                return true;
+                return employee.ID;
             }
             catch (Exception e)
             {
 
                 throw e;
             }
+        }
 
+        public bool Update(Employee employee)
+        {
+            // TODO: Update employee
+            return true;
         }
     }
 }

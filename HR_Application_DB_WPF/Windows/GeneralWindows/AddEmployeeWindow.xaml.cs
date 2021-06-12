@@ -37,7 +37,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(TextBox_Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow(null,TextBox_Position);
             addPositionWindow.ShowDialog();
         }
 
@@ -60,7 +60,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Direction_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(TextBox_Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow(null,TextBox_Position);
             addPositionWindow.ShowDialog();
         }
 

@@ -23,12 +23,17 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     public partial class EmployeeProfileWindow : Window
     {
         private Cache _cache;
-        private Employee _employeeFromSelect;
+        private Loader _loader;
+        private Employee _employee;
+        private bool IsUpdatet = false;
 
         public EmployeeProfileWindow()
         {
             _cache = Cache.GetCache();
-            _employeeFromSelect = _cache.SelectedEmployee;
+            _loader = new Loader();
+            _employee = _cache.SelectedEmployee;
+            _cache.SelectedEmployeeCopy = _cache.SelectedEmployee.Clone();
+
             InitializeComponent();
         }
 
@@ -52,7 +57,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(TextBox_Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee, TextBox_Position);
             addPositionWindow.ShowDialog();
         }
 
@@ -70,14 +75,44 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
-            //TODO:откат данных из модели Employee profile
+            if (IsUpdatet)
+            {
+                var result = MessageBox.Show("Cancel changes?", "Cancel", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    _employee = _cache.SelectedEmployee;
+                    Window_Loaded(null, null);
+                }
+            }
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            //TODO:Сохранение данных в моделе Employee profile
-            //this.Close();
+            SetChanges();
+
+            if (_employee != _cache.SelectedEmployee)
+            {
+                //_loader.UpdateEmployee(_employee);
+                _cache.SelectedEmployee = _employee;
+                IsUpdatet = true;
+
+                MessageBox.Show("Saved");
+            }
+            else
+            {
+                MessageBox.Show("No Profile Changes");
+            }
+        }
+
+        private void SetChanges()
+        {
+            _employee.FirstName = TextBox_FirstName.Text;
+            _employee.LastName = TextBox_LastName.Text;
+            _employee.GeneralInformation.BirthDate = DatePicker_BirthDate.SelectedDate.ToString();
+            _employee.GeneralInformation.Phone = TextBox_Phone.Text;
+            _employee.GeneralInformation.Email = TextBox_Email.Text;
+            _employee.Position = _cache.SelectedPosition;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) //TODO: Change employee to _employeeFromSelect
@@ -85,7 +120,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             string competence = string.Empty;
             StringBuilder stringBuilderCompetence = new StringBuilder(competence);
 
-            foreach (var comp in _employeeFromSelect.Competences)
+            foreach (var comp in _employee.Competences)
             {
                 stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
             }
@@ -95,29 +130,37 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             string comments = string.Empty;
             StringBuilder stringBuilderComments = new StringBuilder(comments);
 
-            foreach (var comm in _employeeFromSelect.Comments)
+            foreach (var comm in _employee.Comments)
             {
                 stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
             }
 
             comments = stringBuilderComments.ToString();
 
-            FirstNameTextBox.Text = _employeeFromSelect.FirstName;
-            LastNameTextBox.Text = _employeeFromSelect.LastName;
-            RegistrationDateTextBox.Text = _employeeFromSelect.RegistrationDate;
+            TextBox_FirstName.Text = _employee.FirstName;
+            TextBox_LastName.Text = _employee.LastName;
+            TextBox_RegistrationDate.Text = _employee.RegistrationDate;
 
-            if (!(_employeeFromSelect.GeneralInformation is null))
+            if (!(_employee.GeneralInformation is null))
             {
-                DateOfBirthDatePicker.SelectedDate = Convert.ToDateTime(_employeeFromSelect.GeneralInformation.BirthDate);
-                PhoneTextBox.Text = _employeeFromSelect.GeneralInformation.Phone;
-                EmailTextBox.Text = _employeeFromSelect.GeneralInformation.Email;
+                DatePicker_BirthDate.SelectedDate = Convert.ToDateTime(_employee.GeneralInformation.BirthDate);
+                TextBox_Phone.Text = _employee.GeneralInformation.Phone;
+                TextBox_Email.Text = _employee.GeneralInformation.Email;
             }
 
-            TextBox_Department.Text = _employeeFromSelect.Department.Title;
-            TextBox_Position.Text = _employeeFromSelect.Position.ToString();
+            TextBox_Department.Text = _employee.Department.ToString();
+            TextBox_Position.Text = _employee.Position.ToString();
             TextBox_Competence.Text = competence.Remove(competence.Length - 2);
-            TextBox_Project.Text = _employeeFromSelect.Project.ToString();
+            TextBox_Project.Text = _employee.Project.ToString();
             TextBox_Comments.Text = comments;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (IsUpdatet)
+            {
+                _loader.LoadAllData();
+            }
         }
     }
 }

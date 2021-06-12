@@ -36,6 +36,11 @@ namespace HR_Application_BLL.Models
             Comments = new List<CommentModel>();
         }
         
+        public Employee Clone()
+        {
+            return new Employee();
+        }
+
         public override string ToString()
         {
             return $"{FirstName} {LastName}";

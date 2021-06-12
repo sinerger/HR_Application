@@ -1,4 +1,5 @@
 ﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_WPF.Classes;
 using System;
@@ -23,10 +24,12 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
     {
         private Cache _cache;
         private TextBox _textBoxPosition;
+        private Employee _employee;
 
-        public AddPositionWindow(TextBox textBoxPosition)
+        public AddPositionWindow(Employee employee, TextBox textBoxPosition)
         {
             _cache = Cache.GetCache();
+            _employee = employee;
             _textBoxPosition = textBoxPosition;
             InitializeComponent();
             SetDataPosition();
@@ -46,9 +49,25 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         private void Button_Accept_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Сохраняем данные что ввели для сотрудника
-            _textBoxPosition.Text = _cache.SelectedPosition.ToString();
+            if (_employee.Position.Post == (PositionModel)ComboBox_Position.SelectedItem
+                && _employee.Position.Level == (LevelsPositionModel)ComboBox_LevelPosition.SelectedItem)
+            {
+                this.Close();
+            }
+            else
+            {
+                _employee.Position = new Position()
+                {
+                    EmployeeID = _cache.SelectedEmployee.ID,
+                    Post = (PositionModel)ComboBox_Position.SelectedItem,
+                    Level = (LevelsPositionModel)ComboBox_LevelPosition.SelectedItem,
+                    IsActual = true
+                };
 
-            this.Close();
+                _textBoxPosition.Text = _employee.Position.ToString();
+                this.Close();
+            }
+
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -58,8 +77,8 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ComboBox_Position.SelectedItem = _cache.SelectedEmployee.Position.Post;
-            ComboBox_LevelPosition.SelectedItem = _cache.SelectedEmployee.Position.Level;
+            ComboBox_Position.SelectedItem = _employee.Position.Post;
+            ComboBox_LevelPosition.SelectedItem = _employee.Position.Level;
         }
     }
 }
