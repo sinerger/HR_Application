@@ -42,7 +42,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             try
             {
-                if (AuthorizationController.SignIn(TextBox_Login.Text, TextBox_Password.Text))
+                if (AuthorizationController.SignIn(TextBox_Login.Text, Cryptography.GetHash(TextBox_Password.Text)))
                 {
                     _cache.CurrentUser = AuthorizationController.CurrentUser;
                     HomePageWindow homePageWindow = new HomePageWindow();
