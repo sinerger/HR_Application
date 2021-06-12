@@ -10,15 +10,13 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
         {
             yield return new object[]
              {
-                new EmployeePositionModel()
+                new Base.Models.Position()
                 {
                     ID =1,
                     EmployeeID = 12,
                     HiredDate = "1",
                     FiredDate = "25",
-                    IsActual = true,
-                    LevelsPosition = 1,
-                    PositionID = 1
+                    IsActual = true
                 },
                 new EmployeePositionDTO()
                 {
@@ -27,21 +25,19 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     HiredDate = "1",
                     FiredDate = "25",
                     IsActual = true,
-                    LevelsPosition = 1,
-                    PositionID = 1
+                    LevelsPosition = 0,
+                    PositionID = 0
                 }
              };
             yield return new object[]
             {
-                new EmployeePositionModel()
+                new Base.Models.Position()
                 {
                     ID =2,
                     EmployeeID = 2,
                     HiredDate = "1",
                     FiredDate = "2",
-                    IsActual = true,
-                    LevelsPosition = 1,
-                    PositionID = 1
+                    IsActual = true
                 },
                 new EmployeePositionDTO()
                 {
@@ -50,8 +46,8 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     HiredDate = "1",
                     FiredDate = "2",
                     IsActual = true,
-                    LevelsPosition = 1,
-                    PositionID = 1
+                    LevelsPosition = 0,
+                    PositionID = 0
                 }
             };
         }

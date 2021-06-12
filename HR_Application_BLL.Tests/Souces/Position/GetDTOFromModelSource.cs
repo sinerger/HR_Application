@@ -10,7 +10,7 @@ namespace HR_Application_BLL.Tests.Souces.Position
         {
             yield return new object[]
           {
-                new PositionModel()
+                new Models.Base.PositionModel()
                 {
                     ID = 1,
                     Title = "Middle",
@@ -25,7 +25,7 @@ namespace HR_Application_BLL.Tests.Souces.Position
           };
             yield return new object[]
             {
-                new PositionModel()
+                new Models.Base.PositionModel()
                 {
                     ID = 2,
                     Title = "junior",

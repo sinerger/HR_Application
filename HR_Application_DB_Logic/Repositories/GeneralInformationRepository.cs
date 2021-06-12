@@ -1,55 +1,37 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class GeneralInformationRepository
+    public class GeneralInformationRepository :IRepository<GeneralInformationDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public GeneralInformationRepository(string connectionString)
         {
-            _connectionString = connectionString;
-        }
-
-        public GeneralInformationDTO GetByEmployeeID(int employeeID)
-        {
-            string query = "GetGeneralInformationByEmployeeID @employeeID";
-            GeneralInformationDTO result = new GeneralInformationDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
-                {
-                    result = dbConnection.QuerySingle<GeneralInformationDTO>(query, new { employeeID });
-                }
-            }
-            catch
-            {
-                result = null;
-            }
-
-            return result;
+            ConnectionString = connectionString;
         }
 
         public GeneralInformationDTO GetByID(int id)
         {
-            string query = "GetGeneralInformationByID @ID";
+            string query = "[HRAppDB].GetGeneralInformationByID @ID";
             GeneralInformationDTO result = new GeneralInformationDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<GeneralInformationDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -57,19 +39,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<GeneralInformationDTO> GetAll()
         {
-            string query = "GetGeneralInformation";
+            string query = "[HRAppDB].GetGeneralInformation";
             List<GeneralInformationDTO> result = new List<GeneralInformationDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<GeneralInformationDTO>(query).AsList<GeneralInformationDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -77,19 +59,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteGeneralInformation @ID";
+            string query = "[HRAppDB].DeleteGeneralInformation @ID";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -97,12 +79,12 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(GeneralInformationDTO generalInformation)
         {
-            string query = "DeleteGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
+            string query = "[HRAppDB].DeleteGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
             bool result = true;
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
@@ -119,24 +101,24 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
         }
         
-        public bool Create(GeneralInformationDTO generalInformation)
+        public int Create(GeneralInformationDTO generalInformation)
         {
-            string query = "CreateGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
-            bool result = true;
+            int returnID = 0;
+            string query = "[HRAppDB].CreateGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.QuerySingle<int>(query, new
                     {
                         generalInformation.ID,
                         generalInformation.EmployeeID,
@@ -151,12 +133,12 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
-            return result;
+            return returnID;
         }
     }
 }

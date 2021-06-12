@@ -7,6 +7,17 @@
         public string Description { get; set; }
         public int DirectionID { get; set; }
 
+        public ProjectModel Clone()
+        {
+            return new ProjectModel()
+            {
+                ID = ID,
+                Title = Title,
+                Description = Description,
+                DirectionID = DirectionID
+            };
+        }
+
         public override string ToString()
         {
             return $"Project title:{Title}";

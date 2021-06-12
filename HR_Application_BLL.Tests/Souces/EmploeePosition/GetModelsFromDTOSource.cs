@@ -34,27 +34,23 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     PositionID = 1
                     }
                 },
-                new List<EmployeePositionModel>()
+                new List<Base.Models.Position>()
                 {
-                    new EmployeePositionModel()
+                    new Base.Models.Position()
                     {
                     ID = 1,
                     EmployeeID = 12,
                     HiredDate = "1",
                     FiredDate = "25",
-                    IsActual = true,
-                    LevelsPosition = 1,
-                    PositionID = 1
+                    IsActual = true
                     },
-                    new EmployeePositionModel()
+                    new Base.Models.Position()
                     {
                     ID = 2,
                     EmployeeID = 2,
                     HiredDate = "2",
                     FiredDate = "2",
-                    IsActual = true,
-                    LevelsPosition = 1,
-                    PositionID = 1
+                    IsActual = true
                     }
                 }
             };

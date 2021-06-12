@@ -25,7 +25,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     public partial class RegistrationWindow : Window
     {
         private Cache _cache;
-
+        private User _user;
         public RegistrationWindow()
         {
             InitializeComponent();
@@ -34,22 +34,21 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void CreateUser()
         {
-            User user = new User()
-            {
-                FirstName = TextBox_FirstName.Text,
-                LastName = TextBox_LastName.Text,
-                Email = TextBox_Login.Text,
-                Password = Cryptography.GetHash(TextBox_Password.Text),
-                Company = _cache.SelectedCompany
-            };
-            new UserService(new DBController(DBConfigurator.ConnectionString)).Create(user);
+            _user.FirstName = TextBox_FirstName.Text;
+            _user.LastName = TextBox_LastName.Text;
+            _user.Email = TextBox_Login.Text;
+            _user.Password = TextBox_Password.Text;
+            _user.Company = _cache.SelectedCompany;
+
+
+            new UserService(new DBController(DBConfigurator.ConnectionString)).Create(_user);
 
             _cache.SelectedCompany = null;
         }
 
         private void TextBox_Company_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepWindow = new AddDepartmentWindow((TextBox)sender);
+            AddDepartmentWindow addDepWindow = new AddDepartmentWindow(_user,(TextBox)sender);
             addDepWindow.ShowDialog();
         }
 

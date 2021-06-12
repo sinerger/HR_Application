@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -26,24 +26,37 @@ namespace HR_Application_DB_WPF.ModalWindows
     {
         private Cache _cache;
         private TextBox _textBoxCompany;
+        private Employee _employee;
+        private User _user;
 
-        public AddDepartmentWindow(TextBox textBoxCompany)
+        public AddDepartmentWindow(Employee emploee, TextBox textBoxCompany)
         {
-            InitializeComponent();
             _cache = Cache.GetCache();
             _textBoxCompany = textBoxCompany;
+            _employee = emploee;
+            InitializeComponent();
             InitializeComboBoxSources();
         }
+        public AddDepartmentWindow(User user, TextBox textBoxCompany)
+        {
+            _cache = Cache.GetCache();
+            _textBoxCompany = textBoxCompany;
+            _user = user;
 
+            InitializeComponent();
+            InitializeComboBoxSources();
+        }
         private void InitializeComboBoxSources()
         {
-            if (_cache.Companies == null)
-            {
-                _cache.Companies = new CompanyService(new DBController(DBConfigurator.ConnectionString)).GetAll();
-            }
-
             var cities = _cache.Companies.Select(city => city.Adress.City);
             ComboBox_Cities.ItemsSource = cities;
+
+            if (_cache.SelectedEmployee != null)
+            {
+                ComboBox_Cities.SelectedItem = _employee.Adress.City;
+                ComboBox_Companies.SelectedItem = _employee.Company;
+                ComboBox_Departments.SelectedItem = _employee.Department;
+            }
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -57,6 +70,17 @@ namespace HR_Application_DB_WPF.ModalWindows
             {
                 _cache.SelectedCompany = (Company)ComboBox_Companies.SelectedItem;
                 _textBoxCompany.Text = _cache.SelectedCompany.ToString();
+
+                if (_employee != null)
+                {
+                    _employee.Company = (Company)ComboBox_Companies.SelectedItem;
+                    _employee.Department = (Department)ComboBox_Departments.SelectedItem;
+                }
+
+                if(_user != null)
+                {
+                    _user.Company = (Company)ComboBox_Companies.SelectedItem;
+                }
 
                 this.Close();
             }

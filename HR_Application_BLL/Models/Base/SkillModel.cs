@@ -10,6 +10,16 @@ namespace HR_Application_BLL.Models.Base
         public string Title { get; set; }
         public string Description { get; set; }
 
+        public SkillModel Clone()
+        {
+            return new SkillModel()
+            {
+                ID = ID,
+                Title = Title,
+                Description = Description
+            };
+        }
+
         public override bool Equals(object obj)
         {
             bool result = false;
@@ -31,7 +41,7 @@ namespace HR_Application_BLL.Models.Base
 
         public override string ToString()
         {
-            return $"{Title} d.{Description}";
+            return $"{Title}";
         }
     }
 }

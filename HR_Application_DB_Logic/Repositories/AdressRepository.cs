@@ -10,13 +10,14 @@ namespace HR_Application_DB_Logic.Repositories
 {
     public class AdressRepository : IRepository<AdressDTO>
     {
-        public string ConnectionString { get; }
+        public string ConnectionString { get; private set; }
+
         public AdressRepository(string connectionString)
         {
             ConnectionString = connectionString;
         }
 
-        public bool Create(AdressDTO obj)
+        public int Create(AdressDTO obj)
         {
             throw new NotImplementedException();
         }

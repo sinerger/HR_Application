@@ -9,6 +9,15 @@ namespace HR_Application_BLL.Models.Base
         public int ID { get; set; }
         public string Title { get; set; }
 
+        public LevelSkillModel Clone()
+        {
+            return new LevelSkillModel()
+            {
+                ID = ID,
+                Title = Title
+            };
+        }
+
         public override string ToString()
         {
             return Title;

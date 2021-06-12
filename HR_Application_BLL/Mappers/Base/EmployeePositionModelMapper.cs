@@ -10,27 +10,27 @@ namespace HR_Application_BLL.Mappers
 {
   public class EmployeePositionModelMapper : BaseMapper
     {
-        public List<EmployeePositionModel> GetModelsFromDTO(List<EmployeePositionDTO> employeePositionsDTO)
+        public List<Position> GetModelsFromDTO(List<EmployeePositionDTO> employeePositionsDTO)
         {
             if (employeePositionsDTO != null)
             {
-                return _mapper.Map<List<EmployeePositionModel>>(employeePositionsDTO);
+                return _mapper.Map<List<Position>>(employeePositionsDTO);
             }
 
             throw new ArgumentNullException("List EmploeePosition DTO is null");
         }
 
-        public EmployeePositionModel GetModelFromDTO(EmployeePositionDTO employeePositionsDTO)
+        public Position GetModelFromDTO(EmployeePositionDTO employeePositionsDTO)
         {
             if (employeePositionsDTO != null)
             {
-                return _mapper.Map<EmployeePositionModel>(employeePositionsDTO);
+                return _mapper.Map<Position>(employeePositionsDTO);
             }
 
             throw new ArgumentNullException("EmploeePosition DTO is null");
         }
 
-        public EmployeePositionDTO GetDTOFromModel(EmployeePositionModel employeePositionModel)
+        public EmployeePositionDTO GetDTOFromModel(Position employeePositionModel)
         {
             if (employeePositionModel != null)
             {

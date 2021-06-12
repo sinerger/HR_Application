@@ -14,6 +14,7 @@ AS
 		[HRAppDB].[Users].[Password],
 		[HRAppDB].[Users].[IsActual]
 		)
+	OUTPUT INSERTED.[ID]
 	VALUES (
 		@FirstName,
 		@LastName,

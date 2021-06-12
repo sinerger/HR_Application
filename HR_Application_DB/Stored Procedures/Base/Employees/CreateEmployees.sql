@@ -17,6 +17,7 @@ INSERT INTO [HRAppDB].[Employees] (
 	   [HRAppDB].[Employees].[LocationID],
 	   [HRAppDB].[Employees].[IsActual]
 	   )
+	   OUTPUT INSERTED.[ID]
 	   VALUES (
        @Photo,
 	   @FirstName,
@@ -26,4 +27,3 @@ INSERT INTO [HRAppDB].[Employees] (
 	   @LocationID,
 	   @IsActual
 	   )
-

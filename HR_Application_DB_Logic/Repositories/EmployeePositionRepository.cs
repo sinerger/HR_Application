@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using HR_Application_DB_Logic.Models;
 using Dapper;
 using HR_Application_DB_Logic.Interfaces;
-using HR_Application_DB_Logic.Models;
+using System;
 
 namespace HR_Application_DB_Logic.Repositories
 {
     public class EmployeePositionRepository : IRepository<EmployeePositionDTO>
     {
-        public string ConnectionString { get; }
+        public string ConnectionString { get; private set; }
 
         public EmployeePositionRepository(string connectionString)
         {
@@ -19,52 +19,20 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeePositionDTO> GetAll()
         {
-            string query = "[HRAppDB].GetEmployeesPosition";
+            string query = "[HRAppDB].[GetEmployeesPositions]";
+
             List<EmployeePositionDTO> result = new List<EmployeePositionDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
-                        (ep, levelPos, position) =>
-                        {
-                            ep.LevelsPosition = levelPos;
-                            ep.PositionID = position;
-                            return ep;
-                        })
-                        .AsList<EmployeePositionDTO>();
+                    result = dbConnection.Query<EmployeePositionDTO>(query).AsList<EmployeePositionDTO>();
                 }
             }
-            catch 
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-        public List<EmployeePositionDTO> GetByEmployeeID(int employeeID)
-        {
-            string query = "[HRAppDB].GetEmployeesPositionByEmployeeID @EmployeeID";
-            List<EmployeePositionDTO> result = new List<EmployeePositionDTO>();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-                {
-                    result = dbConnection.Query<EmployeePositionDTO, int, int, EmployeePositionDTO>(query,
-                        (ep, levelPos, position) =>
-                        {
-                            ep.LevelsPosition = levelPos;
-                            ep.PositionID = position;
-                            return ep;
-                        },new { employeeID })
-                        .AsList<EmployeePositionDTO>();
-                }
-            }
-            catch
-            {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -72,22 +40,100 @@ namespace HR_Application_DB_Logic.Repositories
 
         public EmployeePositionDTO GetByID(int id)
         {
-            throw new NotImplementedException();
+            string query = "[HRAppDB].GetEmployeePositionByID @ID";
+            EmployeePositionDTO employeePosition = null;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    employeePosition = dbConnection.QuerySingle<EmployeePositionDTO>(query, new { id });                 
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return employeePosition;
         }
 
         public bool Update(EmployeePositionDTO obj)
         {
-            throw new NotImplementedException();
+            string query = "[HRAppDB].[UpdateEmployeePosition] @ID, @EmployeeID, @PositionID," +
+                "@HiredDate, @FiredDate, @IsActual, @LevelPosition";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new 
+                    { 
+                        obj.ID, 
+                        obj.EmployeeID, 
+                        obj.PositionID, 
+                        obj.HiredDate,
+                        obj.FiredDate, 
+                        obj.IsActual, 
+                        obj.LevelsPosition
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = "[HRAppDB].[DeleteEmployeePosition] @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
 
-        public bool Create(EmployeePositionDTO obj)
+        public int Create(EmployeePositionDTO obj)
         {
-            throw new NotImplementedException();
+            string query = "[HRAppDB].[CreateEmployeePosition] @EmployeeID, @PositionID," +
+                "@HiredDate, @FiredDate, @IsActual, @LevelPosition";
+            int returnedID = 0;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    returnedID=dbConnection.QuerySingle<int>(query, new 
+                    { 
+                        obj.EmployeeID, 
+                        obj.PositionID,
+                        obj.HiredDate, 
+                        obj.FiredDate, 
+                        obj.IsActual, 
+                        obj.LevelsPosition });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return returnedID;
         }
     }
 }

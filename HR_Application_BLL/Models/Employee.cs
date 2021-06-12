@@ -1,4 +1,5 @@
-﻿using HR_Application_BLL.Models.Base;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +16,50 @@ namespace HR_Application_BLL.Models
         public int StatusID { get; set; }
         public bool IsActual { get; set; }
         public GeneralInformationModel GeneralInformation { get; set; }
-        public PositionModel Position { get; set; }
+        public Position Position { get; set; }
         public Company Company { get; set; }
         public Adress Adress { get; set; }
         public ProjectModel Project { get; set; }
-        public List<Competence> Competence { get; set; }
+        public List<Competence> Competences { get; set; }
         public Department Department { get; set; }
         public List<CommentModel> Comments { get; set; }
 
+        public Employee()
+        {
+            GeneralInformation = new GeneralInformationModel();
+            Position = new Position();
+            Company = new Company();
+            Adress = new Adress();
+            Project = new ProjectModel();
+            Competences = new List<Competence>();
+            Department = new Department();
+            Comments = new List<CommentModel>();
+        }
+
+        public Employee Clone()
+        {
+            return new Employee()
+            {
+                ID = ID,
+                FirstName = FirstName,
+                LastName = LastName,
+                RegistrationDate = RegistrationDate,
+                StatusID = StatusID,
+                IsActual = IsActual,
+                GeneralInformation = GeneralInformation.Clone(),
+                Position = Position.Clone(),
+                Company = Company.Clone(),
+                Adress = Adress.Clone(),
+                Project = Project.Clone(),
+                Competences = new List<Competence>(Competences.Select(comp => comp.Clone())),
+                Department = Department.Clone(),
+                Comments = new List<CommentModel>(Comments.Select(com => com.Clone()))
+            };
+        }
+
         public override string ToString()
         {
-            return $"FirstName:{FirstName} LastName:{LastName} Email:{GeneralInformation.Email} RegistrationDate:{RegistrationDate} Position: {Position.Title} Company:{Company.Title} Adress:{Adress.Country} { Adress.City} {Adress.Street} {Adress.HourseNumber} {Adress.Block} {Adress.ApartmentNumber} Project{Project.Title}";
+            return $"{FirstName} {LastName}";
         }
         public override bool Equals(object obj)
         {
@@ -36,7 +70,6 @@ namespace HR_Application_BLL.Models
                 Employee employee = (Employee)obj;
 
                 if (employee.ID == ID
-                    && employee.Photo == Photo
                     && employee.FirstName == FirstName
                     && employee.LastName == LastName
                     && employee.RegistrationDate == RegistrationDate
@@ -47,7 +80,7 @@ namespace HR_Application_BLL.Models
                     && employee.Company.Equals(Company)
                     && employee.Adress.Equals(Adress)
                     && employee.Project.Equals(Project)
-                    && employee.Competence.SequenceEqual(Competence)
+                    && employee.Competences.SequenceEqual(Competences)
                     && employee.Department.Equals(Department)
                     && employee.Comments.SequenceEqual(Comments))
                 {

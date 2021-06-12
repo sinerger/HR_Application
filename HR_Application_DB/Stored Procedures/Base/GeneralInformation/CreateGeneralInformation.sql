@@ -12,6 +12,7 @@
 
 AS
 insert into [HRAppDB].[GeneralInformation]
+OUTPUT INSERTED.[ID]
 values(
 	@EmployeeID,
 	@Sex,

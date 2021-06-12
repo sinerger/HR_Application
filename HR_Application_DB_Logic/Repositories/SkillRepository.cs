@@ -17,16 +17,16 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public bool Create(SkillDTO skill)
+        public int Create(SkillDTO skill)
         {
             string query = "[HRAppDB].CreateSkill @Title, @Description";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { skill.Title, skill.Description });
+                    dbConnection.QuerySingle<int>(query, new { skill.Title, skill.Description });
                 }
             }
             catch (Exception e)
@@ -34,7 +34,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Delete(int id)

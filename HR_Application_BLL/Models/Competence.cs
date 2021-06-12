@@ -12,6 +12,24 @@ namespace HR_Application_BLL.Models
         public SkillModel Skill { get; set; }
         public LevelSkillModel LevelSkill { get; set; }
 
+        public Competence Clone()
+        {
+            return new Competence()
+            {
+                ID = ID,
+                EmployeeID = EmployeeID,
+                Date = Date,
+                UserID = UserID,
+                Skill = Skill.Clone(),
+                LevelSkill = LevelSkill.Clone()
+            };
+        }
+
+        public override string ToString()
+        {
+            return $"{Skill} {LevelSkill} - {Date}";
+        }
+
         public override bool Equals(object obj)
         {
             bool result = false;

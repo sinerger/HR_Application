@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HR_Application_BLL.Models;
+﻿using HR_Application_DB_WPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -49,16 +51,23 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         #endregion
         //=============>
         //=============>
-
-        private int _height = 50;
+        private Cache _cache;
+        private int _height = 35;
         private int _widthComboBox = 200;
-        private int _fontSize = 32;
+        private int _fontSize = 20;
         private string _backColorButton = "#E3405F";
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
 
-        public AddCompetenceWindow()
+        private Employee _employee;
+        private TextBox _textBoxCompetence;
+
+        public AddCompetenceWindow(Employee employee,TextBox textBoxCompetence)
         {
+            _cache = Cache.GetCache();
+            _employee = employee;
+            _textBoxCompetence = textBoxCompetence;
+
             InitializeComponent();
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));

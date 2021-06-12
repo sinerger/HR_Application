@@ -11,9 +11,20 @@ namespace HR_Application_BLL.Models.Base
         public string Information { get; set; }
         public string Date { get; set; }
 
+        public CommentModel Clone()
+        {
+            return new CommentModel()
+            {
+                ID = ID,
+                EmployeeID = ID,
+                Information = Information,
+                Date = Date
+            };
+        }
+
         public override string ToString()
         {
-            return $"{Information} d.{Date}";
+            return $"{Information} - {Date}";
         }
 
         public override bool Equals(object obj)

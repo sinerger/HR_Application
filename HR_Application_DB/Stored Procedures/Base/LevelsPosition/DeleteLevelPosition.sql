@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [HRAppDB].[DeleteLevelPosition]
+CREATE PROCEDURE [HRAppDB].[DeleteLevelPosition]
 	@ID int
 AS
 	DELETE
