@@ -1,8 +1,10 @@
 ﻿using HR_Application_DB_WPF.Classes;
 using HR_Application_DB_WPF.ModalWindows;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -136,6 +138,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 TextBox_City.Text = _cache.SelectedCompany.ToString();
             }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+          
+
         }
     }
 }
