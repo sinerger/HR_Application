@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<LevelsPositionDTO> GetAll()
         {
-            string query = "GetLevelPositions";
+            string query = "[HRAppDB].GetLevelPositions";
             List<LevelsPositionDTO> result = new List<LevelsPositionDTO>();
 
             try
@@ -29,9 +29,9 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.Query<LevelsPositionDTO>(query).AsList<LevelsPositionDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -39,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(LevelsPositionDTO levelsPosition)
         {
-            string query = "CreateLevelPosition @Title, @Description";
+            string query = "[HRAppDB].CreateLevelPosition @Title, @Description";
             bool result = true;
 
             try
@@ -49,9 +49,9 @@ namespace HR_Application_DB_Logic.Repositories
                     dbConnection.Execute(query, new { levelsPosition.Title, levelsPosition.Description });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -59,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(LevelsPositionDTO levelsPosition)
         {
-            string query = "UpdateLevelPosition @ID, @Title, @Description";
+            string query = "[HRAppDB].UpdateLevelPosition @ID, @Title, @Description";
             bool result = true;
 
             try
@@ -74,9 +74,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -84,7 +84,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteLevelsPosition @ID";
+            string query = "[HRAppDB].DeleteLevelsPosition @ID";
             bool result = true;
 
             try
@@ -94,9 +94,9 @@ namespace HR_Application_DB_Logic.Repositories
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -104,7 +104,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public LevelsPositionDTO GetByID(int id)
         {
-            string query = "GetLevelsPositionsByID @ID";
+            string query = "[HRAppDB].GetLevelsPositionsByID @ID";
             LevelsPositionDTO result = new LevelsPositionDTO();
 
             try
@@ -114,9 +114,9 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.QuerySingle<LevelsPositionDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -124,7 +124,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public LevelsPositionDTO GetByTitle(string title)
         {
-            string query = "GetLevelPositionsByTitle @Title";
+            string query = "[HRAppDB].GetLevelPositionsByTitle @Title";
             LevelsPositionDTO result = new LevelsPositionDTO();
 
             try
@@ -134,9 +134,9 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.QuerySingle<LevelsPositionDTO>(query, new { title });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;

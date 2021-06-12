@@ -19,7 +19,8 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeePositionDTO> GetAll()
         {
-            string query = "[HRAppDB].GetEmployeesPosition";
+            string query = "[HRAppDB].[GetEmployeesPositions]";
+
             List<EmployeePositionDTO> result = new List<EmployeePositionDTO>();
 
             try

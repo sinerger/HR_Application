@@ -1,4 +1,5 @@
-﻿using HR_Application_BLL.Mappers;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Mappers;
 using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
@@ -30,9 +31,7 @@ namespace HR_Application_BLL.Services
                 List<EmployeeDTO> employeesDTO = _dbController.EmployeeRepository.GetAll();
                 List<GeneralInformationModel> generalInformations = new GeneralInformationModelMapper()
                     .GetModelsFromDTO(_dbController.GeneralInformationRepository.GetAll());
-                List<PositionModel> positions = new PositionMapper()
-                    .GetModelsFromDTO(_dbController.PositionRepository.GetAll());
-                List<EmployeePositionDTO> employeesPositions = _dbController.EmployeePositionRepository.GetAll();
+                List<Position> positions = new PositionService(_dbController).GetAll();
                 List<Company> companies = new CompanyService(_dbController).GetAll();
                 List<CompanyDepartmentsDTO> companiesDepartments = _dbController.CompanyDepartmentsRepository.GetAll();
                 List<Adress> adresses = new AdressService(_dbController).GetAll();
@@ -50,14 +49,13 @@ namespace HR_Application_BLL.Services
 
                 foreach (Employee employee in employees)
                 {
-                    var employeePosition = employeesPositions.FirstOrDefault(emplPos => emplPos.EmployeeID == employee.ID);
                     var employeeDTO = employeesDTO.FirstOrDefault(empl => empl.ID == employee.ID);
                     var employeeProject = emploeesProjects.FirstOrDefault(empPr => empPr.EmployeeID == employee.ID);
                     var departmentProject = departmentsProjects.FirstOrDefault(depProj => depProj.ProjectsID.Contains(employeeProject.ProjectsID[0]));
                     var companyDepartments = companiesDepartments.FirstOrDefault(comp => comp.DepartmentsID.Contains((int)departmentProject.DepartmentID));
 
                     employee.GeneralInformation = generalInformations.FirstOrDefault(genInform => genInform.EmployeeID == employee.ID);
-                    employee.Position = positions.FirstOrDefault(pos => pos.ID == employeePosition.PositionID);
+                    employee.Position = positions.FirstOrDefault(pos => pos.EmployeeID==employee.ID);
                     employee.Company = companies.FirstOrDefault(comp => comp.ID == companyDepartments.CompanyID);
                     employee.Adress = adresses.FirstOrDefault(adress => adress.ID == employeeDTO.LocationID);
                     employee.Project = projects.FirstOrDefault(project => project.ID == employeeProject.ProjectsID[0]);
@@ -72,7 +70,6 @@ namespace HR_Application_BLL.Services
             }
             catch (Exception e)
             {
-
                 throw e;
             }
         }

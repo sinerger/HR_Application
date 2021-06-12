@@ -25,7 +25,7 @@ namespace HR_Application_DB_Logic
         public IRepository<DepartmentProjectsDTO> DepartmentProjectsRepository => new DepartmentProjectsRepository(_connectionString);
         public IRepository<DepartmentDTO> DepartmentRepository => new DepartmentRepository(_connectionString);
         public DirectionRepository DirectionRepository => new DirectionRepository(_connectionString);
-        public EmployeePositionRepository EmployeePositionRepository => new EmployeePositionRepository(_connectionString);
+        public IRepository<EmployeePositionDTO> EmployeePositionRepository => new EmployeePositionRepository(_connectionString);
         public EmployeeProjectRepository EmployeeProjectRepository => new EmployeeProjectRepository(_connectionString);
         public EmployeeRepository EmployeeRepository => new EmployeeRepository(_connectionString);
         public IRepository<EmployeeSkillDTO> EmployeeSkillRepository => new EmployeeSkillRepository(_connectionString);

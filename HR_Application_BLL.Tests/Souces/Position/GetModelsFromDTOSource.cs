@@ -32,21 +32,21 @@ namespace HR_Application_BLL.Tests.Souces.Position
                         Description = "strong"
                     }
                 },
-                new List<PositionModel>()
+                new List<Models.Base.PositionModel>()
                 {
-                    new PositionModel()
+                    new Models.Base.PositionModel()
                     {
                         ID = 1,
                         Title = "Middle",
                         Description = "Strong"
                     },
-                    new PositionModel()
+                    new Models.Base.PositionModel()
                     {
                         ID = 2,
                         Title = "junior",
                         Description = "lite"
                     },
-                    new PositionModel()
+                    new Models.Base.PositionModel()
                     {
                         ID = 3,
                         Title = "junior",

@@ -1,4 +1,5 @@
-﻿using HR_Application_BLL.Models.Base;
+﻿using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace HR_Application_BLL.Models
         public int StatusID { get; set; }
         public bool IsActual { get; set; }
         public GeneralInformationModel GeneralInformation { get; set; }
-        public PositionModel Position { get; set; }
+        public Position Position { get; set; }
         public Company Company { get; set; }
         public Adress Adress { get; set; }
         public ProjectModel Project { get; set; }
@@ -26,7 +27,7 @@ namespace HR_Application_BLL.Models
         public Employee()
         {
             GeneralInformation = new GeneralInformationModel();
-            Position = new PositionModel();
+            Position = new Position();
             Company = new Company();
             Adress = new Adress();
             Project = new ProjectModel();
