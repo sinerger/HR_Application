@@ -13,7 +13,7 @@
     </Window.Resources>
     <DockPanel VerticalAlignment="Stretch">
         <TabControl Style="{DynamicResource TabControlStyle}">
-            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemFindEmployee" Header="Find Employee">
+            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItem_FindEmployee" Header="Find Employee">
                 <Grid x:Name="FindEmployee" Background="#FFE9E9E9">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -25,7 +25,7 @@
                             <ColumnDefinition Width="4*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="txtName" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" Tag="Enter name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBoxName" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" Tag="Enter name"/>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Search" Grid.Row="0" Grid.Column="1" Margin ="10,15,0,15" Content="Search" Click="Button_Search_Click"/>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -93,7 +93,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Style="{DynamicResource LabelStyle}" Content="How many employees are in the " Grid.Column="0"/>
                         <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0" Width="250" HorizontalAlignment="Left">
-                            <ComboBoxItem Name="cbi1">Department</ComboBoxItem>
+                            <ComboBoxItem Name="ComboBoxItem_Department">Department</ComboBoxItem>
                         </ComboBox>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="0" Margin="30,0,0,0">
@@ -106,7 +106,7 @@
                         <Label Style="{DynamicResource LabelStyle}" Content="are in the application:" Grid.Column="0"/>
                         </StackPanel>
                         <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0" Width="250" HorizontalAlignment="Left">
-                            <ComboBoxItem Name="cbid1">Employee</ComboBoxItem>
+                            <ComboBoxItem Name="ComboBoxItem_Employee">Employee</ComboBoxItem>
                         </ComboBox>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="0" Margin="30,0,0,0">
@@ -208,11 +208,11 @@
                     </Grid>
                     <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"/>
-                            <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" Width="3*"/>
-                            <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}" Width="5*"/>
-                            <DataGridTextColumn Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*"/>
-                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="5*"/>
+                            <DataGridTextColumn x:Name="DataGridTextColumn_FullName" Header="Full Name" Binding="{Binding Path=FullName}" Width="6*"/>
+                            <DataGridTextColumn x:Name="DataGridTextColumn_Level" Header="Level" Binding="{Binding Path=Level}" Width="3*"/>
+                            <DataGridTextColumn x:Name="DataGridTextColumn_Direction" Header="Direction" Binding="{Binding Path=Direction}" Width="5*"/>
+                            <DataGridTextColumn x:Name="DataGridTextColumn_Date" Header="Date of birth" Binding="{Binding Path=DateOfBirth}" Width="5*"/>
+                            <DataGridTextColumn x:Name="DataGridTextColumn_Department" Header="Department" Binding="{Binding Path=Department}" Width="5*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -295,27 +295,27 @@
                         <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="Companies" Margin="15,0,0,0"/>
                         <DataGrid Grid.Row="1" Grid.Column="0" x:Name="CompanyGrid" Margin="10,10,0,30" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="CompanyID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
-                                <DataGridTextColumn Header="Title" Binding="{Binding Path=FullName}" Width="1*"/>
-                                <DataGridTextColumn Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_CompanyIDCompany" Header="CompanyID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_TitleCompany" Header="Title" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_DescriptionCompany" Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         
                         <Label Grid.Row="0" Grid.Column="1" Style="{DynamicResource LabelStyle}" Content="Departments"  Margin="15,0,0,0"/>
                         <DataGrid Grid.Row="1" Grid.Column="1" x:Name="DepartmentGrid" Margin="10,20,0,20" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="DepartmentID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
-                                <DataGridTextColumn Header="Title" Binding="{Binding Path=FullName}" Width="0.6*"/>
-                                <DataGridTextColumn Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_DepartmentIDDepartment" Header="DepartmentID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_TitleDepartment" Header="Title" Binding="{Binding Path=FullName}" Width="0.6*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_DescriptionDepartment" Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         
                         <Label Grid.Row="0" Grid.Column="2" Style="{DynamicResource LabelStyle}" Content="Projects" Margin="15,0,0,0"/>
                         <DataGrid Grid.Row="1" Grid.Column="2" x:Name="ProjectGrid" Margin="10,30,0,10" VerticalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ProjectID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
-                                <DataGridTextColumn Header="Title" Binding="{Binding Path=FullName}" Width="0.6*"/>
-                                <DataGridTextColumn Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_ProjectIDProject" Header="ProjectID" Visibility="Hidden" Binding="{Binding Path=FullName}" Width="1*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_TitleProject" Header="Title" Binding="{Binding Path=FullName}" Width="0.6*"/>
+                                <DataGridTextColumn x:Name="DataGridTextColumn_DescriptionProject" Header="Description" Binding="{Binding Path=FullName}" Width="1*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
@@ -334,9 +334,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <RadioButton Content="Companies" Grid.Column="1" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
-                            <RadioButton Content="Departments" Grid.Column="2" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
-                            <RadioButton Content="Projects" Grid.Column="3" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                            <RadioButton Content="Companies" x:Name="RadioButton_Companies"  Grid.Column="1" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                            <RadioButton Content="Departments" x:Name="RadioButton_Departments" Grid.Column="2" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
+                            <RadioButton Content="Projects" x:Name="RadioButton_Projects" Grid.Column="3" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center"/>
                         </Grid>
                         
                         <Grid Grid.Row="1" x:Name="tbGrid">
