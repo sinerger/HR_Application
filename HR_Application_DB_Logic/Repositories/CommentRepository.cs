@@ -77,16 +77,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CommentDTO comment)
+        public int Create(CommentDTO comment)
         {
+            int returnID = 0;
             string query = "[HRAppDB].CreateComment @EmployeeID, @Information, @Date";
-            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.QuerySingle<int>(query, new
                     {
                         comment.EmployeeID,
                         comment.Information,
@@ -99,7 +99,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(CommentDTO comment)

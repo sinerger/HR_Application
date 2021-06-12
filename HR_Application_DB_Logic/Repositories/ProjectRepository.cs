@@ -57,16 +57,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create (ProjectDTO project)
+        public int Create (ProjectDTO project)
         {
             string query = "[HRAppDB].CreateProjects @Title, @Description, @DirectionID";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using(IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new 
+                    dbConnection.QuerySingle<int>(query, new 
                     {
                         project.Title,
                         project.Description,
@@ -79,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(ProjectDTO project)

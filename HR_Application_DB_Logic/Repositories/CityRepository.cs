@@ -37,16 +37,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CityDTO city)
+        public int Create(CityDTO city)
         {
+            int returnID = 0;
             string query = "[HRAppDB].CreateCity @Name, @CountryID";
-            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { city.Name, city.CountryID });
+                    dbConnection.QuerySingle<int>(query, new { city.Name, city.CountryID });
                 }
             }
             catch (Exception e)
@@ -54,7 +54,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(CityDTO city)

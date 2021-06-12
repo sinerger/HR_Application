@@ -57,16 +57,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(CountryDTO country)
+        public int Create(CountryDTO country)
         {
             string query = "[HRAppDB].CreateCounty @Name";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { country.Name });
+                    dbConnection.QuerySingle<int>(query, new { country.Name });
                 }
             }
             catch (Exception e)
@@ -74,7 +74,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(CountryDTO country)

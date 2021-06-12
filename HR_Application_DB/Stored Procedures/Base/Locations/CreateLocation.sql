@@ -7,6 +7,7 @@
 	@PostIndex int
 AS
 INSERT INTO [HRAppDB].[Locations]
+OUTPUT INSERTED.[ID]
 	VALUES (
 		@CityID,
 		@Street,
