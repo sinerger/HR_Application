@@ -22,13 +22,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class EmployeeProfileWindow : Window
     {
+        private Cache _cashe;
         public EmployeeTest employee;
         private Employee _employeeFromSelect;
-        private Cache _cashe;
         public EmployeeProfileWindow()
         {
-            _cashe = Cache.GetCache();
             InitializeComponent();
+            _cashe = Cache.GetCache();
             _employeeFromSelect = _cashe.SelectedEmployee;
         }
 
@@ -70,7 +70,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)
         {
-            AddCommentWindow addCommentWindow = new AddCommentWindow();
+            AddCommentWindow addCommentWindow = new AddCommentWindow(employee, CommentsTextBox);
             addCommentWindow.ShowDialog();
         }
 
