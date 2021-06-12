@@ -12,6 +12,7 @@ INSERT INTO [HRAppDB].[Employees_Projects](
 [HRAppDB].[Employees_Projects].EndDate,
 [HRAppDB].[Employees_Projects].IsActual
 )
+OUTPUT INSERTED.[ID]
 VALUES(
 @EmployeeID, 
 @ProjectID,
