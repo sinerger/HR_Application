@@ -2,7 +2,7 @@
 	@Photo nvarchar (255),
 	@FirstName nvarchar (255),
 	@LastName nvarchar (255),
-	@RegistationDate nvarchar (255),
+	@RegistrationDate nvarchar (255),
 	@StatusID int,
 	@LocationID int,
 	@IsActual bit
@@ -12,7 +12,7 @@ INSERT INTO [HRAppDB].[Employees] (
 	   [HRAppDB].[Employees].[Photo],
 	   [HRAppDB].[Employees].[FirstName],
 	   [HRAppDB].[Employees].[LastName],
-	   [HRAppDB].[Employees].[RegistationDate],
+	   [HRAppDB].[Employees].[RegistrationDate],
 	   [HRAppDB].[Employees].[StatusID],
 	   [HRAppDB].[Employees].[LocationID],
 	   [HRAppDB].[Employees].[IsActual]
@@ -22,7 +22,7 @@ INSERT INTO [HRAppDB].[Employees] (
        @Photo,
 	   @FirstName,
 	   @LastName,
-	   @RegistationDate,
+	   @RegistrationDate,
 	   @StatusID,
 	   @LocationID,
 	   @IsActual

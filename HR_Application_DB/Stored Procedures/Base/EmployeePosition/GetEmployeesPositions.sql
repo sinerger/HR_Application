@@ -7,5 +7,5 @@ SELECT
     [HRAppDB].[Positions_Employees].HiredDate,
      [HRAppDB].[Positions_Employees].FiredDate,
       [HRAppDB].[Positions_Employees].IsActual,
-       [HRAppDB].[Positions_Employees].LevelsPosition
+       [HRAppDB].[Positions_Employees].LevelPositionID
 FROM [HRAppDB].[Positions_Employees]

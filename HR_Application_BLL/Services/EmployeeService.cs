@@ -133,8 +133,66 @@ namespace HR_Application_BLL.Services
 
         public bool Update(Employee employee)
         {
-            // TODO: Update employee
-            return true;
+            try
+            {
+                EmployeeDTO employeeDTO = _employeeMapper.GetDTOFromModel(employee);
+                _dbController.EmployeeRepository.Update(employeeDTO);
+
+                GeneralInformationDTO generalInformationDTO = new GeneralInformationModelMapper()
+                    .GetDTOFromModel(employee.GeneralInformation);
+                _dbController.GeneralInformationRepository.Update(generalInformationDTO);
+
+                EmployeePositionDTO employeePositionDTO = new EmployeePositionModelMapper()
+                    .GetDTOFromModel(employee.Position);
+                if (employeePositionDTO.ID != 0)
+                {
+                    _dbController.EmployeePositionRepository.Update(employeePositionDTO);
+                }
+                else
+                {
+                    _dbController.EmployeePositionRepository.Create(employeePositionDTO);
+                }
+
+                var employeeProjectDTO = _dbController.EmployeeProjectRepository.GetAll().FirstOrDefault(emplProj => emplProj.EmployeeID == employee.ID);
+                employeeProjectDTO.ProjectID = employee.Project.ID;
+
+                _dbController.EmployeeProjectRepository.Update(employeeProjectDTO);
+
+                foreach (Competence competence in employee.Competences)
+                {
+                    if (competence.ID != 0)
+                    {
+                        _dbController.EmployeeSkillRepository.Update(new CompetenceMapper()
+                            .GetDTOFromCompetence(competence));
+                    }
+                    else
+                    {
+                        _dbController.EmployeeSkillRepository.Create(new CompetenceMapper()
+                            .GetDTOFromCompetence(competence));
+                    }
+                }
+
+                foreach (CommentModel comment in employee.Comments)
+                {
+                    if (comment.ID != 0)
+                    {
+                        _dbController.CommentRepository.Update(new CommentMapper()
+                            .GetDTOFromModel(comment));
+                    }
+                    else
+                    {
+                        _dbController.CommentRepository.Create(new CommentMapper()
+                            .GetDTOFromModel(comment));
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
     }
 }

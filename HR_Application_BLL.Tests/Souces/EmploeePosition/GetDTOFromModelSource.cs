@@ -25,7 +25,7 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     HiredDate = "1",
                     FiredDate = "25",
                     IsActual = true,
-                    LevelsPosition = 0,
+                    LevelPositionID = 0,
                     PositionID = 0
                 }
              };
@@ -46,7 +46,7 @@ namespace HR_Application_BLL.Tests.Souces.EmploeePosition
                     HiredDate = "1",
                     FiredDate = "2",
                     IsActual = true,
-                    LevelsPosition = 0,
+                    LevelPositionID = 0,
                     PositionID = 0
                 }
             };

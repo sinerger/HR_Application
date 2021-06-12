@@ -48,7 +48,7 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<EmployeePositionDTO, Position>();
             CreateMap<Position, EmployeePositionDTO>().ForMember(dest=>dest.PositionID,option=>option.MapFrom(source=>source.Post.ID))
-                .ForMember(dest => dest.LevelsPosition, option => option.MapFrom(source => source.Level.ID));
+                .ForMember(dest => dest.LevelPositionID, option => option.MapFrom(source => source.Level.ID));
 
             CreateMap<UserModel, User>();
             CreateMap<User, UserModel>().ForMember(dest=>dest.IsActual,option=>option.MapFrom(source=>true));
@@ -69,7 +69,7 @@ namespace HR_Application_BLL.Mappers
             CreateMap<EmployeeModel, EmployeeDTO>();
 
             CreateMap<EmployeeDTO, Employee>();
-            CreateMap<Employee, EmployeeDTO>();
+            CreateMap<Employee, EmployeeDTO>().ForMember(dest=>dest.LocationID,option=>option.MapFrom(source=>source.Adress.ID));
 
             CreateMap<SkillDTO, SkillModel>();
             CreateMap<SkillModel, SkillDTO>();

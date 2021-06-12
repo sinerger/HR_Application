@@ -60,7 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
         public bool Update(EmployeeDTO employee)
         {
             bool result = true;
-            string query = "[HRAppDB].UpdateEmployees @ID, @Photo, @FirstName, @LastName, @RegistationDate, @StatusID, @LocationID, @IsActual";
+            string query = "[HRAppDB].UpdateEmployees @ID, @Photo, @FirstName, @LastName, @RegistrationDate, @StatusID, @LocationID, @IsActual";
 
             try
             {

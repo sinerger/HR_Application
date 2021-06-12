@@ -39,7 +39,7 @@ namespace HR_Application_BLL.Services
                 {
                     var employePosition = employeesPositionsDTO.FirstOrDefault(emplPos => emplPos.ID == position.ID);
                     position.Post = positionModels.FirstOrDefault(pos => pos.ID == employePosition.PositionID);
-                    position.Level = levelsPositions.FirstOrDefault(level => level.ID == employePosition.LevelsPosition);
+                    position.Level = levelsPositions.FirstOrDefault(level => level.ID == employePosition.LevelPositionID);
                 }
 
                 return positions;
