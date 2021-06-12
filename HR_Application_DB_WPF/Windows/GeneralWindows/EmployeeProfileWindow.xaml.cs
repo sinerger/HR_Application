@@ -138,7 +138,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             TextBox_Email.Text = _employee.GeneralInformation.Email;
             TextBox_Department.Text = _employee.Department.ToString();
             TextBox_Position.Text = _employee.Position.ToString();
-            TextBox_Competence.Text = competence.Remove(competence.Length - 3, competence.Length-1).ToString();
+            // TODO: FixBug
+            //TextBox_Competence.Text = competence.Remove(competence.Length - 3, competence.Length-1).ToString();
             TextBox_Project.Text = _employee.Project.ToString();
             TextBox_Comments.Text = comments.ToString();
         }
