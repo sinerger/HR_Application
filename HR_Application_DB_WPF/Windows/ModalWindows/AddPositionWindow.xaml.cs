@@ -60,12 +60,12 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         public void SetDataPosition(string[] positions)
         {
-            PositionComboBox.ItemsSource = positions;
+            ComboBox_Position.ItemsSource = positions;
         }
 
         public void SetDataLevelPosition(string[] levelsPosition)
         {
-            LevelPositionComboBox.ItemsSource = levelsPosition;
+            ComboBox_LevelPosition.ItemsSource = levelsPosition;
         }
 
         private void Button_Accept_Click(object sender, RoutedEventArgs e)
@@ -82,8 +82,8 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PositionComboBox.SelectedItem = _positionEmployee.Post;
-            LevelPositionComboBox.SelectedItem = _positionEmployee.Level;
+            ComboBox_Position.SelectedItem = _positionEmployee.Post;
+            ComboBox_LevelPosition.SelectedItem = _positionEmployee.Level;
         }
     }
 }

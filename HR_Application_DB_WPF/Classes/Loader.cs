@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HR_Application_BLL;
+using HR_Application_BLL.Models;
 using HR_Application_BLL.Services;
 using HR_Application_DB_Logic;
 
@@ -61,7 +62,19 @@ namespace HR_Application_DB_WPF.Classes
 
                 throw e;
             }
+        }
 
+        public void CreateEmployee(Employee employee)
+        {
+            try
+            {
+                employee.ID = new EmployeeService(_dbController).Create(employee);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
     }
 }

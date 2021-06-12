@@ -112,6 +112,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             InitializeUserData();
 
             DataGrid_Employees.ItemsSource = _cache.Employees;
+            AllEmployeeGrid.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
