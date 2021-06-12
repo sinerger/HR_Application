@@ -1,5 +1,7 @@
 ﻿using Dapper;
 using HR_Application_DB_Logic.Models;
+using HR_Application_DB_Logic.Models.Base;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,23 +17,23 @@ namespace HR_Application_DB_Logic.Repositories
             _connectionString = connectionString;
         }
 
-        public List<EmployeeProjectsWithDirectionDTO> GetALL()
+        public List<EmployeesProjectsDTO> GetALL()
         {
-            string query = "[HRAppDB].GetEmployeeProjects";
-            List<EmployeeProjectsWithDirectionDTO> employeesProjects = new List<EmployeeProjectsWithDirectionDTO>();
+            string query = "[HRAppDB].GetEmployeesProjects";
+            List<EmployeesProjectsDTO> employeesProjects = new List<EmployeesProjectsDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Query<EmployeeProjectsWithDirectionDTO, int, EmployeeProjectsWithDirectionDTO>(query,
+                    dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
                         (employeeProjects, projectID) =>
                         {
-                            EmployeeProjectsWithDirectionDTO currentEP = null;
+                            EmployeesProjectsDTO currentEP = null;
 
-                            foreach (EmployeeProjectsWithDirectionDTO eP in employeesProjects)
+                            foreach (EmployeesProjectsDTO currentEmployeePr in employeesProjects)
                             {
-                                if (eP.EmployeeID == employeeProjects.EmployeeID)
+                                if (currentEmployeePr.EmployeeID == employeeProjects.EmployeeID)
                                 {
                                     currentEP = employeeProjects;
                                     currentEP.ProjectsID.Add(projectID);
@@ -48,36 +50,34 @@ namespace HR_Application_DB_Logic.Repositories
                             }
 
                             return employeeProjects;
-                        }
-                        , splitOn: "IDEmployeeProject,ProjectID")
-                        .AsList<EmployeeProjectsWithDirectionDTO>();
+                        }).AsList<EmployeesProjectsDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                employeesProjects = null;
+                throw e;
             }
 
             return employeesProjects;
         }
 
-        public List<EmployeeProjectsWithDirectionDTO> GetALLByCompanyID(int employeeID)
+        public EmployeesProjectsDTO GetByID(int id)
         {
-            string query = "[HRAppDB].GetEmployeesProjectsByEmployeeID @employeeID";
-            List<EmployeeProjectsWithDirectionDTO> employeesProjects = new List<EmployeeProjectsWithDirectionDTO>();
+            string query = "[HRAppDB].[GetEmployeeProjectByID] @ID";
+            List<EmployeesProjectsDTO> employeesProjects = new List<EmployeesProjectsDTO>();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(_connectionString))
                 {
-                    dbConnection.Query<EmployeeProjectsWithDirectionDTO,int, EmployeeProjectsWithDirectionDTO>(query,
+                    dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
                         (employeeProjects, projectID) =>
                         {
-                            EmployeeProjectsWithDirectionDTO currentEP = null;
+                            EmployeesProjectsDTO currentEP = null;
 
-                            foreach (EmployeeProjectsWithDirectionDTO eP in employeesProjects)
+                            foreach (EmployeesProjectsDTO currentEmployeePr in employeesProjects)
                             {
-                                if (eP.EmployeeID == employeeProjects.EmployeeID)
+                                if (currentEmployeePr.EmployeeID == employeeProjects.EmployeeID)
                                 {
                                     currentEP = employeeProjects;
                                     currentEP.ProjectsID.Add(projectID);
@@ -94,18 +94,16 @@ namespace HR_Application_DB_Logic.Repositories
                             }
 
                             return employeeProjects;
-                        }
-                        , new { employeeID }
-                        , splitOn: "IDEmployeeProject,ProjectID")
-                        .AsList<EmployeeProjectsWithDirectionDTO>();
+                        }, new { id })
+                        .AsList<EmployeesProjectsDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                employeesProjects = null;
+                throw e;
             }
 
-            return employeesProjects;
+            return employeesProjects[0];
         }
     }
 }

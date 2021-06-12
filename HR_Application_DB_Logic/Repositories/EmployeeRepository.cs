@@ -1,35 +1,37 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class EmployeeRepository
+    public class EmployeeRepository :IRepository<EmployeeDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public EmployeeRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public EmployeeDTO GetByID(int id)
         {
-            string query = "GetEmployeeByID @ID";
+            string query = "[HRAppDB].GetEmployeeByID @ID";
 
             var result = new EmployeeDTO();
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.QuerySingle<EmployeeDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -37,19 +39,19 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<EmployeeDTO> GetAll()
         {
-            string query = "GetEmployees";
+            string query = "[HRAppDB].GetEmployees";
             List<EmployeeDTO> result = new List<EmployeeDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     result = dbConnection.Query<EmployeeDTO>(query).AsList<EmployeeDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -58,11 +60,11 @@ namespace HR_Application_DB_Logic.Repositories
         public bool Create(EmployeeDTO employee)
         {
             bool result = true;
-            string query = "CreateEmployees @Photo, @FirstName, @LastName, @RegistationDate, @StatusID, @LocationID, @IsActual";
+            string query = "[HRAppDB].CreateEmployees @Photo, @FirstName, @LastName, @RegistationDate, @StatusID, @LocationID, @IsActual";
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
@@ -76,9 +78,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -87,11 +89,11 @@ namespace HR_Application_DB_Logic.Repositories
         public bool Update(EmployeeDTO employee)
         {
             bool result = true;
-            string query = "UpdateEmployees @ID, @Photo, @FirstName, @LastName, @RegistationDate, @StatusID, @LocationID, @IsActual";
+            string query = "[HRAppDB].UpdateEmployees @ID, @Photo, @FirstName, @LastName, @RegistationDate, @StatusID, @LocationID, @IsActual";
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new
                     {
@@ -106,9 +108,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -117,18 +119,18 @@ namespace HR_Application_DB_Logic.Repositories
         public bool Delete(int id)
         {
             bool result = true;
-            string query = "DeleteEmployees @ID";
+            string query = "[HRAppDB].DeleteEmployees @ID";
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;

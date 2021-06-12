@@ -15,7 +15,7 @@ namespace HR_Application_BLL.Mappers.Base
                 return _mapper.Map<List<GeneralInformationModel>>(generalInformationDTO);
             }
 
-            throw new ArgumentNullException("List generalInformation is null");
+            throw new ArgumentNullException("List general Information is null");
         }
 
         public GeneralInformationModel GetModelFromDTO(GeneralInformationDTO generalInformationDTO)
@@ -25,7 +25,7 @@ namespace HR_Application_BLL.Mappers.Base
                 return _mapper.Map<GeneralInformationModel>(generalInformationDTO);
             }
 
-            throw new ArgumentNullException("GeneralInformation is null");
+            throw new ArgumentNullException("General Information is null");
         }
 
         public GeneralInformationDTO GetDTOFromModel(GeneralInformationModel generalInformationModel)
@@ -35,7 +35,7 @@ namespace HR_Application_BLL.Mappers.Base
                 return _mapper.Map<GeneralInformationDTO>(generalInformationModel);
             }
 
-            throw new ArgumentNullException("GeneralInformation model is null");
+            throw new ArgumentNullException("General Information model is null");
         }
     }
 }

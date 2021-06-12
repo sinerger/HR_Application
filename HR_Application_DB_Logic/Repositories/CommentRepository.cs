@@ -19,7 +19,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public CommentDTO GetByID(int id)
         {
-            string query = "GetCommentByID";
+            string query = "[HRAppDB].GetCommentByID";
             CommentDTO result = new CommentDTO();
 
             try
@@ -29,29 +29,9 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.QuerySingle<CommentDTO>(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
-            }
-
-            return result;
-        }
-
-        public CommentDTO GetByEmployeeID(int id)
-        {
-            string query = "GetCommentByEmployeeID";
-            CommentDTO result = new CommentDTO();
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-                {
-                    result = dbConnection.QuerySingle<CommentDTO>(query, new { id });
-                }
-            }
-            catch
-            {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -59,7 +39,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public List<CommentDTO> GetAll()
         {
-            string query = "GetComments";
+            string query = "[HRAppDB].GetComments";
             List<CommentDTO> result = new List<CommentDTO>();
 
             try
@@ -69,9 +49,9 @@ namespace HR_Application_DB_Logic.Repositories
                     result = dbConnection.Query<CommentDTO>(query).AsList<CommentDTO>();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = null;
+                throw e;
             }
 
             return result;
@@ -79,7 +59,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Delete(int id)
         {
-            string query = "DeleteComment @ID";
+            string query = "[HRAppDB].DeleteComment @ID";
             bool result = true;
 
             try
@@ -89,9 +69,9 @@ namespace HR_Application_DB_Logic.Repositories
                     dbConnection.Execute(query, new { id });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -99,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Create(CommentDTO comment)
         {
-            string query = "CreateComment @EmployeeID, @Information, @Date";
+            string query = "[HRAppDB].CreateComment @EmployeeID, @Information, @Date";
             bool result = true;
 
             try
@@ -114,9 +94,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;
@@ -124,7 +104,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(CommentDTO comment)
         {
-            string query = "UpdateComment @ID, @EmployeeID, @Information, @Date";
+            string query = "[HRAppDB].UpdateComment @ID, @EmployeeID, @Information, @Date";
             bool result = true;
 
             try
@@ -140,9 +120,9 @@ namespace HR_Application_DB_Logic.Repositories
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
-                result = false;
+                throw e;
             }
 
             return result;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR_Application_DB_WPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -49,7 +50,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         #endregion
         //=============>
         //=============>
-
+        private Cache _cache;
         private int _height = 50;
         private int _widthComboBox = 200;
         private int _fontSize = 32;
@@ -62,6 +63,15 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             InitializeComponent();
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
                 new RoutedEventHandler(RemoveLineStackPanelEvent));
+            _cache = Cache.GetCache();
+        }
+
+        private void SetSourceCompetences()
+        {
+            for (int i = 0; i < _cache.SelectedEmployee.Competences.Count; i++)
+            {
+
+            }
         }
 
         private void AddLineSkillStackPanelEvent(object sender, RoutedEventArgs e)

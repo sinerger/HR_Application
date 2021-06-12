@@ -19,7 +19,7 @@ namespace HR_Application_BLL.Models
         public Company Company { get; set; }
         public Adress Adress { get; set; }
         public ProjectModel Project { get; set; }
-        public List<Competence> Competence { get; set; }
+        public List<Competence> Competences { get; set; }
         public Department Department { get; set; }
         public List<CommentModel> Comments { get; set; }
 
@@ -30,7 +30,7 @@ namespace HR_Application_BLL.Models
             Company = new Company();
             Adress = new Adress();
             Project = new ProjectModel();
-            Competence = new List<Competence>();
+            Competences = new List<Competence>();
             Department = new Department();
             Comments = new List<CommentModel>();
         }
@@ -58,7 +58,7 @@ namespace HR_Application_BLL.Models
                     && employee.Company.Equals(Company)
                     && employee.Adress.Equals(Adress)
                     && employee.Project.Equals(Project)
-                    && employee.Competence.SequenceEqual(Competence)
+                    && employee.Competences.SequenceEqual(Competences)
                     && employee.Department.Equals(Department)
                     && employee.Comments.SequenceEqual(Comments))
                 {
