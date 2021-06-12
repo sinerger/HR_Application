@@ -31,7 +31,7 @@ namespace HR_Application_BLL.Models.Base
 
         public override string ToString()
         {
-            return $"{Title} d.{Description}";
+            return $"{Title}";
         }
     }
 }

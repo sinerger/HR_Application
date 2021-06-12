@@ -12,6 +12,7 @@ namespace HR_Application_DB_WPF.Classes
         public List<Company> Companies { get; set; }
         public Company SelectedCompany { get; set; }
         public List<User> Users { get; set; }
+        public Employee SelectedEmployee { get; set; }
 
         public User CurrentUser { get; set; }
         private Cache()

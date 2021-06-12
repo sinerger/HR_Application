@@ -1,4 +1,5 @@
 ﻿using HR_Application_BLL.Models;
+using HR_Application_DB_WPF.Classes;
 using HR_Application_DB_WPF.ModalWindows;
 using HR_Application_DB_WPF.Windows.ModalWindows;
 using System;
@@ -22,9 +23,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     public partial class EmployeeProfileWindow : Window
     {
         public EmployeeTest employee;
+        private Employee _employeeFromSelect;
+        private Cache _cashe;
         public EmployeeProfileWindow()
         {
+            _cashe = Cache.GetCache();
             InitializeComponent();
+            _employeeFromSelect = _cashe.SelectedEmployee;
         }
 
         public EmployeeProfileWindow(EmployeeTest fromEmployee)
@@ -81,23 +86,25 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             //this.Close();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e) //TODO: Change employee to _employeeFromSelect
         {
             string competence = string.Empty;
             StringBuilder stringBuilderCompetence = new StringBuilder(competence);
 
             foreach (var comp in employee.Competence)
             {
-                stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill} ");
+                stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
             }
+            competence = stringBuilderCompetence.ToString();
 
             string comments = string.Empty;
             StringBuilder stringBuilderComments = new StringBuilder(comments);
 
             foreach(var comm in employee.Comments)
             {
-                stringBuilderComments.Append($"{comm.Information} - {comm.Date} ");
+                stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
             }
+            comments = stringBuilderComments.ToString();
 
             FirstNameTextBox.Text = employee.FirstName;
             LastNameTextBox.Text = employee.LastName;
@@ -107,9 +114,9 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             EmailTextBox.Text = employee.GeneralInformation.Email;
             DepartmentTextBox.Text = employee.Department.Title;
             PositionTextBox.Text = employee.Position.Title;
-            CompetenceTextBox.Text = stringBuilderCompetence.ToString();
+            CompetenceTextBox.Text = competence.Remove(competence.Length - 2);
             ProjectNameTextBox.Text = employee.Project.Title;
-            CommentsTextBox.Text = stringBuilderComments.ToString();
+            CommentsTextBox.Text = comments;
         }
     }
 }

@@ -82,11 +82,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 {
                     new CommentModel()
                     {
-                        Information = "Good employee with perfect soft skills"
+                        Information = "Good employee with perfect soft skills",
+                        Date = "20.11.2020"
                     },
                     new CommentModel()
                     {
-                        Information = "Nice Bro with strong hard skills"
+                        Information = "Nice Bro with strong hard skills",
+                        Date = "20.01.2020"
                     }
                 };
 
@@ -216,6 +218,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             if (!(DataGrid_Employees.SelectedItem is null))
             {
+                //_cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
                 EmployeeTest employee = DataGrid_Employees.SelectedItem as EmployeeTest;
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(employee);
                 editEmployeeWindow.ShowDialog();
