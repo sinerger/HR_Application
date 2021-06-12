@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HR_Application_BLL.Models
 {
-    public class Employee
+    public class Employee : ICloneable
     {
         public int ID { get; set; }
         public string Photo { get; set; }
@@ -68,6 +68,11 @@ namespace HR_Application_BLL.Models
             }
 
             return result;
+        }
+
+        object ICloneable.Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }
