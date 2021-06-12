@@ -131,12 +131,17 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (!(DataGrid_Employees.SelectedItem is null))
+            _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
+            if (!(_cache.SelectedEmployee is null))
             {
                 _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
                 
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow();
                 editEmployeeWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
             }
         }
     }
