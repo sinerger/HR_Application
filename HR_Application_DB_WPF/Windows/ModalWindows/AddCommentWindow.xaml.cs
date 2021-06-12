@@ -23,18 +23,20 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
     /// </summary>
     public partial class AddCommentWindow : Window
     {
-        private EmployeeTest _employee;
         private TextBox _textBoxProfileWindow;
         public EmployeeProfileWindow profileWindow;
-        public AddCommentWindow()
+        private Cache _cashe;
+        private Employee _employeeFromSelect;
+        public AddCommentWindow(TextBox textBoxComment)
         {
             InitializeComponent();
+            _cashe = Cache.GetCache();
+            _employeeFromSelect = _cashe.SelectedEmployee;
+            _textBoxProfileWindow = textBoxComment;
         }
 
-        public AddCommentWindow(EmployeeTest employeeFromEditProfile, TextBox textBoxComment)
+        public AddCommentWindow()
         {
-            _employee = employeeFromEditProfile;
-            _textBoxProfileWindow = textBoxComment;
             InitializeComponent();
         }
 
@@ -45,15 +47,15 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
                 CommentModel comment = new CommentModel()
                 {
                     Information = CommentsTextBox.Text,
-                    EmployeeID = _employee.ID,
+                    EmployeeID = _employeeFromSelect.ID,
                     Date = DateTime.Now.Date.ToString("dd.mm.yyy")
                 };
-                _employee.Comments.Add(comment);
+                _employeeFromSelect.Comments.Add(comment);
 
                 string comments = string.Empty;
                 StringBuilder stringBuilderComments = new StringBuilder(comments);
 
-                foreach (var comm in _employee.Comments)
+                foreach (var comm in _employeeFromSelect.Comments)
                 {
                     stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
                 }

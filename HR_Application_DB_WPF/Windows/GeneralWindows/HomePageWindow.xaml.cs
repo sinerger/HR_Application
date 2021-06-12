@@ -1,8 +1,10 @@
 ﻿using HR_Application_BLL.Models;
+using HR_Application_BLL.Services;
 using HR_Application_BLL.Models.Base;
 using HR_Application_DB_WPF.Classes;
 using HR_Application_DB_WPF.ModalWindows;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +16,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class HomePageWindow : Window
     {
+        /*TestDATA For Employee
         public class EmployeeTest
         {
             public int ID { get; set; }
@@ -91,31 +94,24 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                         Date = "20.01.2020"
                     }
                 };
-
             }
         }
+        */
 
         private Cache _cache;
+        private Employee _employeeFromSelect;
 
         public HomePageWindow()
         {
             InitializeComponent();
             _cache = Cache.GetCache();
-            EmployeeTest employee = new EmployeeTest();
-            DataContext = employee;
+            //EmployeeTest employee = new EmployeeTest();
+            _employeeFromSelect = _cache.SelectedEmployee;
+            DataContext = _employeeFromSelect;
 
             InitializeUserData();
 
-            DataGrid_Employees.ItemsSource = new List<EmployeeTest>()
-            {
-                new EmployeeTest()
-                {
-                    ID = 1,
-                    FirstName = "aaa",
-                    LastName = "qqq",
-                    RegistrationDate = "20.12.2019"
-                }
-            };
+            DataGrid_Employees.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
@@ -217,10 +213,9 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
             if (!(DataGrid_Employees.SelectedItem is null))
-            {   //TODO: Ucommit this string
-                //_cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
-                EmployeeTest employee = DataGrid_Employees.SelectedItem as EmployeeTest;
-                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(employee);
+            {
+                _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
+                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow();
                 editEmployeeWindow.ShowDialog();
             }
         }

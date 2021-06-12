@@ -80,7 +80,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeHistoryTabItem" Header="Employee history">
+            <!--<TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeHistoryTabItem" Header="Employee history">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -92,7 +92,7 @@
                         <TextBox Grid.Row="0" Grid.Column="0" Style="{DynamicResource RoundTextBoxStyle}" x:Name="HistoryTextBox" Height="200"/>
                     </StackPanel>
                 </Grid>
-            </TabItem>
+            </TabItem>-->
         </TabControl>
     </Grid>
 </Window>

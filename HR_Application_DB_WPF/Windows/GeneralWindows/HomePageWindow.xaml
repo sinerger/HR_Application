@@ -44,7 +44,7 @@
                                 <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="5*" />
                                 <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="5*" />
                                 <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Width="3*" />
-                                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=GeneralInformation.DateOfBirth}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=DateOfBirth}" Visibility="Hidden"/>
                                 <DataGridTextColumn Header="Phone" Binding="{Binding Path=Phone}" Visibility="Hidden"/>
                                 <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}" Visibility="Hidden"/>
                                 <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Visibility="Hidden"/>

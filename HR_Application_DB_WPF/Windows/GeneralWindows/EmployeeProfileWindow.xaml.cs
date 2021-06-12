@@ -22,20 +22,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class EmployeeProfileWindow : Window
     {
-        private Cache _cashe;
-        public EmployeeTest employee;
+        private Cache _cache;
         private Employee _employeeFromSelect;
         public EmployeeProfileWindow()
         {
             InitializeComponent();
-            _cashe = Cache.GetCache();
-            _employeeFromSelect = _cashe.SelectedEmployee;
-        }
-
-        public EmployeeProfileWindow(EmployeeTest fromEmployee)
-        {
-            employee = fromEmployee;
-            InitializeComponent();
+            _cache = Cache.GetCache();
+            _employeeFromSelect = _cache.SelectedEmployee;
         }
 
         private void TabItem_MouseEnter(object sender, MouseEventArgs e)
@@ -58,7 +51,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(_employeeFromSelect.Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow();
             addPositionWindow.ShowDialog();
         }
 
@@ -70,7 +63,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)
         {
-            AddCommentWindow addCommentWindow = new AddCommentWindow(employee, CommentsTextBox);
+            AddCommentWindow addCommentWindow = new AddCommentWindow(CommentsTextBox);
             addCommentWindow.ShowDialog();
         }
 
@@ -91,7 +84,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             string competence = string.Empty;
             StringBuilder stringBuilderCompetence = new StringBuilder(competence);
 
-            foreach (var comp in employee.Competence)
+            foreach (var comp in _employeeFromSelect.Competences)
             {
                 stringBuilderCompetence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
             }
@@ -100,22 +93,25 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             string comments = string.Empty;
             StringBuilder stringBuilderComments = new StringBuilder(comments);
 
-            foreach(var comm in employee.Comments)
+            foreach(var comm in _employeeFromSelect.Comments)
             {
                 stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
             }
             comments = stringBuilderComments.ToString();
 
-            FirstNameTextBox.Text = employee.FirstName;
-            LastNameTextBox.Text = employee.LastName;
-            RegistrationDateTextBox.Text = employee.RegistrationDate;
-            DateOfBirthDatePicker.SelectedDate = Convert.ToDateTime(employee.GeneralInformation.BirthDate);
-            PhoneTextBox.Text = employee.GeneralInformation.Phone;
-            EmailTextBox.Text = employee.GeneralInformation.Email;
-            DepartmentTextBox.Text = employee.Department.Title;
-            PositionTextBox.Text = employee.Position.Title;
+            FirstNameTextBox.Text = _employeeFromSelect.FirstName;
+            LastNameTextBox.Text = _employeeFromSelect.LastName;
+            RegistrationDateTextBox.Text = _employeeFromSelect.RegistrationDate;
+            if (!(_employeeFromSelect.GeneralInformation is null))
+            {
+            DateOfBirthDatePicker.SelectedDate = Convert.ToDateTime(_employeeFromSelect.GeneralInformation.BirthDate);
+            PhoneTextBox.Text = _employeeFromSelect.GeneralInformation.Phone;
+            EmailTextBox.Text = _employeeFromSelect.GeneralInformation.Email; 
+            }
+            DepartmentTextBox.Text = _employeeFromSelect.Department.Title;
+            PositionTextBox.Text = _employeeFromSelect.Position.ToString();
             CompetenceTextBox.Text = competence.Remove(competence.Length - 2);
-            ProjectNameTextBox.Text = employee.Project.Title;
+            ProjectNameTextBox.Text = _employeeFromSelect.Project.Title;
             CommentsTextBox.Text = comments;
         }
     }
