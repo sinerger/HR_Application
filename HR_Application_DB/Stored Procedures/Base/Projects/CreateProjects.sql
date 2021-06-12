@@ -4,6 +4,7 @@
 	@DirectionID int
 AS
 INSERT INTO [HRAppDB].[Projects]
+	   OUTPUT INSERTED.[ID]
 	   VALUES (
        @Title,
 	   @Description,

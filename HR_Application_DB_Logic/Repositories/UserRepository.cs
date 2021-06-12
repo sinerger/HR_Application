@@ -17,16 +17,16 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public bool Create(UserDTO user)
+        public int Create(UserDTO user)
         {
             string query = "[HRAppDB].[CreateUsers] @FirstName, @LastName, @CompanyID, @Email, @Password, @IsActual";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.QuerySingle<int>(query, new
                     {
                         user.FirstName,
                         user.LastName,
@@ -42,7 +42,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(UserDTO user)

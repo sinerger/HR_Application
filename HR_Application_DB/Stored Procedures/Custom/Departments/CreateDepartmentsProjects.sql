@@ -5,6 +5,7 @@
 
 AS
 	insert into [HRAppDB].[Departments_Projects]
+	OUTPUT INSERTED.[ID]
 	values (
 	@ProjectID,
 	@DepartmentID,

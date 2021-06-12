@@ -109,16 +109,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
         
-        public bool Create(GeneralInformationDTO generalInformation)
+        public int Create(GeneralInformationDTO generalInformation)
         {
+            int returnID = 0;
             string query = "[HRAppDB].CreateGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
-            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new
+                    dbConnection.QuerySingle<int>(query, new
                     {
                         generalInformation.ID,
                         generalInformation.EmployeeID,
@@ -138,7 +138,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
     }
 }

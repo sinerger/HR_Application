@@ -57,35 +57,6 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(EmployeeDTO employee)
-        {
-            bool result = true;
-            string query = "[HRAppDB].CreateEmployees @Photo, @FirstName, @LastName, @RegistationDate, @StatusID, @LocationID, @IsActual";
-
-            try
-            {
-                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
-                {
-                    dbConnection.Execute(query, new
-                    {
-                        employee.Photo,
-                        employee.FirstName,
-                        employee.LastName,
-                        employee.RegistrationDate,
-                        employee.StatusID,
-                        employee.LocationID,
-                        employee.IsActual
-                    });
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return result;
-        }
-
         public bool Update(EmployeeDTO employee)
         {
             bool result = true;
@@ -134,6 +105,35 @@ namespace HR_Application_DB_Logic.Repositories
             }
 
             return result;
+        }
+
+        public int Create(EmployeeDTO employee)
+        {
+            int retunrID = 0;
+            string query = "[HRAppDB].CreateEmployees @Photo, @FirstName, @LastName, @RegistrationDate, @StatusID, @LocationID, @IsActual";
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    retunrID = dbConnection.QuerySingle<int>(query, new
+                    {
+                        employee.Photo,
+                        employee.FirstName,
+                        employee.LastName,
+                        employee.RegistrationDate,
+                        employee.StatusID,
+                        employee.LocationID,
+                        employee.IsActual
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return retunrID;
         }
     }
 }

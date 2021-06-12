@@ -17,16 +17,16 @@ namespace HR_Application_DB_Logic.Repositories
             ConnectionString = connectionString;
         }
 
-        public bool Create(CompanyDTO company)
+        public int Create(CompanyDTO company)
         {
+            int returnID = 0;
             string query = "[HRAppDB].CreateCompany @Title, @LocationID, @Description, @IsActual";
-            bool result = true;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new 
+                    dbConnection.QuerySingle<int>(query, new 
                     { 
                         company.Title,
                         company.LocationID,
@@ -40,7 +40,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(CompanyDTO company)

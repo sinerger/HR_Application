@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Base;
 using System;
@@ -8,49 +9,65 @@ using System.Data.SqlClient;
 
 namespace HR_Application_DB_Logic.Repositories
 {
-    public class EmployeeProjectRepository
+    public class EmployeeProjectRepository : IRepository<EmployeesProjectsDTO>
     {
-        private string _connectionString;
+        public string ConnectionString { get; private set; }
 
         public EmployeeProjectRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
-        public List<EmployeesProjectsDTO> GetALL()
+        public int Create(EmployeesProjectsDTO EmployeesProjects)
         {
-            string query = "[HRAppDB].GetEmployeesProjects";
+            string query = "[HRAppDB].[CreateEmployeeProject] @EmployeeID, @ProjectID, @StartDate, @EndDate, @IsActual";
+            int returnID = 0;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.QuerySingle<int>(query, new { EmployeesProjects.EmployeeID, EmployeesProjects.ProjectID, EmployeesProjects.StartDate, EmployeesProjects.EndDate, EmployeesProjects.IsActual });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return returnID;
+        }
+
+        public bool Delete(int id)
+        {
+            string query = "[HRAppDB].[DeleteEmployeeProject] @ID";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { id });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public List<EmployeesProjectsDTO> GetAll()
+        {
+            string query = "[HRAppDB].[GetEmployeesProjects]";
             List<EmployeesProjectsDTO> employeesProjects = new List<EmployeesProjectsDTO>();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
-                        (employeeProjects, projectID) =>
-                        {
-                            EmployeesProjectsDTO currentEP = null;
-
-                            foreach (EmployeesProjectsDTO currentEmployeePr in employeesProjects)
-                            {
-                                if (currentEmployeePr.EmployeeID == employeeProjects.EmployeeID)
-                                {
-                                    currentEP = employeeProjects;
-                                    currentEP.ProjectsID.Add(projectID);
-                                    break;
-                                }
-                            }
-
-                            if (currentEP == null)
-                            {
-                                currentEP = employeeProjects;
-                                employeesProjects.Add(currentEP);
-                                currentEP.ProjectsID = new List<int>();
-                                currentEP.ProjectsID.Add(projectID);
-                            }
-
-                            return employeeProjects;
-                        }).AsList<EmployeesProjectsDTO>();
+                    employeesProjects = dbConnection.Query<EmployeesProjectsDTO>(query).AsList<EmployeesProjectsDTO>();
                 }
             }
             catch (Exception e)
@@ -64,38 +81,13 @@ namespace HR_Application_DB_Logic.Repositories
         public EmployeesProjectsDTO GetByID(int id)
         {
             string query = "[HRAppDB].[GetEmployeeProjectByID] @ID";
-            List<EmployeesProjectsDTO> employeesProjects = new List<EmployeesProjectsDTO>();
+            EmployeesProjectsDTO employeesProjects = new EmployeesProjectsDTO();
 
             try
             {
-                using (IDbConnection dbConnection = new SqlConnection(_connectionString))
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
-                        (employeeProjects, projectID) =>
-                        {
-                            EmployeesProjectsDTO currentEP = null;
-
-                            foreach (EmployeesProjectsDTO currentEmployeePr in employeesProjects)
-                            {
-                                if (currentEmployeePr.EmployeeID == employeeProjects.EmployeeID)
-                                {
-                                    currentEP = employeeProjects;
-                                    currentEP.ProjectsID.Add(projectID);
-                                    break;
-                                }
-                            }
-
-                            if (currentEP == null)
-                            {
-                                currentEP = employeeProjects;
-                                employeesProjects.Add(currentEP);
-                                currentEP.ProjectsID = new List<int>();
-                                currentEP.ProjectsID.Add(projectID);
-                            }
-
-                            return employeeProjects;
-                        }, new { id })
-                        .AsList<EmployeesProjectsDTO>();
+                    employeesProjects = dbConnection.QuerySingle<EmployeesProjectsDTO>(query, new { id });
                 }
             }
             catch (Exception e)
@@ -103,7 +95,27 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return employeesProjects[0];
+            return employeesProjects;
+        }
+
+        public bool Update(EmployeesProjectsDTO EmployeesProjects)
+        {
+            string query = "[HRAppDB].[UpdateEmployeeProject] @ID, @EmployeeID, @ProjectID, @StartDate, @EndDate, @IsActual";
+            bool result = true;
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    dbConnection.Execute(query, new { EmployeesProjects.ID, EmployeesProjects.EmployeeID, EmployeesProjects.ProjectID, EmployeesProjects.StartDate, EmployeesProjects.EndDate, EmployeesProjects.IsActual });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
         }
     }
 }

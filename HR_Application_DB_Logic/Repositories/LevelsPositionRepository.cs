@@ -37,16 +37,16 @@ namespace HR_Application_DB_Logic.Repositories
             return result;
         }
 
-        public bool Create(LevelsPositionDTO levelsPosition)
+        public int Create(LevelsPositionDTO levelsPosition)
         {
             string query = "[HRAppDB].CreateLevelPosition @Title, @Description";
-            bool result = true;
+            int returnID = 0;
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Execute(query, new { levelsPosition.Title, levelsPosition.Description });
+                    dbConnection.QuerySingle<int>(query, new { levelsPosition.Title, levelsPosition.Description });
                 }
             }
             catch (Exception e)
@@ -54,7 +54,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return result;
+            return returnID;
         }
 
         public bool Update(LevelsPositionDTO levelsPosition)
