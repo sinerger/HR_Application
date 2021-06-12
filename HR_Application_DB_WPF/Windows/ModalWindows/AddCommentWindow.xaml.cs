@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HR_Application_BLL.Models.Base;
+using HR_Application_DB_WPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +19,13 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
     /// </summary>
     public partial class AddCommentWindow : Window
     {
+        private Cache _cache;
+        private List<CommentModel> _commentEmployee;
+
         public AddCommentWindow()
         {
             InitializeComponent();
+            _cache = Cache.GetCache();
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -29,7 +35,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
