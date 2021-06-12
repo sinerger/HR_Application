@@ -49,7 +49,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             SetDataPosition(_position);
             SetDataLevelPosition(_levelPosition);
             _cache = Cache.GetCache();
-            _positionEmployee = _cache.SelectedPositionEmployee;
+            _positionEmployee = _cache.SelectedPosition;
         }
 
         public AddPositionWindow(Position fromEmployee)

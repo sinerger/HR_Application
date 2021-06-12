@@ -1,4 +1,6 @@
-﻿using HR_Application_DB_WPF.ModalWindows;
+﻿using HR_Application_BLL.Models;
+using HR_Application_DB_WPF.Classes;
+using HR_Application_DB_WPF.ModalWindows;
 using HR_Application_DB_WPF.Windows.ModalWindows;
 using System;
 using System.Collections.Generic;
@@ -19,8 +21,11 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class AddEmployeeWindow : Window
     {
+        private Employee newEmployee;
+        private Cache _cache;
         public AddEmployeeWindow()
         {
+            _cache = Cache.GetCache();
             InitializeComponent();
         }
 
@@ -54,14 +59,17 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Добавляем нового сотрудника
+            newEmployee.FirstName = TextBox_FirstName.Text;
+            newEmployee.LastName = TextBox_LastName.Text;
+            newEmployee.GeneralInformation.BirthDate = DatePicker_BirthDate.SelectedDate.ToString();
+            newEmployee.GeneralInformation.Phone = TextBox_Phone.Text;
+            newEmployee.GeneralInformation.Email = TextBox_Email.Text;
+            newEmployee.RegistrationDate = TextBox_Registration.Text;
+            newEmployee.Department = _cache.SelectedCompany.Departments[0]; //UNDONE: think about put department as List
+            newEmployee.Position = _cache.SelectedPosition;
+            newEmployee.Competences = _cache.SelectedCompetences;
+            newEmployee.Project = _cache.SelectedProject;
             this.Close();
-        }
-
-        private void TextBox_Direction_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            AddPositionWindow addPositionWindow = new AddPositionWindow();
-            addPositionWindow.ShowDialog();
         }
 
         private void TextBox_ProjectName_PreviewMouseDown(object sender, MouseButtonEventArgs e)
