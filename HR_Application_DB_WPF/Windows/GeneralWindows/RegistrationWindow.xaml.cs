@@ -30,6 +30,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             InitializeComponent();
             _cache = Cache.GetCache();
+            _user = new User();
         }
 
         private void CreateUser()
@@ -37,18 +38,25 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             _user.FirstName = TextBox_FirstName.Text;
             _user.LastName = TextBox_LastName.Text;
             _user.Email = TextBox_Login.Text;
-            _user.Password = TextBox_Password.Text;
+            _user.Password = Cryptography.GetHash(TextBox_Password.Text);
             _user.Company = _cache.SelectedCompany;
 
 
-            new UserService(new DBController(DBConfigurator.ConnectionString)).Create(_user);
+            try
+            {
+                AuthorizationController.RegistrationNewUser(_user);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
 
             _cache.SelectedCompany = null;
         }
 
         private void TextBox_Company_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepWindow = new AddDepartmentWindow(_user,(TextBox)sender);
+            AddDepartmentWindow addDepWindow = new AddDepartmentWindow(_user, (TextBox)sender);
             addDepWindow.ShowDialog();
         }
 
