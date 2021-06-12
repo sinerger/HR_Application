@@ -16,6 +16,9 @@ namespace HR_Application_DB_WPF.Classes
         public Employee SelectedEmployee { get; set; }
         public User CurrentUser { get; set; }
 
+        public PositionModel SelectedPositionEmployee { get; set; }
+
+        public User CurrentUser { get; set; }
         private Cache()
         {
 
