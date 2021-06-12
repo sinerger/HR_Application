@@ -10,7 +10,7 @@ namespace HR_Application_DB_Logic.Models.Base
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public bool? IsActual { get; set; }
-        public List<int> ProjectsID { get; set; }
+        public int?  ProjectsID { get; set; }
 
 
         public override bool Equals(object obj)

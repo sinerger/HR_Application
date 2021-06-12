@@ -37,31 +37,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
-                        (employeeProjects, projectID) =>
-                        {
-                            EmployeesProjectsDTO currentEP = null;
-
-                            foreach (EmployeesProjectsDTO currentEmployeePr in employeesProjects)
-                            {
-                                if (currentEmployeePr.EmployeeID == employeeProjects.EmployeeID)
-                                {
-                                    currentEP = employeeProjects;
-                                    currentEP.ProjectsID.Add(projectID);
-                                    break;
-                                }
-                            }
-
-                            if (currentEP == null)
-                            {
-                                currentEP = employeeProjects;
-                                employeesProjects.Add(currentEP);
-                                currentEP.ProjectsID = new List<int>();
-                                currentEP.ProjectsID.Add(projectID);
-                            }
-
-                            return employeeProjects;
-                        }).AsList<EmployeesProjectsDTO>();
+                    employeesProjects = dbConnection.Query<EmployeesProjectsDTO>(query).AsList<EmployeesProjectsDTO>();
                 }
             }
             catch (Exception e)
@@ -75,38 +51,13 @@ namespace HR_Application_DB_Logic.Repositories
         public EmployeesProjectsDTO GetByID(int id)
         {
             string query = "[HRAppDB].[GetEmployeeProjectByID] @ID";
-            List<EmployeesProjectsDTO> employeesProjects = new List<EmployeesProjectsDTO>();
+            EmployeesProjectsDTO employeesProjects = new EmployeesProjectsDTO();
 
             try
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.Query<EmployeesProjectsDTO, int, EmployeesProjectsDTO>(query,
-                        (employeeProjects, projectID) =>
-                        {
-                            EmployeesProjectsDTO currentEP = null;
-
-                            foreach (EmployeesProjectsDTO currentEmployeePr in employeesProjects)
-                            {
-                                if (currentEmployeePr.EmployeeID == employeeProjects.EmployeeID)
-                                {
-                                    currentEP = employeeProjects;
-                                    currentEP.ProjectsID.Add(projectID);
-                                    break;
-                                }
-                            }
-
-                            if (currentEP == null)
-                            {
-                                currentEP = employeeProjects;
-                                employeesProjects.Add(currentEP);
-                                currentEP.ProjectsID = new List<int>();
-                                currentEP.ProjectsID.Add(projectID);
-                            }
-
-                            return employeeProjects;
-                        }, new { id })
-                        .AsList<EmployeesProjectsDTO>();
+                    employeesProjects = dbConnection.QuerySingle<EmployeesProjectsDTO>(query, new { id });
                 }
             }
             catch (Exception e)
@@ -114,7 +65,7 @@ namespace HR_Application_DB_Logic.Repositories
                 throw e;
             }
 
-            return employeesProjects[0];
+            return employeesProjects;
         }
 
         public bool Update(EmployeesProjectsDTO obj)

@@ -102,7 +102,12 @@ namespace HR_Application_BLL.Services
                     .GetDTOFromModel(employee.Position);
                 _dbController.EmployeePositionRepository.Create(employeePositionDTO);
                 //ProjectDTO projectDTO = new ProjectMapper().GetDTOFromModel(employee)
-                _dbController.EmployeeProjectRepository.cr
+                _dbController.EmployeeProjectRepository.Create(new EmployeesProjectsDTO()
+                {
+                    EmployeeID = employee.ID,
+                    ProjectsID = employee.Project.ID,
+                    IsActual = true
+                });
             }
             catch (Exception e)
             {
