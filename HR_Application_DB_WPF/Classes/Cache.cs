@@ -24,8 +24,6 @@ namespace HR_Application_DB_WPF.Classes
         public List<Competence> SelectedCompetences { get; set; }
 
         public Position SelectedPosition { get; set; }
-
-        public Position SelectedPosition { get; set; }
         public ProjectModel SelectedProject { get; set; }
 
         private Cache()

@@ -19,6 +19,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     public partial class HomePageWindow : Window
     {
         private Cache _cache;
+        
 
         public HomePageWindow()
         {
@@ -115,7 +116,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Company_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var AddDepWindow = new AddDepartmentWindow((TextBox)sender);
+            var AddDepWindow = new AddDepartmentWindow(_cache.CurrentUser,(TextBox)sender);
 
             AddDepWindow.ShowDialog();
         }

@@ -63,7 +63,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employeem,TextBox_Competence);
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee,TextBox_Competence);
             addCompetenceWindow.ShowDialog();
         }
 
