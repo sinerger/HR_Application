@@ -23,13 +23,15 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         public HomePageWindow()
         {
-            InitializeComponent();
             _cache = Cache.GetCache();
+            InitializeComponent();
+
             DataContext = _cache.SelectedEmployee;
             ComboboxEmployees.ItemsSource = _cache.Employees;
             ComboboxDepartments.ItemsSource = _cache.Departments;
 
             InitializeUserData();
+
 
             DataGrid_Employees.ItemsSource = _cache.Employees;
             AllEmployeeGrid.ItemsSource = _cache.Employees;
@@ -140,6 +142,14 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow();
                 editEmployeeWindow.ShowDialog();
             }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            TxtCountEmployeeInAppAll.Text = _cache.Employees.Count.ToString();
+            TxtCountHRInApp.Text = _cache.Users.Count.ToString();
+            TxtCountPeopleInApp.Text = ((_cache.Employees.Count) + (_cache.Users.Count)).ToString();
+          
         }
     }
 }

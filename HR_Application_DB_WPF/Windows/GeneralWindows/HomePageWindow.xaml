@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"      
-        Title="HomePageWindow" Height="720" Width="1280">
+        Title="HomePageWindow" Height="720" Width="1280" Initialized="Window_Initialized">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
     </Window.Resources>
@@ -70,7 +70,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemStats" Header="Stats">
+            <TabItem Style="{DynamicResource TabItemStyle}" x:Name="TabItemStats" Header="Stats" Height="48" VerticalAlignment="Top">
                 <Grid Background="#FFE9E9E9">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
