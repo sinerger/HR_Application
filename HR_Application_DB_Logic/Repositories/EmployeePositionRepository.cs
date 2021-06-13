@@ -109,7 +109,7 @@ namespace HR_Application_DB_Logic.Repositories
         public int Create(EmployeePositionDTO obj)
         {
             string query = "[HRAppDB].[CreateEmployeePosition] @EmployeeID, @PositionID," +
-                "@HiredDate, @FiredDate, @IsActual, @LevelPosition";
+                "@HiredDate, @FiredDate, @IsActual, @LevelPositionID";
             int returnedID = 0;
 
             try

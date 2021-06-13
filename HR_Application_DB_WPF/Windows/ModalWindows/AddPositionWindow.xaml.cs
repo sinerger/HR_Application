@@ -56,8 +56,11 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             }
             else
             {
+                var tempID = _employee.Position.ID;
+
                 _employee.Position = new Position()
                 {
+                    ID = tempID,
                     EmployeeID = _employee.ID,
                     Post = (PositionModel)ComboBox_Position.SelectedItem,
                     Level = (LevelsPositionModel)ComboBox_LevelPosition.SelectedItem,

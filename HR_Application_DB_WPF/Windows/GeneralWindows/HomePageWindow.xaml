@@ -44,24 +44,24 @@
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ClearFilter" Grid.Row="0" Grid.Column="1" Content="Clear" Margin ="10,15,0,15" Click="Button_ClearFilter_Click"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.ColumnSpan="4" Margin="0,80,0,0" Grid.RowSpan="2">
-                        <DataGrid x:Name="DataGrid_Employees" AutoGenerateColumns="False" Margin="10">
+                        <DataGrid x:Name="DataGrid_Employees" AutoGenerateColumns="False" Margin="10" FontSize="22" IsReadOnly="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*"/>
-                                <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="1*"/>
+                                <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Visibility="Hidden" Width="1*" FontSize="18"/>
+                                <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Visibility="Hidden" Width="1*" FontSize="18"/>
                                 <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Visibility="Hidden" Width="1*"/>
                                 <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=DateOfBirth}" Visibility="Hidden"/>
-                                <DataGridTextColumn Header="Phone" Binding="{Binding Path=GeneralInformation.Phone}" Width="1*"/>
-                                <DataGridTextColumn Header="Email" Binding="{Binding Path=GeneralInformation.Email}" Width="1*"/>
-                                <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="1*"/>
-                                <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Width="1*"/>
+                                <DataGridTextColumn Header="Phone" Binding="{Binding Path=GeneralInformation.Phone}" Visibility="Hidden" Width="1*" FontSize="18"/>
+                                <DataGridTextColumn Header="Email" Binding="{Binding Path=GeneralInformation.Email}" Visibility="Hidden" Width="1*" FontSize="18"/>
+                                <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="1*" Visibility="Hidden" FontSize="18"/>
+                                <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Width="1*" Visibility="Hidden" FontSize="18"/>
                                 <DataGridTextColumn Header="Competence" Binding="{Binding Path=Competence}" Visibility="Hidden"/>
                                 <DataGridTextColumn Header="Project" Binding="{Binding Path=Project}" Visibility="Hidden" Width="1*"/>
                                 <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}" Visibility="Hidden"/>
                                 <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Margin="0" Padding="0" x:Name="Edit" Click="Button_Edit_Click" Content="Edit"/>
+                                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Margin="0" Padding="0" x:Name="Edit" Click="Button_Edit_Click" FontSize="16" Content="View" Height="20" Width="50"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -212,20 +212,27 @@
                         </Grid.ColumnDefinitions>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddEmployee" Grid.Column="1" Content="Add employee" Click="Button_AddEmployee_Click"/>
                     </Grid>
-                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" HorizontalGridLinesBrush="Black">
+                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" FontSize="22" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Visibility="Hidden"/>
-                             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*"/>
-                             <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="1*"/>
+                            <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*" FontSize="18"/>
+                            <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="1*" FontSize="18"/>
                              <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Visibility="Hidden" Width="1*"/>
-                            <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=GeneralInformation.DateOfBirth}"/>
+                            <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=GeneralInformation.DateOfBirth}" FontSize="18"/>
                             <DataGridTextColumn Header="Phone" Binding="{Binding Path=GeneralInformation.Phone}" Visibility="Hidden" Width="1*"/>
                             <DataGridTextColumn Header="Email" Binding="{Binding Path=GeneralInformation.Email}" Visibility="Hidden" Width="1*"/>
-                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="1*"/>
-                            <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Width="1*"/>
+                            <DataGridTextColumn Header="Department" Binding="{Binding Path=Department}" Width="1*" FontSize="18"/>
+                            <DataGridTextColumn Header="Position" Binding="{Binding Path=Position}" Width="1*" FontSize="18"/>
                             <DataGridTextColumn Header="Competence" Binding="{Binding Path=Competence}" Visibility="Hidden"/>
                             <DataGridTextColumn Header="Project" Binding="{Binding Path=Project}" Visibility="Hidden" Width="1*"/>
                             <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}" Visibility="Hidden"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Margin="0" Padding="0" x:Name="Edit" Click="Button_Edit_Click" FontSize="16" Content="Edit" Width="40" Height="20"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
