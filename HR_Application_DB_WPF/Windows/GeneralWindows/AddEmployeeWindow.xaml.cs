@@ -161,6 +161,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
+            else if(_employee.Adress.City.Name == string.Empty)
+            {
+                MessageBox.Show("Enter city");
+
+                isConfirm = false;
+            }
 
             if (isConfirm)
             {
