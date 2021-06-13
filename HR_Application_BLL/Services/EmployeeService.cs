@@ -93,27 +93,37 @@ namespace HR_Application_BLL.Services
             try
             {
                 EmployeeDTO employeeDTO = _employeeMapper.GetDTOFromModel(employee);
+                LocationDTO locationDTO = new AdressMapper()
+                    .GetDTOFromAdress(employee.Adress);
+                employeeDTO.LocationID = _dbController.LocationRepository.Create(locationDTO);
                 employee.ID = _dbController.EmployeeRepository.Create(employeeDTO);
 
                 GeneralInformationDTO generalInformationDTO = new GeneralInformationModelMapper()
                     .GetDTOFromModel(employee.GeneralInformation);
+                generalInformationDTO.EmployeeID = employee.ID;
+
                 _dbController.GeneralInformationRepository.Create(generalInformationDTO);
+
 
                 EmployeePositionDTO employeePositionDTO = new EmployeePositionModelMapper()
                     .GetDTOFromModel(employee.Position);
+                employeePositionDTO.EmployeeID = employee.ID;
                 _dbController.EmployeePositionRepository.Create(employeePositionDTO);
 
                 _dbController.EmployeeProjectRepository.Create(new EmployeesProjectsDTO()
                 {
-                    EmployeeID = employee.ID,
+                    EmployeeID= employee.ID,
                     ProjectID = employee.Project.ID,
-                    IsActual = true
+                    IsActual = true,
                 });
 
                 foreach (Competence competence in employee.Competences)
                 {
-                    _dbController.EmployeeSkillRepository.Create(new CompetenceMapper()
-                        .GetDTOFromCompetence(competence));
+                    var employeeSkill = new CompetenceMapper()
+                        .GetDTOFromCompetence(competence);
+                    employeeSkill.EmployeeID = employee.ID;
+
+                    _dbController.EmployeeSkillRepository.Create(employeeSkill);
                 }
 
                 foreach (CommentModel comment in employee.Comments)

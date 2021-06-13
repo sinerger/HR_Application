@@ -20,6 +20,7 @@ namespace HR_Application_DB_WPF.Classes
         public List<LevelsPositionModel> levelsPositionModels { get;  set; }
         public List<SkillModel> Skills { get; set; }
         public List<LevelSkillModel> LevelsSkills { get; set; }
+        public List<CityModel> Cities { get; set; }
         #endregion
 
         public Company SelectedCompany { get; set; }

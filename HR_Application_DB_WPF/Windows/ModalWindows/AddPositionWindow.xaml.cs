@@ -23,14 +23,12 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
     public partial class AddPositionWindow : Window
     {
         private Cache _cache;
-        private TextBox _textBoxPosition;
         private Employee _employee;
 
-        public AddPositionWindow(Employee employee, TextBox textBoxPosition)
+        public AddPositionWindow(Employee employee)
         {
             _cache = Cache.GetCache();
             _employee = employee;
-            _textBoxPosition = textBoxPosition;
             InitializeComponent();
             SetDataPosition();
             SetDataLevelPosition();
@@ -67,7 +65,6 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
                     IsActual = true
                 };
 
-                _textBoxPosition.Text = _employee.Position.ToString();
                 this.Close();
             }
 

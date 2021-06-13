@@ -2,8 +2,8 @@
 	@ID int,
 	@EmployeeID int,
 	@PositionID int,
-	@HiredDate nvarchar (255),
-	@FiredDate nvarchar (255),
+	@HiredDate nvarchar (255) null,
+	@FiredDate nvarchar (255) null,
 	@LevelPositionID int
 AS
 UPDATE [HRAppDB].[Positions_Employees]

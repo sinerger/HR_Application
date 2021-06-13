@@ -44,6 +44,7 @@ namespace HR_Application_DB_WPF.Classes
             LoadAllSkills();
             LoadAllLevelSkills();
             LoadAllDepartments();
+            LoadAllCities();
         }
 
         public void CreateEmployee(Employee employee)
@@ -64,6 +65,19 @@ namespace HR_Application_DB_WPF.Classes
             try
             {
                 new EmployeeService(_dbController).Update(employee);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        private void LoadAllCities()
+        {
+            try
+            {
+                _cache.Cities = new CityMapper().GetModelsFromDTO(_dbController.CityRepository.GetAll());
             }
             catch (Exception e)
             {

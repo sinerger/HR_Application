@@ -46,11 +46,11 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.QuerySingle<int>(query, new
+                    returnID = dbConnection.QuerySingle<int>(query, new
                     {
                         Location.CityID,
                         Location.Street,
-                        Location.HourseNumber,
+                        Location.HouseNumber,
                         Location.Block,
                         Location.ApartmentNumber,
                         Location.PostIndex
@@ -79,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
                         Location.ID,
                         Location.CityID,
                         Location.Street,
-                        Location.HourseNumber,
+                        Location.HouseNumber,
                         Location.Block,
                         Location.ApartmentNumber,
                         Location.PostIndex
