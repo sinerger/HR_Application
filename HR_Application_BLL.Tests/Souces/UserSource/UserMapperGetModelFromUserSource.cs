@@ -26,7 +26,7 @@ namespace HR_Application_BLL.Tests.Souces.UserSource
                         {
                             ID = 1,
                             Title = "WizardsDev",
-                            Desctiption = "IT company",
+                            Description = "IT company",
                             Adress = new Adress()
                             {
                                 ID = 1,

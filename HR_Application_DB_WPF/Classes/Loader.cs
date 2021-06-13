@@ -56,7 +56,18 @@ namespace HR_Application_DB_WPF.Classes
             }
             catch (Exception e)
             {
+                throw e;
+            }
+        }
 
+        public void CreateCompany(Company company)
+        {
+            try
+            {
+                company.ID = new CompanyService(_dbController).Create(company);
+            }
+            catch (Exception e)
+            {
                 throw e;
             }
         }

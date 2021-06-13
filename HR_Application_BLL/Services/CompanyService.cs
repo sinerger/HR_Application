@@ -79,5 +79,29 @@ namespace HR_Application_BLL.Services
                 throw e;
             }
         }
+
+        public int Create(Company company)
+        {
+            try
+            {
+                CompanyDTO companyDTO = _companyMapper.GetDTOFromModel(company);
+                company.ID = _dbController.CompanyRepository.Create(companyDTO);
+
+                company.Adress.ID = new AdressService(_dbController).Create(company.Adress);
+                var depService = new DepartmentService(_dbController);
+
+                foreach (Department department in company.Departments)
+                {
+                    department.ID = depService.Create(department);
+                }
+
+                return company.ID;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
