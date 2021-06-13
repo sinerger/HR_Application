@@ -26,22 +26,23 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         public HomePageWindow()
         {
             _cache = Cache.GetCache();
+
             InitializeComponent();
-
-            DataContext = _cache.SelectedEmployee;
-            //ComboboxDepartments.ItemsSource = _cache.Departments;
-
-
             InitializeUserData();
+            InitializeEmployeesData();
+        }
 
-
-            DataGrid_Employees.ItemsSource = _cache.Employees;
-            AllEmployeeGrid.ItemsSource = _cache.Employees;
+        private void InitializeEmployeesData()
+        {
+            DataContext = _cache.SelectedEmployee;
+            DataGrid_AllEmployees.ItemsSource = _cache.Employees;
+            //DataGrid_Employees.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
         {
-            TextBox_Name.Text = $"{_cache.CurrentUser.FirstName} {_cache.CurrentUser.LastName}";
+            TextBox_FirstName.Text = $"{_cache.CurrentUser.FirstName}";
+            TextBox_LastName.Text = $"{_cache.CurrentUser.LastName}";
             TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
             TextBox_City.Text = _cache.CurrentUser.Company.Adress.City.ToString();
         }
@@ -137,12 +138,42 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (!(DataGrid_Employees.SelectedItem is null))
+            if (!(DataGrid_AllEmployees.SelectedItem is null))
+            {
+                _cache.SelectedEmployee = DataGrid_AllEmployees.SelectedItem as Employee;
+
+                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
+                editEmployeeWindow.Closing += EditEmployeeWindow_Closing;
+                editEmployeeWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void EditEmployeeWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            InitializeEmployeesData();
+            if(sender is EmployeeProfileWindow)
+            {
+                var window = (EmployeeProfileWindow)sender;
+                window.Closing -= EditEmployeeWindow_Closing;
+            }
+        }
+
+        private void FindEmployeeButton_Edit_Click(object sender, RoutedEventArgs e)// TODO: add new event
+        {
+            if (!(_cache.SelectedEmployee is null))
             {
                 _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
 
-                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow();
+                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
                 editEmployeeWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
             }
         }
 

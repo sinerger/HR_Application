@@ -144,6 +144,7 @@ namespace HR_Application_BLL.Services
 
                 EmployeePositionDTO employeePositionDTO = new EmployeePositionModelMapper()
                     .GetDTOFromModel(employee.Position);
+
                 if (employeePositionDTO.ID != 0)
                 {
                     _dbController.EmployeePositionRepository.Update(employeePositionDTO);
@@ -157,7 +158,6 @@ namespace HR_Application_BLL.Services
                 employeeProjectDTO.ProjectID = employee.Project.ID;
 
                 _dbController.EmployeeProjectRepository.Update(employeeProjectDTO);
-
                 foreach (Competence competence in employee.Competences)
                 {
                     if (competence.ID != 0)

@@ -21,6 +21,19 @@ namespace HR_Application_DB_WPF.Classes
             _dbController = new DBController(DBConfigurator.ConnectionString);
         }
 
+        public void UpdateEmployees()
+        {
+            try
+            {
+                _cache.Employees = new EmployeeService(_dbController).GetAll();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
         public void LoadAllData()
         {
             LoadAllCompanies();
