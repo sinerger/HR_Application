@@ -56,8 +56,19 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Company_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepWindow = new AddDepartmentWindow(_user, (TextBox)sender);
-            addDepWindow.ShowDialog();
+            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_user);
+            addDepartmentWindow.Closed += AddDepartmentWindow_Closed;
+            addDepartmentWindow.ShowDialog();
+        }
+
+        private void AddDepartmentWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddDepartmentWindow)
+            {
+                var window = (AddDepartmentWindow)sender;
+                TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
+                window.Closed -= AddDepartmentWindow_Closed;
+            }
         }
 
         private void TextBox_Company_SelectionChanged(object sender, RoutedEventArgs e)

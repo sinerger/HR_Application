@@ -10,6 +10,8 @@ using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Linq;
+using HR_Application_BLL.Base.Models;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -26,19 +28,24 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         public HomePageWindow()
         {
-            InitializeComponent();
             _cache = Cache.GetCache();
-            DataContext = _cache.SelectedEmployee;
 
+            InitializeComponent();
             InitializeUserData();
+            InitializeEmployeesData();
+        }
 
+        private void InitializeEmployeesData()
+        {
+            DataContext = _cache.SelectedEmployee;
             DataGrid_AllEmployees.ItemsSource = _cache.Employees;
-            DataGrid_Company.ItemsSource = _cache.Companies;
+            //DataGrid_Employees.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
         {
-            TextBox_Name.Text = $"{_cache.CurrentUser.FirstName} {_cache.CurrentUser.LastName}";
+            TextBox_FirstName.Text = $"{_cache.CurrentUser.FirstName}";
+            TextBox_LastName.Text = $"{_cache.CurrentUser.LastName}";
             TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
             TextBox_City.Text = _cache.CurrentUser.Company.Adress.City.ToString();
         }
@@ -202,9 +209,19 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Company_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var AddDepWindow = new AddDepartmentWindow(_cache.CurrentUser, (TextBox)sender);
+            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_cache.CurrentUser);
+            addDepartmentWindow.Closed += AddDepartmentWindow_Closed;
+            addDepartmentWindow.ShowDialog();
+        }
 
-            AddDepWindow.ShowDialog();
+        private void AddDepartmentWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddDepartmentWindow)
+            {
+                var window = (AddDepartmentWindow)sender;
+                TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
+                window.Closed -= AddDepartmentWindow_Closed;
+            }
         }
 
         private void TextBox_Company_SelectionChanged(object sender, RoutedEventArgs e)
@@ -222,11 +239,22 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 _cache.SelectedEmployee = DataGrid_AllEmployees.SelectedItem as Employee;
 
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
+                editEmployeeWindow.Closing += EditEmployeeWindow_Closing;
                 editEmployeeWindow.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void EditEmployeeWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            InitializeEmployeesData();
+            if(sender is EmployeeProfileWindow)
+            {
+                var window = (EmployeeProfileWindow)sender;
+                window.Closing -= EditEmployeeWindow_Closing;
             }
         }
 
@@ -243,6 +271,65 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
             }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            TxtCountEmployeeInAppAll.Text = _cache.Employees.Count.ToString();
+            TxtCountHRInApp.Text = _cache.Users.Count.ToString();
+            TxtCountPeopleInApp.Text = ((_cache.Employees.Count) + (_cache.Users.Count)).ToString();
+            ComboboxEmployees.ItemsSource = _cache.PositionsModels;
+            ComboboxEmployees.SelectedItem = _cache.PositionsModels[0];
+
+            var departmetns = new List<Department>();
+
+            foreach (var departmetn in _cache.Departments)
+            {
+                if (departmetns.FirstOrDefault(dep => dep.Title == departmetn.Title) == null)
+                {
+                    departmetns.Add(departmetn.Clone());
+                }
+            }
+
+            ComboboxDepartments.ItemsSource = departmetns;
+            if (departmetns.Count > 0)
+            {
+                ComboboxDepartments.SelectedItem = departmetns[0];
+            }
+
+        }
+
+        private void ComboboxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = 0;
+            var allPosition = new List<Position>(_cache.Employees.Select(emplo => emplo.Position));
+
+            foreach (Position curPosition in allPosition)
+            {
+                if (curPosition.Post.Equals((PositionModel)ComboboxEmployees.SelectedItem))
+                {
+                    ++count;
+                }
+            }
+
+            TxtCountEmployeeInApp.Text = count.ToString();
+        }
+
+        private void ComboboxDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = 0;
+            var allEmployee = new List<Department>(_cache.Employees.Select(emplo => emplo.Department));
+            var selectDep = (Department)ComboboxDepartments.SelectedItem;
+
+            foreach (Department curDepartment in allEmployee)
+            {
+                if (curDepartment.Title == selectDep.Title/*curDepartment.Equals((Department)ComboboxDepartments.SelectedItem)*/)
+                {
+                    ++count;
+                }
+            }
+
+            TxtCountEmployeeInDepartment.Text = count.ToString();
         }
 
         private void DataGrid_Company_SelectionChanged(object sender, SelectionChangedEventArgs e)

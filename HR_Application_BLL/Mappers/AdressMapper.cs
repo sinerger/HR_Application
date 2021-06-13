@@ -50,5 +50,15 @@ namespace HR_Application_BLL.Mappers
 
             throw new ArgumentNullException("Some object is null");
         }
+
+        public LocationDTO GetDTOFromAdress(Adress adress)
+        {
+            if (adress != null)
+            {
+                return _mapper.Map<LocationDTO>(adress);
+            }
+
+            throw new ArgumentNullException("Adress is null");
+        }
     }
 }

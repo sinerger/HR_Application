@@ -22,6 +22,7 @@ namespace HR_Application_DB_WPF.Classes
         public List<LevelsPositionModel> levelsPositionModels { get;  set; }
         public List<SkillModel> Skills { get; set; }
         public List<LevelSkillModel> LevelsSkills { get; set; }
+        public List<CityModel> Cities { get; set; }
         #endregion
 
         public Company SelectedCompany { get; set; }
@@ -29,7 +30,6 @@ namespace HR_Application_DB_WPF.Classes
         public Employee SelectedEmployeeCopy { get; set; }
         public User CurrentUser { get; set; }
         public List<Competence> SelectedCompetences { get; set; }
-
         public Position SelectedPosition { get; set; }
         public ProjectModel SelectedProject { get; set; }
 

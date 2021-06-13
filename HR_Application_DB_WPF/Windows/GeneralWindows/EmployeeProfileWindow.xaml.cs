@@ -25,13 +25,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private Cache _cache;
         private Loader _loader;
         private Employee _employee;
-        private bool IsUpdatet = false;
+        private bool _isUpdatet = false;
 
         public EmployeeProfileWindow(Employee employee)
         {
             _cache = Cache.GetCache();
             _loader = new Loader();
-            _employee = employee;
+            _employee = employee.Clone();
 
             InitializeComponent();
         }
@@ -50,20 +50,62 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Department_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee, TextBox_Department);
+            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee);
+            addDepartmentWindow.Closed += AddDepartmentWindow_Closed;
             addDepartmentWindow.ShowDialog();
+        }
+
+        private void AddDepartmentWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddDepartmentWindow)
+            {
+                var window = (AddDepartmentWindow)sender;
+                ComboBox_Project.ItemsSource = _employee.Department.Projects;
+                ComboBox_Project.SelectedItem = _employee.Project;
+                TextBox_Department.Text = _employee.Department.ToString();
+                window.Closed -= AddDepartmentWindow_Closed;
+            }
         }
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee, TextBox_Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee);
+            addPositionWindow.Closed += AddPositionWindow_Closed;
             addPositionWindow.ShowDialog();
+        }
+
+        private void AddPositionWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddPositionWindow)
+            {
+                var window = (AddPositionWindow)sender;
+                TextBox_Position.Text = _employee.Position.ToString();
+                window.Closed -= AddPositionWindow_Closed;
+            }
         }
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee, TextBox_Competence);
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee);
+            addCompetenceWindow.Closed += AddCompetenceWindow_Closed;
             addCompetenceWindow.ShowDialog();
+        }
+
+        private void AddCompetenceWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddDepartmentWindow)
+            {
+                var window = (AddDepartmentWindow)sender;
+                var competencesStr = string.Empty;
+
+                foreach (Competence competence in _employee.Competences)
+                {
+                    competencesStr += $"{competence.ToString()}\n";
+                }
+
+                TextBox_Competence.Text = competencesStr;
+                window.Closed -= AddCompetenceWindow_Closed;
+            }
         }
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)
@@ -74,7 +116,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            if (IsUpdatet)
+            if (!_employee.Equals(_cache.SelectedEmployee))
             {
                 var result = MessageBox.Show("Cancel changes?", "Cancel", MessageBoxButton.YesNo);
 
@@ -84,19 +126,27 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                     Window_Loaded(null, null);
                 }
             }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             SetChanges();
 
-            if (_employee != _cache.SelectedEmployee)
+            if (!_employee.Equals(_cache.SelectedEmployee))
             {
                 _loader.UpdateEmployee(_employee);
                 _cache.SelectedEmployee = _employee;
-                IsUpdatet = true;
+                _isUpdatet = true;
 
-                MessageBox.Show("Saved");
+                this.Close();
+            }
+            else if (_employee.Equals(_cache.SelectedEmployee))
+            {
+                this.Close();
             }
             else
             {
@@ -145,9 +195,9 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (IsUpdatet)
+            if (_isUpdatet)
             {
-                _loader.LoadAllData();
+                _loader.UpdateEmployees();
             }
         }
     }

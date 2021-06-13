@@ -21,7 +21,7 @@ namespace HR_Application_BLL.Tests.Souces.AdressServiceSources
                     ApartmentNumber = 1,
                     Street = "Lenina",
                     Block = "perviy",
-                    HourseNumber = 1,
+                    HouseNumber = 1,
                     PostIndex = 49000
                 },
                 new CityDTO()
@@ -67,7 +67,7 @@ namespace HR_Application_BLL.Tests.Souces.AdressServiceSources
                     ApartmentNumber = 13,
                     Street = "Pushkina",
                     Block = "vtoroy",
-                    HourseNumber = 15,
+                    HouseNumber = 15,
                     PostIndex = 25000
                 },
                 new CityDTO()

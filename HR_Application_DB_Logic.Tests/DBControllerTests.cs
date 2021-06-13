@@ -20,6 +20,9 @@ namespace HR_Application_DB_Logic.Tests
         [Test]
         public void Test()
         {
+
+            var a = new DBController(_connectionString);
+            var b=a.LocationRepository.Create(new LocationDTO() { CityID = 1 });
             //var repository = new EmployeeRepository(_connectionString);
 
             //var actual = repository.Create(new EmployeeDTO()

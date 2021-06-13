@@ -30,13 +30,11 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private Cache _cache;
         private Employee _employee;
-        private TextBox _textBoxCompetence;
 
-        public AddCompetenceWindow(Employee employee, TextBox textBoxCompetence)
+        public AddCompetenceWindow(Employee employee)
         {
             _cache = Cache.GetCache();
             _employee = employee;
-            _textBoxCompetence = textBoxCompetence;
 
             InitializeComponent();
             if (_employee.Competences.Count > 0)
@@ -237,8 +235,6 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             {
                 competencesString += $"{competence.ToString()}\n";
             }
-
-            _textBoxCompetence.Text = competencesString;
 
             this.Close();
         }

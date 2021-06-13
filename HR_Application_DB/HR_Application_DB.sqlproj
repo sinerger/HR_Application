@@ -167,7 +167,6 @@
     <Build Include="Stored Procedures\Base\GeneralInformation\CreateGeneralInformation.sql" />
     <Build Include="Stored Procedures\Base\GeneralInformation\DeleteGeneralInformation.sql" />
     <Build Include="Stored Procedures\Base\GeneralInformation\GetGeneralInformation.sql" />
-    <Build Include="Stored Procedures\Base\GeneralInformation\GetGeneralInformationByEmployeeID.sql" />
     <Build Include="Stored Procedures\Base\GeneralInformation\GetGeneralInformationByID.sql" />
     <Build Include="Stored Procedures\Base\GeneralInformation\UpdateGeneralInformation.sql" />
     <Build Include="Stored Procedures\Base\Histories\CreateHistories.sql" />
@@ -230,7 +229,6 @@
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeeStatuses.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeeAdress.sql" />
     <Build Include="Stored Procedures\Custom\Employees\GetEmployeePlaceOfWork.sql" />
-    <Build Include="Stored Procedures\Custom\Employees\GetEmployeeProjects.sql" />
     <Build Include="Stored Procedures\Custom\GeneralInformation\GeneralInformationFamilyStatuses.sql" />
     <Build Include="Stored Procedures\Custom\Locations\GetAdress.sql" />
     <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPosition.sql" />
@@ -238,7 +236,6 @@
     <Build Include="Stored Procedures\Custom\Companies\GetCompanyDepartmentsByCompanyID.sql" />
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkillByID.sql" />
     <Build Include="Stored Procedures\Custom\Departments\GetDepartmentsProjects.sql" />
-    <Build Include="Stored Procedures\Custom\Employees\GetEmployeesProjectsByEmployeeID.sql" />
     <Build Include="Stored Procedures\Custom\Locations\GetAdressByID.sql" />
     <Build Include="Stored Procedures\Custom\Skills\GetEmployeeSkill.sql" />
     <Build Include="Stored Procedures\Custom\Positions\GetEmployeesPositionByEmployeeID.sql" />
