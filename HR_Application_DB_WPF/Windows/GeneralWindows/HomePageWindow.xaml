@@ -212,7 +212,7 @@
                         </Grid.ColumnDefinitions>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_AddEmployee" Grid.Column="1" Content="Add employee" Click="Button_AddEmployee_Click"/>
                     </Grid>
-                    <DataGrid x:Name="AllEmployeeGrid" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" FontSize="22" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid x:Name="DataGrid_AllEmployees" Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" FontSize="22" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Visibility="Hidden"/>
                             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*" FontSize="18"/>
