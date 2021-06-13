@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HR_Application_BLL.Base.Models;
+using HR_Application_BLL.Mappers.Base;
 using HR_Application_BLL.Models;
 using HR_Application_BLL.Models.Base;
 
@@ -15,6 +16,8 @@ namespace HR_Application_DB_WPF.Classes
         public List<User> Users { get; set; }
         public List<Employee> Employees { get; set; }
         public List<Company> Companies { get;  set; }
+        public List<Department> Departments { get; set; }
+        public ProjectMapper Projects { get; set; }
         public List<PositionModel> PositionsModels { get;  set; }
         public List<LevelsPositionModel> levelsPositionModels { get;  set; }
         public List<SkillModel> Skills { get; set; }
