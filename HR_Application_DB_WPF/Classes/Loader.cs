@@ -43,6 +43,7 @@ namespace HR_Application_DB_WPF.Classes
             LoadAllLevelsPosition();
             LoadAllSkills();
             LoadAllLevelSkills();
+            LoadAllDepartments();
         }
 
         public void CreateEmployee(Employee employee)
@@ -100,6 +101,17 @@ namespace HR_Application_DB_WPF.Classes
             try
             {
                 _cache.Companies = new CompanyService(_dbController).GetAll();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        private void LoadAllDepartments()
+        {
+            try
+            {
+                _cache.Departments = new DepartmentService(_dbController).GetAll();
             }
             catch (Exception e)
             {

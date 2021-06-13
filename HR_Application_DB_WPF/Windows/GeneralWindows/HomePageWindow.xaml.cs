@@ -10,6 +10,8 @@ using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Linq;
+using HR_Application_BLL.Base.Models;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -173,6 +175,65 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
             }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            TxtCountEmployeeInAppAll.Text = _cache.Employees.Count.ToString();
+            TxtCountHRInApp.Text = _cache.Users.Count.ToString();
+            TxtCountPeopleInApp.Text = ((_cache.Employees.Count) + (_cache.Users.Count)).ToString();
+            ComboboxEmployees.ItemsSource = _cache.PositionsModels;
+            ComboboxEmployees.SelectedItem = _cache.PositionsModels[0];
+
+            var departmetns = new List<Department>();
+
+            foreach (var departmetn in _cache.Departments)
+            {
+                if (departmetns.FirstOrDefault(dep => dep.Title == departmetn.Title) == null)
+                {
+                    departmetns.Add(departmetn.Clone());
+                }
+            }
+
+            ComboboxDepartments.ItemsSource = departmetns;
+            if (departmetns.Count > 0)
+            {
+                ComboboxDepartments.SelectedItem = departmetns[0];
+            }
+
+        }
+
+        private void ComboboxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = 0;
+            var allPosition = new List<Position>(_cache.Employees.Select(emplo => emplo.Position));
+
+            foreach (Position curPosition in allPosition)
+            {
+                if (curPosition.Post.Equals((PositionModel)ComboboxEmployees.SelectedItem))
+                {
+                    ++count;
+                }
+            }
+
+            TxtCountEmployeeInApp.Text = count.ToString();
+        }
+
+        private void ComboboxDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = 0;
+            var allEmployee = new List<Department>(_cache.Employees.Select(emplo => emplo.Department));
+            var selectDep = (Department)ComboboxDepartments.SelectedItem;
+
+            foreach (Department curDepartment in allEmployee)
+            {
+                if (curDepartment.Title == selectDep.Title/*curDepartment.Equals((Department)ComboboxDepartments.SelectedItem)*/)
+                {
+                    ++count;
+                }
+            }
+
+            TxtCountEmployeeInDepartment.Text = count.ToString();
         }
     }
 }
