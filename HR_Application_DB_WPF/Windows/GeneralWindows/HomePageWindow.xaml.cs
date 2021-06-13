@@ -21,7 +21,10 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     public partial class HomePageWindow : Window
     {
         private Cache _cache;
-
+        private CompanyService _companyService;
+        private Company newCompany;
+        private Department newDepartment;
+        private ProjectModel newProject;
 
         public HomePageWindow()
         {
@@ -103,12 +106,95 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
+            if (RadioButtonCompanies.IsChecked == true)
+            {
+                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
+                {
+                    newCompany = new Company()
+                    {
+                        Title = TextBox_Title.Text,
+                        Desctiption = TextBox_Description.Text,
+                        Departments = new List<Department>(),
+                        Adress = new Adress()
+                        {
+                            City = new CityModel() { ID = 1, Name = "1", CountryID = 1 }
+                        }
 
+                        //_companyService.Add(newCompany);
+                    };
+                }
+            }
+            if (RadioButtonDepartments.IsChecked == true)
+            {
+                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
+                {
+                    Department newDepartment = new Department();
+                    newDepartment.Title = TextBox_Title.Text;
+                    newDepartment.Description = TextBox_Description.Text;
+                    newDepartment.Projects = null;
+
+                    //_companyService.Add(newCompany);
+                }
+            }
+            if (RadioButtonProjects.IsChecked == true)
+            {
+                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
+                {
+                    ProjectModel newProject = new ProjectModel();
+                    newProject.DirectionID = 1; 
+                    newProject.Title = TextBox_Title.Text;
+                    newProject.Description = TextBox_Description.Text;
+                }
+            }
         }
 
         private void Button_Delete_Click(object sender, RoutedEventArgs e)
         {
+            if (RadioButtonCompanies.IsChecked == true)
+            {
+                var company = DataGrid_Company.SelectedItem as Company;
 
+                if (MessageBox.Show($"Do you really want to delete company '{company.Title}'?", "Delete Row", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                    return;
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (RadioButtonDepartments.IsChecked == true)
+            {
+                var department = DataGrid_Department.SelectedItem as Department;
+
+                if (MessageBox.Show($"Do you really want to delete department '{department.Title}'?", "Delete Row", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                    return;
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (RadioButtonProjects.IsChecked == true)
+            {
+                var project = DataGrid_Project.SelectedItem as ProjectModel;
+
+                if (MessageBox.Show($"Do you really want to delete project '{project.Title}'?", "Delete Row", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                    return;
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void Button_Update_Click(object sender, RoutedEventArgs e)
@@ -244,6 +330,24 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             }
 
             TxtCountEmployeeInDepartment.Text = count.ToString();
+        }
+
+        private void DataGrid_Company_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!(DataGrid_Company.SelectedItem is null))
+            {
+                var company = DataGrid_Company.SelectedItem as Company;
+                DataGrid_Department.ItemsSource = company.Departments;
+            }
+        }
+
+        private void DataGrid_Department_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!(DataGrid_Department.SelectedItem is null))
+            {
+                var department = DataGrid_Department.SelectedItem as Department;
+                DataGrid_Project.ItemsSource = department.Projects;
+            }
         }
     }
 }

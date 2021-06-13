@@ -37,6 +37,7 @@ namespace HR_Application_DB_WPF.Classes
         public void LoadAllData()
         {
             LoadAllCompanies();
+            LoadAllDepartments();
             LoadAllUsers();
             LoadAllEmployees();
             LoadAllPositionsModels();
