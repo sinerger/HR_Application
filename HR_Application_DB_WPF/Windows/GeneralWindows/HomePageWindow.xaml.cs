@@ -26,6 +26,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             InitializeComponent();
             _cache = Cache.GetCache();
             DataContext = _cache.SelectedEmployee;
+            ComboboxEmployees.ItemsSource = _cache.Employees;
+            ComboboxDepartments.ItemsSource = _cache.Departments;
 
             InitializeUserData();
 
