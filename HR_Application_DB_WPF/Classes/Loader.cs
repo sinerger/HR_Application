@@ -30,6 +30,7 @@ namespace HR_Application_DB_WPF.Classes
             LoadAllLevelsPosition();
             LoadAllSkills();
             LoadAllLevelSkills();
+            LoadAllDepartments();
         }
 
         public void CreateEmployee(Employee employee)

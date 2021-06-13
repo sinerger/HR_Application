@@ -55,10 +55,10 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                     MessageBox.Show("Invalid login or password");
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
 
-                MessageBox.Show("The server is not responding. from try later");
+                MessageBox.Show("The server is not responding. from try later"+ exception.ToString());
             }
         }
 
@@ -69,5 +69,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
             this.Close();
         }
+
+     
     }
 }
