@@ -8,7 +8,7 @@
         public string HiredDate { get; set; }
         public string FiredDate { get; set; }
         public bool? IsActual { get; set; }
-        public int? LevelsPosition { get; set; }
+        public int? LevelPositionID { get; set; }
 
         public override string ToString()
         {
@@ -28,7 +28,7 @@
                     && employeePositionDTO.HiredDate == HiredDate
                     && employeePositionDTO.FiredDate == FiredDate
                     && employeePositionDTO.IsActual == IsActual
-                    && employeePositionDTO.LevelsPosition == LevelsPosition
+                    && employeePositionDTO.LevelPositionID == LevelPositionID
                     && employeePositionDTO.PositionID == PositionID)
                 {
                     result = true;

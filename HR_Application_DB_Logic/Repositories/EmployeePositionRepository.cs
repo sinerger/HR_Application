@@ -76,7 +76,7 @@ namespace HR_Application_DB_Logic.Repositories
                         obj.HiredDate,
                         obj.FiredDate, 
                         obj.IsActual, 
-                        obj.LevelsPosition
+                        obj.LevelPositionID
                     });
                 }
             }
@@ -125,7 +125,7 @@ namespace HR_Application_DB_Logic.Repositories
                         obj.HiredDate, 
                         obj.FiredDate, 
                         obj.IsActual, 
-                        obj.LevelsPosition });
+                        obj.LevelPositionID });
                 }
             }
             catch (Exception e)
