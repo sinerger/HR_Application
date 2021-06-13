@@ -19,7 +19,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     public partial class HomePageWindow : Window
     {
         private Cache _cache;
-        
+
 
         public HomePageWindow()
         {
@@ -29,8 +29,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
             InitializeUserData();
 
-            DataGrid_Employees.ItemsSource = _cache.Employees;
-            AllEmployeeGrid.ItemsSource = _cache.Employees;
+            //DataGrid_Employees.ItemsSource = _cache.Employees;
+            DataGrid_AllEmployees.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
@@ -116,7 +116,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Company_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var AddDepWindow = new AddDepartmentWindow(_cache.CurrentUser,(TextBox)sender);
+            var AddDepWindow = new AddDepartmentWindow(_cache.CurrentUser, (TextBox)sender);
 
             AddDepWindow.ShowDialog();
         }
@@ -131,11 +131,25 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
-            _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
+            if (!(DataGrid_AllEmployees.SelectedItem is null))
+            {
+                _cache.SelectedEmployee = DataGrid_AllEmployees.SelectedItem as Employee;
+
+                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
+                editEmployeeWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void FindEmployeeButton_Edit_Click(object sender, RoutedEventArgs e)// TODO: add new event
+        {
             if (!(_cache.SelectedEmployee is null))
             {
                 _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
-                
+
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
                 editEmployeeWindow.ShowDialog();
             }
