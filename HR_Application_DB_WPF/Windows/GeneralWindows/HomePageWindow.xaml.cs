@@ -23,14 +23,18 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         public HomePageWindow()
         {
-            InitializeComponent();
             _cache = Cache.GetCache();
-            DataContext = _cache.SelectedEmployee;
 
+            InitializeComponent();
             InitializeUserData();
+            InitializeEmployeesData();
+        }
 
-            //DataGrid_Employees.ItemsSource = _cache.Employees;
+        private void InitializeEmployeesData()
+        {
+            DataContext = _cache.SelectedEmployee;
             DataGrid_AllEmployees.ItemsSource = _cache.Employees;
+            //DataGrid_Employees.ItemsSource = _cache.Employees;
         }
 
         private void InitializeUserData()
@@ -136,11 +140,22 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 _cache.SelectedEmployee = DataGrid_AllEmployees.SelectedItem as Employee;
 
                 EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
+                editEmployeeWindow.Closing += EditEmployeeWindow_Closing;
                 editEmployeeWindow.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
+            }
+        }
+
+        private void EditEmployeeWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            InitializeEmployeesData();
+            if(sender is EmployeeProfileWindow)
+            {
+                var window = (EmployeeProfileWindow)sender;
+                window.Closing -= EditEmployeeWindow_Closing;
             }
         }
 

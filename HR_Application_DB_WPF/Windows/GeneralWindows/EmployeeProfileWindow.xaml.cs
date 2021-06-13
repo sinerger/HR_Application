@@ -25,13 +25,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private Cache _cache;
         private Loader _loader;
         private Employee _employee;
-        private bool IsUpdatet = false;
+        private bool _isUpdatet = false;
 
         public EmployeeProfileWindow(Employee employee)
         {
             _cache = Cache.GetCache();
             _loader = new Loader();
-            _employee = employee;
+            _employee = employee.Clone();
 
             InitializeComponent();
         }
@@ -74,7 +74,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            if (IsUpdatet)
+            if (!_employee.Equals(_cache.SelectedEmployee))
             {
                 var result = MessageBox.Show("Cancel changes?", "Cancel", MessageBoxButton.YesNo);
 
@@ -84,19 +84,27 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                     Window_Loaded(null, null);
                 }
             }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             SetChanges();
 
-            if (_employee != _cache.SelectedEmployee)
+            if (!_employee.Equals(_cache.SelectedEmployee))
             {
                 _loader.UpdateEmployee(_employee);
                 _cache.SelectedEmployee = _employee;
-                IsUpdatet = true;
+                _isUpdatet = true;
 
-                MessageBox.Show("Saved");
+                this.Close();
+            }
+            else if (_employee.Equals(_cache.SelectedEmployee))
+            {
+                this.Close();
             }
             else
             {
@@ -145,9 +153,9 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (IsUpdatet)
+            if (_isUpdatet)
             {
-                _loader.LoadAllData();
+                _loader.UpdateEmployees();
             }
         }
     }
