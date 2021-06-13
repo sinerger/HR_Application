@@ -66,7 +66,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             if (sender is AddDepartmentWindow)
             {
                 var window = (AddDepartmentWindow)sender;
-                TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
+                TextBox_Company.Text = _user.Company.ToString();
+                _cache.CurrentUser = _user;
                 window.Closed -= AddDepartmentWindow_Closed;
             }
         }

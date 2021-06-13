@@ -50,10 +50,6 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             TextBox_City.Text = _cache.CurrentUser.Company.Adress.City.ToString();
         }
 
-        private void DataGridCell_MouseDoubleClick(object sender, RoutedEventArgs e)
-        {
-            // TODO: Запретить редактирование ячеек в таблицах 
-        }
 
         private void Button_OpenFilterWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -74,8 +70,6 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_LogOut_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Убрать пользователя 
-
             AuthorizationWindow authorizationWindow = new AuthorizationWindow();
             authorizationWindow.Show();
 
