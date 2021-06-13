@@ -3,7 +3,7 @@
 	@Photo nvarchar (255),
 	@FirstName nvarchar (255),
 	@LastName nvarchar (255),
-	@RegistationDate nvarchar (255),
+	@RegistrationDate nvarchar (255),
 	@StatusID int,
 	@LocationID int,
 	@IsActual bit
@@ -12,7 +12,7 @@ UPDATE [HRAppDB].[Employees]
 SET	   [HRAppDB].[Employees].[Photo] = @Photo,
 	   [HRAppDB].[Employees].[FirstName] = @FirstName,
 	   [HRAppDB].[Employees].[LastName] = @LastName,
-	   [HRAppDB].[Employees].[RegistationDate] = @RegistationDate,
+	   [HRAppDB].[Employees].[RegistrationDate] = @RegistrationDate,
 	   [HRAppDB].[Employees].[StatusID] = @StatusID,
 	   [HRAppDB].[Employees].[LocationID] = @LocationID,
 	   [HRAppDB].[Employees].[IsActual] = @IsActual

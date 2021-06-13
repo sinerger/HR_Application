@@ -1,7 +1,9 @@
 ﻿using HR_Application_BLL.Models;
-﻿using HR_Application_DB_WPF.Classes;
+using HR_Application_BLL.Models.Base;
+using HR_Application_DB_WPF.Classes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,39 +21,6 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
     /// </summary>
     public partial class AddCompetenceWindow : Window
     {
-        //=============>
-        //=============>
-        #region Заглушка данных
-        // Заглушка данных.  в прод не пускать 
-        private string[] tempSkills = new string[]
-        {
-            "C#",
-            "java",
-            "PHP",
-            "Ruby",
-            "JS"
-        };
-        private string[] tempLevelSkills = new string[]
-        {
-            "junior",
-            "middle",
-            "senior"
-        };
-        private string[] tempCountries = new string[]
-        {
-            "Ukraine",
-            "Russia"
-        };
-        private string[] tempCities = new string[]
-        {
-            "Dnipro",
-            "Kiev",
-            "Moscow"
-        };
-        #endregion
-        //=============>
-        //=============>
-        private Cache _cache;
         private int _height = 35;
         private int _widthComboBox = 200;
         private int _fontSize = 20;
@@ -59,18 +28,30 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
 
+        private Cache _cache;
         private Employee _employee;
         private TextBox _textBoxCompetence;
 
-        public AddCompetenceWindow(Employee employee,TextBox textBoxCompetence)
+        public AddCompetenceWindow(Employee employee, TextBox textBoxCompetence)
         {
             _cache = Cache.GetCache();
             _employee = employee;
             _textBoxCompetence = textBoxCompetence;
 
             InitializeComponent();
-            CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
-                new RoutedEventHandler(RemoveLineStackPanelEvent));
+            if (_employee.Competences.Count > 0)
+            {
+                foreach (Competence competence in _employee.Competences)
+                {
+                    CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
+                        new RoutedEventHandler(RemoveLineStackPanelEvent), competence.Skill, competence.LevelSkill);
+                }
+            }
+            else
+            {
+                CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
+                        new RoutedEventHandler(RemoveLineStackPanelEvent));
+            }
         }
 
         private void AddLineSkillStackPanelEvent(object sender, RoutedEventArgs e)
@@ -96,17 +77,35 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             }
         }
 
-        private void CreateLineSkillStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
+        private void CreateLineSkillStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent,
+            SkillModel currentSkill = null, LevelSkillModel currentLevelSkill = null)
         {
             var stackPanel = GetStackPanel();
 
             stackPanel.Children.Add(GetButton(addLineEvent));
-            stackPanel.Children.Add(GetComboBox(tempSkills));
-            stackPanel.Children.Add(GetComboBox(tempLevelSkills));
+            stackPanel.Children.Add(GetComboBoxSkill(_cache.Skills, currentSkill));
+            stackPanel.Children.Add(GetComboBoxLevelSkill(_cache.LevelsSkills, currentLevelSkill));
 
-            this.AllCompetenceStackPanel.Children.Add(stackPanel);
+            if (AllCompetenceStackPanel.Children.Count == 0)
+            {
+                this.AllCompetenceStackPanel.Children.Add(stackPanel);
 
-            SwitchAddButtonToRemoveButton(AllCompetenceStackPanel, addLineEvent, removeLineEvent);
+                SwitchAddButtonToRemoveButton(AllCompetenceStackPanel, addLineEvent, removeLineEvent);
+            }
+            else if (AllCompetenceStackPanel.Children.Count > 0 && AllCompetenceStackPanel.Children[AllCompetenceStackPanel.Children.Count - 1] is StackPanel)
+            {
+                var lastStackPanel = (StackPanel)AllCompetenceStackPanel.Children[AllCompetenceStackPanel.Children.Count - 1];
+
+                var firstomboBox = (ComboBox)lastStackPanel.Children[1];
+                var secondComboBox = (ComboBox)lastStackPanel.Children[2];
+
+                if (firstomboBox.SelectedItem != null && secondComboBox.SelectedItem != null)
+                {
+                    this.AllCompetenceStackPanel.Children.Add(stackPanel);
+
+                    SwitchAddButtonToRemoveButton(AllCompetenceStackPanel, addLineEvent, removeLineEvent);
+                }
+            }
         }
 
         private void SwitchAddButtonToRemoveButton(StackPanel currentStackPanel, RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
@@ -145,7 +144,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             return button;
         }
 
-        private ComboBox GetComboBox(string[] data)
+        private ComboBox GetComboBoxSkill(List<SkillModel> skills, SkillModel currentSkill = null)
         {
             ComboBox comboBox = new ComboBox()
             {
@@ -155,7 +154,25 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
                 StaysOpenOnEdit = true
             };
 
-            comboBox.ItemsSource = data;
+            comboBox.ItemsSource = skills;
+            comboBox.SelectedItem = currentSkill != null ? currentSkill : null;
+            comboBox.FontSize = _fontSize;
+
+            return comboBox;
+        }
+
+        private ComboBox GetComboBoxLevelSkill(List<LevelSkillModel> levelsSkills, LevelSkillModel currentLevelskill = null)
+        {
+            ComboBox comboBox = new ComboBox()
+            {
+                Height = _height,
+                Width = _widthComboBox,
+                IsEditable = true,
+                StaysOpenOnEdit = true
+            };
+
+            comboBox.ItemsSource = levelsSkills;
+            comboBox.SelectedItem = currentLevelskill != null ? currentLevelskill : null;
             comboBox.FontSize = _fontSize;
 
             return comboBox;
@@ -173,7 +190,47 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
 
         private void Button_Accept_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Сохраняем компетенции у сотрудника
+            List<Competence> competences = new List<Competence>();
+
+            for (int i = 0; i < AllCompetenceStackPanel.Children.Count; i++)
+            {
+                if (AllCompetenceStackPanel.Children[i] is StackPanel)
+                {
+                    var stackPanel = (StackPanel)AllCompetenceStackPanel.Children[i];
+
+                    if (stackPanel.Children[1] is ComboBox && stackPanel.Children[2] is ComboBox)
+                    {
+                        var comboBoxSkill = (ComboBox)stackPanel.Children[1];
+                        var comboBoxLevelSkill = (ComboBox)stackPanel.Children[2];
+
+                        var skill = (SkillModel)comboBoxSkill.SelectedItem;
+                        var levelSkill = (LevelSkillModel)comboBoxLevelSkill.SelectedItem;
+                        if (skill != null && levelSkill != null)
+                        {
+                            competences.Add(new Competence()
+                            {
+                                EmployeeID = _employee.ID,
+                                Skill = (SkillModel)comboBoxSkill.SelectedItem,
+                                LevelSkill = (LevelSkillModel)comboBoxLevelSkill.SelectedItem
+                            });
+                        }
+                    }
+                }
+            }
+
+            if (!competences.SequenceEqual(_employee.Competences))
+            {
+                _employee.Competences = competences;
+            }
+
+            var competencesString = string.Empty;
+
+            foreach (Competence competence in _employee.Competences)
+            {
+                competencesString += $"{competence.ToString()}\n";
+            }
+
+            _textBoxCompetence.Text = competencesString;
 
             this.Close();
         }

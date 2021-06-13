@@ -21,4 +21,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="FirstName" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="0c225093-ada6-4150-b1d8-f4ab707e91c7" ChangeDateTime="06/12/2021 21:59:45">
+    <Property Name="ElementName" Value="[HRAppDB].[Employees].[RegistationDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[HRAppDB].[Employees]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RegistrationDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ea89282a-61bf-42d3-b75b-f48b4ee9ae3d" ChangeDateTime="06/12/2021 22:12:02">
+    <Property Name="ElementName" Value="[HRAppDB].[Positions_Employees].[LevelsPosition]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[HRAppDB].[Positions_Employees]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LevelPositionID" />
+  </Operation>
 </Operations>

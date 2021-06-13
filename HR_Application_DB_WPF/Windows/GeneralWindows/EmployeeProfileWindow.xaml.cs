@@ -31,8 +31,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             _cache = Cache.GetCache();
             _loader = new Loader();
-            _employee = _cache.SelectedEmployee;
-            _cache.SelectedEmployeeCopy = _cache.SelectedEmployee.Clone();
+            _employee = _cache.SelectedEmployee.Clone();
 
             InitializeComponent();
         }
@@ -51,7 +50,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Department_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee,TextBox_Department);
+            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee, TextBox_Department);
             addDepartmentWindow.ShowDialog();
         }
 
@@ -63,7 +62,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee,TextBox_Competence);
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee, TextBox_Competence);
             addCompetenceWindow.ShowDialog();
         }
 
@@ -120,7 +119,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
             foreach (var comp in _employee.Competences)
             {
-                competence.Append($"{comp.Skill} - {comp.LevelSkill}, ");
+                competence.Append($"{comp.Skill} - {comp.LevelSkill}\n ");
             }
 
             StringBuilder comments = new StringBuilder();
@@ -138,8 +137,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             TextBox_Email.Text = _employee.GeneralInformation.Email;
             TextBox_Department.Text = _employee.Department.ToString();
             TextBox_Position.Text = _employee.Position.ToString();
-            // TODO: FixBug
-            //TextBox_Competence.Text = competence.Remove(competence.Length - 3, competence.Length-1).ToString();
+            TextBox_Competence.Text = competence.ToString();
             TextBox_Project.Text = _employee.Project.ToString();
             TextBox_Comments.Text = comments.ToString();
         }

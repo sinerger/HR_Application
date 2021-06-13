@@ -60,8 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(EmployeePositionDTO obj)
         {
-            string query = "[HRAppDB].[UpdateEmployeePosition] @ID, @EmployeeID, @PositionID," +
-                "@HiredDate, @FiredDate, @IsActual, @LevelPosition";
+            string query = "[HRAppDB].[UpdateEmployeePosition] @ID, @EmployeeID, @PositionID, @HiredDate, @FiredDate, @LevelPositionID";
             bool result = true;
 
             try
@@ -74,8 +73,7 @@ namespace HR_Application_DB_Logic.Repositories
                         obj.EmployeeID, 
                         obj.PositionID, 
                         obj.HiredDate,
-                        obj.FiredDate, 
-                        obj.IsActual, 
+                        obj.FiredDate,
                         obj.LevelPositionID
                     });
                 }

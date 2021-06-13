@@ -28,6 +28,21 @@ namespace HR_Application_DB_WPF.Classes
             LoadAllEmployees();
             LoadAllPositionsModels();
             LoadAllLevelsPosition();
+            LoadAllSkills();
+            LoadAllLevelSkills();
+        }
+
+        public void CreateEmployee(Employee employee)
+        {
+            try
+            {
+                employee.ID = new EmployeeService(_dbController).Create(employee);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         public void UpdateEmployee(Employee employee)
@@ -39,6 +54,30 @@ namespace HR_Application_DB_WPF.Classes
             catch (Exception e)
             {
 
+                throw e;
+            }
+        }
+
+        private void LoadAllSkills()
+        {
+            try
+            {
+                _cache.Skills = new SkillModelMapper().GetModelsFromDTO(_dbController.SkillRepository.GetAll());
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private void LoadAllLevelSkills()
+        {
+            try
+            {
+                _cache.LevelsSkills = new LevelSkillModelMapper().GetModelsFromDTO(_dbController.LevelSkillRepository.GetAll());
+            }
+            catch (Exception e)
+            {
                 throw e;
             }
         }
@@ -81,19 +120,6 @@ namespace HR_Application_DB_WPF.Classes
             }
         }
 
-        public void CreateEmployee(Employee employee)
-        {
-            try
-            {
-                employee.ID = new EmployeeService(_dbController).Create(employee);
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
-        }
-
         private void LoadAllPositionsModels()
         {
             try
@@ -118,6 +144,5 @@ namespace HR_Application_DB_WPF.Classes
                 throw e;
             }
         }
-
     }
 }

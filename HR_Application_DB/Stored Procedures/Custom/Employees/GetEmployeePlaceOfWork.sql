@@ -5,7 +5,7 @@ AS
 	Empl.[Photo], 
 	Empl.[FirstName], 
 	Empl.[LastName], 
-	Empl.[RegistationDate], 
+	Empl.[RegistrationDate], 
 	Empl.[IsActual],
 	Sk.Title,
 	Sk.[Description],

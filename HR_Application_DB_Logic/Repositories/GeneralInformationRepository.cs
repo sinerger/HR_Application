@@ -79,7 +79,7 @@ namespace HR_Application_DB_Logic.Repositories
 
         public bool Update(GeneralInformationDTO generalInformation)
         {
-            string query = "[HRAppDB].DeleteGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
+            string query = "[HRAppDB].UpdateGeneralInformation @ID, @EmployeeID, @Sex, @Education, @FamilyStatusID, @Phone, @Email, @BirthDate, @Hobby, @AmountChildren";
             bool result = true;
 
             try

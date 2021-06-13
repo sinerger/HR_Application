@@ -69,7 +69,7 @@ namespace HR_Application_BLL.Mappers
             CreateMap<EmployeeModel, EmployeeDTO>();
 
             CreateMap<EmployeeDTO, Employee>();
-            CreateMap<Employee, EmployeeDTO>();
+            CreateMap<Employee, EmployeeDTO>().ForMember(dest=>dest.LocationID,option=>option.MapFrom(source=>source.Adress.ID));
 
             CreateMap<SkillDTO, SkillModel>();
             CreateMap<SkillModel, SkillDTO>();

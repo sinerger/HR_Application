@@ -58,7 +58,7 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
             {
                 _employee.Position = new Position()
                 {
-                    EmployeeID = _cache.SelectedEmployee.ID,
+                    EmployeeID = _employee.ID,
                     Post = (PositionModel)ComboBox_Position.SelectedItem,
                     Level = (LevelsPositionModel)ComboBox_LevelPosition.SelectedItem,
                     IsActual = true
