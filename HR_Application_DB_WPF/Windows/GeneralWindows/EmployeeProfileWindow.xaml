@@ -17,10 +17,10 @@
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeProfileTabItem" Header="Employee profile">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6*"></ColumnDefinition>
-                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="87*"></ColumnDefinition>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,423,0">
+                    <Grid Grid.Column="0" Margin="0,0,8,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -60,10 +60,10 @@
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2,0,2,0" IsReadOnly="True" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown" Height="62"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name" Height="36" Margin="25,0,423,0" Grid.ColumnSpan="2"/>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Grid.Column="1" Margin="2,0,2,0" IsReadOnly="True" x:Name="TextBox_Project" Height="29"/>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="25,5,6,9" Content="Add comment" Click="Button_AddComment_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="35,5,6,9" Content="Add comment" Click="Button_AddComment_Click"/>
                         <ScrollViewer Grid.Row="10" Grid.ColumnSpan="2" VerticalScrollBarVisibility ="Auto" CanContentScroll="True" Grid.RowSpan="3" Margin="0,0,0,63">
-                            <StackPanel x:Name ="AllEmployeeComments" Height="90" Width="895">
-                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Comments" IsReadOnly="True" Height="86" Width="850" >
+                            <StackPanel x:Name ="AllEmployeeComments" Height="90" Width="890">
+                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Comments" IsReadOnly="True" Height="86" Width="818" >
                                     <TextBox.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform ScaleY="1"/>
@@ -85,7 +85,7 @@
                             <RowDefinition Height="1.8*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Rectangle Grid.Row="0" Grid.Column="1" Fill="White" Height="180" Width="150" Stroke="White" VerticalAlignment="Top" Margin="0,15,0,0"/>
-                        <Button Grid.Row="1" Grid.Column="1" Style="{DynamicResource CoralRoundButtonStyle}" Width="160" Margin ="15" Content="Edit photo" IsEnabled="False"></Button>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Width="160" Margin ="120,233,120,43" Content="Edit photo" IsEnabled="False" RenderTransformOrigin="0.542,-0.114" Grid.RowSpan="2"/>
                     </Grid>
                 </Grid>
             </TabItem>
