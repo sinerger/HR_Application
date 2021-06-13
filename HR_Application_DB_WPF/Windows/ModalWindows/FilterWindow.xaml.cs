@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR_Application_BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -57,6 +58,8 @@ namespace HR_Application_DB_WPF.ModalWindows
         private string _backColorButton = "#E3405F";
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
+        public List<Competence> Competences;
+        public List<Company> Companies;
 
 
         public FilterWindow()

@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="4*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBoxName" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" Tag="Enter name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_FilterName" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" Tag="Enter name"/>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Search" Grid.Row="0" Grid.Column="1" Margin ="10,15,0,15" Content="Search" Click="Button_Search_Click"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.ColumnSpan="4">

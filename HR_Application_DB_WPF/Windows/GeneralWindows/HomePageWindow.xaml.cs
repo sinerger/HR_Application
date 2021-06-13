@@ -25,6 +25,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private Company newCompany;
         private Department newDepartment;
         private ProjectModel newProject;
+        private Employee _employee;
 
         public HomePageWindow()
         {
@@ -68,6 +69,26 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
+            //List<Employee> filteredEmployee;
+            //List<Competence> competences = _cache.SelectedCompetences;
+            //for (int i = 0; i < competences.Count; i++)
+            //{
+            //    if (i < _employee.Competences.Count)
+            //    {
+            //        _employee.Competences[i].Skill = competences[i].Skill.Clone();
+            //        _employee.Competences[i].LevelSkill = competences[i].LevelSkill.Clone();
+            //    }
+            //    else
+            //    {
+            //        _employee.Competences.Add(competences[i].Clone());
+            //    }
+            //}
+
+            //for (int i = 0; i<competences.Count; i++)
+            //{
+            //    filteredEmployee.Add(_cache.Employees.SelectMany(empl=>empl.Competences) where )
+            //}
+            //filteredEmployee = _cache.Employees.Select(empl => empl.Competences.Contains(competences[i].Clone()));
             // TODO: Поиск сотрудников по фильтру
         }
 
