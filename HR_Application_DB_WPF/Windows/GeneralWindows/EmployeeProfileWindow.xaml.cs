@@ -50,20 +50,62 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void TextBox_Department_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee, TextBox_Department);
+            AddDepartmentWindow addDepartmentWindow = new AddDepartmentWindow(_employee);
+            addDepartmentWindow.Closed += AddDepartmentWindow_Closed;
             addDepartmentWindow.ShowDialog();
+        }
+
+        private void AddDepartmentWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddDepartmentWindow)
+            {
+                var window = (AddDepartmentWindow)sender;
+                ComboBox_Project.ItemsSource = _employee.Department.Projects;
+                ComboBox_Project.SelectedItem = _employee.Project;
+                TextBox_Department.Text = _employee.Department.ToString();
+                window.Closed -= AddDepartmentWindow_Closed;
+            }
         }
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee, TextBox_Position);
+            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee);
+            addPositionWindow.Closed += AddPositionWindow_Closed;
             addPositionWindow.ShowDialog();
+        }
+
+        private void AddPositionWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddPositionWindow)
+            {
+                var window = (AddPositionWindow)sender;
+                TextBox_Position.Text = _employee.Position.ToString();
+                window.Closed -= AddPositionWindow_Closed;
+            }
         }
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee, TextBox_Competence);
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee);
+            addCompetenceWindow.Closed += AddCompetenceWindow_Closed;
             addCompetenceWindow.ShowDialog();
+        }
+
+        private void AddCompetenceWindow_Closed(object sender, EventArgs e)
+        {
+            if (sender is AddDepartmentWindow)
+            {
+                var window = (AddDepartmentWindow)sender;
+                var competencesStr = string.Empty;
+
+                foreach (Competence competence in _employee.Competences)
+                {
+                    competencesStr += $"{competence.ToString()}\n";
+                }
+
+                TextBox_Competence.Text = competencesStr;
+                window.Closed -= AddCompetenceWindow_Closed;
+            }
         }
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)

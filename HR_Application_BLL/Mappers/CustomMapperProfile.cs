@@ -5,8 +5,6 @@ using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Custom;
 using HR_Application_DB_Logic.Models.Base;
-using HR_Application_DB_Logic.Models.Custom;
-using HR_Application_BLL.Mappers.Base;
 
 namespace HR_Application_BLL.Mappers
 {
@@ -28,6 +26,9 @@ namespace HR_Application_BLL.Mappers
 
             CreateMap<LocationModel, Adress>();
             CreateMap<Adress, LocationModel>();
+
+            CreateMap<Adress, LocationDTO>().ForMember(dest => dest.CityID, option => option.MapFrom(source => source.City.ID))
+                .ForMember(dest=>dest.ID,option=>option.MapFrom(source=>source.ID));
 
             CreateMap<DepartmentDTO, DepartmentModel>();
             CreateMap<DepartmentModel, DepartmentDTO>();

@@ -60,7 +60,7 @@ namespace HR_Application_DB_Logic.Repositories
         public bool Update(EmployeeDTO employee)
         {
             bool result = true;
-            string query = "[HRAppDB].UpdateEmployees @ID, @Photo, @FirstName, @LastName, @RegistrationDate, @StatusID, @LocationID, @IsActual";
+            string query = "[HRAppDB].UpdateEmployees @ID, @Photo, @FirstName, @LastName, @RegistrationDate, @LocationID, @IsActual";
 
             try
             {
@@ -73,7 +73,6 @@ namespace HR_Application_DB_Logic.Repositories
                         employee.FirstName,
                         employee.LastName,
                         employee.RegistrationDate,
-                        employee.StatusID,
                         employee.LocationID,
                         employee.IsActual
                     });
@@ -110,7 +109,7 @@ namespace HR_Application_DB_Logic.Repositories
         public int Create(EmployeeDTO employee)
         {
             int retunrID = 0;
-            string query = "[HRAppDB].CreateEmployees @Photo, @FirstName, @LastName, @RegistrationDate, @StatusID, @LocationID, @IsActual";
+            string query = "[HRAppDB].CreateEmployees @Photo, @FirstName, @LastName, @RegistrationDate, @LocationID, @IsActual";
 
             try
             {
@@ -122,7 +121,6 @@ namespace HR_Application_DB_Logic.Repositories
                         employee.FirstName,
                         employee.LastName,
                         employee.RegistrationDate,
-                        employee.StatusID,
                         employee.LocationID,
                         employee.IsActual
                     });

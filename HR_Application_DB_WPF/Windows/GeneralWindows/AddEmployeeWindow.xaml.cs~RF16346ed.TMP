@@ -1,6 +1,5 @@
 ﻿using HR_Application_BLL;
 using HR_Application_BLL.Models;
-using HR_Application_BLL.Models.Base;
 using HR_Application_DB_WPF.Classes;
 using HR_Application_DB_WPF.ModalWindows;
 using HR_Application_DB_WPF.Windows.ModalWindows;
@@ -25,84 +24,39 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     {
         private Employee _employee;
         private Cache _cache;
-        private Loader _loader;
+        private Loader loader;
 
         public AddEmployeeWindow()
         {
-            InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
             _cache = Cache.GetCache();
-            _loader = new Loader();
+            loader = new Loader();
             _employee = new Employee();
-            TextBox_Registration.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
-            ComboBox_City.Items.Clear();
-            ComboBox_City.ItemsSource = _cache.Cities;
+
+            InitializeComponent();
+            TextBox_Registration.Text = DateTime.Now.Date.ToString("yyyy-mm-dd");
         }
 
         private void TextBox_Department_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddDepartmentWindow addDepartment = new AddDepartmentWindow(_employee);
-            addDepartment.Closed += AddDepartment_Closed;
+            AddDepartmentWindow addDepartment = new AddDepartmentWindow(_employee, TextBox_Department);
             addDepartment.ShowDialog();
-        }
-
-        private void AddDepartment_Closed(object sender, EventArgs e)
-        {
-            if(sender is AddDepartmentWindow )
-            {
-                var window = (AddDepartmentWindow)sender;
-
-                ComboBox_Project.Items.Clear();
-                ComboBox_Project.ItemsSource = _employee.Department.Projects;
-                ComboBox_Project.SelectedItem = _employee.Project;
-                TextBox_Department.Text = _employee.Department.ToString();
-
-                window.Closed -= AddDepartment_Closed;
-            }
         }
 
         private void TextBox_Position_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee);
-            addPositionWindow.Closed += AddPositionWindow_Closed;
+            AddPositionWindow addPositionWindow = new AddPositionWindow(_employee, TextBox_Position);
             addPositionWindow.ShowDialog();
-        }
-
-        private void AddPositionWindow_Closed(object sender, EventArgs e)
-        {
-            if (sender is AddPositionWindow)
-            {
-                var window = (AddPositionWindow)sender;
-                TextBox_Position.Text = _employee.Position.ToString();
-                window.Closed -= AddPositionWindow_Closed;
-            }
         }
 
         private void TextBox_Competence_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee);
-            addCompetenceWindow.Closed += AddCompetenceWindow_Closed;
+            AddCompetenceWindow addCompetenceWindow = new AddCompetenceWindow(_employee, TextBox_Competence);
             addCompetenceWindow.ShowDialog();
         }
 
-        private void AddCompetenceWindow_Closed(object sender, EventArgs e)
+        private void TextBox_ProjectName_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is AddCompetenceWindow)
-            {
-                var window = (AddCompetenceWindow)sender;
-                var competencesStr = string.Empty;
 
-                foreach (Competence competence in _employee.Competences)
-                {
-                    competencesStr += $"{competence.ToString()}\n";
-                }
-
-                TextBox_Competence.Text = competencesStr;
-                window.Closed -= AddDepartment_Closed;
-            }
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -137,7 +91,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if (TextBox_Email.Text==string.Empty)
+            else if (!AuthorizationController.IsValidEmail( TextBox_Email.Text))
             {
                 MessageBox.Show("Enter email");
 
@@ -169,17 +123,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 _employee.GeneralInformation.BirthDate = DatePicker_BirthDate.SelectedDate.ToString();
                 _employee.GeneralInformation.Phone = TextBox_Phone.Text;
                 _employee.GeneralInformation.Email = TextBox_Email.Text;
-                _employee.RegistrationDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
-                _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
-                _employee.Adress = new Adress()
-                {
-                    City = (CityModel)ComboBox_City.SelectedItem
-                };
-
-                _loader.CreateEmployee(_employee);
-
+                _employee.RegistrationDate = DateTime.Now.Date.ToString("yyyy-mm-dd");
+                
+                loader.CreateEmployee(_employee);
                 this.Close();
             }
         }
+
     }
 }
