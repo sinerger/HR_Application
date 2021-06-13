@@ -116,7 +116,7 @@
                             <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many hr's are in the application now:"/>
+                        <Label Grid.Column="0" Style="{DynamicResource LabelStyle}" Content="How many HR's are in the application now:"/>
                     </Grid>
                     <Grid Grid.Row="4" Grid.Column="0" Margin="30,0,0,0">
                         <Grid.ColumnDefinitions>
