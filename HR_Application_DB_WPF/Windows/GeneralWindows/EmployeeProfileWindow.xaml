@@ -52,14 +52,14 @@
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Grid.Column="1" Margin="2" x:Name="TextBox_Email"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Registration date"/>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Grid.Column="1" Margin="2" x:Name="TextBox_RegistrationDate"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Department" />
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Grid.Column="1" Margin="2" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Competence" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Grid.Column="1" Margin="2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="7" Grid.Column="0" Content="Position" />
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Grid.Column="1" Margin="2" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Competence"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Department"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Grid.Column="1" Margin="2" x:Name="TextBox_Project"/>
+                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="9" Grid.Column="1" Margin="2" x:Name="ComboBox_Project"/>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="5" Content="Add comment" Click="Button_AddComment_Click"/>
                         <ScrollViewer Grid.Row="11" Grid.ColumnSpan="2" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
                             <StackPanel x:Name ="AllEmployeeComments" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="90">

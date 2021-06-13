@@ -135,7 +135,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 _cache.SelectedEmployee = DataGrid_Employees.SelectedItem as Employee;
                 
-                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow();
+                EmployeeProfileWindow editEmployeeWindow = new EmployeeProfileWindow(_cache.SelectedEmployee);
                 editEmployeeWindow.ShowDialog();
             }
         }

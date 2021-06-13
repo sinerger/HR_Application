@@ -20,7 +20,7 @@
 
         public override string ToString()
         {
-            return $"Project title:{Title}";
+            return $"{Title}";
         }
 
         public override bool Equals(object obj)
