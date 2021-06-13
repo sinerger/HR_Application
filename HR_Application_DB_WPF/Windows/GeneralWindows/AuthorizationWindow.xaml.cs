@@ -38,7 +38,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             // TODO: Нужно прикрутить визуальное отображение что неправильный логин или пароль
         }
 
-        private void SignInButton__Click(object sender, RoutedEventArgs e)
+        private void SingInLogic()
         {
             try
             {
@@ -58,8 +58,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             catch (Exception exception)
             {
 
-                MessageBox.Show("The server is not responding. from try later"+ exception.ToString());
+                MessageBox.Show("The server is not responding. from try later" + exception.ToString());
             }
+        }
+        private void SignInButton__Click(object sender, RoutedEventArgs e)
+        {
+            SingInLogic();
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
@@ -70,6 +74,14 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             this.Close();
         }
 
-     
+        private void TextBox_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SingInLogic();
+            }
+        }
+
+
     }
 }
