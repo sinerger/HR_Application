@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[UpdateEmployeeProject]
+﻿CREATE PROCEDURE [HRAppDB].[UpdateEmployeeProject]
 @ID int,
 @EmployeeID int, 
 @ProjectID int,

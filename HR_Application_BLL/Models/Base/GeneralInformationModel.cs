@@ -21,6 +21,7 @@ namespace HR_Application_BLL.Models.Base
         {
             return new GeneralInformationModel()
             {
+                ID=ID,
                 EmployeeID = EmployeeID,
                 Sex = Sex,
                 Education = Education,

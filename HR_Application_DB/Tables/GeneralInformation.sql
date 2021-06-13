@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [HRAppDB].[GeneralInformation] (
     [ID]             INT            IDENTITY (1, 1) NOT NULL,
     [EmployeeID]     INT            NOT NULL,
-    [Sex]            NVARCHAR (255) NOT NULL,
+    [Sex]            NVARCHAR (255) NULL,
     [Education]      NVARCHAR (255) NULL,
-    [FamilyStatusID] INT            NOT NULL,
+    [FamilyStatusID] INT            NULL,
     [Phone]          NVARCHAR (15)  NOT NULL,
     [Email]          NVARCHAR (255) NOT NULL,
     [BirthDate]      NVARCHAR(50)       NOT NULL,

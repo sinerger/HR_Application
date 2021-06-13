@@ -218,9 +218,17 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
                 }
             }
 
-            if (!competences.SequenceEqual(_employee.Competences))
+            for (int i = 0; i < competences.Count; i++)
             {
-                _employee.Competences = competences;
+                if (i < _employee.Competences.Count)
+                {
+                    _employee.Competences[i].Skill = competences[i].Skill.Clone();
+                    _employee.Competences[i].LevelSkill = competences[i].LevelSkill.Clone();
+                }
+                else
+                {
+                    _employee.Competences.Add(competences[i].Clone());
+                }
             }
 
             var competencesString = string.Empty;

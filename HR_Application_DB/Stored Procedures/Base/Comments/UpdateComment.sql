@@ -8,3 +8,5 @@ AS
 	SET [HRAppDB].[Comments].EmployeeID = @EmployeeID,
 		[HRAppDB].[Comments].Information = @Information,
 		[HRAppDB].[Comments].[Date] = @Date
+
+		Where [HRAppDB].[Comments].ID = @ID
