@@ -39,7 +39,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void InitializeUserData()
         {
-            TextBox_Name.Text = $"{_cache.CurrentUser.FirstName} {_cache.CurrentUser.LastName}";
+            TextBox_FirstName.Text = $"{_cache.CurrentUser.FirstName}";
+            TextBox_LastName.Text = $"{_cache.CurrentUser.LastName}";
             TextBox_Company.Text = _cache.CurrentUser.Company.ToString();
             TextBox_City.Text = _cache.CurrentUser.Company.Adress.City.ToString();
         }
