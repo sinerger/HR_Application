@@ -34,6 +34,18 @@ namespace HR_Application_DB_WPF.Classes
             }
         }
 
+        public void UpdateCompanies()
+        {
+            try
+            {
+                _cache.Companies = new CompanyService(_dbController).GetAll();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public void LoadAllData()
         {
             LoadAllCompanies();
@@ -133,6 +145,7 @@ namespace HR_Application_DB_WPF.Classes
                 throw e;
             }
         }
+
         private void LoadAllDepartments()
         {
             try
