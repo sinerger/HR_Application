@@ -157,7 +157,7 @@ namespace HR_Application_DB_Logic.Repositories
         public List<int> CreateList(CompanyDepartmentsDTO obj)
         {
             List<int> returnID = new List<int>();
-            string query = "[HRAppDB].CreateCompanyDepartments @DepartmentID, @CompanyID, @IsActual";
+            string query = "[HRAppDB].CreateCompanyDepartments @CompanyID, @DepartmentID, @IsActual";
 
             try
             {
@@ -168,8 +168,8 @@ namespace HR_Application_DB_Logic.Repositories
                         var DepartmentID = obj.DepartmentsID[i];
                         returnID.Add(dbConnection.QuerySingle<int>(query, new
                         {
-                            DepartmentID,
                             obj.CompanyID,
+                            DepartmentID,
                             obj.IsActual
                         }));
                     }

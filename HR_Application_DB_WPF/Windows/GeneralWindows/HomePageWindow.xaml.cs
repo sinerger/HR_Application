@@ -27,12 +27,14 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private Company _company;
         private List<Company> _newCompany;
         private Loader _loader;
+        private Filter _filter;
 
         public HomePageWindow()
         {
             _cache = Cache.GetCache();
             _loader = new Loader();
             _newCompany = new List<Company>();
+            _filter = new Filter();
 
             InitializeComponent();
             InitializeUserData();
@@ -85,11 +87,16 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             TextBox_City.Text = _cache.CurrentUser.Company.Adress.City.ToString();
         }
 
-
         private void Button_OpenFilterWindow_Click(object sender, RoutedEventArgs e)
         {
-            FilterWindow filter = new FilterWindow();
+            FilterWindow filter = new FilterWindow(_filter);
+            filter.Closed += Filter_Closed;
             filter.ShowDialog();
+        }
+
+        private void Filter_Closed(object sender, EventArgs e)
+        {
+            TextBox_SeachString.Text = _filter.ToString();
         }
 
         private void Button_ClearFilter_Click(object sender, RoutedEventArgs e)
@@ -99,7 +106,57 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Поиск сотрудников по фильтру
+            if (_filter.Competences != null || _filter.Cities != null || _filter.Departments != null)
+            {
+                List<Employee> employees = new List<Employee>();
+                if (_filter.Competences != null)
+                {
+                    foreach (Employee employee in _cache.Employees)
+                    {
+                        bool result = true;
+                        foreach (Competence employeeCompetence in employee.Competences)
+                        {
+                            if (_filter.Competences.FirstOrDefault(comp => comp.Skill.Title == employeeCompetence.Skill.Title) == null
+                                || _filter.Competences.FirstOrDefault(comp => comp.LevelSkill.Title == employeeCompetence.LevelSkill.Title) == null)
+                            {
+                                result = false;
+                            }
+                        }
+                        if (result)
+                        {
+                            employees.Add(employee);
+                        }
+                    }
+                }
+
+                var employeesTwoList = new List<Employee>();
+
+                if (_filter.Cities != null)
+                {
+                    foreach (Employee employee in employees)
+                    {
+                        if (_filter.Cities.FirstOrDefault(city => city.Name == employee.Adress.City.Name) != null)
+                        {
+                            employeesTwoList.Add(employee);
+                        }
+                    }
+                    if (employeesTwoList.Count == 0)
+                    {
+                        MessageBox.Show("There is no one with these skills in the selected city");
+                    }
+                }
+
+                if (employeesTwoList.Count == 0)
+                {
+                    DataGrid_Employees.ItemsSource = employees;
+                }
+                else
+                {
+                    DataGrid_Employees.ItemsSource = employeesTwoList;
+                }
+
+                DataGrid_Employees.Items.Refresh();
+            }
         }
 
 
@@ -247,7 +304,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                     ComboBox_City.IsEditable = false;
                     ComboBox_City.SelectedItem = _company.Adress.City;
                     DataGrid_Department.ItemsSource = _company.Departments;
-                    DataGrid_Project.ItemsSource=new List<ProjectModel>();
+                    DataGrid_Project.ItemsSource = new List<ProjectModel>();
                 }
             }
         }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HR_Application_BLL.Models;
+using HR_Application_BLL.Models.Base;
+using HR_Application_DB_WPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -18,49 +21,29 @@ namespace HR_Application_DB_WPF.ModalWindows
     /// </summary>
     public partial class FilterWindow : Window
     {
-        //=============>
-        //=============>
-        #region Заглушка данных
-        // Заглушка данных.  в прод не пускать 
-        private string[] tempSkills = new string[]
-        {
-            "C#",
-            "java",
-            "PHP",
-            "Ruby",
-            "JS"
-        };
-        private string[] tempLevelSkills = new string[]
-        {
-            "junior",
-            "middle",
-            "senior"
-        };
-        private string[] tempCountries = new string[]
-        {
-            "Ukraine",
-            "Russia"
-        };
-        private string[] tempCities = new string[]
-        {
-            "Dnipro",
-            "Kiev",
-            "Moscow"
-        };
-        #endregion
-        //=============>
-        //=============>
 
         private int _height = 50;
         private int _widthComboBox = 200;
-        private int _fontSize = 32;
+        private int _fontSize = 20;
         private string _backColorButton = "#E3405F";
         private string _contenAddButton = "+";
         private string _contenRemoveButton = "-";
 
+        private Cache _cache;
+        private Filter _filter;
 
-        public FilterWindow()
+        public FilterWindow(Filter filter = null)
         {
+            _cache = Cache.GetCache();
+            if (filter != null)
+            {
+                _filter = filter;
+            }
+            else
+            {
+                _filter = new Filter();
+            }
+
             InitializeComponent();
 
             CreateLineSkillStackPanel(new RoutedEventHandler(AddLineSkillStackPanelEvent),
@@ -99,30 +82,66 @@ namespace HR_Application_DB_WPF.ModalWindows
             }
         }
 
-        private void CreateLineSkillStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
+        private void CreateLineSkillStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent,
+            SkillModel currentSkill = null, LevelSkillModel currentLevelSkill = null)
         {
             var stackPanel = GetStackPanel();
 
             stackPanel.Children.Add(GetButton(addLineEvent));
-            stackPanel.Children.Add(GetComboBox(tempSkills));
-            stackPanel.Children.Add(GetComboBox(tempLevelSkills));
+            stackPanel.Children.Add(GetComboBoxSkill(_cache.Skills, currentSkill));
+            stackPanel.Children.Add(GetComboBoxLevelSkill(_cache.LevelsSkills, currentLevelSkill));
 
-            this.AllSkillsStackPanel.Children.Add(stackPanel);
+            if (AllSkillsStackPanel.Children.Count == 0)
+            {
+                this.AllSkillsStackPanel.Children.Add(stackPanel);
 
-            SwitchAddButtonToRemoveButton(AllSkillsStackPanel, addLineEvent, removeLineEvent);
+                SwitchAddButtonToRemoveButton(AllSkillsStackPanel, addLineEvent, removeLineEvent);
+            }
+            else if (AllSkillsStackPanel.Children.Count > 0 && AllSkillsStackPanel.Children[AllSkillsStackPanel.Children.Count - 1] is StackPanel)
+            {
+                var lastStackPanel = (StackPanel)AllSkillsStackPanel.Children[AllSkillsStackPanel.Children.Count - 1];
+
+                var firstomboBox = (ComboBox)lastStackPanel.Children[1];
+                var secondComboBox = (ComboBox)lastStackPanel.Children[2];
+
+                if (firstomboBox.SelectedItem != null && secondComboBox.SelectedItem != null)
+                {
+                    this.AllSkillsStackPanel.Children.Add(stackPanel);
+
+                    SwitchAddButtonToRemoveButton(AllSkillsStackPanel, addLineEvent, removeLineEvent);
+                }
+            }
         }
 
-        private void CreateLineAdressStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
+        private void CreateLineAdressStackPanel(RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent,
+            CityModel currentCity = null, Department currentDepartment = null)
         {
             var stackPanel = GetStackPanel();
 
             stackPanel.Children.Add(GetButton(addLineEvent));
-            stackPanel.Children.Add(GetComboBox(tempCountries));
-            stackPanel.Children.Add(GetComboBox(tempCities));
+            stackPanel.Children.Add(GetComboBoxCity(_cache.Cities, currentCity));
+            //stackPanel.Children.Add(GetComboBoxDepartment(_cache.Departments, currentDepartment));
 
-            this.AllAdressStackPanel.Children.Add(stackPanel);
+            if (AllAdressStackPanel.Children.Count == 0)
+            {
+                this.AllAdressStackPanel.Children.Add(stackPanel);
 
-            SwitchAddButtonToRemoveButton(AllAdressStackPanel, addLineEvent, removeLineEvent);
+                SwitchAddButtonToRemoveButton(AllAdressStackPanel, addLineEvent, removeLineEvent);
+            }
+            else if (AllAdressStackPanel.Children.Count > 0 && AllAdressStackPanel.Children[AllAdressStackPanel.Children.Count - 1] is StackPanel)
+            {
+                var lastStackPanel = (StackPanel)AllAdressStackPanel.Children[AllAdressStackPanel.Children.Count - 1];
+
+                var firstomboBox = (ComboBox)lastStackPanel.Children[1];
+                //var secondComboBox = (ComboBox)lastStackPanel.Children[2];
+
+                if (firstomboBox.SelectedItem != null /*|| secondComboBox.SelectedItem != null*/)
+                {
+                    this.AllAdressStackPanel.Children.Add(stackPanel);
+
+                    SwitchAddButtonToRemoveButton(AllAdressStackPanel, addLineEvent, removeLineEvent);
+                }
+            }
         }
 
         private void SwitchAddButtonToRemoveButton(StackPanel currentStackPanel, RoutedEventHandler addLineEvent, RoutedEventHandler removeLineEvent)
@@ -161,19 +180,57 @@ namespace HR_Application_DB_WPF.ModalWindows
             return button;
         }
 
-        private ComboBox GetComboBox(string[] data)
+        private ComboBox GetComboBox()
         {
             ComboBox comboBox = new ComboBox()
             {
-                //TODO: add style for comboboxes
                 Height = _height,
                 Width = _widthComboBox,
                 IsEditable = true,
                 StaysOpenOnEdit = true
             };
 
-            comboBox.ItemsSource = data;
             comboBox.FontSize = _fontSize;
+
+            return comboBox;
+        }
+
+        private ComboBox GetComboBoxSkill(List<SkillModel> skills, SkillModel currentSkill = null)
+        {
+            ComboBox comboBox = GetComboBox();
+
+            comboBox.ItemsSource = skills;
+            comboBox.SelectedItem = currentSkill != null ? currentSkill : null;
+
+            return comboBox;
+        }
+
+        private ComboBox GetComboBoxLevelSkill(List<LevelSkillModel> levelsSkills, LevelSkillModel currentLevelskill = null)
+        {
+            ComboBox comboBox = GetComboBox();
+
+            comboBox.ItemsSource = levelsSkills;
+            comboBox.SelectedItem = currentLevelskill != null ? currentLevelskill : null;
+
+            return comboBox;
+        }
+
+        private ComboBox GetComboBoxCity(List<CityModel> cities, CityModel currentCity = null)
+        {
+            ComboBox comboBox = GetComboBox();
+
+            comboBox.ItemsSource = cities;
+            comboBox.SelectedItem = currentCity != null ? currentCity : null;
+
+            return comboBox;
+        }
+
+        private ComboBox GetComboBoxDepartment(List<Department> departments, Department department = null)
+        {
+            ComboBox comboBox = GetComboBox();
+
+            comboBox.ItemsSource = departments;
+            comboBox.SelectedItem = department != null ? department : null;
 
             return comboBox;
         }
@@ -188,14 +245,67 @@ namespace HR_Application_DB_WPF.ModalWindows
             return stackPanel;
         }
 
-        private void ClickCancelButton_Event(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Button_Accept_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Сохраняем данные для сотрудника 
+            List<Competence> competences = new List<Competence>();
+
+            for (int i = 0; i < AllSkillsStackPanel.Children.Count; i++)
+            {
+                if (AllSkillsStackPanel.Children[i] is StackPanel)
+                {
+                    var stackPanel = (StackPanel)AllSkillsStackPanel.Children[i];
+
+                    if (stackPanel.Children[1] is ComboBox && stackPanel.Children[2] is ComboBox)
+                    {
+                        var comboBoxSkill = (ComboBox)stackPanel.Children[1];
+                        var comboBoxLevelSkill = (ComboBox)stackPanel.Children[2];
+
+                        var skill = (SkillModel)comboBoxSkill.SelectedItem;
+                        var levelSkill = (LevelSkillModel)comboBoxLevelSkill.SelectedItem;
+                        if (skill != null && levelSkill != null)
+                        {
+                            competences.Add(new Competence()
+                            {
+                                Skill = (SkillModel)comboBoxSkill.SelectedItem,
+                                LevelSkill = (LevelSkillModel)comboBoxLevelSkill.SelectedItem
+                            });
+                        }
+                    }
+                }
+            }
+
+            List<CityModel> cities = new List<CityModel>();
+            List<Department> departments = new List<Department>();
+
+            for (int i = 0; i < AllAdressStackPanel.Children.Count; i++)
+            {
+                if (AllAdressStackPanel.Children[i] is StackPanel)
+                {
+                    var stackPanel = (StackPanel)AllAdressStackPanel.Children[i];
+
+                    if (stackPanel.Children[1] is ComboBox /*&& stackPanel.Children[2] is ComboBox*/)
+                    {
+                        var comboBoxCity = (ComboBox)stackPanel.Children[1];
+                        //var comboBoxDepartment = (ComboBox)stackPanel.Children[2];
+
+                        var city = (CityModel)comboBoxCity.SelectedItem;
+                        //var department = (Department)comboBoxDepartment.SelectedItem;
+
+                        if (city != null)
+                        {
+                            cities.Add(city);
+                        }
+                        //if (department != null)
+                        //{
+                        //    departments.Add(department);
+                        //}
+                    }
+                }
+            }
+
+            _filter.Competences = competences.Count>0?competences:null;
+            _filter.Cities = cities.Count>0?cities:null;
+            _filter.Departments = departments.Count>0?departments:null;
 
             this.Close();
         }

@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateCompanyDepartments]
-	@DepartmentID int,
-	@CompanyID int,
-	@IsActual bit
+	 @CompanyID int,
+ @DepartmentID int,
+ @IsActual bit
 AS
-	INSERT INTO [HRAppDB].[Companies_Depatments]
-	OUTPUT INSERTED.[ID]
-	VALUES (
-	@DepartmentID,
-	@CompanyID,
-	@IsActual)
+ INSERT INTO [HRAppDB].[Companies_Depatments]
+ OUTPUT INSERTED.[ID]
+ VALUES (
+ @CompanyID,
+ @DepartmentID,
+ @IsActual)

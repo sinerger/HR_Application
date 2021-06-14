@@ -37,6 +37,7 @@ namespace HR_Application_BLL.Services
                 foreach (Competence competence in competences)
                 {
                     var employeeSkillDTO = employeeSkillsDTO.Find(employeeSkillDTO => employeeSkillDTO.EmployeeID == competence.EmployeeID);
+                    employeeSkillsDTO.Remove(employeeSkillDTO);
 
                     competence.Skill = skills.Find(skill => skill.ID == employeeSkillDTO.SkillID);
                     competence.LevelSkill = levelSkillsModel.Find(level => level.ID == employeeSkillDTO.LevelSkillID);
