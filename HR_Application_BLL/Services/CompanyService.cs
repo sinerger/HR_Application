@@ -116,5 +116,23 @@ namespace HR_Application_BLL.Services
                 throw e;
             }
         }
+
+        public void Update(Company company)
+        {
+            try
+            {
+                CompanyDTO companyDTO = _companyMapper.GetDTOFromModel(company);
+                _dbController.CompanyRepository.Update(companyDTO);
+
+
+
+
+            }
+            catch (Exception e )
+            {
+
+                throw e;
+            }
+        }
     }
 }

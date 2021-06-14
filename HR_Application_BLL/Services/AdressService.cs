@@ -75,5 +75,19 @@ namespace HR_Application_BLL.Services
                 throw e;
             }
         }
+
+        public void Update(Adress adress)
+        {
+            try
+            {
+                LocationDTO locationDTO = _adressMapper.GetDTOFromAdress(adress);
+                _dbController.LocationRepository.Update(locationDTO);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
     }
 }

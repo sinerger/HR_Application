@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [HRAppDB].[UpdateLocation]
 	@ID int,
 	@CityID int,
-	@Street nvarchar (255),
-	@HouseNumber int,
-	@Block nvarchar (255),
-	@ApartmentNumber int,
-	@PostIndex int
+	@Street nvarchar (255) null,
+	@HouseNumber int null,
+	@Block nvarchar (255) null,
+	@ApartmentNumber int null,
+	@PostIndex int null
 AS
 UPDATE [HRAppDB].[Locations]
 SET [HRAppDB].[Locations].[CityID] = @CityID,

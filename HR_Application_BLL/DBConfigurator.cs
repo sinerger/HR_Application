@@ -8,8 +8,7 @@ namespace HR_Application_BLL
     {
         private static string _connectionString = @"Server = 80.78.240.16; Database = Sandbox.Test; User Id = devEd; Password = qqq!11;";
         //private static string _connectionString = @"Server = 80.78.240.16; Database = Sandbox; User Id = devEd; Password = qqq!11;";
-        //private static string _connectionString =
-        //    @"Server=(LocalDB)\MSSQLLocalDB;Database =test data 4;Integrated Security=true;";
+        //private static string _connectionString = @"Server=(LocalDB)\MSSQLLocalDB;Database = HRProjectDB;Integrated Security=true;";
         public static string ConnectionString
         {
             get

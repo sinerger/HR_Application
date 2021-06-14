@@ -55,7 +55,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 var window = (AddDepartmentWindow)sender;
 
-                ComboBox_Project.Items.Clear();
+                //ComboBox_Project.Items.Clear();
                 ComboBox_Project.ItemsSource = _employee.Department.Projects;
                 ComboBox_Project.SelectedItem = _employee.Project;
                 TextBox_Department.Text = _employee.Department.ToString();
@@ -149,7 +149,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if(_employee.Position.Post.Title == null)
+            else if (_employee.Position.Post.Title == null)
             {
                 MessageBox.Show("Enter position");
 
@@ -161,13 +161,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if(_employee.Project.ID == 0)
+            else if (_employee.Project.Title == null)
             {
                 MessageBox.Show("Enter project");
 
                 isConfirm = false;
             }
-            else if(_employee.Adress.City.Name == null)
+            else if (_employee.Adress.City.Name == null)
             {
                 MessageBox.Show("Enter city");
 

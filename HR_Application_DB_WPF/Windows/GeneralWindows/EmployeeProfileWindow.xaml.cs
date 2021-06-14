@@ -110,7 +110,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void Button_AddComment_Click(object sender, RoutedEventArgs e)
         {
-            AddCommentWindow addCommentWindow = new AddCommentWindow(TextBox_Comments);
+            AddCommentWindow addCommentWindow = new AddCommentWindow(_employee, TextBox_Comments);
+
             addCommentWindow.ShowDialog();
         }
 

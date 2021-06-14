@@ -26,13 +26,13 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
         private TextBox _textBoxProfileWindow;
         public EmployeeProfileWindow profileWindow;
         private Cache _cashe;
-        private Employee _employeeFromSelect;
-        public AddCommentWindow(TextBox textBoxComment)
+        private Employee _employee;
+        public AddCommentWindow(Employee employee,TextBox textBox)
         {
             InitializeComponent();
             _cashe = Cache.GetCache();
-            _employeeFromSelect = _cashe.SelectedEmployee;
-            _textBoxProfileWindow = textBoxComment;
+            _employee = employee;
+            _textBoxProfileWindow = textBox;
         }
 
         public AddCommentWindow()
@@ -47,21 +47,22 @@ namespace HR_Application_DB_WPF.Windows.ModalWindows
                 CommentModel comment = new CommentModel()
                 {
                     Information = TextBox_Comments.Text,
-                    EmployeeID = _employeeFromSelect.ID,
+                    EmployeeID = _employee.ID,
                     Date = DateTime.Now.Date.ToString("yyyy-MM-dd")
                 };
-                _employeeFromSelect.Comments.Add(comment);
+                _employee.Comments.Add(comment);
 
                 string comments = string.Empty;
                 StringBuilder stringBuilderComments = new StringBuilder(comments);
 
-                foreach (var comm in _employeeFromSelect.Comments)
+                foreach (var comm in _employee.Comments)
                 {
                     stringBuilderComments.Append($"{comm.Information} - {comm.Date}\n");
                 }
                 comments = stringBuilderComments.ToString();
                 _textBoxProfileWindow.Text = comments;
             }
+
             this.Close();
         }
 
