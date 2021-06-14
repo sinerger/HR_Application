@@ -38,7 +38,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             _user.FirstName = TextBox_FirstName.Text;
             _user.LastName = TextBox_LastName.Text;
             _user.Email = TextBox_Login.Text;
-            _user.Password = Cryptography.GetHash(TextBox_Password.Text);
+            _user.Password = Cryptography.GetHash(PasswordBox_Registration.Password);
             _user.Company = _cache.SelectedCompany;
 
 
@@ -96,8 +96,8 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if (TextBox_Password.Text != TextBox_ConfirmPassword.Text
-                     && !AuthorizationController.IsValidPassword(TextBox_Password.Text))
+            else if (PasswordBox_Registration.Password != PasswordBox_RegistrationConfirmPassword.Password
+                     && !AuthorizationController.IsValidPassword(PasswordBox_Registration.Password))
             {
                 MessageBox.Show("Invalid password");
 
@@ -112,6 +112,18 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             else if (TextBox_LastName.Text == string.Empty)
             {
                 MessageBox.Show("Enter last name");
+
+                isConfirm = false;
+            }
+            else if (PasswordBox_Registration.Password.Length < 8 || PasswordBox_RegistrationConfirmPassword.Password.Length < 8)
+            {
+                MessageBox.Show("Password >= 8");
+
+                isConfirm = false;
+            }
+            else if (PasswordBox_Registration.Password != PasswordBox_RegistrationConfirmPassword.Password)
+            {
+                MessageBox.Show("Password must be equal to Confirm password");
 
                 isConfirm = false;
             }
@@ -133,6 +145,16 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             authorizationWindow.Show();
 
             this.Close();
+        }
+
+        private void PasswordBox_Registration_KeyDown(object sender, KeyEventArgs e)
+        {
+            WatermarkRegistration.Visibility = Visibility.Collapsed;
+        }
+
+        private void PasswordBox_RegistrationConfirmPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            WatermarkRegistrationConfirmPassword.Visibility = Visibility.Collapsed;
         }
     }
 }
