@@ -55,9 +55,9 @@
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Competence" Margin="40,0,0,0" />
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin="355,2,212,2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="7" Grid.Column="0" Content="Position" Margin="40,0,0,0" />
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin="355,13,212,0" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin="355,11,212,41" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Department" Margin="40,0,0,0"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin="355,16,212,0" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin="355,10,212,0" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="29"/>
                         <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name" Margin="40,0,0,0"/>
                         <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="9" Margin="355,10,212,57" x:Name="ComboBox_Project" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="40,10,226,0" Content="Add comment" Click="Button_AddComment_Click"/>
@@ -67,7 +67,7 @@
                             </StackPanel>
                         </ScrollViewer>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="0" Margin ="40,5,226,5" x:Name="Button_Save" Content="Save" Click="Button_Save_Click"/>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="1" Margin ="224,10,42,0" x:Name="Button_Cancel" Content="Cancel" Click="Button_Cancel_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="1" Margin ="224,5,42,5" x:Name="Button_Cancel" Content="Cancel" Click="Button_Cancel_Click"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
