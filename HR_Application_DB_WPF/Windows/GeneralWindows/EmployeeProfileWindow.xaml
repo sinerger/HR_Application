@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
-        Title="EmployeeProfileWindow" Height="720" Width="1280" Background="#FFE9E9E9" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="EmployeeProfileWindow" Height="750" Width="1280" Background="#FFE9E9E9" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.Resources>
         <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
     </Window.Resources>
@@ -17,57 +17,57 @@
             <TabItem Style="{DynamicResource TabItemStyle}" x:Name="EmployeeProfileTabItem" Header="Employee profile">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6*"></ColumnDefinition>
-                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="87*"></ColumnDefinition>
+
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" Margin="0,0,8,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="1.2*"></RowDefinition>
-                            <RowDefinition Height="2*"></RowDefinition>
-                            <RowDefinition Height="1.2*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="70*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="70*"></RowDefinition>
+                            <RowDefinition Height="150*"></RowDefinition>
+                            <RowDefinition Height="64*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="First name"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="0" Grid.Column="1" Margin="2" x:Name="TextBox_FirstName"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Last name"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Grid.Column="1" Margin="2" x:Name="TextBox_LastName"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Date of Birth"/>
-                        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="2" Grid.Column="1" SelectedDate="{x:Static sys:DateTime.Now}" Margin="2" x:Name="DatePicker_BirthDate"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Phone" HorizontalAlignment="Left"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="3" Grid.Column="1" Margin="2" x:Name="TextBox_Phone"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="E-mail"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Grid.Column="1" Margin="2" x:Name="TextBox_Email"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Registration date"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Grid.Column="1" Margin="2" x:Name="TextBox_RegistrationDate"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Competence" />
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Grid.Column="1" Margin="2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="7" Grid.Column="0" Content="Position" />
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Grid.Column="1" Margin="2" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Department"/>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.Column="1" Margin="2" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
-                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name"/>
-                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="9" Grid.Column="1" Margin="2" x:Name="ComboBox_Project"/>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="5" Content="Add comment" Click="Button_AddComment_Click"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Column="0" Content="First name" Margin="40,0,0,0"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Margin="355,3,212,0" x:Name="TextBox_FirstName" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="32"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Last name" Margin="40,0,0,0"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="1" Margin="355,0,212,0" x:Name="TextBox_LastName" Grid.ColumnSpan="2"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Date of Birth" Margin="40,0,0,0"/>
+                        <DatePicker Style="{DynamicResource DatePickerRound}" Grid.Row="2" SelectedDate="{x:Static sys:DateTime.Now}" Margin="355,3,212,0" x:Name="DatePicker_BirthDate" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="32"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Phone" HorizontalAlignment="Left" Margin="40,0,0,0" Width="215"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="3" Margin="355,3,212,0" x:Name="TextBox_Phone" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="E-mail" Margin="40,0,0,0"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="4" Margin="355,0,212,0" x:Name="TextBox_Email" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Registration date" Margin="40,0,0,0"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="5" Margin="355,0,212,0" x:Name="TextBox_RegistrationDate" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Competence" Margin="40,0,0,0" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="6" Margin="355,2,212,2" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Stretch"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="7" Grid.Column="0" Content="Position" Margin="40,0,0,0" />
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin="355,11,212,41" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Department" Margin="40,0,0,0"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin="355,10,212,0" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="29"/>
+                        <Label Style="{DynamicResource LabelStyle}" Grid.Row="9" Grid.Column="0" Content="Project name" Margin="40,0,0,0"/>
+                        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="9" Margin="355,10,212,57" x:Name="ComboBox_Project" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="40,10,226,0" Content="Add comment" Click="Button_AddComment_Click"/>
                         <ScrollViewer Grid.Row="11" Grid.ColumnSpan="2" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
-                            <StackPanel x:Name ="AllEmployeeComments" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="90">
-                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Comments" Height="90" Margin="0,0,40,0"/>
+                            <StackPanel x:Name ="AllEmployeeComments" >
+                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Comments" RenderTransformOrigin="0.5,0.5" Height="70" Width="1178"/>
                             </StackPanel>
                         </ScrollViewer>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="0" Margin ="5" Width="200" x:Name="Button_Save" Content="Save" Click="Button_Save_Click"/>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="1" Margin ="5" Width="200" x:Name="Button_Cancel" Content="Cancel" Click="Button_Cancel_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="0" Margin ="40,5,226,5" x:Name="Button_Save" Content="Save" Click="Button_Save_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="1" Margin ="224,5,42,5" x:Name="Button_Cancel" Content="Cancel" Click="Button_Cancel_Click"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -75,8 +75,6 @@
                             <RowDefinition Height="0.35*"></RowDefinition>
                             <RowDefinition Height="1.8*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="0" Grid.Column="1" Fill="White" Height="180" Width="150" Stroke="White" VerticalAlignment="Top" Margin="0,15,0,0"/>
-                        <Button Grid.Row="1" Grid.Column="1" Style="{DynamicResource CoralRoundButtonStyle}" Width="160" Margin ="15" Content="Edit photo" IsEnabled="False"></Button>
                     </Grid>
                 </Grid>
             </TabItem>

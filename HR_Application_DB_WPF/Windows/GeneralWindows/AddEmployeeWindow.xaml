@@ -41,10 +41,8 @@
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Grid.ColumnSpan="2" Margin ="0,5,0,5" Width="400" Tag="Position" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Grid.ColumnSpan="2"  Margin ="0,5,0,5" Width="400" Tag="Department" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
         <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="10" Grid.ColumnSpan="2" Margin ="0,5,0,5" Width="400" x:Name="ComboBox_Project" SelectedIndex="0">
-            <ComboBoxItem Name="ComboBoxItem_Project">Project</ComboBoxItem>
         </ComboBox>
         <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="11" Grid.ColumnSpan="2"  Width="400" Margin ="0,5,0,5" x:Name="ComboBox_City" SelectedIndex="0">
-            <ComboBoxItem Name="ComboBoxItem_City">City</ComboBoxItem>
         </ComboBox>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Margin ="0,20,10,10" Content="Cancel" Grid.Row="12" Grid.Column="1" Width="200" Click="Button_Cancel_Click"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Margin ="0,20,10,10" Content="Save" Grid.Row="12" Grid.Column="0" Width="200" Click="Button_Save_Click"/>

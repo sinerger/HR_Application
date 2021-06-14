@@ -93,9 +93,10 @@ namespace HR_Application_BLL.Services
             try
             {
                 EmployeeDTO employeeDTO = _employeeMapper.GetDTOFromModel(employee);
-                LocationDTO locationDTO = new AdressMapper()
-                    .GetDTOFromAdress(employee.Adress);
-                employeeDTO.LocationID = _dbController.LocationRepository.Create(locationDTO);
+
+                employee.Adress.ID = new AdressService(_dbController).Create(employee.Adress);
+                
+                employeeDTO.LocationID = employee.Adress.ID;
                 employee.ID = _dbController.EmployeeRepository.Create(employeeDTO);
 
                 GeneralInformationDTO generalInformationDTO = new GeneralInformationModelMapper()

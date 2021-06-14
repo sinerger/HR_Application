@@ -51,7 +51,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void AddDepartment_Closed(object sender, EventArgs e)
         {
-            if(sender is AddDepartmentWindow )
+            if (sender is AddDepartmentWindow)
             {
                 var window = (AddDepartmentWindow)sender;
 
@@ -137,19 +137,19 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if (TextBox_Email.Text==string.Empty)
+            else if (TextBox_Email.Text == string.Empty)
             {
                 MessageBox.Show("Enter email");
 
                 isConfirm = false;
             }
-            else if (_employee.Company == null)
+            else if (_employee.Company.ID == 0)
             {
                 MessageBox.Show("Enter company");
 
                 isConfirm = false;
             }
-            else if(_employee.Position == null)
+            else if(_employee.Position.Post.Title == null)
             {
                 MessageBox.Show("Enter position");
 
@@ -161,7 +161,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if(_employee.Adress.City.Name == string.Empty)
+            else if(_employee.Project.ID == 0)
+            {
+                MessageBox.Show("Enter project");
+
+                isConfirm = false;
+            }
+            else if(_employee.Adress.City.Name == null)
             {
                 MessageBox.Show("Enter city");
 
@@ -176,15 +182,30 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 _employee.GeneralInformation.Phone = TextBox_Phone.Text;
                 _employee.GeneralInformation.Email = TextBox_Email.Text;
                 _employee.RegistrationDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
-                _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
-                _employee.Adress = new Adress()
-                {
-                    City = (CityModel)ComboBox_City.SelectedItem
-                };
+
 
                 _loader.CreateEmployee(_employee);
 
                 this.Close();
+            }
+        }
+
+        private void ComboBox_City_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBox_Project.SelectedItem is CityModel)
+            {
+                _employee.Adress = new Adress()
+                {
+                    City = (CityModel)ComboBox_City.SelectedItem
+                };
+            }
+        }
+
+        private void ComboBox_Project_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBox_Project.SelectedItem is ProjectModel)
+            {
+                _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
             }
         }
     }

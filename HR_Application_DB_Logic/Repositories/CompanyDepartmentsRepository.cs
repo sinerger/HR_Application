@@ -55,7 +55,7 @@ namespace HR_Application_DB_Logic.Repositories
                         }).AsList<CompanyDepartmentsDTO>();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -86,7 +86,7 @@ namespace HR_Application_DB_Logic.Repositories
                         }, new { id }).AsList<CompanyDepartmentsDTO>();
                 }
             }
-            catch ( Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -143,7 +143,36 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.QuerySingle<int>(query, new { obj.DepartmentsID, obj.CompanyID, obj.IsActual });
+                    returnID = dbConnection.QuerySingle<int>(query, new { obj.DepartmentsID, obj.CompanyID, obj.IsActual });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return returnID;
+        }
+
+        public List<int> CreateList(CompanyDepartmentsDTO obj)
+        {
+            List<int> returnID = new List<int>();
+            string query = "[HRAppDB].CreateCompanyDepartments @DepartmentID, @CompanyID, @IsActual";
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    for (int i = 0; i < obj.DepartmentsID.Count; i++)
+                    {
+                        var DepartmentID = obj.DepartmentsID[i];
+                        returnID.Add(dbConnection.QuerySingle<int>(query, new
+                        {
+                            DepartmentID,
+                            obj.CompanyID,
+                            obj.IsActual
+                        }));
+                    }
                 }
             }
             catch (Exception e)

@@ -67,7 +67,7 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.QuerySingle<int>(query, new { department.Title, department.Description });
+                    returnID =dbConnection.QuerySingle<int>(query, new { department.Title, department.Description });
                 }
             }
             catch (Exception e)

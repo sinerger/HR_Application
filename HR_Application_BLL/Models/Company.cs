@@ -10,7 +10,7 @@ namespace HR_Application_BLL.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
-        public string Desctiption { get; set; }
+        public string Description { get; set; }
         public Adress Adress { get; set; }
         public List<Department> Departments { get; set; }
 
@@ -26,7 +26,7 @@ namespace HR_Application_BLL.Models
             {
                 ID = ID,
                 Title = Title,
-                Desctiption = Desctiption,
+                Description = Description,
                 Adress = Adress.Clone(),
                 Departments = new List<Department>(Departments.Select(dep => dep.Clone()))
             };
@@ -47,7 +47,7 @@ namespace HR_Application_BLL.Models
 
                 if (company.ID == ID
                     && company.Title == Title
-                    && company.Desctiption == Desctiption
+                    && company.Description == Description
                     && company.Adress.Equals(Adress)
                     && company.Departments.SequenceEqual(Departments))
                 {

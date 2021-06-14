@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Linq;
 using HR_Application_BLL.Base.Models;
+using System.Windows.Input;
 
 namespace HR_Application_DB_WPF.Windows.GeneralWindows
 {
@@ -20,19 +21,53 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
     /// </summary>
     public partial class HomePageWindow : Window
     {
+        private const string _withoutDepartment = "Without department";
+        private const string _withoutProject = "Without project";
         private Cache _cache;
-        private CompanyService _companyService;
-        private Company newCompany;
-        private Department newDepartment;
-        private ProjectModel newProject;
+        private Company _company;
+        private List<Company> _newCompany;
+        private Loader _loader;
 
         public HomePageWindow()
         {
             _cache = Cache.GetCache();
+            _loader = new Loader();
+            _newCompany = new List<Company>();
 
             InitializeComponent();
             InitializeUserData();
             InitializeEmployeesData();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            TxtCountEmployeeInAppAll.Text = _cache.Employees.Count.ToString();
+            TxtCountHRInApp.Text = _cache.Users.Count.ToString();
+            TxtCountPeopleInApp.Text = ((_cache.Employees.Count) + (_cache.Users.Count)).ToString();
+            ComboboxEmployees.ItemsSource = _cache.PositionsModels;
+            ComboboxEmployees.SelectedItem = _cache.PositionsModels[0];
+
+            DataGrid_Company.ItemsSource = _cache.Companies;
+            DataGrid_Company.IsReadOnly = false;
+
+            var departmetns = new List<Department>();
+
+            foreach (var departmetn in _cache.Departments)
+            {
+                if (departmetns.FirstOrDefault(dep => dep.Title == departmetn.Title) == null)
+                {
+                    departmetns.Add(departmetn.Clone());
+                }
+            }
+
+            ComboboxDepartments.ItemsSource = departmetns;
+
+            if (departmetns.Count > 0)
+            {
+                ComboboxDepartments.SelectedItem = departmetns[0];
+            }
+
+            ComboBox_City.ItemsSource = _cache.Cities;
         }
 
         private void InitializeEmployeesData()
@@ -98,105 +133,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             addEmployeeWindow.ShowDialog();
         }
 
-        private void Button_Add_Click(object sender, RoutedEventArgs e)
-        {
-            if (RadioButtonCompanies.IsChecked == true)
-            {
-                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
-                {
-                    newCompany = new Company()
-                    {
-                        Title = TextBox_Title.Text,
-                        Desctiption = TextBox_Description.Text,
-                        Departments = new List<Department>(),
-                        Adress = new Adress()
-                        {
-                            City = new CityModel() { ID = 1, Name = "1", CountryID = 1 }
-                        }
-
-                        //_companyService.Add(newCompany);
-                    };
-                }
-            }
-            if (RadioButtonDepartments.IsChecked == true)
-            {
-                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
-                {
-                    Department newDepartment = new Department();
-                    newDepartment.Title = TextBox_Title.Text;
-                    newDepartment.Description = TextBox_Description.Text;
-                    newDepartment.Projects = null;
-
-                    //_companyService.Add(newCompany);
-                }
-            }
-            if (RadioButtonProjects.IsChecked == true)
-            {
-                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
-                {
-                    ProjectModel newProject = new ProjectModel();
-                    newProject.DirectionID = 1; 
-                    newProject.Title = TextBox_Title.Text;
-                    newProject.Description = TextBox_Description.Text;
-                }
-            }
-        }
-
-        private void Button_Delete_Click(object sender, RoutedEventArgs e)
-        {
-            if (RadioButtonCompanies.IsChecked == true)
-            {
-                var company = DataGrid_Company.SelectedItem as Company;
-
-                if (MessageBox.Show($"Do you really want to delete company '{company.Title}'?", "Delete Row", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
-                    return;
-                try
-                {
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            if (RadioButtonDepartments.IsChecked == true)
-            {
-                var department = DataGrid_Department.SelectedItem as Department;
-
-                if (MessageBox.Show($"Do you really want to delete department '{department.Title}'?", "Delete Row", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
-                    return;
-                try
-                {
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            if (RadioButtonProjects.IsChecked == true)
-            {
-                var project = DataGrid_Project.SelectedItem as ProjectModel;
-
-                if (MessageBox.Show($"Do you really want to delete project '{project.Title}'?", "Delete Row", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
-                    return;
-                try
-                {
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
         private void Button_Update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_SaveUpdate_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -245,14 +182,14 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private void EditEmployeeWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             InitializeEmployeesData();
-            if(sender is EmployeeProfileWindow)
+            if (sender is EmployeeProfileWindow)
             {
                 var window = (EmployeeProfileWindow)sender;
                 window.Closing -= EditEmployeeWindow_Closing;
             }
         }
 
-        private void FindEmployeeButton_Edit_Click(object sender, RoutedEventArgs e)// TODO: add new event
+        private void FindEmployeeButton_Edit_Click(object sender, RoutedEventArgs e)
         {
             if (!(_cache.SelectedEmployee is null))
             {
@@ -265,32 +202,6 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 MessageBox.Show("Chose employee and try again", "Warning", MessageBoxButton.OK);
             }
-        }
-
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            TxtCountEmployeeInAppAll.Text = _cache.Employees.Count.ToString();
-            TxtCountHRInApp.Text = _cache.Users.Count.ToString();
-            TxtCountPeopleInApp.Text = ((_cache.Employees.Count) + (_cache.Users.Count)).ToString();
-            ComboboxEmployees.ItemsSource = _cache.PositionsModels;
-            ComboboxEmployees.SelectedItem = _cache.PositionsModels[0];
-
-            var departmetns = new List<Department>();
-
-            foreach (var departmetn in _cache.Departments)
-            {
-                if (departmetns.FirstOrDefault(dep => dep.Title == departmetn.Title) == null)
-                {
-                    departmetns.Add(departmetn.Clone());
-                }
-            }
-
-            ComboboxDepartments.ItemsSource = departmetns;
-            if (departmetns.Count > 0)
-            {
-                ComboboxDepartments.SelectedItem = departmetns[0];
-            }
-
         }
 
         private void ComboboxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -317,7 +228,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
             foreach (Department curDepartment in allEmployee)
             {
-                if (curDepartment.Title == selectDep.Title/*curDepartment.Equals((Department)ComboboxDepartments.SelectedItem)*/)
+                if (curDepartment.Title == selectDep.Title)
                 {
                     ++count;
                 }
@@ -330,8 +241,14 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             if (!(DataGrid_Company.SelectedItem is null))
             {
-                var company = DataGrid_Company.SelectedItem as Company;
-                DataGrid_Department.ItemsSource = company.Departments;
+                if (DataGrid_Company.SelectedItem is Company)
+                {
+                    _company = DataGrid_Company.SelectedItem as Company;
+                    ComboBox_City.IsEditable = false;
+                    ComboBox_City.SelectedItem = _company.Adress.City;
+                    DataGrid_Department.ItemsSource = _company.Departments;
+                    DataGrid_Project.ItemsSource=new List<ProjectModel>();
+                }
             }
         }
 
@@ -341,6 +258,188 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             {
                 var department = DataGrid_Department.SelectedItem as Department;
                 DataGrid_Project.ItemsSource = department.Projects;
+            }
+        }
+
+        private bool CreateCompany()
+        {
+            bool result = false;
+
+            if (ComboBox_City.SelectedItem == null)
+            {
+                MessageBox.Show("Select city");
+            }
+            else if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
+            {
+                _company = new Company()
+                {
+                    Title = TextBox_Title.Text,
+                    Description = TextBox_Description.Text,
+                    Departments = new List<Department>()
+                    {
+                        new Department()
+                        {
+                            Title = _withoutDepartment,
+                            Projects = new List<ProjectModel>()
+                            {
+                                new ProjectModel()
+                                {
+                                    Title = _withoutProject
+                                }
+                            }
+                        }
+                    },
+                    Adress = new Adress()
+                    {
+                        City = (CityModel)ComboBox_City.SelectedItem
+                    }
+                };
+
+                ClearTextBox();
+                result = true;
+            }
+            else
+            {
+                MessageBox.Show("Enter title/description company");
+            }
+
+            return result;
+        }
+
+        private bool CreateDepartment()
+        {
+            bool result = false;
+
+            if (DataGrid_Company.SelectedItem is Company)
+            {
+                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
+                {
+                    var selectedCompany = (Company)DataGrid_Company.SelectedItem;
+                    var department = selectedCompany.Departments.Find(dep => dep.Title == _withoutDepartment);
+                    selectedCompany.Departments.Remove(department);
+
+                    selectedCompany.Departments.Add(new Department()
+                    {
+                        Title = TextBox_Title.Text,
+                        Description = TextBox_Description.Text
+                    });
+
+                    ClearTextBox();
+                    result = true;
+                }
+                else
+                {
+                    MessageBox.Show("Enter title/description department");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select company");
+            }
+
+            return result;
+        }
+
+        private bool CreateProject()
+        {
+            bool result = false;
+            if (DataGrid_Department.SelectedItem is Department)
+            {
+                if (!(string.IsNullOrEmpty(TextBox_Title.Text) && string.IsNullOrEmpty(TextBox_Description.Text)))
+                {
+                    var selectedDepartment = (Department)DataGrid_Department.SelectedItem;
+                    var project = selectedDepartment.Projects.Find(proj => proj.Title == _withoutProject);
+                    selectedDepartment.Projects.Remove(project);
+
+                    selectedDepartment.Projects.Add(new ProjectModel()
+                    {
+                        DirectionID = 1,
+                        Title = TextBox_Title.Text,
+                        Description = TextBox_Description.Text
+                    });
+
+                    result = true;
+                }
+                else
+                {
+                    MessageBox.Show("Enter title/description project");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select department");
+            }
+
+            return result;
+        }
+
+        private void UpdateDataGrid()
+        {
+            DataGrid_Company.Items.Refresh();
+            DataGrid_Department.Items.Refresh();
+            DataGrid_Project.Items.Refresh();
+        }
+
+        private void ClearTextBox()
+        {
+            TextBox_Title.Text = string.Empty;
+            TextBox_Description.Text = string.Empty;
+        }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+            if (RadioButtonCompanies.IsChecked == true)
+            {
+                if (CreateCompany())
+                {
+                    _cache.Companies.Add(_company);
+                    _newCompany.Add(_company);
+
+                    UpdateDataGrid();
+                    ComboBox_City.SelectedItem = null;
+                }
+            }
+            if (RadioButtonDepartments.IsChecked == true)
+            {
+                if (CreateDepartment())
+                {
+                    UpdateDataGrid();
+                }
+            }
+            if (RadioButtonProjects.IsChecked == true)
+            {
+                if (CreateProject())
+                {
+                    UpdateDataGrid();
+                }
+            }
+        }
+
+        private void RadioButtonCompanies_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBox_City.Visibility = Visibility.Visible;
+        }
+
+        private void RadioButtonDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBox_City.Visibility = Visibility.Hidden;
+        }
+
+        private void RadioButtonProjects_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBox_City.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_SaveCompany_Click(object sender, RoutedEventArgs e)
+        {
+            if (_newCompany.Count > 0)
+            {
+                foreach (Company company in _newCompany)
+                {
+                    _loader.CreateCompany(company);
+                }
+
+                _loader.UpdateCompanies();
             }
         }
     }

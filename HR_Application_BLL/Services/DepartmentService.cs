@@ -5,6 +5,7 @@ using HR_Application_BLL.Models.Base;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Base;
+using HR_Application_DB_Logic.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,37 @@ namespace HR_Application_BLL.Services
                 department.Projects = new List<ProjectModel>();
 
                 return department;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public int Create(Department department)
+        {
+            try
+            {
+                DepartmentDTO departmentDTO = _departmentMapper.GetDTOFromDepartment(department);
+                department.ID = _dbController.DepartmentRepository.Create(departmentDTO);
+
+                foreach (ProjectModel project in department.Projects)
+                {
+                    ProjectDTO projectDTO = new ProjectMapper().GetDTOFromModel(project);
+                    project.ID = _dbController.ProjectRepository.Create(projectDTO);
+                }
+
+                DepartmentProjectsDTO departmentProjectsDTO = new DepartmentProjectsDTO()
+                {
+                    DepartmentID = department.ID,
+                    ProjectsID = new List<int>(department.Projects.Select(project=>project.ID)),
+                    IsActual = true
+                };
+
+                var depProjRepository = (DepartmentProjectsRepository)_dbController.DepartmentProjectsRepository;
+                depProjRepository.CreateList(departmentProjectsDTO);
+
+                return department.ID;
             }
             catch (Exception e)
             {
