@@ -115,13 +115,13 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if (TextBox_Password.Text.Length < 8 || TextBox_ConfirmPassword.Text.Length < 8)
+            else if (PasswordBox_Registration.Password.Length < 8 || PasswordBox_RegistrationConfirmPassword.Password.Length < 8)
             {
                 MessageBox.Show("Password >= 8");
 
                 isConfirm = false;
             }
-            else if (TextBox_Password.Text != TextBox_ConfirmPassword.Text)
+            else if (PasswordBox_Registration.Password != PasswordBox_RegistrationConfirmPassword.Password)
             {
                 MessageBox.Show("Password must be equal to Confirm password");
 
