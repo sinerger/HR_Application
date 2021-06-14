@@ -233,7 +233,7 @@
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Margin="0" Padding="0" x:Name="Edit" Click="Button_Edit_Click" FontSize="16" Content="Edit" Width="40" Height="20"/>
+                                        <Button Style="{DynamicResource CoralRoundButtonStyle}" Margin="0" Padding="0" x:Name="Edit" Click="Button_Edit_Click" FontSize="16" Content="View" Width="40" Height="20"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
