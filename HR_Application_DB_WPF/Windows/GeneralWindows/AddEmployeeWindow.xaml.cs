@@ -208,18 +208,5 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
             }
         }
-
-        private void ComboBox_City_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _employee.Adress = new Adress()
-            {
-                City = (CityModel)ComboBox_City.SelectedItem
-            };
-        }
-
-        private void ComboBox_Project_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
-        }
     }
 }
