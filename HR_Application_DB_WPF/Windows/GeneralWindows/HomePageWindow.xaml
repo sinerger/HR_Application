@@ -97,7 +97,7 @@
                             <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Style="{DynamicResource LabelStyle}" Content="How many employees are in the " Grid.Column="0"/>
+                        <Label Style="{DynamicResource LabelStyle}" Content="How many employees are in the department:" Grid.Column="0"/>
                         <ComboBox x:Name="ComboboxDepartments" Style="{DynamicResource RoundComboBox}" IsEditable="False" Grid.Column="1" SelectedIndex="0" Width="250" HorizontalAlignment="Left" IsReadOnly="True" SelectionChanged="ComboboxDepartments_SelectionChanged" IsSynchronizedWithCurrentItem="True"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="0" Margin="30,0,0,0">
@@ -106,7 +106,7 @@
                             <ColumnDefinition Width="0.55*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel VerticalAlignment="Center">
-                            <Label Style="{DynamicResource LabelStyle}" Content="How many employee" Grid.Column="0"/>
+                            <Label Style="{DynamicResource LabelStyle}" Content="How many employees" Grid.Column="0"/>
                             <Label Style="{DynamicResource LabelStyle}" Content="are in the application:" Grid.Column="0"/>
                         </StackPanel>
                         <ComboBox  x:Name="ComboboxEmployees" Style="{DynamicResource RoundComboBox}" Grid.Column="1" SelectedIndex="0" Width="250" HorizontalAlignment="Left" SelectionChanged="ComboboxEmployees_SelectionChanged" IsReadOnly="True"/>
