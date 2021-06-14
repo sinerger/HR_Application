@@ -25,27 +25,26 @@ namespace HR_Application_DB_WPF.ModalWindows
     public partial class AddDepartmentWindow : Window
     {
         private Cache _cache;
-        private TextBox _textBoxCompany;
         private Employee _employee;
         private User _user;
 
-        public AddDepartmentWindow(Employee emploee, TextBox textBoxCompany)
+        public AddDepartmentWindow(Employee emploee)
         {
             _cache = Cache.GetCache();
-            _textBoxCompany = textBoxCompany;
             _employee = emploee;
             InitializeComponent();
             InitializeComboBoxSources();
         }
-        public AddDepartmentWindow(User user, TextBox textBoxCompany)
+
+        public AddDepartmentWindow(User user)
         {
             _cache = Cache.GetCache();
-            _textBoxCompany = textBoxCompany;
             _user = user;
 
             InitializeComponent();
             InitializeComboBoxSources();
         }
+
         private void InitializeComboBoxSources()
         {
             var cities = _cache.Companies.Select(city => city.Adress.City);
@@ -69,7 +68,6 @@ namespace HR_Application_DB_WPF.ModalWindows
             if (ComboBox_Companies.SelectedItem is Company)
             {
                 _cache.SelectedCompany = (Company)ComboBox_Companies.SelectedItem;
-                _textBoxCompany.Text = _cache.SelectedCompany.ToString();
 
                 if (_employee != null)
                 {

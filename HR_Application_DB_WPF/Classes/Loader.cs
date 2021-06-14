@@ -37,12 +37,15 @@ namespace HR_Application_DB_WPF.Classes
         public void LoadAllData()
         {
             LoadAllCompanies();
+            LoadAllDepartments();
             LoadAllUsers();
             LoadAllEmployees();
             LoadAllPositionsModels();
             LoadAllLevelsPosition();
             LoadAllSkills();
             LoadAllLevelSkills();
+            LoadAllDepartments();
+            LoadAllCities();
         }
 
         public void CreateEmployee(Employee employee)
@@ -63,6 +66,19 @@ namespace HR_Application_DB_WPF.Classes
             try
             {
                 new EmployeeService(_dbController).Update(employee);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+        private void LoadAllCities()
+        {
+            try
+            {
+                _cache.Cities = new CityMapper().GetModelsFromDTO(_dbController.CityRepository.GetAll());
             }
             catch (Exception e)
             {
@@ -100,6 +116,17 @@ namespace HR_Application_DB_WPF.Classes
             try
             {
                 _cache.Companies = new CompanyService(_dbController).GetAll();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        private void LoadAllDepartments()
+        {
+            try
+            {
+                _cache.Departments = new DepartmentService(_dbController).GetAll();
             }
             catch (Exception e)
             {

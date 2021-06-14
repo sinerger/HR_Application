@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [HRAppDB].[CreateEmployeePosition]
 	@EmployeeID int,
-	@HiredDate nvarchar (255),
-	@FiredDate nvarchar (255),
+	@HiredDate nvarchar (255) null,
+	@FiredDate nvarchar (255) null,
 	@IsActual bit,
 	@LevelPositionID int,
 	@PositionID int

@@ -7,21 +7,22 @@
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Title="AuthorizationWindow" Height="600" Width="500" Background="#FFE9E9E9">
-    <Window.Resources>
-        <ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
-    </Window.Resources>
-    <Grid RenderTransformOrigin="0.462,0.427">
-        <Grid.RowDefinitions >
-            <RowDefinition Height="0.3*"></RowDefinition>
-            <RowDefinition Height="0.6*"></RowDefinition>
-            <RowDefinition Height="0.6*"></RowDefinition>
-            <RowDefinition Height="0.7*"></RowDefinition>
-            <RowDefinition Height="0.7*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Label Style="{DynamicResource LabelHeader}" x:Name="AuthorisationTitle" Grid.Row="0"  Content="AUTHORIZATION"></Label>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Login" Grid.Row="1" Tag="Login" FontSize="36"/>
-        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Password" Grid.Row="2" Tag="Password" FontSize="36"/>
-        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="SignInButton" Grid.Row="3" Content="Sign In" Click="SignInButton__Click" UseLayoutRounding="True"/>
-        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="RegistrationButton" Grid.Row="4" Content="Registration" Click="RegistrationButton_Click"/>
-    </Grid>
+	<Window.Resources>
+		<ResourceDictionary Source="/ResourceDictionaries/HRAppResourcesDictionary.xaml"/>
+	</Window.Resources>
+	<Grid RenderTransformOrigin="0.415,0.415">
+		<Grid.RowDefinitions >
+			<RowDefinition Height="0.3*"></RowDefinition>
+			<RowDefinition Height="0.6*"></RowDefinition>
+			<RowDefinition Height="0.6*"></RowDefinition>
+			<RowDefinition Height="0.7*"></RowDefinition>
+			<RowDefinition Height="0.7*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Label Style="{DynamicResource LabelHeader}" x:Name="AuthorisationTitle" Grid.Row="0"  Content="AUTHORIZATION"></Label>
+		<TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Login" Grid.Row="1" Tag="Login" FontSize="36" Background="{x:Null}"/>
+		<PasswordBox Style="{DynamicResource PassBoxStyle}" Margin="30,30,30,30" x:Name="PasswordBox_Autorization" Grid.Row="2" FontSize="36" FontFamily="Global User Interface" KeyDown="PasswordBox_Autorization_KeyDown" VerticalAlignment="Center" Height="51" BorderBrush="#00000000" Foreground="#FF878383" />
+		<TextBlock x:Name="Watermark" Text="Password" IsHitTestVisible="False" Foreground="Gray" FontFamily="Arial" Grid.Row="2" FontSize="36" Width="380" Height="51.3966666666667" Margin="38,41,82,29"/>
+		<Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="SignInButton" Grid.Row="3" Content="Sign In" Click="SignInButton__Click" UseLayoutRounding="True"/>
+		<Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="RegistrationButton" Grid.Row="4" Content="Registration" Click="RegistrationButton_Click"/>
+	</Grid>
 </Window>

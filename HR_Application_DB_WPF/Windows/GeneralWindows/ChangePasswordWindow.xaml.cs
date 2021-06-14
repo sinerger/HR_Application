@@ -29,5 +29,20 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         {
             this.Close();
         }
+
+        private void PasswordBox_ChangePassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            Watermark_ChangePassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void PasswordBox_NewPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            Watermark_NewPassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void PasswordBox_ConfirmPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            Watermark_ConfirmPassword.Visibility = Visibility.Collapsed;
+        }
     }
 }

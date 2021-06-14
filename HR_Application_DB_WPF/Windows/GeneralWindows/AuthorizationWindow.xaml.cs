@@ -38,11 +38,11 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             // TODO: Нужно прикрутить визуальное отображение что неправильный логин или пароль
         }
 
-        private void SignInButton__Click(object sender, RoutedEventArgs e)
+        private void SingInLogic()
         {
             try
             {
-                if (AuthorizationController.SignIn(TextBox_Login.Text, Cryptography.GetHash(TextBox_Password.Text)))
+                if (AuthorizationController.SignIn(TextBox_Login.Text, Cryptography.GetHash(PasswordBox_Autorization.Password)))
                 {
                     _cache.CurrentUser = AuthorizationController.CurrentUser;
                     HomePageWindow homePageWindow = new HomePageWindow();
@@ -55,11 +55,15 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                     MessageBox.Show("Invalid login or password");
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
 
-                MessageBox.Show("The server is not responding. from try later");
+                MessageBox.Show("The server is not responding. from try later" + exception.ToString());
             }
+        }
+        private void SignInButton__Click(object sender, RoutedEventArgs e)
+        {
+            SingInLogic();
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +72,19 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             registrationWindow.Show();
 
             this.Close();
+        }
+
+        private void TextBox_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SingInLogic();
+            }
+        }
+
+        private void PasswordBox_Autorization_KeyDown(object sender, KeyEventArgs e)
+        {
+            Watermark.Visibility = Visibility.Collapsed;
         }
     }
 }

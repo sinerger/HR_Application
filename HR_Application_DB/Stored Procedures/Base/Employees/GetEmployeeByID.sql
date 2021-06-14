@@ -3,4 +3,4 @@
 AS
 	SELECT [HRAppDB].[Employees].*
 	FROM [HRAppDB].[Employees]
-	WHERE [HRAppDB].[Employees].[ID] = @ID
+	WHERE [HRAppDB].[Employees].[ID] = @ID and [HRAppDB].[Employees].IsActual = 1
