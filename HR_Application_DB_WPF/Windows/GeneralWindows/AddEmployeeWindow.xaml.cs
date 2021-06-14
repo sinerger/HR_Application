@@ -51,7 +51,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void AddDepartment_Closed(object sender, EventArgs e)
         {
-            if(sender is AddDepartmentWindow )
+            if (sender is AddDepartmentWindow)
             {
                 var window = (AddDepartmentWindow)sender;
 
@@ -137,7 +137,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
-            else if (TextBox_Email.Text==string.Empty)
+            else if (TextBox_Email.Text == string.Empty)
             {
                 MessageBox.Show("Enter email");
 
@@ -182,7 +182,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
                 _employee.GeneralInformation.Phone = TextBox_Phone.Text;
                 _employee.GeneralInformation.Email = TextBox_Email.Text;
                 _employee.RegistrationDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
-               
+
 
                 _loader.CreateEmployee(_employee);
 
@@ -192,15 +192,21 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void ComboBox_City_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _employee.Adress = new Adress()
+            if (ComboBox_Project.SelectedItem is CityModel)
             {
-                City = (CityModel)ComboBox_City.SelectedItem
-            };
+                _employee.Adress = new Adress()
+                {
+                    City = (CityModel)ComboBox_City.SelectedItem
+                };
+            }
         }
 
         private void ComboBox_Project_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
+            if (ComboBox_Project.SelectedItem is ProjectModel)
+            {
+                _employee.Project = (ProjectModel)ComboBox_Project.SelectedItem;
+            }
         }
     }
 }
