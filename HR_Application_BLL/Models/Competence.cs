@@ -27,7 +27,7 @@ namespace HR_Application_BLL.Models
 
         public override string ToString()
         {
-            return $"{Skill} {LevelSkill} - {Date}";
+            return $"{Skill} {LevelSkill}";
         }
 
         public override bool Equals(object obj)
