@@ -3,6 +3,7 @@ using HR_Application_BLL.Models;
 using HR_Application_DB_Logic.Interfaces;
 using HR_Application_DB_Logic.Models;
 using HR_Application_DB_Logic.Models.Base;
+using HR_Application_DB_Logic.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,42 @@ namespace HR_Application_BLL.Services
                     company.Departments = new List<Department>();
                 }
                 return company;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public int Create(Company company)
+        {
+            try
+            {
+                CompanyDTO companyDTO = _companyMapper.GetDTOFromModel(company);
+                company.ID = _dbController.CompanyRepository.Create(companyDTO);
+
+                company.Adress.ID = new AdressService(_dbController).Create(company.Adress);
+                var depService = new DepartmentService(_dbController);
+
+                foreach (Department department in company.Departments)
+                {
+                    department.ID = depService.Create(department);
+                }
+
+                var compDepRepository = (CompanyDepartmentsRepository)_dbController.CompanyDepartmentsRepository;
+
+
+                CompanyDepartmentsDTO companyDepartmentsDTO = new CompanyDepartmentsDTO()
+                {
+                    IsActual = true,
+                    CompanyID = company.ID,
+                    DepartmentsID = new List<int>(company.Departments.Select(dep => dep.ID))
+                };
+
+                compDepRepository.CreateList(companyDepartmentsDTO);
+
+                return company.ID;
 
             }
             catch (Exception e)

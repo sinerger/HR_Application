@@ -221,7 +221,7 @@
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Visibility="Hidden"/>
                             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}" Width="1*" FontSize="18"/>
                             <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}" Width="1*" FontSize="18"/>
-                             <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Visibility="Hidden" Width="1*"/>
+                            <DataGridTextColumn Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}" Visibility="Hidden" Width="1*"/>
                             <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=GeneralInformation.DateOfBirth}" FontSize="18"/>
                             <DataGridTextColumn Header="Phone" Binding="{Binding Path=GeneralInformation.Phone}" Visibility="Hidden" Width="1*"/>
                             <DataGridTextColumn Header="Email" Binding="{Binding Path=GeneralInformation.Email}" Visibility="Hidden" Width="1*"/>
@@ -299,9 +299,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <RadioButton Content="Companies" x:Name="RadioButtonCompanies" IsChecked="True" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="15,-395,0,0" VerticalAlignment="Top" />
-                            <RadioButton Content="Departments" x:Name="RadioButtonDepartments" Grid.Column="1" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="173,-395,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                            <RadioButton Content="Projects" x:Name="RadioButtonProjects" Grid.Column="3" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="103,-395,0,0" VerticalAlignment="Top"/>
+                            <RadioButton Content="Companies" x:Name="RadioButtonCompanies" IsChecked="True" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="15,-395,0,0" VerticalAlignment="Top" Click="RadioButtonCompanies_Click" />
+                            <RadioButton Content="Departments" x:Name="RadioButtonDepartments" Grid.Column="1" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="173,-395,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="RadioButtonDepartments_Click"/>
+                            <RadioButton Content="Projects" x:Name="RadioButtonProjects" Grid.Column="3" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="103,-395,0,0" VerticalAlignment="Top" Click="RadioButtonProjects_Click"/>
                         </Grid>
 
                         <Grid Grid.Row="1" x:Name="tbGrid">
@@ -323,12 +323,12 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="1" Margin ="10" Height="60" x:Name="Button_Add" Content="Add" Click="Button_Add_Click"/>
-                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="2" Margin ="10" Height="60" x:Name="Button_Delete" Content="Delete" Click="Button_Delete_Click"/>
+                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="2" Margin ="10" Height="60" x:Name="Button_SaveCompany" Content="Delete" Click="Button_SaveCompany_Click"/>
                             <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="3" Margin ="10" Height="60" x:Name="Button_Update" Content="Update" Click="Button_Update_Click"/>
-                            <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="3" Margin ="10" Height="60" x:Name="Button_SaveUpdate" Content="Save" Click="Button_SaveUpdate_Click" Visibility="Hidden"/>
                             <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="4" Margin ="10" Height="60" x:Name="Button_CancelUpd" Content="Cancel" Click="Button_Cancel_Click"/>
                         </Grid>
                     </Grid>
+                    <ComboBox x:Name="ComboBox_City" HorizontalAlignment="Left" Margin="226,35,0,0" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
         </TabControl>

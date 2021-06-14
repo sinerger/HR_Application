@@ -59,5 +59,21 @@ namespace HR_Application_BLL.Services
 
             throw new ArgumentException("Invalid id");
         }
+
+        public int Create(Adress adress)
+        {
+            try
+            {
+                LocationDTO locationDTO = _adressMapper.GetDTOFromAdress(adress);
+                adress.ID = _dbController.LocationRepository.Create(locationDTO);
+
+                return adress.ID;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
     }
 }

@@ -143,7 +143,42 @@ namespace HR_Application_DB_Logic.Repositories
             {
                 using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
                 {
-                    dbConnection.QuerySingle<int>(query, new { obj.ProjectsID, obj.DepartmentID, obj.IsActual });
+                    var a = dbConnection.QuerySingle<int>(query, new
+                    {
+                        obj.ProjectsID,
+                        obj.DepartmentID,
+                        obj.IsActual
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return returnID;
+        }
+
+        public List<int> CreateList(DepartmentProjectsDTO obj)
+        {
+            string query = "[HRAppDB].CreateDepartmentsProjects @ProjectID, @DepartmentID, @IsActual";
+            List<int> returnID = new List<int>();
+
+            try
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString))
+                {
+                    for (int i = 0; i < obj.ProjectsID.Count; i++)
+                    {
+                        var ProjectID = obj.ProjectsID[i];
+
+                        returnID.Add(dbConnection.QuerySingle<int>(query, new
+                        {
+                            ProjectID,
+                            obj.DepartmentID,
+                            obj.IsActual
+                        }));
+                    }
                 }
             }
             catch (Exception e)
