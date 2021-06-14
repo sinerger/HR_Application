@@ -74,16 +74,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             this.Close();
         }
 
-        private void TextBox_Password_KeyDown(object sender, KeyEventArgs e)
+        private void PasswordBox_Autorization_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 SingInLogic();
             }
-        }
-
-        private void PasswordBox_Autorization_KeyDown(object sender, KeyEventArgs e)
-        {
             Watermark.Visibility = Visibility.Collapsed;
         }
     }
