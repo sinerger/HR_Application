@@ -63,7 +63,7 @@
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="10" Grid.Column="0" x:Name="Button_AddComment" Margin="40,10,226,0" Content="Add comment" Click="Button_AddComment_Click"/>
                         <ScrollViewer Grid.Row="11" Grid.ColumnSpan="2" VerticalScrollBarVisibility ="Auto" CanContentScroll="True">
                             <StackPanel x:Name ="AllEmployeeComments" >
-                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Comments" RenderTransformOrigin="0.5,0.5" Height="70" Width="1178"/>
+                                <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Comments" RenderTransformOrigin="0.5,0.5" Height="70" Width="1178" IsReadOnly="True"/>
                             </StackPanel>
                         </ScrollViewer>
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Row="12" Grid.Column="0" Margin ="40,5,226,5" x:Name="Button_Save" Content="Save" Click="Button_Save_Click"/>
