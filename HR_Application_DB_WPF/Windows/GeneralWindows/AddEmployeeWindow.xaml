@@ -40,11 +40,11 @@
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="7" Margin ="10,15,0,15" Tag="Competence" x:Name="TextBox_Competence" PreviewMouseDown="TextBox_Competence_PreviewMouseDown"/>
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="8" Margin ="10,15,0,15" Tag="Position" x:Name="TextBox_Position" PreviewMouseDown="TextBox_Position_PreviewMouseDown"/>
         <TextBox Style="{DynamicResource RoundTextBoxStyle}" Grid.Row="9" Margin ="10,15,0,15" Tag="Department" x:Name="TextBox_Department" PreviewMouseDown="TextBox_Department_PreviewMouseDown"/>
-        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="10" Margin ="10,15,0,15" x:Name="ComboBox_Project" SelectedIndex="0">
-            <ComboBoxItem Name="ComboBoxItem_Project">Project</ComboBoxItem>
+        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="10" Margin ="10,15,0,15" x:Name="ComboBox_Project" SelectedIndex="0" SelectionChanged="ComboBox_Project_SelectionChanged">
+            <!--<ComboBoxItem Name="ComboBoxItem_Project">Project</ComboBoxItem>-->
         </ComboBox>
-        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="11" Margin ="10,15,0,15" x:Name="ComboBox_City" SelectedIndex="0">
-            <ComboBoxItem Name="ComboBoxItem_City">City</ComboBoxItem>
+        <ComboBox Style="{DynamicResource RoundComboBox}" Grid.Row="11" Margin ="10,15,0,15" x:Name="ComboBox_City" SelectedIndex="0" SelectionChanged="ComboBox_City_SelectionChanged">
+            <!--<ComboBoxItem Name="ComboBoxItem_City">City</ComboBoxItem>-->
         </ComboBox>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Cancel" Margin ="10,15,0,15" Content="Cancel" Grid.Row="12" Grid.Column="1" Width="160" Click="Button_Cancel_Click"/>
         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Save" Margin ="10,15,0,15" Content="Save" Grid.Row="12" Grid.Column="0" Width="160" Click="Button_Save_Click"/>

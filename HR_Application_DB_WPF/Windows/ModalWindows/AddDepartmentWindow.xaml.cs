@@ -35,6 +35,7 @@ namespace HR_Application_DB_WPF.ModalWindows
             InitializeComponent();
             InitializeComboBoxSources();
         }
+
         public AddDepartmentWindow(User user)
         {
             _cache = Cache.GetCache();
@@ -43,6 +44,7 @@ namespace HR_Application_DB_WPF.ModalWindows
             InitializeComponent();
             InitializeComboBoxSources();
         }
+
         private void InitializeComboBoxSources()
         {
             var cities = _cache.Companies.Select(city => city.Adress.City);
