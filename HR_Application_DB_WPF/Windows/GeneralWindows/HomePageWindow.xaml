@@ -153,8 +153,8 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_FirstName" Margin="5,0,5,0"  Grid.Column="1" Tag="First name" FontSize="36" />
-                        <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Margin="5,10,5,10" Content="Log out" Grid.Column="2" Click="Button_LogOut_Click"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_FirstName" Margin="5,0,5,0"  Grid.Column="1" Tag="First name" FontSize="36" IsEnabled="False" />
+                        <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Margin="5,10,5,10" Content="Log out" Grid.Column="2" Click="Button_LogOut_Click" IsEnabled="False"/>
                     </Grid>
                     <Label Style="{DynamicResource LabelStyle}" Grid.Row="2" Margin="5,0,5,0" Foreground="#878383" x:Name="Label_LastName" Tag="Last name" HorizontalAlignment="Center" Content="Last name" FontSize="36"/>
                     <Grid x:Name ="GridSecondName" Grid.Row="3">
@@ -163,7 +163,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name ="TextBox_LastName" Grid.Column="1" Margin="5,0,5,0" Tag="Last name" FontSize="36"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name ="TextBox_LastName" Grid.Column="1" Margin="5,0,5,0" Tag="Last name" FontSize="36" IsEnabled="False"/>
                     </Grid>
                     <Label Style="{DynamicResource LabelStyle}" Grid.Row="4" Margin="5,0,5,0" Foreground="#878383" x:Name="Label_CompanyName" Tag="Company" HorizontalAlignment="Center" Content="Company" FontSize="36"/>
                     <Grid x:Name ="GridCompany" Grid.Row="5">
@@ -172,7 +172,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Company" Margin="5,0,5,0" Grid.Column="1" Tag="Company" PreviewMouseDown="TextBox_Company_PreviewMouseDown" SelectionChanged="TextBox_Company_SelectionChanged" FontSize="36"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Company" Margin="5,0,5,0" Grid.Column="1" Tag="Company" PreviewMouseDown="TextBox_Company_PreviewMouseDown" SelectionChanged="TextBox_Company_SelectionChanged" FontSize="36" IsEnabled="False"/>
                     </Grid>
                     <Label Style="{DynamicResource LabelStyle}" Grid.Row="6" Margin="5,0,5,0" Foreground="#878383" x:Name="Label_City" Tag="City" HorizontalAlignment="Center" Content="City" FontSize="36"/>
                     <Grid x:Name ="GridCity" Grid.Row="7">
@@ -181,7 +181,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_City" Margin="5,0,5,0" Grid.Column="1" Tag="City" FontSize="36"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_City" Margin="5,0,5,0" Grid.Column="1" Tag="City" FontSize="36" IsEnabled="False"/>
                     </Grid>
                     <Grid x:Name ="GridChangePassword" Grid.Row="8">
                         <Grid.ColumnDefinitions>
@@ -189,7 +189,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ChangePassword" Margin="5,10,5,10" Grid.Column="1" Content="Change password" Click="Button_ChangePassword_Click"/>
+                        <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_ChangePassword" Margin="5,10,5,10" Grid.Column="1" Content="Change password" Click="Button_ChangePassword_Click" IsEnabled="False"/>
                     </Grid>
                     <Grid x:Name ="GridSaveCancel" Grid.Row="9">
                         <Grid.ColumnDefinitions>
@@ -299,9 +299,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <RadioButton Content="Companies" x:Name="RadioButtonCompanies" IsChecked="True" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="15,-395,0,0" VerticalAlignment="Top" Click="RadioButtonCompanies_Click" />
-                            <RadioButton Content="Departments" x:Name="RadioButtonDepartments" Grid.Column="1" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="173,-395,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="RadioButtonDepartments_Click"/>
-                            <RadioButton Content="Projects" x:Name="RadioButtonProjects" Grid.Column="3" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="103,-395,0,0" VerticalAlignment="Top" Click="RadioButtonProjects_Click"/>
+                            <RadioButton Content="Companies" x:Name="RadioButtonCompanies" IsChecked="True" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="15,-361,0,0" VerticalAlignment="Top" Click="RadioButtonCompanies_Click" />
+                            <RadioButton Content="Departments" x:Name="RadioButtonDepartments" Grid.Column="1" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="173,-361,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="RadioButtonDepartments_Click"/>
+                            <RadioButton Content="Projects" x:Name="RadioButtonProjects" Grid.Column="3" TextElement.Foreground="#E3405F" HorizontalAlignment="Left" Margin="103,-361,0,0" VerticalAlignment="Top" Click="RadioButtonProjects_Click"/>
                         </Grid>
 
                         <Grid Grid.Row="1" x:Name="tbGrid">
@@ -309,8 +309,8 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Title" Margin="15,-373,952,0" Grid.Column="0" Tag="Title" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
-                            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Description" Margin="42,-373,15,0" Grid.Column="1" Tag="Description" VerticalAlignment="Top"/>
+                            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Title" Margin="15,-355,952,0" Grid.Column="0" Tag="Title" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                            <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_Description" Margin="42,-355,15,0" Grid.Column="1" Tag="Description" VerticalAlignment="Top"/>
                         </Grid>
 
                         <Grid Grid.Row="2" x:Name="butGrid">
@@ -328,7 +328,8 @@
                             <Button Style="{DynamicResource CoralRoundButtonStyle}" Grid.Column="4" Margin ="10" Height="60" x:Name="Button_CancelUpd" Content="Cancel" Click="Button_Cancel_Click"/>
                         </Grid>
                     </Grid>
-                    <ComboBox x:Name="ComboBox_City" HorizontalAlignment="Left" Margin="226,35,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Style="{DynamicResource LabelStyle}" Content="Select city:" VerticalAlignment="Top" Margin="10,14,1094,0"/>
+                    <ComboBox Style="{DynamicResource RoundComboBox}" x:Name="ComboBox_City" HorizontalAlignment="Left" Margin="181,18,0,0" VerticalAlignment="Top" Width="200"/>
                 </Grid>
             </TabItem>
         </TabControl>
