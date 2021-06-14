@@ -115,6 +115,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
+            else if (TextBox_Password.Text.Length < 8 || TextBox_ConfirmPassword.Text.Length < 8)
+            {
+                MessageBox.Show("Password >= 8");
+
+                isConfirm = false;
+            }
 
             if (isConfirm)
             {
