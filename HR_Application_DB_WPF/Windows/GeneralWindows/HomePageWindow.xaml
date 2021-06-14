@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="4*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_SeachString" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" Tag="Enter name"/>
+                        <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_SeachString" Grid.Row="0" Grid.Column="0" Margin ="10,15,0,15" IsEnabled="False" />
                         <Button Style="{DynamicResource CoralRoundButtonStyle}" x:Name="Button_Search" Grid.Row="0" Grid.Column="1" Margin ="10,15,0,15" Content="Search" Click="Button_Search_Click"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.ColumnSpan="4">
@@ -154,7 +154,7 @@
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
                         <TextBox Style="{DynamicResource RoundTextBoxStyle}" x:Name="TextBox_FirstName" Margin="5,0,5,0"  Grid.Column="1" Tag="First name" FontSize="36" IsEnabled="False" />
-                        <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Margin="5,10,5,10" Content="Log out" Grid.Column="2" Click="Button_LogOut_Click" IsEnabled="False"/>
+                        <Button  Style="{DynamicResource CoralRoundButtonStyle}" x:Name ="Button_LogOut" Margin="5,10,5,10" Content="Log out" Grid.Column="2" Click="Button_LogOut_Click"/>
                     </Grid>
                     <Label Style="{DynamicResource LabelStyle}" Grid.Row="2" Margin="5,0,5,0" Foreground="#878383" x:Name="Label_LastName" Tag="Last name" HorizontalAlignment="Center" Content="Last name" FontSize="36"/>
                     <Grid x:Name ="GridSecondName" Grid.Row="3">

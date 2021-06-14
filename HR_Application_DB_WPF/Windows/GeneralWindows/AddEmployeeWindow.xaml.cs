@@ -192,7 +192,7 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
         private void ComboBox_City_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboBox_Project.SelectedItem is CityModel)
+            if (ComboBox_City.SelectedItem is CityModel)
             {
                 _employee.Adress = new Adress()
                 {

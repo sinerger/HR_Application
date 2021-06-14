@@ -50,7 +50,6 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
             ComboboxEmployees.SelectedItem = _cache.PositionsModels[0];
 
             DataGrid_Company.ItemsSource = _cache.Companies;
-            DataGrid_Company.IsReadOnly = false;
 
             var departmetns = new List<Department>();
 
@@ -187,7 +186,14 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
         private void Button_AddEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddEmployeeWindow addEmployeeWindow = new AddEmployeeWindow();
+            addEmployeeWindow.Closed += AddEmployeeWindow_Closed;
             addEmployeeWindow.ShowDialog();
+        }
+
+        private void AddEmployeeWindow_Closed(object sender, EventArgs e)
+        {
+            _loader.UpdateEmployees();
+            DataGrid_AllEmployees.Items.Refresh();
         }
 
         private void Button_Update_Click(object sender, RoutedEventArgs e)

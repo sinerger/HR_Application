@@ -179,7 +179,7 @@
     <Build Include="Stored Procedures\Base\LevelSkills\CreateLevelSkill.sql" />
     <Build Include="Stored Procedures\Base\LevelSkills\DeleteLevelSkill.sql" />
     <Build Include="Stored Procedures\Base\LevelsPosition\DeleteLevelPosition.sql" />
-    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPosition.sql" />
+    <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPositions.sql" />
     <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPositionByID.sql" />
     <Build Include="Stored Procedures\Base\LevelsPosition\GetLevelPositionByTitle.sql" />
     <Build Include="Stored Procedures\Base\LevelsPosition\UpdateLevelPosition.sql" />

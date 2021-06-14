@@ -32,14 +32,14 @@ namespace HR_Application_BLL.Tests.Souces.Project
                     ID = 2,
                     Title="FlowersApp",
                     Description = "Project for flowers company",
-                    DirectionID = 2
+                    DirectionID = 1
                 },
                 new ProjectDTO()
                 {
                     ID = 2,
                     Title="FlowersApp",
                     Description = "Project for flowers company",
-                    DirectionID = 2
+                    DirectionID = 1
                 }
             };
         }

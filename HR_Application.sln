@@ -7,13 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_DB_Logic", "
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HR_Application_DB", "HR_Application_DB\HR_Application_DB.sqlproj", "{4C638BE2-DEAE-41CA-942D-6B8F9D5130E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_DB_Logic.Tests", "HR_Application_DB_Logic.Tests\HR_Application_DB_Logic.Tests.csproj", "{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_DB_WPF", "HR_Application_DB_WPF\HR_Application_DB_WPF.csproj", "{B429B957-C49E-45B9-9281-D6F650D526E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR_Application_BLL", "HR_Application_BLL\HR_Application_BLL.csproj", "{AB3247E7-4B31-4B23-8BF9-11CBD27F6CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_BLL", "HR_Application_BLL\HR_Application_BLL.csproj", "{AB3247E7-4B31-4B23-8BF9-11CBD27F6CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR_Application_BLL.Tests", "HR_Application_BLL.Tests\HR_Application_BLL.Tests.csproj", "{F310B3EA-CFE1-46CF-AEA4-EE6724C18070}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Application_BLL.Tests", "HR_Application_BLL.Tests\HR_Application_BLL.Tests.csproj", "{F310B3EA-CFE1-46CF-AEA4-EE6724C18070}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{4C638BE2-DEAE-41CA-942D-6B8F9D5130E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C638BE2-DEAE-41CA-942D-6B8F9D5130E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C638BE2-DEAE-41CA-942D-6B8F9D5130E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAB27ACC-142B-4406-9C97-48DFC1FAC08C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B429B957-C49E-45B9-9281-D6F650D526E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B429B957-C49E-45B9-9281-D6F650D526E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B429B957-C49E-45B9-9281-D6F650D526E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
