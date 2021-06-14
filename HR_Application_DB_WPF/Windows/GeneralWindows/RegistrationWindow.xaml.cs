@@ -121,6 +121,12 @@ namespace HR_Application_DB_WPF.Windows.GeneralWindows
 
                 isConfirm = false;
             }
+            else if (TextBox_Password.Text != TextBox_ConfirmPassword.Text)
+            {
+                MessageBox.Show("Password must be equal to Confirm password");
+
+                isConfirm = false;
+            }
 
             if (isConfirm)
             {
